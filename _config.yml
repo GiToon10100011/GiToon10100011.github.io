@@ -27,8 +27,15 @@ twitter_username: jekyllrb
 github_username: jekyll
 
 # Build settings
-#theme: just-the-docs
-remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
+
+# 프로덕션 환경 설정
+defaults:
+  - scope:
+      path: ""
+    values:
+      remote_theme: just-the-docs/just-the-docs
+
 plugins:
   - jekyll-feed
 # Exclude from processing.
