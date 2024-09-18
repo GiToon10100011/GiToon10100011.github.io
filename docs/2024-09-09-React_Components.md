@@ -8,7 +8,7 @@ parent: REACT
 
 # React Components
 
-2018년 이전에는 모든 REACT 컴포넌트는 클래스형으로 이루어져 있었으나, 이후부터 REACT 컴포넌트는 전부 <span style = "color : dodgerblue">함수형 컴포넌트</span>로 바뀌었다. <br><br>
+2018년 이전에는 모든 REACT 컴포넌트는 클래스형으로 이루어져 있었으나, 이후부터 REACT 컴포넌트는 전부 <span style = "color : yellowgreen">함수형 컴포넌트</span>로 바뀌었다. <br><br>
 
 함수형 컴포넌트를 만들 때는 첫글자를 대문자로 이름을 만드는것이 형식적이다. <bR>
 컴포넌트는 함수 이름을 홑태그로 불러오는 형식을 띠며, 기존의 HTML과 달리,<span style = "color: crimson">반드시 마지막에 /로 태그의 끝을 명시</span>해줘야한다.<br><br>
@@ -44,7 +44,7 @@ js문법의 module방식으로 가능해진 REACT는, 부모는 항상 자식을
 
 ## 컴포넌트 예시(자식)
 
-```ruby
+```jsx
 function Header() {
   return (
     <header>
@@ -59,3 +59,9 @@ export default Header;
 자식에서는 반드시 제작한 컴포넌트를 <span style = "color: crimson">export</span>해야 부모요소에서 import로 해당 컴포넌트를 받아올 수 있다.
 
 ---
+
+<span style="display: none">#style-components</span>
+
+# Style Components
+
+REACT에서는 SCSS, CSS보다, 스타일 컴포넌트를 많이 사용하게 된다.
