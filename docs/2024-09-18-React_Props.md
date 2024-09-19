@@ -84,6 +84,50 @@ const Body = ({ name, age, value }) => {
 허나, 이렇게 하나하나씩 props를 속성으로 일일이 주게 되면 전달해야할 값이 많을때는 몹시 비효율적일 것이다. <br>
 이러한 상황을 방지하기 위해, 전달해야하는 모든 값들을 객체의 형태로 생성해서, 전개연산자를 사용해서 바로 보내주는 방식을 훨씬 많이 사용하게 된다. <br>
 
->`<Body {...bodyProps} />`
+> `<Body {...bodyProps} />`
 
-전개연산자를 사용하면 모든 요소들을 펼쳐서 보내주므로 키를 따로 만들어줄 필요도 없으며, 바로 구조분해 할당으로 필요한 값들을 받아주기만 하면 된다. 
+전개연산자를 사용하면 모든 요소들을 펼쳐서 보내주므로 키를 따로 만들어줄 필요도 없으며, 바로 구조분해 할당으로 필요한 값들을 받아주기만 하면 된다.<br><br>
+
+Props는 이말고도 컴포넌트 또한 보내줄 수 있다. 이는 보내는 방식이 다른 거랑은 좀 다른데, 먼저 해당 컴포넌트는 children이라는 키로 전송이 된다.
+
+## Props Component 예시
+
+```jsx
+const ChildComp = () => {
+  return <div>child component</div>;
+}; //컴포넌트 선언
+
+//송신부
+<Body>
+  <ChildComp />
+</Body>;
+
+//수신부
+const Body = ({ children }) => {
+  return (
+    <div>
+      <h1>{children}</h1>
+    </div>
+  );
+};
+```
+
+다음과 같이 컴포넌트를 props로 전달할 때는 <span style = "color: violet">전송할 컴포넌트</span>를 <span style = "color: yellowgreen">전송받을 컴포넌트 </span> 안에 넣어줘야한다. 수신부에서는 컴포넌트를 받을 때는 반드시 children이라는 키로 전송된다. 컴포넌트를 여러개로 보내면 children의 값에는 배열의 형태로 값들이 나열된다. <Br>
+
+- <p style="color: #aaa">이러한 배열의 형태를 출력시키기 위해서는 보통 <span style = "color: crimson">map함수</span>를 사용한다.</p>
+
+---
+
+## Default Props
+
+> props를 올바르게, 혹은 못 가져온 상황이 발생했을 경우, 오류를 방지하기 위해 default값을 정의해줄 수 있다.
+
+**Default Props 예시**
+
+```jsx
+Body.defaultProps = {
+  favorite: [],
+};
+```
+
+- 해당 컴포넌트.defaultProps = 객체의 형태로 디폴트값을 정의한다.
