@@ -116,6 +116,10 @@ const Body = ({ children }) => {
 
 - <p style="color: #aaa">이러한 배열의 형태를 출력시키기 위해서는 보통 <span style = "color: crimson">map함수</span>를 사용한다.</p>
 
+<br><br>
+
+props가 많아지면 많아줄수록 props의 작동 순서나, 컴포넌트 관리에 대한 혼란이 발생하기 쉽상이다. 이는 컴포넌트들이 모두 독립적인 파일로 구분되어있어 헷갈리게 된 것이다. 평소에 작성해둔 html파일처럼 그냥 모든 컴포넌트들이 한파일안에 들어가있다고 가정하면서 코드를 짜자. 
+
 ---
 
 ## Default Props
