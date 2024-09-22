@@ -18,9 +18,7 @@ parent: REACT
 3. [useEffect](#3-useeffect)
 4. [useReducer](#4-usereducer)
 5. [useContext](#5-usecontext)
-6. [useMemo & React.memo()](#6-usememo--reactmemo)
-7. [useCallback](#7-usecallback)
-8. [useNavigate](#8-usenavigate)
+6. [useMemo & React.memo() & useCallback](#6-usememo--reactmemo--usecallback)
 
 <span style = "display : none">#useState</span>
 
@@ -100,6 +98,12 @@ const handleOnChange = (e) => {
 ```
 
 - <p style = "color: #aaa">e.target.name에 해당되는 키가 존재한다면 값을 대체해 주고, 아니면 그냥 온전히 보존</p>
+
+허나, 이러한 방법을 사용해서 State를 다중으로 관리하게 되면 나중에 어떤 State가 어느 상태를 지칭하는지 혼란이 생길 수 있다. 또한, State값이 많아지게 되면 브라우저가 마운트 / 렌더링 시, 부하가 커지게 된다.
+
+<span style = "color: crimson">useState는 반드시 함수 컴포넌트 내부 안에서만 사용</span>할 수 있기 때문에, 복수의 값이 하나의 컴포넌트 안에서 관리될 경우 리렌더링이 다른 요소한테도 영향을 주기 때문에, 이를 방지하기 위해 <span style = "color: crimson">State를 밖으로 빼내</span>도록 [useReducer](#4-usereducer)를 사용하여 상태를 관리한다.
+
+<p style = "text-decoration: line-through; color: #888">허나, 미들웨어를 배우게 되면 useState가 훨씬 많이 사용된다. </p>
 
 ### useState 총정리
 
@@ -225,6 +229,68 @@ useEffect(() => {
 
 ## 4. useReducer
 
+> <span style = "color: yellowgreen">누산</span>기, 계산을 <span style = "color: yellowgreen" >누</span>적하여 연<span style = "color: yellowgreen">산</span>하는 작업을 수행.<span style = "color: crimson">state</span>와 <span style = "color: crimson">dispatch</span> 함수를 통해 상태 관리를 할 수 있는 훅 함수. 복잡한 상태 관리를 할때 주로 사용된다.
+
+관리해야할 State가 많아질수록, 컴포넌트의 부하를 줄이기 위해 전역적인 상태관리를 위해 action객체를 활용하여 복잡한 상태관리 로직을 구현하는 훅 함수이다.
+
+useReducer 또한 [useState](#1-usestate)와 마찬가지로 다음과 같이 구조분해할당으로 먼저 선언된다.
+
+```jsx
+const [todo, dispatch] = useReducer(reducer, mockTodo);
+```
+
+구조분해할당의 첫번째 값으로는 관리할 state를 받으나, useState와는 다르게 2번째 값으로 <span style = "color: yellowgreen">**상태변화촉발함수**</span>를 받게 된다. 통상적으로 이를 <span style = "color: yellowgreen">dispatch</span>라는 이름으로 많이 사용한다.
+
+또한 useState와 다르게 useReducer 함수의 <span style = "color: crimson">인자값은 1개가 아닌 2개</span>를 받는다. 첫번째값은 <span style = "color: yellowgreen">**상태변화실행함수**</span>, 2번째값은 동일하게 관리할 state의 초깃값을 넣는다. 상태변화 실행함수는 통상적으로 <span style = "color: yellowgreen">reducer</span>이라는 이름으로 사용된다.
+
+<p style = "color: #aaa">앞으로 본문에서는 상태변화촉발함수는 dispatch, 상태변화실행함수는 reducer이라는 이름으로 통일시켜 설명할 예정이다.</p>
+
+## useReducer 사용 예시
+
+```jsx
+//reducer함수는 인자로 관리할 상태, action객체를 받아 특정 상황에 맞게 상태를 관리한다.
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INCREASE":
+      return state + action.data;
+    case "DECREASE":
+      return state - action.data;
+      //default는 switch의 정석적인 문법, 넣고 안넣고는 선택사항.
+    default:
+      return state;
+  }
+
+//간단한 카운터 예시
+  const TestComp = () => {
+    const [count, dispatch] = useReducer(reducer, 0); //초깃값은 0
+
+    <div>
+      <b>{count}</b>
+    </div>
+
+    //dispatch함수를 통해 action객체를 정의함.
+    <div>
+      <button onClick={() => dispatch({ type: "INCREASE", data: 1 })}>
+        +
+      </button>
+      <button onClick={() => dispatch({ type: "DECREASE", data: 1 })}>
+        -
+      </button>
+    </div>
+  };
+};
+```
+
+useReducer를 사용하기 위해서는 reducer 함수를 먼저 정의해야한다. reducer함수는 관리할 상태, action객체 2가지 값을 인자로 받는다.
+
+> dispatch 함수는 <span style = "color: crimson">action객체를 매개변수로</span> 받고 정의한다. action객체는 type속성을 통해 상태를 상황에 맞게 구분하여 상태를 관리할 수 있게끔하며, <span style = "color: crimson">switch문</span>을 통해 상황을 검사한다.
+
+action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color: #aaa">(마치 전후문자선택자의 content와 같이 필수적임.)</span> type의 값은 통상적으로 모두 대문자로 선언된다.
+
+예시에서 볼 수 있듯이 action객체의 type속성을 통해 switch문으로 상황을 검사하고, 특정 상황에 맞게끔 상태를 변화시킨다. type속성 말고도 <span style = "color: yellowgreen" >추가로 데이터를 전달하기 위해 data속성을 추가하기도 한다.</span> 위의 간단한 카운터 예시에서는 type이 INCREASE일때 증가, DECREASE일때는 감소 시키게끔 설계되어 있으며, data를 통해 추가로 전달한 데이터(1)로 증가, 감소의 값을 정의했다.
+
+- <p style = "color: #aaa">즉, type속성은 일종의 이름을 부여하는것으로, 가상클래스와 유사하게 요소에 가상클래스의 유무 검사하여 DOM요소를 제어한 것처럼 사용된다고 이해하면 편하다. </p> 
+
 ---
 
 <span style = "display : none">#useContext</span>
@@ -235,16 +301,36 @@ useEffect(() => {
 
 <span style = "display : none">#useMemo</span>
 
-## 6. useMemo & React.memo()
+## 6. useMemo & React.memo() & useCallback
+
+>메모이제이션을 위한 Reack Hook 함수 3인방. 모두 [최적화](/docs/2024-09-08-React.html#optimization)를 위해 만들어진 함수들이며, `React.memo()`는 고차 컴포넌트화를 통해 컴포넌트를 직접적으로 메모이제이션하여 리렌더링을 최적화, `useMemo()`나 `useCallback()`은 함수나 값을 메모이제이션한다.
+
+1. ### useMemo()
+
+    
+
+2. ### React.memo()
+
+    >컴포넌트 자체를 제어하여 최적화 시키는 기법으로, React객체의 memo 메소드 함수를 사용한다. 
+
+    컴포넌트들을 횡으로 나열해 두면 교차/겹쳐지는(Cross)렌더링, 횡단 관심사에서 컴포넌트를 차원 밖으로 빼냄으로써 최적화시켜주는 React 객체의 메소드 함수이다. 특정 컴포넌트를 차원 밖으로 빼내는 것을 다른말로 <span style = "color: crimson">**고차컴포넌트화**</span>라고 한다. 
+    - <p style = "color: #aaa">CSS에서 position: absolute 혹은 fixed로 요소의 차원을 빼내어 독립적인 구조를 갖게 하는것과 유사.</p>
+
+    특정 컴포넌트를 고차컴포넌트로 업그레이드(pivot)시킴으로 인해 부모 컴포넌트 아래에 있는 모든 자식 요소의 컴포넌트들이 고차컴포넌트화가 된 요소의 상태변화에 따라 같이 렌더링이 되지 않도록 한다.
+    즉, 고정된 값, 변동이 없는 컴포넌트 ( ex ) Header, Footer) 들은 고차컴포넌트화를 해줘야 한다. 
+
+    ```jsx
+    export default React.memo(Header);
+    ```
+
+    `React.memo()`는 다음과 같이 export 단계에서 함수의 인자값으로 고차컴포넌트화 시킬 컴포넌트를 집어넣는다. 
+
+    <p style = "color: #aaa">이로써 따로 해당 컴포넌트에 직접적으로 어떤 작업을 수행하지 않는 이상 절대로 변화가 일어나지 않는다.</p>
+
+3. ### useCallback()
 
 ---
 
-<span style = "display : none">#useCallback</span>
 
-## 7. useCallback
 
----
 
-<span style = "display : none">#useNavigate</span>
-
-## 8. useNavigate
