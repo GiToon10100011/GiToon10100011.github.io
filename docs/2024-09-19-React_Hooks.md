@@ -105,6 +105,29 @@ const handleOnChange = (e) => {
 
 <p style = "text-decoration: line-through; color: #888">허나, 미들웨어를 배우게 되면 useState가 훨씬 많이 사용된다. </p>
 
+### 함수형 업데이트
+
+> useState의 초깃값으로 콜백함수를 부여하거나 setState함수를 통해 콜백함수를 부여하여 불필요한 렌더링을 방지하는 최적화 기법. [`useCallback()`](#6-usememo--reactmemo--usecallback)에서 의존성배열을 빈배열을 할당시킬 경우, 최신 상태 업데이트 정보를 가져오기 위해 사용된다.
+
+```jsx
+//Before
+const handleChangeEmotion = (emotionId) => {
+  setState({
+    ...state,
+    emotionId,
+  });
+};
+
+//After
+const handleChangeEmotion = useCallback((emotionId) => {
+  //실행문으로 사용
+  setState((state) => ({
+    ...state,
+    emotionId,
+  }));
+}, []);
+```
+
 ### useState 총정리
 
 > REACT에서는 VDOM을 사용하므로 반드시 하나의 ui화면에서 상태변화가 발생되는 요소는 <span style = "color: crimson">state라는 변수안에 담아서 관리</span>를 해야한다. 이때, state라는 상태변수는 react의 useState 훅 함수를 사용한다. useState 함수는 state라는 상태변수와, setState함수를 모두 반환하는데, 이때 <span style = "color: crimson">setState() 함수만이 유일하게 상태변수를 제어</span>할 수 있다.
@@ -175,7 +198,7 @@ useEffect는 컴포넌트의 생애 주기를 관리하며, 인자값으로 2가
 
 의존성배열은 안에 관리할 상태 요소들을 넣으며, 의존성배열 안의 요소들에게 어떠한 상태변화가 일어났을 때만 useEffect의 콜백함수을 실행시킨다.
 
-<p style = "color: #aaa">useEffect는 외부에서 데이터를 끌어올 때 많이 사용되며, 렌더링이 되는 상황에서의 상태를 제어하기 위해 주로 사용된다. </p>
+<p style = "color: #aaa">useEffect는 외부에서 데이터를 끌어올 때 많이 사용되며, 렌더링이 되는 상황에서의 상태를 제어하기 위해 주로 사용된다.</p>
 
 ## useEffect의 사용법 3가지
 
@@ -307,9 +330,9 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
 1. ### useMemo()
 
-   > 주로 자식컴포넌트 내의 요소나 함수의 제어를 통해 최적화 시키는 방법이다.
+   > 주로 컴포넌트 내부의 요소나 함수의 제어를 통해 최적화 시키는 방법이다.
 
-   `useMemo()`는 `useEffect`나 `useCallback`와 동일하게, 인자값으로 콜백이랑 <span style = "color: violet">의존성배열</span>을 받는다. 보통 의존성 배열에 빈배열을 할당하여 해당 함수가 호출될 때만 렌더링 시키도록 사용하거나, 특정 요소를 넣어서 해당 요소들의 상태변화가 일어날때 리렌더링이 되도록 한다.
+   `useMemo()`는 `useEffect`나 `useCallback`와 동일하게, 인자값으로 콜백이랑 <span style = "color: violet">의존성배열</span>을 받는다. 보통 의존성 배열에 빈배열을 할당하여 브라우저가 최초에 마운트 됐을 때 렌더링 시키도록 사용하거나, 특정 요소를 의존성 배열 안에 넣어서 해당 요소들의 상태변화가 일어날때 리렌더링이 되도록 한다.
 
    ```jsx
    //자식컴포넌트
@@ -333,7 +356,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
    - <p style = "color: #aaa">CSS에서 position: absolute 혹은 fixed로 요소의 차원을 빼내어 독립적인 구조를 갖게 하는것과 유사.</p>
 
-   특정 컴포넌트를 고차컴포넌트로 업그레이드(pivot)시킴으로 인해 부모 컴포넌트 아래에 있는 모든 자식 요소의 컴포넌트들이 고차컴포넌트화가 된 요소의 상태변화에 따라 같이 렌더링이 되지 않도록 한다.
+   특정 컴포넌트를 고차컴포넌트로 업그레이드(pivot)시킴으로 인해 고차컴포넌트화가 된 요소의 상태변화에 따라 다른 컴포넌트들이 같이 렌더링이 되지 않도록 한다.
    즉, 고정된 값, 변동이 없는 컴포넌트 ( ex ) Header, Footer) 들은 고차컴포넌트화를 해줘야 한다.
 
    ```jsx
@@ -348,7 +371,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
    > 주로 React.memo()를 사용했으나, 부모컴포넌트로 인해 리렌더링이 발생되는 경우, 함수를 제어하여 최적화 시키는 기법.
 
-   `useCallback()` 또한 `useMemo()`와 형태가 동일하게, 콜백과 의존성배열을 인자값으로 받으며, `React.memo()`를 사용했음에도 불구하고 부모컴포넌트에서 관리되는 함수, 혹은 props로 인해 리렌더링이 발생되는경우, `useCallback`을 사용하여 함수가 호출되지 않는이상 리렌더링이 발생되지 않도록 한다.
+   `useCallback()` 또한 `useMemo()`와 형태가 동일하게, 콜백과 의존성배열을 인자값으로 받으며, `React.memo()`를 사용했음에도 불구하고 부모컴포넌트에서 관리되는 함수, 혹은 props로 인해 리렌더링이 발생되는경우, `useCallback`을 사용하여 함수가 호출되지 않는이상 리렌더링이 발생되지 않도록 한다. 즉, useCallback은 거의 대부분 <span style = "color: yellowgreen">React.memo()와 함께 사용</span>된다.
 
    ```jsx
    //App.js - 최상위 부모 컴포넌트
@@ -365,6 +388,8 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
      idRef.current += 1;
    }, []);
    ```
+
+   허나 위의 예시처럼, 의존성배열에 빈배열을 할당하게 되면 마운트 된 이후로는 상태가 업데이트가 안되므로 최신 상태를 받아오기위한 <span style = "color: crimson">[useState](#1-usestate)의 함수형 업데이트</span>가 필요하다.
 
 `useMemo`, 혹은 `useCallback`을 사용할때,
 기존에 만들어뒀던 함수를 해당 훅 함수들의 콜백함수 인자로 넣어주기만 하면 된다. 허나, 이때 전에 해당 함수를 호출하였다면, 저장된 변수의 자료형태가 더이상 함수가 아니므로 선언문을 바꿔줄 필요가 있다.
