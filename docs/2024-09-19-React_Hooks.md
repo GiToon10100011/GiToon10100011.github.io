@@ -289,7 +289,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
 예시에서 볼 수 있듯이 action객체의 type속성을 통해 switch문으로 상황을 검사하고, 특정 상황에 맞게끔 상태를 변화시킨다. type속성 말고도 <span style = "color: yellowgreen" >추가로 데이터를 전달하기 위해 data속성을 추가하기도 한다.</span> 위의 간단한 카운터 예시에서는 type이 INCREASE일때 증가, DECREASE일때는 감소 시키게끔 설계되어 있으며, data를 통해 추가로 전달한 데이터(1)로 증가, 감소의 값을 정의했다.
 
-- <p style = "color: #aaa">즉, type속성은 일종의 이름을 부여하는것으로, 가상클래스와 유사하게 요소에 가상클래스의 유무 검사하여 DOM요소를 제어한 것처럼 사용된다고 이해하면 편하다. </p> 
+- <p style = "color: #aaa">즉, type속성은 일종의 이름을 부여하는것으로, 가상클래스와 유사하게 요소에 가상클래스의 유무 검사하여 DOM요소를 제어한 것처럼 사용된다고 이해하면 편하다. </p>
 
 ---
 
@@ -303,34 +303,80 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
 ## 6. useMemo & React.memo() & useCallback
 
->메모이제이션을 위한 Reack Hook 함수 3인방. 모두 [최적화](/docs/2024-09-08-React.html#optimization)를 위해 만들어진 함수들이며, `React.memo()`는 고차 컴포넌트화를 통해 컴포넌트를 직접적으로 메모이제이션하여 리렌더링을 최적화, `useMemo()`나 `useCallback()`은 함수나 값을 메모이제이션한다.
+> 메모이제이션을 위한 Reack Hook 함수 3인방. 모두 [최적화](/docs/2024-09-08-React.html#optimization)를 위해 만들어진 함수들이며, `React.memo()`는 고차 컴포넌트화를 통해 컴포넌트를 직접적으로 메모이제이션하여 리렌더링을 최적화, `useMemo()`나 `useCallback()`은 함수나 값을 메모이제이션한다.
 
 1. ### useMemo()
 
-    
+   > 주로 자식컴포넌트 내의 요소나 함수의 제어를 통해 최적화 시키는 방법이다.
+
+   `useMemo()`는 `useEffect`나 `useCallback`와 동일하게, 인자값으로 콜백이랑 <span style = "color: violet">의존성배열</span>을 받는다. 보통 의존성 배열에 빈배열을 할당하여 해당 함수가 호출될 때만 렌더링 시키도록 사용하거나, 특정 요소를 넣어서 해당 요소들의 상태변화가 일어날때 리렌더링이 되도록 한다.
+
+   ```jsx
+   //자식컴포넌트
+   const analyzeTodo = useMemo(() => {
+     const totalCount = todo.length;
+     const doneCount = todo.filter((it) => it.isDone).length;
+     const notDoneCount = totalCount - doneCount;
+     return {
+       totalCount,
+       doneCount,
+       notDoneCount,
+     };
+   }, [todo]);
+   ```
 
 2. ### React.memo()
 
-    >컴포넌트 자체를 제어하여 최적화 시키는 기법으로, React객체의 memo 메소드 함수를 사용한다. 
+   > 컴포넌트 자체를 제어하여 최적화 시키는 기법으로, React객체의 memo 메소드 함수를 사용한다.
 
-    컴포넌트들을 횡으로 나열해 두면 교차/겹쳐지는(Cross)렌더링, 횡단 관심사에서 컴포넌트를 차원 밖으로 빼냄으로써 최적화시켜주는 React 객체의 메소드 함수이다. 특정 컴포넌트를 차원 밖으로 빼내는 것을 다른말로 <span style = "color: crimson">**고차컴포넌트화**</span>라고 한다. 
-    - <p style = "color: #aaa">CSS에서 position: absolute 혹은 fixed로 요소의 차원을 빼내어 독립적인 구조를 갖게 하는것과 유사.</p>
+   컴포넌트들을 횡으로 나열해 두면 교차/겹쳐지는(Cross)렌더링, 횡단 관심사에서 컴포넌트를 차원 밖으로 빼냄으로써 최적화시켜주는 React 객체의 메소드 함수이다. 특정 컴포넌트를 차원 밖으로 빼내는 것을 다른말로 <span style = "color: crimson">**고차컴포넌트화**</span>라고 한다.
 
-    특정 컴포넌트를 고차컴포넌트로 업그레이드(pivot)시킴으로 인해 부모 컴포넌트 아래에 있는 모든 자식 요소의 컴포넌트들이 고차컴포넌트화가 된 요소의 상태변화에 따라 같이 렌더링이 되지 않도록 한다.
-    즉, 고정된 값, 변동이 없는 컴포넌트 ( ex ) Header, Footer) 들은 고차컴포넌트화를 해줘야 한다. 
+   - <p style = "color: #aaa">CSS에서 position: absolute 혹은 fixed로 요소의 차원을 빼내어 독립적인 구조를 갖게 하는것과 유사.</p>
 
-    ```jsx
-    export default React.memo(Header);
-    ```
+   특정 컴포넌트를 고차컴포넌트로 업그레이드(pivot)시킴으로 인해 부모 컴포넌트 아래에 있는 모든 자식 요소의 컴포넌트들이 고차컴포넌트화가 된 요소의 상태변화에 따라 같이 렌더링이 되지 않도록 한다.
+   즉, 고정된 값, 변동이 없는 컴포넌트 ( ex ) Header, Footer) 들은 고차컴포넌트화를 해줘야 한다.
 
-    `React.memo()`는 다음과 같이 export 단계에서 함수의 인자값으로 고차컴포넌트화 시킬 컴포넌트를 집어넣는다. 
+   ```jsx
+   export default React.memo(Header);
+   ```
 
-    <p style = "color: #aaa">이로써 따로 해당 컴포넌트에 직접적으로 어떤 작업을 수행하지 않는 이상 절대로 변화가 일어나지 않는다.</p>
+   `React.memo()`는 다음과 같이 export 단계에서 함수의 인자값으로 고차컴포넌트화 시킬 컴포넌트를 집어넣는다.
+
+   <p style = "color: #aaa">이로써 따로 해당 컴포넌트에 직접적으로 어떤 작업을 수행하지 않는 이상 절대로 변화가 일어나지 않는다.</p>
 
 3. ### useCallback()
 
+   > 주로 React.memo()를 사용했으나, 부모컴포넌트로 인해 리렌더링이 발생되는 경우, 함수를 제어하여 최적화 시키는 기법.
+
+   `useCallback()` 또한 `useMemo()`와 형태가 동일하게, 콜백과 의존성배열을 인자값으로 받으며, `React.memo()`를 사용했음에도 불구하고 부모컴포넌트에서 관리되는 함수, 혹은 props로 인해 리렌더링이 발생되는경우, `useCallback`을 사용하여 함수가 호출되지 않는이상 리렌더링이 발생되지 않도록 한다.
+
+   ```jsx
+   //App.js - 최상위 부모 컴포넌트
+   const onCreate = useCallback((content) => {
+     dispatch({
+       type: "CREATE",
+       newItem: {
+         id: idRef.current,
+         isDone: false,
+         createdDate: new Date().getTime(),
+         content,
+       },
+     });
+     idRef.current += 1;
+   }, []);
+   ```
+
+`useMemo`, 혹은 `useCallback`을 사용할때,
+기존에 만들어뒀던 함수를 해당 훅 함수들의 콜백함수 인자로 넣어주기만 하면 된다. 허나, 이때 전에 해당 함수를 호출하였다면, 저장된 변수의 자료형태가 더이상 함수가 아니므로 선언문을 바꿔줄 필요가 있다.
+
+```jsx
+//Before
+const { totalCount, doneCount, notDoneCount } = analyzeTodo();
+
+//After
+const { totalCount, doneCount, notDoneCount } = analyzeTodo;
+```
+
+### 최적화 Hooks 총정리
+
 ---
-
-
-
-
