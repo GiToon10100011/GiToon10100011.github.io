@@ -74,7 +74,7 @@ const onChangeBio = (e) => {
 };
 ```
 
-그래서 [props](2024-09-18-React_Props.html)처럼 state또한 객체의 형태로 관리해주면 된다.
+그래서 [Props](/docs/react/props.html)처럼 state또한 객체의 형태로 관리해주면 된다.
 
 > state 객체 형태 관리 예시
 
@@ -132,7 +132,7 @@ const handleChangeEmotion = useCallback((emotionId) => {
 
 > REACT에서는 VDOM을 사용하므로 반드시 하나의 ui화면에서 상태변화가 발생되는 요소는 <span style = "color: crimson">state라는 변수안에 담아서 관리</span>를 해야한다. 이때, state라는 상태변수는 react의 useState 훅 함수를 사용한다. useState 함수는 state라는 상태변수와, setState함수를 모두 반환하는데, 이때 <span style = "color: crimson">setState() 함수만이 유일하게 상태변수를 제어</span>할 수 있다.
 
-> [Props](/docs/2024-09-18-React_Props.html)는 반드시 부모에서 직계자식으로만 보내줄 수 있는 속성으로 인해 보통 state를 관리하는 요소는 최상위 부모에 부여된다. (<span color = "violet">이는 미들웨어를 사용하기 전에 해당된다.</span>)
+> [Props](/docs/react/props.html)는 반드시 부모에서 직계자식으로만 보내줄 수 있는 속성으로 인해 보통 state를 관리하는 요소는 최상위 부모에 부여된다. (<span color = "violet">이는 미들웨어를 사용하기 전에 해당된다.</span>)
 
 ---
 
@@ -326,7 +326,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
 ## 6. useMemo & React.memo() & useCallback
 
-> 메모이제이션을 위한 Reack Hook 함수 3인방. 모두 [최적화](/docs/2024-09-08-React.html#optimization)를 위해 만들어진 함수들이며, `React.memo()`는 고차 컴포넌트화를 통해 컴포넌트를 직접적으로 메모이제이션하여 리렌더링을 최적화, `useMemo()`나 `useCallback()`은 함수나 값을 메모이제이션한다.
+> 메모이제이션을 위한 Reack Hook 함수 3인방. 모두 [최적화](/docs/react/index.html#optimization)를 위해 만들어진 함수들이며, `React.memo()`는 고차 컴포넌트화를 통해 컴포넌트를 직접적으로 메모이제이션하여 리렌더링을 최적화, `useMemo()`나 `useCallback()`은 함수나 값을 메모이제이션한다.
 
 1. ### useMemo()
 

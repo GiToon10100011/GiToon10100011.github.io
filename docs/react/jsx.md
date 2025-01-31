@@ -45,7 +45,7 @@ parent: REACT
 </h2>
 ```
 
-7. 반드시 map함수를 통해 컴포넌트/DOM요소를 찍어낼때, key속성을 부여해야한다. key 속성은 일종의 id와 같으며, option태그에서도 부여 해줘야한다. 
+7. 반드시 map함수를 통해 컴포넌트/DOM요소를 찍어낼때, key속성을 부여해야한다. key 속성은 일종의 id와 같으며, option태그에서도 부여 해줘야한다.
 
 ---
 
@@ -72,9 +72,9 @@ const handleOnClick = () => {
 <button onClick={handleOnClick}>클릭하세요</button>;
 ```
 
-참고로 해당 함수들 또한 [props](/docs/2024-09-18-React_Props.html)로 전달해줄 수 있다.
+참고로 해당 함수들 또한 [props](/docs/react/props.html)로 전달해줄 수 있다.
 
-허나 이러한 on핸들러에 부여한 함수를 사용할 때 [REACT](2024-09-08-React.html#REACT-Event)에서는 반드시 주의해야할 점이 존재한다.
+허나 이러한 on핸들러에 부여한 함수를 사용할 때 [REACT](#REACT-Event)에서는 반드시 주의해야할 점이 존재한다.
 
 ---
 

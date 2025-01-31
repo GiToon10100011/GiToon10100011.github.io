@@ -54,9 +54,9 @@ Snippet을 사용하게 되면, 기본적으로 React 모듈을 import하며, �
 
 REACT에서 스타일을 먹이기 위해서는 기존처럼 CSS를 사용하거나, REACT용 SCSS를 사용할 수 있다. <br><br>
 
-허나 이들보다는 앞으로 [Style Component](/docs/2024-09-09-React_Components.html#style-components)를 더 많이 사용하게 된다. <br><br>
+허나 이들보다는 앞으로 [Style Component](/docs/react/components.html#style-components)를 더 많이 사용하게 된다. <br><br>
 
-이말고도 인라인 스타일시트를 부여할 수도 있다. 허나, 기존의 인라인 방식과 다르게, 스타일을 반드시 객체의 형태로 부여해야한다. 이는 [JSX문법](/docs/2024-09-18-React_JSX.html)때문이다.
+이말고도 인라인 스타일시트를 부여할 수도 있다. 허나, 기존의 인라인 방식과 다르게, 스타일을 반드시 객체의 형태로 부여해야한다. 이는 [JSX문법](/docs/react/jsx.html)때문이다.
 
 {%raw%}
 
@@ -74,7 +74,7 @@ REACT에서 스타일을 먹이기 위해서는 기존처럼 CSS를 사용하거
 
 > 기존의 js와는 다르게, 반드시 onHandler로 이벤트를 부여한다. (REACT에서는 EventListener를 거의 안쓴다.)
 
-on핸들러를 사용함으로써, [JSX](/docs/2024-09-18-React_JSX.html#JSX-Event)의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: crimson">리펙토링</span>하는것이 거의 필수화된다. <br><br>
+on핸들러를 사용함으로써, [JSX](/docs/react/jsx.html#JSX-Event)의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: crimson">리펙토링</span>하는것이 거의 필수화된다. <br><br>
 
 ### Event 함수 사용시 주의사항
 
@@ -91,7 +91,7 @@ Event가 발생될때, on핸들러에 부여한 함수는 반드시 <span style 
 
 하지만 브라우저가 즉시 마운트 될때 api와 같이 외부에서 데이터를 불러올 때는 바로 실행되어야하므로 콜백이 아니라 바로 함수를 부여해야한다.
 
-가상돔을 사용하는 점 때문에 REACT에서는 EventListener뿐만 아니라 QuerySelector도 사용을 안하며, 대부분의 상태변화는 useState, useRef와 같은 [Hook](/docs/2024-09-19-React_Hooks.html)들을 통해 관리한다.
+가상돔을 사용하는 점 때문에 REACT에서는 EventListener뿐만 아니라 QuerySelector도 사용을 안하며, 대부분의 상태변화는 useState, useRef와 같은 [Hook](/docs/react/hooks.html)들을 통해 관리한다.
 
 ---
 
@@ -123,13 +123,13 @@ function App() {
 
 React는 컴포넌트를 기반으로 만들어짐으로 인해, 마운트 - 렌더링 - 언마운트의 생애주기를 반드시 거치게 된다. 이 과정에서 <span style = "color : yellowgreen">상태 변화나, 부모 컴포넌트의 리렌더링 등으로 인해 자식 컴포넌트가 불필요하게 다시 렌더링</span> 될 수 있다. 이러한 불필요한 리렌더링은 성능 저하를 초래할 수 있으며, 이를 최소화 하기 위한 최적화 작업이 필요하다.
 
-- <p style = "color: #aaa">최적화 작업은 웹앱 제작 및 기능 구현을 해놓고 진행해야하며, 모든 기능을 최적화할 필요까진 없다. 최적화를 할 때 구조를 뒤엎어야할 정도의 상황이 발생하면 최적화를 포기하는 것이 차라리 이롭다. </p> 
+- <p style = "color: #aaa">최적화 작업은 웹앱 제작 및 기능 구현을 해놓고 진행해야하며, 모든 기능을 최적화할 필요까진 없다. 최적화를 할 때 구조를 뒤엎어야할 정도의 상황이 발생하면 최적화를 포기하는 것이 차라리 이롭다. </p>
 
 ### 횡단 관심사(Cross Cutting Concern)
 
 > 컴포넌트들을 횡으로 나열해 뒀을때, 교차/겹쳐지는(Cross) 렌더링.
 
-메인기능 역할을 담당하는 <span style = "color: yellowgreen">메인 컴포넌트들은 종단(세로)로 배치</span> 되고, 여기저기에서 사용되는 <span style = "color: yellowgreen">공통 컴포넌트(헤더, 푸터)들은 횡단(가로)로 배치</span>된다. 즉, 공통컴포넌트는 횡단 관심사의 요소로, <span style = "color: crimson">고차컴포넌트화를 통해 횡단관심사에서 요소를 빼내는 최적화 작업</span>이 필요하다. 고차컴포넌트화에 대한 내용은 [`React.memo()`](/docs/2024-09-19-React_Hooks.html#6-usememo--reactmemo--usecallback)에서 더 자세히 확인할 수 있다.
+메인기능 역할을 담당하는 <span style = "color: yellowgreen">메인 컴포넌트들은 종단(세로)로 배치</span> 되고, 여기저기에서 사용되는 <span style = "color: yellowgreen">공통 컴포넌트(헤더, 푸터)들은 횡단(가로)로 배치</span>된다. 즉, 공통컴포넌트는 횡단 관심사의 요소로, <span style = "color: crimson">고차컴포넌트화를 통해 횡단관심사에서 요소를 빼내는 최적화 작업</span>이 필요하다. 고차컴포넌트화에 대한 내용은 [`React.memo()`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback)에서 더 자세히 확인할 수 있다.
 
 ## 메모이제이션(Memoization)
 
@@ -138,10 +138,8 @@ React는 컴포넌트를 기반으로 만들어짐으로 인해, 마운트 - 렌
 메모를 작성할때, 한번 적어두면 해당 메모를 직접 수정하지 않는 이상 값의 변화가 일어나지 않고 계속 남아있는 것을 응용한 최적화 기법.
 
 메모이제이션(최적화)을 위한 React Hook 함수 3인방:
-[`useMemo`](/docs/2024-09-19-React_Hooks.html#6-usememo--reactmemo--usecallback), [`React.memo()`](/docs/2024-09-19-React_Hooks.html#6-usememo--reactmemo--usecallback), [`useCallback`](/docs/2024-09-19-React_Hooks.html#6-usememo--reactmemo--usecallback)
+[`useMemo`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback), [`React.memo()`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback), [`useCallback`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback)
 
 ### 기타 최적화 방법
 
->최적화작업을 하는 방법은 훅 함수들 말고도 다양하다.  useEffect를 통해 의존성배열로 최적화작업을 한다거나, useReducer 등등 최적화 할 수 있는 방법은 상당히 다양하다. 여기서 알아야할 부분은 상단에 설명해둔 최적화 훅 함수 3인방은 오직 최적화를 위해서 나온 함수들이며, 역할이 분명하기 때문에 Semantic하게 그들을 사용하는 것이다. 
-
-
+> 최적화작업을 하는 방법은 훅 함수들 말고도 다양하다. useEffect를 통해 의존성배열로 최적화작업을 한다거나, useReducer 등등 최적화 할 수 있는 방법은 상당히 다양하다. 여기서 알아야할 부분은 상단에 설명해둔 최적화 훅 함수 3인방은 오직 최적화를 위해서 나온 함수들이며, 역할이 분명하기 때문에 Semantic하게 그들을 사용하는 것이다.

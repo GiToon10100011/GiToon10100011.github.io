@@ -38,7 +38,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > audio나 video태그에는 `preload(페이지가 로드될 때 비디오파일이 같이 로드할 것인가의 여부), autoplay, loop, controls`와 같은 속성들이 존재한다.
 
-  > img, video태그에는 `width, height`속성을 통해 너비와 높이를 조절할 수 있다. <br>미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: crimson">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다. `<source src = “Kalimba.mp3” type = “audio/mp3”>` <br>
+  > img, video태그에는 `width, height`속성을 통해 너비와 높이를 조절할 수 있다. <br>미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: crimson">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다. `<source src = "Kalimba.mp3" type = "audio/mp3">` <br>
 
   > video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸네일을 지정해주는 <span style="color: yellowgreen">poster속성</span> 또한 존재한다. 이외에도 autoplay(자동재생), loop(반복재생), controls 속성이 존재한다.
 
@@ -70,7 +70,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > input태그에는 <span style="color: yellowgreen">name속성</span>과 <span style="color: yellowgreen">value속성</span>이 존재하는데, name속성은 입력 양식의 이름을 지정하는 속성이며 서버로 전송할 때 사용된다. value속성은 입력 양식의 값을 지정하는 속성이다. text같은 경우에는 사용자가 직접 입력하기 때문에, value가 추가적으로 필요하지 않다.
 
-  > `type이 submit || reset || button`일 경우 value속성은 버튼에 표시되는 글자를 지정해줄 수 있다. 자세한 type 속성에 대한 것은 너무 많으므로 [input 태그](/docs/2024-05-18-inputTags.html)를 참고하자.
+  > `type이 submit || reset || button`일 경우 value속성은 버튼에 표시되는 글자를 지정해줄 수 있다. 자세한 type 속성에 대한 것은 [input 태그](/docs/html/inputTags.html)를 참고하자.
 
   > <span style="color: crimson">checkbox나 radio는 반드시 같은 name속성</span>을 가져야 한다. 같은 이름을 가진 입력 양식들은 하나의 그룹으로 묶이기 때문이다. 이때문에 다른 input타입은 name이 같아서는 안된다.
 
@@ -78,9 +78,9 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: crimson">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span>
 
-- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = “text” name = “search”></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: crimson">GET, POST, PUT, DELETE</span> 등이 존재한다.
+- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: crimson">GET, POST, PUT, DELETE</span> 등이 존재한다.
 
-  > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/2025-01-29-RestAPI.html)를 다룰때 더 자세히 알아보자.
+  > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/etc/restAPI.html)를 다룰때 더 자세히 알아보자.
 
 - select 태그 - 선택 양식을 삽입하는 태그이다. `<select><option value="1">1</option><option value="2">2</option></select>`와 같은 형식으로 사용하며, 다중 선택을 원할 경우 `multiple`속성을 사용할 수 있다. 선택 옵션은 option태그를 사용해 삽입한다. 옵션들을 그룹으로 묶기 위해서는 `<optgroup label="그룹이름">`과 같은 형식으로 사용할 수 있다.
 
@@ -123,8 +123,8 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - `meta` - 메타데이터 지정, 오픈그래프 등과 같은 메타데이터를 지정할 때도 사용한다.
 - `link` - 외부 리소스 연결, rel(relation) 속성으로 리소스의 종류를 지정한다.
-- `script` - [자바스크립트](/docs/2024-12-13-Javascript.html) 추가
-- `style` - [CSS](/docs/2024-09-07-CSS.html) 추가
+- `script` - [자바스크립트](/docs/javascript/index.html) 추가
+- `style` - [CSS](/docs/css/index.html) 추가
 
 ## 스타일시트
 
@@ -134,21 +134,21 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 - 내부 방식 - head태그 내에 style태그를 사용하는 방식
 - 외부 방식 - 외부 파일을 불러와 사용하는 방식
 
-외부 스타일시트는 스타일 시트를 별도로 생성해서 link태그의 href 속성을 사용해 불러오는 것으로, [CSS](/docs/2024-09-07-CSS.html) 파일을 별도로 생성해서 사용하는 것이 일반적이다.
+외부 스타일시트는 스타일 시트를 별도로 생성해서 link태그의 href 속성을 사용해 불러오는 것으로, [CSS](/docs/css/index.html) 파일을 별도로 생성해서 사용하는 것이 일반적이다.
 
 ```html
-<link rel = “stylesheet” type = “text/css” href = “style.css”>
+<link rel="stylesheet" type="text/css" href="style.css" />
 ```
 
 ## 스크립트
 
 스크립트 또한 스타일시트와 마찬가지로 인라인, 내부, 외부 방식이 있다.
 
-- 인라인 방식 - 태그 내에 script 속성을 사용하는 방식, [on 이벤트 핸들러](/docs/2024-12-13-Javascript.html) 들을 사용할 수 있다.
+- 인라인 방식 - 태그 내에 script 속성을 사용하는 방식, [on 이벤트 핸들러](/docs/javascript/index.html) 들을 사용할 수 있다.
 - 내부 방식 - head태그 내에 script 태그를 사용하는 방식
 - 외부 방식 - 외부 파일을 불러와 사용하는 방식
 
-외부 스크립트는 스크립트를 별도로 생성해서 script태그의 src 속성을 사용해 불러오는 것으로, [Javascript](/docs/2024-12-13-Javascript.html) 파일을 별도로 생성해서 사용하는 것이 일반적이다.
+외부 스크립트는 스크립트를 별도로 생성해서 script태그의 src 속성을 사용해 불러오는 것으로, [Javascript](/docs/javascript/index.html) 파일을 별도로 생성해서 사용하는 것이 일반적이다.
 
 ```html
 <script src="script.js"></script>

@@ -39,7 +39,7 @@ export default App;
 
 js문법의 module방식으로 가능해진 REACT는, 부모는 항상 자식을 import받아서 태그요소를 반환한다.
 
-`<> </>`는 <span style = "color: yellowgreen">Fragment Element</span>로, 반드시 최상위 부모가 존재해야하는 [JSX문법](/docs/2024-09-18-React_JSX.html)에서는, 최상위부모를 다음과 같이 아무 의미가 없는 태그인 Fragment Element를 사용한다.
+`<> </>`는 <span style = "color: yellowgreen">Fragment Element</span>로, 반드시 최상위 부모가 존재해야하는 [JSX문법](/docs/react/jsx.html)에서는, 최상위부모를 다음과 같이 아무 의미가 없는 태그인 Fragment Element를 사용한다.
 <br><br>
 
 ## 컴포넌트 예시(자식)
