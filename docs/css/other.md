@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "기타 스타일링링"
+title: "기타 스타일링"
 date: 2024-09-07 23:12:00 +0900
 categories: etc
 parent: CSS
