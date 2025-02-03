@@ -10,13 +10,17 @@ parent: CSS
 
 - `font` - 아래 속성들의 축약형으로 `font: italic bold 16px/20px Arial, sans-serif;`와 같은 형식으로 사용한다. 이 때, 축약형은 <span style="color: yellowgreen;">글자 스타일, 글자 굵기, 글자 크기, 글자 글꼴, 글자 줄 간격</span>을 한번에 지정해줄 수 있다.
 
+  > 주의해야할 점은, font-size와 line-height를 함께 설정할때 슬래시(/)를 사용하여 두값을 구분해야한다. <span style="color: #aaa;">(슬래시 없이 공백만 사용하면 브라우저가 두번째 값을 줄간격으로 인식 못하고 다른 속성으로 오해하기 때문이다.)</span>
+
 - `font-family` - 글자 글꼴, `ex) body {font-family : 맑은 고딕,  돋움, 굴림}` 이런 형식으로 사용한다. <span style="color: yellowgreen">콤마로 구분된 글꼴 이름들은 순서대로 우선순위</span>를 가진다. 즉, 첫번째 글꼴(맑은 고딕)이 없으면 두번째 글꼴(돋움)을 사용하고, 두번째 글꼴(돋움)이 없으면 세번째 글꼴(굴림)을 사용한다.
 
 - `font-size` - 글자 크기
 
 - `font-weight` - 글자 굵기, 값은 숫자를 주거나, `normal, bold, lighter, bolder` 등의 값을 주기도 한다. 숫자는 `100~900`까지 사용할 수 있다. 100은 가장 얇고, 900은 가장 굵다.
 
-- `font-style` - 글자 스타일, 값은 `normal, italic(기울임체), oblique(기울임체)` 등이 있다.
+- `font-style` - 글자 스타일, 값은 `normal, italic(기울임체), oblique(기울임체)` 등이 있다. <span style = "color: #aaa;">oblique보다 italic사용이 권장되며, italic은 oblique와 다르게 폰트 파일에 내장되어 있는 기울임체를 불러온다.</span>
+
+- `font-variant` - 글자 대소문자, 값은 `normal, small-caps(대문자를 소문자 크기로 나타냄)` 등이 있다.
 
 - `text-align` - 글자 정렬, 값은 `left, right, center, justify(양쪽정렬)` 등이 있다.
 
@@ -26,7 +30,7 @@ parent: CSS
 
 - `text-shadow` - 글자 그림자, 값은 `x축, y축, 그림자 크기, 그림자 색상` 형식으로 사용한다. x축, y축의 값값은 원래 요소에서 부터 그림자를 어느정도로 띄워놓을지 결정한다.
 
-- `text-indent` - 글자 들여쓰기, 특정 요소를 숨기고 싶을때 -9999px와 같은 큰 값을 줘서 없애기도 한다. 
+- `text-indent` - 글자 들여쓰기, 특정 요소를 숨기고 싶을때 -9999px와 같은 큰 값을 줘서 없애기도 한다.
 
 - `letter-spacing` - 글자 간격(자간)
 
@@ -54,16 +58,17 @@ parent: CSS
 
 예시:
 
- ```css
-  /* 2줄 이상 넘치는 경우 말줄임표 표시 */
- .text-ellipsis {
-   display: -webkit-box;
-   -webkit-line-clamp: 2;
-   -webkit-box-orient: vertical;
-   text-overflow: ellipsis;
-   white-space: nowrap;
- }
- ```
+```css
+/* 2줄 이상 넘치는 경우 말줄임표 표시 */
+.text-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
 ## 문단 스타일링링
 
 - `direction` - 문단 방향, 값은 `ltr(왼쪽에서 오른쪽), rtl(오른쪽에서 왼쪽)` 등이 있다.

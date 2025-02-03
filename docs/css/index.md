@@ -8,7 +8,7 @@ has_children: true
 
 # CSS
 
-> 스타일 시트 언어로, 태그에 스타일을 부여하는 언어이다.
+> CSS는 Cascading Style Sheets의 약자로, 이름과 동일하게 언어를 위에서 아래로 폭포가 흐르듯이 순차적으로 스타일이 부여되는 언어이다.
 
 css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한다. <a href="/docs/css/selectors.html" style="color: #aaa;">선택자에 대해 자세히 알아보기</a> <br><br>
 스타일은 다양한 스타일 속성들을 통해 부여할 수 있는데, 이는 다음과 같다.
@@ -28,7 +28,7 @@ css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한�
 - `%` - 백분율 단위이다. 상대적인 크기를 지정할 때 사용한다.
 - `em` - 배수 단위이다. <span style="color: #aaa;"><del>em을 읽으면 m, 즉, multiple의 약자라고 생각하자.</del></span>
 - `rem` - 루트 기준의 배수(루트는 html 요소) 팀환경에서는 루트 기준의 배수를 사용하는 것이 좋다. 1rem은 16px, 2rem은 32px, 3rem은 48px 등으로 사용된다. rem을 확인하고 싶다면 개발자 도구의 computed 탭에서 확인할 수 있다.
-- `vh` - 뷰포트 높이
+- `vh` - 뷰포트 높이(뷰포트는 브라우저 화면)
 - `vw` - 뷰포트 너비
 - `rgb()` - 빛의 삼원색 모두 조합하여 색상을 표현하는 방법이다.
 - `rgba()` - 빛의 삼원색 모두 조합하여 색상을 표현하는 방법이다. <span style="color: yellowgreen;">알파값을 추가하여 투명도를 조절</span>할 수 있다.
@@ -77,6 +77,7 @@ div {
   }
 }
 ```
+
 ---
 
 ## 스타일 리셋
@@ -90,11 +91,12 @@ div {
   box-sizing: border-box;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }

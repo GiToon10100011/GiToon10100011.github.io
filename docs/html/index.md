@@ -18,7 +18,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다.
 
-또한 차지하는 공간에 따라 크게 <span style="color: crimson"><b>블록태그</b></span>와 <span style="color: crimson"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한줄이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+또한 차지하는 공간에 따라 크게 <span style="color: crimson" id="inline&block"><b>블록태그</b></span>와 <span style="color: crimson"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한줄이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
 <span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
 
@@ -42,6 +42,8 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸네일을 지정해주는 <span style="color: yellowgreen">poster속성</span> 또한 존재한다. 이외에도 autoplay(자동재생), loop(반복재생), controls 속성이 존재한다.
 
+  > iframe태그는 외부 문서를 사용할 때 사용된다. `<iframe src="https://www.google.com"></iframe>`와 같은 형태로 사용된다. 
+
 - 목록 태그 - `ul(unordered list), ol(ordered list), li(list item)`등이 있다.
 
   > 순서가 없는 목록인 ul태그는 목록 앞에 <span style="color: yellowgreen">불릿</span>이 찍히고 네비게이션 바에 주로 사용된다. 순서가 있는 목록인 ol태그는 목록 앞에 순서를 의미하는 숫자가 찍힌다.
@@ -59,6 +61,25 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   > <span id="tabledesc" style="color: yellowgreen;">thead, tbody, tfoot</span>은 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다.
 
 - 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: crimson">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
+  `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
+
+  `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함.
+
+  `main` | 문서의 주요 내용을 지정하는 태그이다. 주로 문서의 내용을 구분하기 위해 사용된다.
+
+  `section` | 주로 문서에서 주제별로 콘텐츠를 묶을 때 사용된다. 
+
+  `article` | 주로 section내에 웹 상의 본문 내용이 들어간다.
+
+  `aside` | 주로 문서의 본문 외에 삽입되는 내용이 들어간다. 주로 광고나 링크 등이 들어간다.
+
+  `footer` | 제작자의 연락처 정보 / 저작권 정보를 표시하며, 페이지 맨 아래쪽에 삽입됨. 
+
+  `address` | 주로 문서에서 제작자의 연락처 정보를 지정할 때 사용된다.
+
+  `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. figure태그 내에 미디어 태그를 넣는 형식으로 사용한다. 
+
+  `figcaption` | 주로 문서에서 이미지나 동영상 등의 설명을 지정할 때 사용된다.
 
 ---
 
