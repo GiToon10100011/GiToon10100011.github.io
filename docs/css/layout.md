@@ -11,12 +11,14 @@ parent: CSS
 ## Box-sizing
 
 - `box-sizing` - 요소의 크기를 계산하는 방법을 지정한다. 값은 `content-box, border-box` 등이 있다.
-  - `content-box` - 기본값으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다.
-  - `border-box` - 요소의 크기를 계산할 때, 테두리와 패딩을 포함한다.
+  - `content-box` - 기본값으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다. 너비 공식은 `(margin + border + padding)*2 + width`이다.
+  - `border-box` - 요소의 크기를 계산할 때, 테두리와 패딩을 포함한다. 너비 공식은 `(margin*2) + width`이다.
 
 ---
 
 ## Position
+
+<span id="position"></span>
 
 전에 [html](/docs/html/index.html#inline&block)에서 블록태그와 인라인 태그에 대해 설명했었다. 블록태그는 차지하는 공간이 한줄이며, 인라인 태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
@@ -26,7 +28,7 @@ parent: CSS
 
 - `relative` - 요소를 일반적인 문서 흐름에 따라 배치하지만, 요소의 위치를 지정할 수 있다.
 
-- `absolute` - 요소를 일반적인 문서 흐름에서 제거하고, 요소의 절대적인 위치를 지정할 수 있다. 이때, position을 relative로 준 요소를 기준으로 위치를 지정한다. 이를 활용하여 특정 요소 안에서만 포지셔닝을 할 수 있다.
+- `absolute` - 요소를 일반적인 문서 흐름에서 제거하고, 요소의 절대적인 위치를 지정할 수 있다. 이때, position을 relative로 준 요소를 기준으로 위치를 지정한다. 이를 활용하여 특정 요소 안에서만 포지셔닝을 할 수 있다. relative 요소가 존재하지 않으면 루트 요소를 기준으로 위치를 지정한다.
 
 - `fixed` - 요소를 일반적인 문서 흐름에서 제거하고, 반드시 루트 요소의 기준으로 위치를 지정할 수 있다. 스크롤을 내려도 요소의 위치가 변하지 않는다.
 
@@ -60,11 +62,57 @@ parent: CSS
 
 ## Flexbox
 
+```css
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+```
+
 <span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다.
 
-- `flex-direction`
-- `align-items`
-- `justify-content`
+display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(유연한 박스)로 변환된다.
+
+flex는 박스레벨 요소, inline-flex는 인라인레벨 요소로 변환된다.
+
+- `flex-direction` - 박스의 방향을 지정한다. 값은 `row, column, row-reverse, column-reverse` 등이 있다.
+
+- `align-items` - 박스의 수직 정렬을 지정한다. 값은 `flex-start, flex-end, center, baseline, stretch` 등이 있다.
+
+- `align-self` - `align-items`의 영향에서 벗어나 현재 요소의 수직 정렬을 지정한다. 값은 `flex-start, flex-end, center, baseline, stretch` 등이 있다.
+
+- `align-content` - 플렉스 항목이 여러 줄로 표시될 때의 배치 방법을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+
+  <img src="/assets/images/css/flexBox/alignContent.png" alt="align-content" style="height: 70%;">
+
+- `justify-content` - 박스의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+
+- `flex-flow` - flex-direction과 flex-wrap을 한번에 지정한다. 값은 `flex-direction값 flex-wrap값`의 형태로 사용된다.
+
+- `flex-wrap` - 박스의 너비가 넘칠 경우 줄바꿈 여부를 지정한다. 값은 `nowrap, wrap, wrap-reverse` 등이 있다.
+
+- `gap` - 박스 사이의 간격을 지정한다. 값은 `length, %, calc` 등이 있다.
+
+- `order` - 박스의 순서를 지정한다. 값은 정수를 사용한다. 기본값은 0이다. 반응형에서 특정 요소의 순서를 낮추고 싶으면 의도적으로 음수의 값을 주면 된다.
+
+- `flex` - 아래 3가지 flex 속성의 축약형. 값은 `flex-grow값, flex-shrink값, flex-basis값`의 형태로 사용된다. 값을 하나만 주면 나머지는 0으로 처리된다.
+
+  ```css
+  .item {
+    /* 만약 부모 flex 컨테이너 내의 다른 자식 요소가 flex 1이라면 그 요소는 부모 요소의 너비를 1:1로 나눠가진다. */
+    flex: 1;
+  }
+  ```
+
+- `flex-grow` - 박스의 너비가 넘칠 경우 박스의 너비를 늘리는 정도를 지정한다. 값은 정수를 사용한다. 기본값은 0이다.
+
+- `flex-shrink` - 박스의 너비가 넘칠 경우 박스의 너비를 줄이는 정도를 지정한다. 값은 정수를 사용한다. 기본값은 1이다.
+
+- `flex-basis` - 박스의 너비를 지정한다. 값은 `length, %, auto` 등이 있다.
 
 ---
 
@@ -93,6 +141,10 @@ parent: CSS
 - `break-after` - 페이지 나누기 후에 요소를 분리한다.
 - `break-inside` - 요소 내부에서 페이지 나누기를 지정한다.
 
+다단 레이아웃의 예시를 한번 이미지를 통해 보자.
+
+<img style="width: 50%;" src="/assets/images/css/layout/columnLayout.png" alt="column">
+
 ---
 
 ## 테이블
@@ -103,11 +155,12 @@ parent: CSS
 - `empty-cells` - 테이블의 빈 셀 표시 여부를 지정한다. 값은 `show, hide` 등이 있다.
 - `table-layout` - 테이블의 레이아웃을 지정한다. 셀 안의 내용 양에 따라 셀 너비를 변하게 할지 고정시킬지 결정해준다. 값은 `auto, fixed` 등이 있다. fixed는 셀 너비가 고정되어 셀 내용에 따라 셀의 너비가 달라지지 않도록 함.
 - `vertical-align` - 테이블 셀 안의 요소의 수직 정렬을 지정한다. 값은 `top, bottom, middle, baseline, sub, super, text-top, text-bottom` 등이 있다.
-  - `top` - 요소를 위쪽에 정렬한다.
-  - `bottom` - 요소를 아래쪽에 정렬한다.
-  - `middle` - 요소를 가운데에 정렬한다.
-  - `baseline` - 요소를 기본 라인에 정렬한다.
-  - `sub` - 요소를 기준선 아래 첨자 위치로 정렬한다.
-  - `super` - 요소를 기준선 위 첨자 위치로 정렬한다.
-  - `text-top` - 요소를 부모 텍스트 상단에 정렬한다.
-  - `text-bottom` - 요소를 부모 텍스트 하단에 정렬한다.
+
+  `top` | 요소를 위쪽에 정렬한다.
+  `bottom` | 요소를 아래쪽에 정렬한다.
+  `middle` | 요소를 가운데에 정렬한다.
+  `baseline` | 요소를 기본 라인에 정렬한다.
+  `sub` | 요소를 기준선 아래 첨자 위치로 정렬한다.
+  `super` | 요소를 기준선 위 첨자 위치로 정렬한다.
+  `text-top` | 요소를 부모 텍스트 상단에 정렬한다.
+  `text-bottom` | 요소를 부모 텍스트 하단에 정렬한다.

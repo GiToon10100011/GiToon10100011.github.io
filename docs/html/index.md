@@ -32,23 +32,15 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - 글자 모양 태그 - `strong, b(bold), em, i(italic), u(underline), small, sub(아래첨자), sup(위첨자), ins(밑줄), del(취소선)` 등이 있다. 글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
 
-- 미디어 태그 - `img, audio, video`등이 있다.
+- 미디어 태그 - 자세한건 [여기를](/docs/html/mediaTags.html)를 참고하자.
 
-  > 미디어 태그는 <span style="color: yellowgreen">src 속성</span>을 사용해 미디어 파일을 지정한다. 외부 파일을 불러와 사용하는 것이 일반적이다. `<img src="image.jpg" alt="이미지 설명">`와 같은 형태로 사용되며 <span style="color: yellowgreen">alt속성</span>은 이미지를 불러올 수 없을때 대체 텍스트를 의미한다. <span style="color: #aaa">(청각장애인들을 위해서기도 함)</span>
+- 목록 태그 - `ul(unordered list), ol(ordered list), dl(definition list), li(list item)`등이 있다.
 
-  > audio나 video태그에는 `preload(페이지가 로드될 때 비디오파일이 같이 로드할 것인가의 여부), autoplay, loop, controls`와 같은 속성들이 존재한다.
-
-  > img, video태그에는 `width, height`속성을 통해 너비와 높이를 조절할 수 있다. <br>미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: crimson">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다. `<source src = "Kalimba.mp3" type = "audio/mp3">` <br>
-
-  > video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸네일을 지정해주는 <span style="color: yellowgreen">poster속성</span> 또한 존재한다. 이외에도 autoplay(자동재생), loop(반복재생), controls 속성이 존재한다.
-
-  > iframe태그는 외부 문서를 사용할 때 사용된다. `<iframe src="https://www.google.com"></iframe>`와 같은 형태로 사용된다. 
-
-- 목록 태그 - `ul(unordered list), ol(ordered list), li(list item)`등이 있다.
-
-  > 순서가 없는 목록인 ul태그는 목록 앞에 <span style="color: yellowgreen">불릿</span>이 찍히고 네비게이션 바에 주로 사용된다. 순서가 있는 목록인 ol태그는 목록 앞에 순서를 의미하는 숫자가 찍힌다.
+  > 순서가 없는 목록인 ul태그는 목록 앞에 <span style="color: yellowgreen">불릿</span>이 찍히고 네비게이션 바에 주로 사용된다. 순서가 있는 목록인 ol태그는 목록 앞에 순서를 의미하는 숫자가 찍힌다. dl태그는 정의 목록을 나타내며, 사전처럼 설명하는 목록에 사용된다.
 
   > 이러한 목록태그들에는 `list-style, list-style-position` 등의 자체 스타일 속성이 존재한다. list-style은 불릿의 모양을 지정해주는 속성이며 주로 none을 사용하여 불릿을 없애는 경우가 많다. list-style-position은 불릿의 위치를 지정해주는 속성이다. 불릿을 없애는 경우애는 자동적으로 들여쓰기가 적용되어 이를 없애기 위해 padding-left 속성을 0으로 줘서 사용하기도 한다.
+
+  > dl태그는 dt(definition term)태그와 dd(definition description)태그를 사용해 사전처럼 사용된다. dt태그는 정의되는 용어를 지정하고, dd태그는 용어에 대한 설명을 지정한다.
 
 - 표 태그 - `table, tr(table row), td(table data), th(table header)` table은 표를 삽입하는 태그이고, tr은 표의 행을 삽입하는 태그이며, td는 표의 셀을 삽입하는 태그이다.
 
@@ -67,17 +59,17 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   `main` | 문서의 주요 내용을 지정하는 태그이다. 주로 문서의 내용을 구분하기 위해 사용된다.
 
-  `section` | 주로 문서에서 주제별로 콘텐츠를 묶을 때 사용된다. 
+  `section` | 주로 문서에서 주제별로 콘텐츠를 묶을 때 사용된다.
 
   `article` | 주로 section내에 웹 상의 본문 내용이 들어간다.
 
   `aside` | 주로 문서의 본문 외에 삽입되는 내용이 들어간다. 주로 광고나 링크 등이 들어간다.
 
-  `footer` | 제작자의 연락처 정보 / 저작권 정보를 표시하며, 페이지 맨 아래쪽에 삽입됨. 
+  `footer` | 제작자의 연락처 정보 / 저작권 정보를 표시하며, 페이지 맨 아래쪽에 삽입됨.
 
   `address` | 주로 문서에서 제작자의 연락처 정보를 지정할 때 사용된다.
 
-  `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. figure태그 내에 미디어 태그를 넣는 형식으로 사용한다. 
+  `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. figure태그 내에 미디어 태그를 넣는 형식으로 사용한다.
 
   `figcaption` | 주로 문서에서 이미지나 동영상 등의 설명을 지정할 때 사용된다.
 
@@ -152,7 +144,23 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 스타일시트는 크게 인라인, 내부, 외부 방식이 있다.
 
 - 인라인 방식 - 태그 내에 style 속성을 사용하는 방식
+
+  ```html
+  <p style="color: red;">텍스트</p>
+  ```
+
 - 내부 방식 - head태그 내에 style태그를 사용하는 방식
+
+  ```html
+  <head>
+    <style>
+      body {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  ```
+
 - 외부 방식 - 외부 파일을 불러와 사용하는 방식
 
 외부 스타일시트는 스타일 시트를 별도로 생성해서 link태그의 href 속성을 사용해 불러오는 것으로, [CSS](/docs/css/index.html) 파일을 별도로 생성해서 사용하는 것이 일반적이다.
