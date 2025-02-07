@@ -101,7 +101,7 @@ const handleOnChange = (e) => {
 
 허나, 이러한 방법을 사용해서 State를 다중으로 관리하게 되면 나중에 어떤 State가 어느 상태를 지칭하는지 혼란이 생길 수 있다. 또한, State값이 많아지게 되면 브라우저가 마운트 / 렌더링 시, 부하가 커지게 된다.
 
-<span style = "color: crimson">useState는 반드시 함수 컴포넌트 내부 안에서만 사용</span>할 수 있기 때문에, 복수의 값이 하나의 컴포넌트 안에서 관리될 경우 리렌더링이 다른 요소한테도 영향을 주기 때문에, 이를 방지하기 위해 <span style = "color: crimson">State를 밖으로 빼내</span>도록 [useReducer](#4-usereducer)를 사용하여 상태를 관리한다.
+<span style = "color: red">useState는 반드시 함수 컴포넌트 내부 안에서만 사용</span>할 수 있기 때문에, 복수의 값이 하나의 컴포넌트 안에서 관리될 경우 리렌더링이 다른 요소한테도 영향을 주기 때문에, 이를 방지하기 위해 <span style = "color: red">State를 밖으로 빼내</span>도록 [useReducer](#4-usereducer)를 사용하여 상태를 관리한다.
 
 <p style = "text-decoration: line-through; color: #888">허나, 미들웨어를 배우게 되면 useState가 훨씬 많이 사용된다. </p>
 
@@ -130,7 +130,7 @@ const handleChangeEmotion = useCallback((emotionId) => {
 
 ### useState 총정리
 
-> REACT에서는 VDOM을 사용하므로 반드시 하나의 ui화면에서 상태변화가 발생되는 요소는 <span style = "color: crimson">state라는 변수안에 담아서 관리</span>를 해야한다. 이때, state라는 상태변수는 react의 useState 훅 함수를 사용한다. useState 함수는 state라는 상태변수와, setState함수를 모두 반환하는데, 이때 <span style = "color: crimson">setState() 함수만이 유일하게 상태변수를 제어</span>할 수 있다.
+> REACT에서는 VDOM을 사용하므로 반드시 하나의 ui화면에서 상태변화가 발생되는 요소는 <span style = "color: red">state라는 변수안에 담아서 관리</span>를 해야한다. 이때, state라는 상태변수는 react의 useState 훅 함수를 사용한다. useState 함수는 state라는 상태변수와, setState함수를 모두 반환하는데, 이때 <span style = "color: red">setState() 함수만이 유일하게 상태변수를 제어</span>할 수 있다.
 
 > [Props](/docs/react/props.html)는 반드시 부모에서 직계자식으로만 보내줄 수 있는 속성으로 인해 보통 state를 관리하는 요소는 최상위 부모에 부여된다. (<span color = "violet">이는 미들웨어를 사용하기 전에 해당된다.</span>)
 
@@ -194,7 +194,7 @@ useEffect(() => {
 
 `탄생 - 성장(업데이트) - 죽음(사용자가 더이상 컴포넌트의 업데이트를 하지 않는 상태 - Unmount)`
 
-useEffect는 컴포넌트의 생애 주기를 관리하며, 인자값으로 2가지 값을 받는다. 첫번째 인자값으로는 콜백함수를 받고, 2번째 인자값으로는 <span style = "color: crimson">의존성배열</span>(dependency array)를 받는다.
+useEffect는 컴포넌트의 생애 주기를 관리하며, 인자값으로 2가지 값을 받는다. 첫번째 인자값으로는 콜백함수를 받고, 2번째 인자값으로는 <span style = "color: red">의존성배열</span>(dependency array)를 받는다.
 
 의존성배열은 안에 관리할 상태 요소들을 넣으며, 의존성배열 안의 요소들에게 어떠한 상태변화가 일어났을 때만 useEffect의 콜백함수을 실행시킨다.
 
@@ -252,7 +252,7 @@ useEffect(() => {
 
 ## 4. useReducer
 
-> <span style = "color: yellowgreen">누산</span>기, 계산을 <span style = "color: yellowgreen" >누</span>적하여 연<span style = "color: yellowgreen">산</span>하는 작업을 수행.<span style = "color: crimson">state</span>와 <span style = "color: crimson">dispatch</span> 함수를 통해 상태 관리를 할 수 있는 훅 함수. 복잡한 상태 관리를 할때 주로 사용된다.
+> <span style = "color: yellowgreen">누산</span>기, 계산을 <span style = "color: yellowgreen" >누</span>적하여 연<span style = "color: yellowgreen">산</span>하는 작업을 수행.<span style = "color: red">state</span>와 <span style = "color: red">dispatch</span> 함수를 통해 상태 관리를 할 수 있는 훅 함수. 복잡한 상태 관리를 할때 주로 사용된다.
 
 관리해야할 State가 많아질수록, 컴포넌트의 부하를 줄이기 위해 전역적인 상태관리를 위해 action객체를 활용하여 복잡한 상태관리 로직을 구현하는 훅 함수이다.
 
@@ -264,7 +264,7 @@ const [todo, dispatch] = useReducer(reducer, mockTodo);
 
 구조분해할당의 첫번째 값으로는 관리할 state를 받으나, useState와는 다르게 2번째 값으로 <span style = "color: yellowgreen">**상태변화촉발함수**</span>를 받게 된다. 통상적으로 이를 <span style = "color: yellowgreen">dispatch</span>라는 이름으로 많이 사용한다.
 
-또한 useState와 다르게 useReducer 함수의 <span style = "color: crimson">인자값은 1개가 아닌 2개</span>를 받는다. 첫번째값은 <span style = "color: yellowgreen">**상태변화실행함수**</span>, 2번째값은 동일하게 관리할 state의 초깃값을 넣는다. 상태변화 실행함수는 통상적으로 <span style = "color: yellowgreen">reducer</span>이라는 이름으로 사용된다.
+또한 useState와 다르게 useReducer 함수의 <span style = "color: red">인자값은 1개가 아닌 2개</span>를 받는다. 첫번째값은 <span style = "color: yellowgreen">**상태변화실행함수**</span>, 2번째값은 동일하게 관리할 state의 초깃값을 넣는다. 상태변화 실행함수는 통상적으로 <span style = "color: yellowgreen">reducer</span>이라는 이름으로 사용된다.
 
 <p style = "color: #aaa">앞으로 본문에서는 상태변화촉발함수는 dispatch, 상태변화실행함수는 reducer이라는 이름으로 통일시켜 설명할 예정이다.</p>
 
@@ -306,7 +306,7 @@ const reducer = (state, action) => {
 
 useReducer를 사용하기 위해서는 reducer 함수를 먼저 정의해야한다. reducer함수는 관리할 상태, action객체 2가지 값을 인자로 받는다.
 
-> dispatch 함수는 <span style = "color: crimson">action객체를 매개변수로</span> 받고 정의한다. action객체는 type속성을 통해 상태를 상황에 맞게 구분하여 상태를 관리할 수 있게끔하며, <span style = "color: crimson">switch문</span>을 통해 상황을 검사한다.
+> dispatch 함수는 <span style = "color: red">action객체를 매개변수로</span> 받고 정의한다. action객체는 type속성을 통해 상태를 상황에 맞게 구분하여 상태를 관리할 수 있게끔하며, <span style = "color: red">switch문</span>을 통해 상황을 검사한다.
 
 action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color: #aaa">(마치 전후문자선택자의 content와 같이 필수적임.)</span> type의 값은 통상적으로 모두 대문자로 선언된다.
 
@@ -352,7 +352,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
 
    > 컴포넌트 자체를 제어하여 최적화 시키는 기법으로, React객체의 memo 메소드 함수를 사용한다.
 
-   컴포넌트들을 횡으로 나열해 두면 교차/겹쳐지는(Cross)렌더링, 횡단 관심사에서 컴포넌트를 차원 밖으로 빼냄으로써 최적화시켜주는 React 객체의 메소드 함수이다. 특정 컴포넌트를 차원 밖으로 빼내는 것을 다른말로 <span style = "color: crimson">**고차컴포넌트화**</span>라고 한다.
+   컴포넌트들을 횡으로 나열해 두면 교차/겹쳐지는(Cross)렌더링, 횡단 관심사에서 컴포넌트를 차원 밖으로 빼냄으로써 최적화시켜주는 React 객체의 메소드 함수이다. 특정 컴포넌트를 차원 밖으로 빼내는 것을 다른말로 <span style = "color: red">**고차컴포넌트화**</span>라고 한다.
 
    - <p style = "color: #aaa">CSS에서 position: absolute 혹은 fixed로 요소의 차원을 빼내어 독립적인 구조를 갖게 하는것과 유사.</p>
 
@@ -389,7 +389,7 @@ action객체는 반드시 type 프로퍼티가 필요하다.<span style = "color
    }, []);
    ```
 
-   허나 위의 예시처럼, 의존성배열에 빈배열을 할당하게 되면 마운트 된 이후로는 상태가 업데이트가 안되므로 최신 상태를 받아오기위한 <span style = "color: crimson">[useState](#1-usestate)의 함수형 업데이트</span>가 필요하다.
+   허나 위의 예시처럼, 의존성배열에 빈배열을 할당하게 되면 마운트 된 이후로는 상태가 업데이트가 안되므로 최신 상태를 받아오기위한 <span style = "color: red">[useState](#1-usestate)의 함수형 업데이트</span>가 필요하다.
 
 `useMemo`, 혹은 `useCallback`을 사용할때,
 기존에 만들어뒀던 함수를 해당 훅 함수들의 콜백함수 인자로 넣어주기만 하면 된다. 허나, 이때 전에 해당 함수를 호출하였다면, 저장된 변수의 자료형태가 더이상 함수가 아니므로 선언문을 바꿔줄 필요가 있다.

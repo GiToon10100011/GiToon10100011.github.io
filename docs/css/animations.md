@@ -47,7 +47,7 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 
 - <a href="https://easings.net/" target="_blank">다양한 transition 타이밍 함수 확인</a>
 
-<span style="color: crimson;">transition을 사용할 때 유의할 점</span>은 특정 스타일 속성은 transition이 적용되지 않는다. <br>
+<span style="color: red;">transition을 사용할 때 유의할 점</span>은 특정 스타일 속성은 transition이 적용되지 않는다. <br>
 
 > `display`, `z-index`, `속성의 값이 auto일 경우` 등
 

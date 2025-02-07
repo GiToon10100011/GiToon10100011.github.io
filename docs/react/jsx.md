@@ -31,11 +31,11 @@ parent: REACT
 
 4. 반드시 모든 요소를 감싸주는 최상위 부모가 존재해야함. (Fragment Element <> </>)
 
-5. JSX에서는 반드시 속성값들을 문자열이 아닌 다른 자료형일 경우에는 <span style = "color: crimson">중괄호</span>로 감싸줘야한다.<br>
+5. JSX에서는 반드시 속성값들을 문자열이 아닌 다른 자료형일 경우에는 <span style = "color: red">중괄호</span>로 감싸줘야한다.<br>
 
    - `<h2>{name}은 {age}세, {value}</h2> `<br>
    - `<Body name={name} age={age} value={"true"} />` <br><br>
-     <span style = "color: crimson">!!</span> 이 때문에 객체의 형태와 혼돈하지 말아야한다.
+     <span style = "color: red">!!</span> 이 때문에 객체의 형태와 혼돈하지 말아야한다.
 
 6. 태그안의 내용또한 변수를 통해 부여하고 싶다면 중괄호로 감싸줘야한다. 또한 2에 의거하여 특정 조건을 만족할때만 컴포넌트를 넣거나 값을 부여할 수 있다.
 
@@ -55,7 +55,7 @@ parent: REACT
 
 > 기존의 js와는 다르게, 반드시 onHandler로 이벤트를 부여한다. (REACT에서는 EventListener를 거의 안쓴다.)
 
-on핸들러를 사용함으로써, JSX의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: crimson">리펙토링</span>하는것이 거의 필수화된다. <br><br>
+on핸들러를 사용함으로써, JSX의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: red">리펙토링</span>하는것이 거의 필수화된다. <br><br>
 
 보통 on핸들러의 값으로 오는 함수이름을 `onHandle~` 아니면 `handle~`로 시작해서 기능 내용을 덧붙여서 만든다. (일종의 함수이름 형식)
 또한, on핸들러는 모두 카멜표기법을 사용한다.(onClick, onChange ... )

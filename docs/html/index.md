@@ -18,13 +18,13 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다.
 
-또한 차지하는 공간에 따라 크게 <span style="color: crimson" id="inline&block"><b>블록태그</b></span>와 <span style="color: crimson"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한줄이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+또한 차지하는 공간에 따라 크게 <span style="color: red" id="inline&block"><b>블록태그</b></span>와 <span style="color: red"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한줄이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
 <span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
 
 - 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다.
 
-- 앵커 태그 - `a`태그는 <span style="color: yellowgreen">href(hyper reference) 속성</span>을 사용해 링크를 지정한다. 이때, <span style="color: crimson">절대경로와 상대경로</span>를 잘 구분해야한다.
+- 앵커 태그 - `a`태그는 <span style="color: yellowgreen">href(hyper reference) 속성</span>을 사용해 링크를 지정한다. 이때, <span style="color: red">절대경로와 상대경로</span>를 잘 구분해야한다.
 
   > 페이지 내의 특정 지점으로 이동하기 위해서는 <span style="color: yellowgreen">아이디 경로</span>를 사용한다. 아이디 경로는 특정 글자를 눌렀을때 그 곳으로 이동시켜준다. `<a href="#id"></a>`라면 `<div id="id">`이 있어야 한다. #top이나 #을 넣으면 페이지 최상단으로 이동시켜준다.
 
@@ -44,7 +44,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - 표 태그 - `table, tr(table row), td(table data), th(table header)` table은 표를 삽입하는 태그이고, tr은 표의 행을 삽입하는 태그이며, td는 표의 셀을 삽입하는 태그이다.
 
-  > <span style="color: crimson">table은 왼쪽에서 오른쪽으로 데이터가 삽입</span>되며, <span style="color: crimson">다음 행으로 넘어갈 때 tr</span>을 사용하면 된다.
+  > <span style="color: red">table은 왼쪽에서 오른쪽으로 데이터가 삽입</span>되며, <span style="color: red">다음 행으로 넘어갈 때 tr</span>을 사용하면 된다.
 
   > table태그에는 테두리의 두께를 지정해주는 border 속성이 존재한다. th, tr, td에는 align속성으로 글자 정렬을 지정해줄 수 있으며, th와 td는 colspan, rowspan과 같이 셀의 너비와 높이를 지정해 병합시켜주는 속성이 존재한다. rowspan은 원래 가로지만 세로로 병합이 되며, colspan 또한 원래 세로지만 가로로 병합이 된다.
 
@@ -52,7 +52,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > <span id="tabledesc" style="color: yellowgreen;">thead, tbody, tfoot</span>은 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다.
 
-- 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: crimson">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
+- 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: red">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
   `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
 
   `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함.
@@ -85,13 +85,13 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > `type이 submit || reset || button`일 경우 value속성은 버튼에 표시되는 글자를 지정해줄 수 있다. 자세한 type 속성에 대한 것은 [input 태그](/docs/html/inputTags.html)를 참고하자.
 
-  > <span style="color: crimson">checkbox나 radio는 반드시 같은 name속성</span>을 가져야 한다. 같은 이름을 가진 입력 양식들은 하나의 그룹으로 묶이기 때문이다. 이때문에 다른 input타입은 name이 같아서는 안된다.
+  > <span style="color: red">checkbox나 radio는 반드시 같은 name속성</span>을 가져야 한다. 같은 이름을 가진 입력 양식들은 하나의 그룹으로 묶이기 때문이다. 이때문에 다른 input타입은 name이 같아서는 안된다.
 
   > name속성은 앞서 말했듯이 서버로 값을 보낼때 지정되는 이름이므로, 사용자에게 보여져서는 안되는 데이터를 서버로 전송할때 사용되는 `hidden` type의 input태그에서 name속성이 유용하게 사용된다. 접속일시, 회원가입일시, 상태값을 전송할때 hidden이 사용된다.
 
-- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: crimson">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span>
+- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: red">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span>
 
-- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: crimson">GET, POST, PUT, DELETE</span> 등이 존재한다.
+- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: red">GET, POST, PUT, DELETE</span> 등이 존재한다.
 
   > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/etc/restAPI.html)를 다룰때 더 자세히 알아보자.
 

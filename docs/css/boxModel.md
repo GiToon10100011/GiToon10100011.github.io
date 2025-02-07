@@ -45,14 +45,15 @@ parent: CSS
 - `border-width` - 테두리 두께, 값은 `thin, medium, thick, px` 등이 있다.
 - `border-color` - 테두리 색상
 - `border-style` - 테두리 스타일, 값은 `dotted, dashed, solid, double, groove, ridge, inset, outset` 등이 있다.
-  - `dotted` - 점선
-  - `dashed` - 대쉬선
-  - `solid` - 실선
-  - `double` - 이중선
-  - `groove` - 3D 홈이 파인 효과 (테두리가 안으로 들어간 것처럼 보임)
-  - `ridge` - 3D 돌출된 경계 효과 (groove의 반대 방향)
-  - `inset` - 요소가 안으로 눌린 듯한 3D 효과
-  - `outset` - 요소가 바깥으로 튀어나온 듯한 3D 효과 (inset의 반대 효과)
+
+  `dotted` | 점선
+  `dashed` | 대쉬선
+  `solid` | 실선
+  `double` | 이중선
+  `groove` | 3D 홈이 파인 효과 (테두리가 안으로 들어간 것처럼 보임)
+  `ridge` | 3D 돌출된 경계 효과 (groove의 반대 방향)
+  `inset` | 요소가 안으로 눌린 듯한 3D 효과
+  `outset` | 요소가 바깥으로 튀어나온 듯한 3D 효과 (inset의 반대 효과)
 
 ---
 
@@ -69,7 +70,7 @@ parent: CSS
 
 ---
 
-## 투명도 속성
+## 투명도 관련 속성
 
 - `opacity` - 요소의 투명도를 지정한다. 값은 `0~1` 사이의 숫자로 지정한다.
 - `rgba` - 요소의 투명도를 지정한다. 값은 `rgba(red, green, blue, alpha)` 형식으로 지정한다.

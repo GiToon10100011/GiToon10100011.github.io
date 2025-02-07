@@ -41,7 +41,7 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
 
 ## source 태그
 
-미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: crimson">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다.
+미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: red">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다.
 
 <span style="color: #aaa;"> type은 video/ogg, video/mp4, video/webm과 같이 형식을 지정해주면 된다. </span>
 
@@ -71,7 +71,7 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
 
 track 태그는 비디오 파일에 자막을 지정할 때 사용된다. `<track src="subtitles.vtt" kind="subtitles" srclang="ko" label="한국어">`와 같은 형태로 사용된다.
 
-`.vtt(Video Text Track)`라는 확장자는 모든 브라우저에서 공식적으로 지원하는 자막 파일 형식으로, 자막 정보와 시간 정보를 함께 담고 있다. 
+`.vtt(Video Text Track)`라는 확장자는 모든 브라우저에서 공식적으로 지원하는 자막 파일 형식으로, 자막 정보와 시간 정보를 함께 담고 있다.
 
 track태그의 속성들을 살펴보면 다음과 같다.
 
@@ -87,8 +87,5 @@ track태그의 속성들을 살펴보면 다음과 같다.
 ---
 
 ## iframe 태그
-
-
-
 
 > iframe태그는 외부 문서를 사용할 때 사용된다. `<iframe src="https://www.google.com"></iframe>`와 같은 형태로 사용된다.
