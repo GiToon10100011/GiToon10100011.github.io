@@ -1,3 +1,117 @@
 .site-logo {
   background-position: center !important;
 }
+
+.active-section {
+  background: rgba($link-color, 0.1) !important;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 1px solid $link-color;
+
+  &::before {
+    background-color: $link-color !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+.utterances {
+  max-width: 100%;
+}
+
+.giscus,
+.giscus-frame {
+  width: 100%;
+}
+
+.giscus-frame {
+  border: none;
+}
+
+.toc {
+  position: fixed;
+  right: 0px;
+  top: 4rem;
+  width: 240px;
+  height: calc(100vh - 6rem);
+  color: var(--body-text-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.75rem;
+  padding-left: 14px;
+  margin-right: 0px;
+  font-size: 0.75rem;
+  background: var(--body-background-color);
+  display: none;
+
+  @media (min-width: 75em) {
+    width: 240px;
+    display: block;
+  }
+  @media (min-width: 85em) {
+    width: 300px;
+    display: block;
+  }
+  @media (min-width: 95em) {
+    width: 360px;
+    display: block;
+  }
+
+  a.toc-active {
+    font-weight: bold;
+    transition: all 0.125s ease-in 0s;
+    font-size: 0.8rem;
+    color: white;
+    &::before {
+      content: "👉";
+      margin-right: 0.5rem;
+    }
+  }
+
+  // 타이틀 스타일
+  &::before {
+    content: "✨ 목차";
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--link-color);
+  }
+
+  & > ul {
+    list-style-type: none;
+    list-style: none;
+    margin-bottom: 0.1rem;
+    padding-left: 0;
+    position: relative;
+
+    & > li {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+
+      padding-left: 0.5rem;
+    }
+  }
+
+  ul li {
+    list-style: none;
+    &::before {
+      display: none;
+    }
+  }
+
+  a {
+    color: var(--body-text-color);
+    opacity: 0.7; // 비활성 항목 투명도 추가
+    text-decoration: none;
+
+    &:hover {
+      color: var(--link-color);
+      opacity: 1;
+      background: var(--border-color);
+    }
+  }
+}

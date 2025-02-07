@@ -87,6 +87,7 @@ enable_copy_code_button: true
 aux_links:
   "GitHub":
     - "https://github.com/GiToon10100011/GiToon10100011.github.io"
+  "Scrollspy JS": /assets/js/custom.js
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
@@ -97,3 +98,29 @@ include:
 sass:
   sass_dir: _sass
   style: compressed
+
+# Set which comment system to use
+comments:
+  # 'disqus' / 'giscus' / 'utterances' are available
+  provider: utterances
+
+# You must install utterances github app before use.(https://github.com/apps/utterances)
+# Make sure all variables are set properly. Check below link for detail.
+# https://utteranc.es/
+utterances:
+  repo: "GiToon10100011/GiToon10100011.github.io"
+  issue-term: "pathname"
+  label: "Comments"
+  theme: "photon-dark"
+
+toc:
+  min_level: 1
+  max_level: 3
+  ordered: false
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "home-with-toc" # 해당 레이아웃을 사용하는 문서 지정

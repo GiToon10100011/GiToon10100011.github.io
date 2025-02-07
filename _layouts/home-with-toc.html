@@ -1,0 +1,30 @@
+---
+layout: home
+---
+
+<div class="post">
+  <h1 class="post-title"></h1>
+  <span class="post-date"></span>
+  {% if page.tags %} | {% for tag in page.tags %}
+  <a
+    href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}"
+    class="post-tag"
+    >{{ tag }}</a
+  >
+  {% endfor %} {% endif %}
+  <article class="post-article">
+    <div class="toc">{% include toc.html html=content %}</div>
+    {{ content }}
+  </article>
+</div>
+
+<script
+  src="https://utteranc.es/client.js"
+  repo="GiToon10100011/GiToon10100011.github.io"
+  issue-term="pathname"
+  label="Comments"
+  theme="photon-dark"
+  crossorigin="anonymous"
+  async
+></script>
+

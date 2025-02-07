@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: home-with-toc
 title: "선택자"
 date: 2024-09-07 23:12:00 +0900
 categories: etc
 parent: CSS
+toc: true
 ---
 
 # 선택자
@@ -63,6 +64,7 @@ input[type="text"] {
   color: blue;
 }
 ```
+
 ---
 
 ## 자식 선택자
@@ -155,7 +157,7 @@ input[type="text"] {
   }
   ```
 
---- 
+---
 
 ## 유일 자식 선택자
 
