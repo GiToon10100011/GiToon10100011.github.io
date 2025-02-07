@@ -1,7 +1,3 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
 <script defer src="/assets/js/custom.js"></script>
-
-{% if site.aux_links %} {% for link in site.aux_links %}
-<link rel="preload" href="{{ link[1] }}" as="script" />
-{% endfor %} {% endif %}

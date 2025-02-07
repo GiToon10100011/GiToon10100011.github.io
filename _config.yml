@@ -84,10 +84,10 @@ search:
 enable_copy_code_button: true
 
 # Aux links for the upper right navigation
+# 말 그대로 헤더 오른쪽에 뜨는 네비게이션 메뉴에 들어갈 것들을 말함. 
 aux_links:
   "GitHub":
     - "https://github.com/GiToon10100011/GiToon10100011.github.io"
-  "Scrollspy JS": /assets/js/custom.js
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
