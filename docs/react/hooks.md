@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "React Hooks"
 date: 2024-09-19 23:08:13 +0900
 categories: Coding

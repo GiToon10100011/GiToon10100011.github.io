@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "배경 스타일"
 date: 2024-09-07 23:12:00 +0900
 categories: etc

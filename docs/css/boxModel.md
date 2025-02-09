@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "박스 모델"
 date: 2024-09-07 23:12:00 +0900
 categories: etc

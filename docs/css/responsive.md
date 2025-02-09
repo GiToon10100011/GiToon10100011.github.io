@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "반응형"
 date: 2024-09-07 23:12:00 +0900
 categories: etc

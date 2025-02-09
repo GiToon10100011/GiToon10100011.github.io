@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "Props"
 date: 2024-09-18 22:46:12 +0900
 categories: Coding

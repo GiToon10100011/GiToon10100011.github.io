@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "REACT"
 date: 2024-09-08 22:24:43 +0900
 categories: Coding
@@ -34,7 +34,7 @@ React 프로젝트를 Git에 업로드할때, node_modules는 용량이 크므�
 
 ---
 
-### React를 사용해야 하는 이유 <br><br>
+### React를 사용해야 하는 이유 
 
 React는 ssr(server-side-rendering)방식이 아닌 <span style = "color: violet">csr(client-side-rendering)</span>방식을 사용한다. <br>
 기존의 DOM은 서버가 클라이언트에 제공한것에 반해, 가상돔(VDOM)은 해당 돔을 그대로 복제해서 클라이언트에서 관리한다. <bR><BR>
@@ -50,7 +50,7 @@ React는 ssr(server-side-rendering)방식이 아닌 <span style = "color: violet
 `rfc` //React Function Component<br><br>
 Snippet을 사용하게 되면, 기본적으로 React 모듈을 import하며, 함수의 이름은 해당 컴포넌트의 파일명을 따라간다.
 
-# Styling
+## Styling
 
 REACT에서 스타일을 먹이기 위해서는 기존처럼 CSS를 사용하거나, REACT용 SCSS를 사용할 수 있다. <br><br>
 
@@ -70,7 +70,7 @@ REACT에서 스타일을 먹이기 위해서는 기존처럼 CSS를 사용하거
 
 ---
 
-# Event
+## Event
 
 > 기존의 js와는 다르게, 반드시 onHandler로 이벤트를 부여한다. (REACT에서는 EventListener를 거의 안쓴다.)
 
@@ -95,9 +95,9 @@ Event가 발생될때, on핸들러에 부여한 함수는 반드시 <span style 
 
 ---
 
-# 구조
+## 구조
 
-React 프로젝트를 시작할 때, 컴포넌트 및 데이터들에 관한 구조를 상세하게 기획해둔 상태에서 코드 작업을 진행해야한다.
+React 프로젝트를 시작할 때, 컴포넌트 및 데이터들에 관한 구조를 상세하게 기획해둔 상태에서 코드 작업을 진행해둔 상태에서 코드 작업을 진행해야한다.
 
 React에서도 Vanilla JS와 마찬가지로, 컴포넌트를 제작할 때 다음과 같이 목업을 만들어두고, 컴포넌트가 어느 위치에 들어갈지 대략적인 위치를 잡아준다.
 
@@ -117,7 +117,7 @@ function App() {
 
 <div id="optimization"></div>
 
-# 최적화
+## 최적화
 
 > 컴포넌트의 불필요한 리렌더링을 최소화하여 성능을 향상 시키고 컴퓨터의 메모리 사용을 효율적으로 관리하는 작업.
 

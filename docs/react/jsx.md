@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "JSX"
 date: 2024-09-18 20:42:43 +0900
 categories: Coding

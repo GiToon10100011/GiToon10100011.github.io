@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "CSS"
 date: 2024-09-07 23:12:00 +0900
 categories: etc
@@ -52,6 +52,8 @@ css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한�
   font-family: "Roboto";
   /* 폰트 파일 경로를 url을 통해 불러옴. format으로 폰트 파일의 형식을 지정해줄 수도 있다다. */
   src: url("fonts/Roboto-Regular.ttf") format("truetype");
+  /* 폰트 두께를 지정해줄 수도 있다. */
+  font-weight: 400;
 }
 ```
 
@@ -101,3 +103,15 @@ a {
   color: inherit;
 }
 ```
+
+---
+
+# Emmet
+
+<span id="emmet"></span>
+
+> 프로그래밍 언어의 코드를 더 빠르게 작성할 수 있도록 돕는 도구.
+
+[HTML](/docs/html/emmet.html)에서도 사용할 수 있지만, CSS에서도 사용할 수 있다.
+
+CSS에서는 스타일 속성과 값을 빠르게 작성할 수 있다.

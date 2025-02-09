@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "레이아웃"
 date: 2024-05-22 15:48:00 +0900
 categories: etc

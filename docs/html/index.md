@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "HTML"
 date: 2024-09-07 17:33:43 +0900
 categories: etc
@@ -124,7 +124,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 해당 코드는 모든 html 파일의 기본 형태이다. 이러한 형태를 보일러 플레이트(boilerplate)라고 한다.
 
 1. `<!DOCTYPE html>`: 현재 document의 형식이 HTML5 문서임을 선언
-2. `<html lang="ko">`: 문서의 루트 요소, lang 속성으로 언어 지정(ko=한국어)
+2. `<html lang="ko">`: 문서의 루트 요소, lang 속성으로 언어 지정(ko=한국어). <span style="color: #aaa">만약, 쿠팡 같은 페이지가 lang이 en으로 설정되어 있다면 우리가 접속할때 번역 여부를 물어본다.</span>
 3. `<head>`: 메타데이터 영역
    - `meta charset="UTF-8"`: 문자 인코딩 방식 지정
    - `meta viewport`: 반응형 웹을 위한 뷰포트 설정, content 속성으로 뷰포트의 너비와 초기 확대 배율을 지정한다.

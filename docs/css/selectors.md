@@ -200,6 +200,8 @@ input[type="text"] {
   }
   ```
 
+  ---
+
 ## 마지막 형식 구조 선택자
 
 - `:last-of-type`를 사용한다. 마지막 형식 구조 선택자는 <u>특정 요소의 마지막 형식 구조 요소를 선택</u>한다.
@@ -250,7 +252,7 @@ input[type="text"] {
 
 - `::before, ::after`를 사용한다. 전후문자선택자는 <u>특정 요소의 전후문자를 선택</u>한다.
 
-`&`를 사용하여 자기 자신을 선택할 수도 있다. 이는 <a href="#nesting">네스팅</a>에서 매우 유용하게 사용된다.
+`&`를 사용하여 자기 자신을 선택할 수도 있다. 이는 [네스팅](/docs/css/index.html#nesting)에서 매우 유용하게 사용된다.
 이외의 선택자들도 존재하는데, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">mdn docs</a>에서 확인해보자.
 
 선택자 여러개에 한번에 속성을 적용할 수도 있다. 이는 콤마(`,`)를 사용한다.

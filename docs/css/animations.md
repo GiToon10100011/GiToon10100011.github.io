@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "애니메이션"
 date: 2024-09-07 23:12:00 +0900
 categories: etc
@@ -29,13 +29,13 @@ transition: all 1s linear 0.5s;
 
 - `transition-delay` - 애니메이션의 지연 시간을 지정한다. 기본값은 `0s`이다.
 
-transition을 여러 대상한테 적용할 때는 쉼표(`,`)로 구분하여 여러 대상에 적용할 수 있다.
+transition을 여러 대상한테 적용할 때는 `쉼표(,)`로 구분하여 여러 대상에 적용할 수 있다.
 
 ```css
 transition: all 1s linear 0.5s, background-color 0.5s ease-in-out 0.5s;
 ```
 
-좀 더 복잡한 트랜지션을 구동시키기 위해 cubic-bezier 함수를 사용할 수 있다.
+좀 더 복잡한 트랜지션을 구동시키기 위해 `cubic-bezier 함수`를 사용할 수 있다.
 
 ```css
 transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -47,7 +47,7 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 
 - <a href="https://easings.net/" target="_blank">다양한 transition 타이밍 함수 확인</a>
 
-<span style="color: red;">transition을 사용할 때 유의할 점</span>은 특정 스타일 속성은 transition이 적용되지 않는다. <br>
+⚠️ transition을 사용할 때 유의할 점은 <span style="color: red;">특정 스타일 속성은 transition이 적용되지 않는다.</span> <br>
 
 > `display`, `z-index`, `속성의 값이 auto일 경우` 등
 
@@ -61,7 +61,9 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 animation: rotation 1s linear 0.5s infinite;
 ```
 
-- `animation` - 아래 속성들의 축약형. `animation: name duration timing-function delay iteration-count direction fill-mode play-state`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다. 이때 순서가 중요한 속성들이 몇가지 존재한다.
+- `animation` - 아래 속성들의 축약형. `animation: name duration timing-function delay iteration-count direction fill-mode play-state`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다. 
+
+### ⚠️ 이때 순서가 중요한 속성들이 몇가지 존재한다.
 
   > `duration`(필수)은 항상 `delay`(선택)보다 앞에 위치 <br> `iteration-count`는 `duration`/`delay` 다음에 위치 <br> `animation-duration`은 필수값 <br>
   > 다른 속성들은 생략 가능하나, 포함할 경우 지정된 순서를 따라야 함.
@@ -89,7 +91,7 @@ animation: rotation 1s linear 0.5s infinite;
 - `animation-fill-mode` - 애니메이션의 시작과 끝을 지정한다. 기본값은 `none`이다.
 - `animation-play-state` - 애니메이션의 재생 상태를 지정한다. 기본값은 `running`이다.
 
-transition과 마찬가지로 애니메이션이 적용이 되지 않는 스타일 속성들이 있으므로 참고하자.
+⚠️ transition과 마찬가지로 애니메이션이 적용이 되지 않는 스타일 속성들이 있으므로 참고하자.
 
 ---
 
