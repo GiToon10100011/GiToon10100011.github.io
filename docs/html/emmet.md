@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Emmet"
-date: 2025-02-09 21:10:00 +0900
+date: 2024-06-17 21:10:00 +0900
 categories: Coding
 parent: HTML
 ---
@@ -28,6 +28,16 @@ div
 
 div를 적고 탭을 누르면 위와 같은 태그가 자동으로 생성된다.
 
+만약 태그 안에 내용을 지정하고 싶다면 중괄호를 사용하면 된다.
+
+```html
+div{Hello}
+```
+
+```html
+<div>Hello</div>
+```
+
 ### 태그 작성 예시
 
 ```html
@@ -40,6 +50,16 @@ div.container를 적고 탭을 누르면 위와 같은 태그가 자동으로 �
 <div class="container"></div>
 ```
 
+클래스를 여러개 지니고 있는 태그를 작성하려면 다음과 같이 쓰면 된다. 
+
+```html
+div.container.item
+```
+
+```html
+<div class="container item"></div>
+```
+
 클래스뿐만 아니라 아이디도 빠르게 작성할 수 있다. 
 
 ```html
@@ -50,8 +70,7 @@ div#container
 <div id="container"></div>
 ```
 
-
-### 태그 작성 예시
+에밋으로 빠르게 부모 자식 관계를 표현할 수도 있다.
 
 ```html
 div.container>div.item
@@ -108,6 +127,20 @@ ul>(li>a)*5
 
 해당 에밋을 통해 원하는 태그를 작성할 수 있게 된다.
 
+부모 자식 관계 뿐만 아니라 형제 관계도 작성할 수 있다.
+
+```html
+ul>li+a
+```
+
+```html
+<ul>
+  <li></li>
+  <a href=""></a>
+</ul>
+```
+
+
 `head`태그 내에서도 메타데이터를 에밋으로 빠르게 작성할 수 있다. 
 
 ```html
@@ -124,6 +157,25 @@ script:module
 <link rel="stylesheet" href="style.css">
 <script src="script.js" type="module"></script>
 ```
+## 심화 문법
+
+중괄호 안에 $를 사용한다면 연속되는 값을 집어 넣을 수 있다. 
+예를 들어, span{place$}*3이라면, 각각 place1, place2, place3의 내용이 들어가 있는 span태그가 형성된다. 
+
+```html
+span{place$}*3
+```
+
+```html
+<span>place1</span>
+<span>place2</span>
+<span>place3</span>
+```
+
+
+
+
+
 
 
 

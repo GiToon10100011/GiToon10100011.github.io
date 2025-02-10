@@ -3,6 +3,7 @@ layout: post
 title: "Web"
 date: 2024-05-13 16:57:00 +0900
 categories: Coding
+parent: ETC.
 ---
 
 # Web

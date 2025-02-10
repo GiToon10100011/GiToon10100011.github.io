@@ -4,6 +4,23 @@ layout: post
 
 {{ content }}
 
+<div class="recommended-posts">
+  <h2>추천 문서</h2>
+  <div class="recommended-list">
+    {% assign posts = site.posts | where_exp:"post","post.url != page.url" |
+    sample:3 %} {% assign docs = site.pages | where_exp: "item", "item.url
+    contains '/docs/'" | sample:3 %} {% for doc in docs %} {% if doc.title %}
+    <div class="recommended-item">
+      <a href="{{ doc.url | relative_url }}">
+        {{ doc.title }} {% if doc.date %}
+        <span class="post-date">{{ doc.date | date: "%Y-%m-%d" }}</span>
+        {% endif %}
+      </a>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+
 <script
   src="https://utteranc.es/client.js"
   repo="GiToon10100011/GiToon10100011.github.io"

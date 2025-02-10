@@ -4,6 +4,8 @@ title: "HTML"
 date: 2024-09-07 17:33:43 +0900
 categories: etc
 has_children: true
+nav_order: 1
+
 ---
 
 # HTML
@@ -16,9 +18,9 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 태그는 <span style="color: yellowgreen">홑태그</span>와 <span style="color: yellowgreen">쌍태그</span>로 나뉜다. 홑태그는 태그 이름 뒤에 속성을 붙이지 않는 태그이다. 쌍태그는 태그 이름 뒤에 속성을 붙이는 태그이다.
 
-홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다.
+홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다. <span style="color: #aaa">(하지만 정석대로 /> 로 끝맺음 시키는것이 직관적이고 좋다.)</span>
 
-또한 차지하는 공간에 따라 크게 <span style="color: red" id="inline&block"><b>블록태그</b></span>와 <span style="color: red"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한줄이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+또한 차지하는 공간에 따라 크게 <span style="color: red" id="inline&block"><b>블록태그</b></span>와 <span style="color: red"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한 행이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
 <span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
 

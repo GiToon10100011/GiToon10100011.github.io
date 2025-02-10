@@ -31,6 +31,31 @@ toc: true
 
   > 이를 응용하여 특정 클래스를 지닌 태그를 지정해줄수도 있다. `div.class1`이라면 `div`태그 중에 `class1`클래스를 가진 요소들을 선택해줄 수 있다. 반대로 `div .class1`이라면 `div`태그 내에 있는 `class1`클래스를 가진 요소들을 선택해줄 수 있다.
 
+- ✅ 가상 클래스
+
+  ```css
+  /* 버튼 클릭 시 버튼 색상 변경 */
+
+  .toggle-button {
+    background-color: red;
+    &.active {
+      background-color: blue;
+    }
+  }
+  ```
+
+  해당 가상 클래스는 스크립트로 부여가 되며 이벤트가 발생했을 때 스타일을 적용할 수 있다.
+
+  현재는 없는 클래스지만 스크립트를 통해 부여될 클래스에 대한 스타일링을 정의하여 사용할 수 있는 것이다.
+
+  ```js
+  document.querySelector(".toggle-button").addEventListener("click", () => {
+    document.querySelector(".toggle-button").classList.toggle("active");
+  });
+  ```
+
+스크립트는 나중에 [여기](/docs/javascript/index.html)에서 더 자세히 알아보자.
+
 ---
 
 ## ID 선택자
@@ -200,7 +225,7 @@ input[type="text"] {
   }
   ```
 
-  ---
+  ***
 
 ## 마지막 형식 구조 선택자
 
@@ -248,12 +273,27 @@ input[type="text"] {
 
 ---
 
-## 전후문자선택자
+## ⭐️ 전후문자선택자
 
 - `::before, ::after`를 사용한다. 전후문자선택자는 <u>특정 요소의 전후문자를 선택</u>한다.
 
 `&`를 사용하여 자기 자신을 선택할 수도 있다. 이는 [네스팅](/docs/css/index.html#nesting)에서 매우 유용하게 사용된다.
-이외의 선택자들도 존재하는데, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">mdn docs</a>에서 확인해보자.
+
+해당 선택자는 주로 콘텐츠를 추가하는데 사용된다. 요소의 바로 뒤, 혹은 앞쪽에 콘텐츠를 추가할 수 있다는 것이 특징이며, 이를 활용하여 레이어를 겹치는 효과 등도 줄 수 있다.
+
+```css
+div{
+  &::before{
+    content: "Hello";
+  }
+}
+```
+
+가장 중요한 점은, 전후 문자 선택자는 반드시 `content` 속성을 사용해야 요소가 나온다. 
+
+
+
+이외의 선택자들도 존재하는데, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">mdn docs</a>에서 확인해보자. <span style="color: #aaa;">참고로 mdn docs에서 휴지통 모양이 표시된 속성은 곧 중단될 의미이며, 필터 아이콘이 표시되어 있다면 아직 테스팅(특정 브라우저에서만 되어 현재 실험중) 중인 속성이다.</span>
 
 선택자 여러개에 한번에 속성을 적용할 수도 있다. 이는 콤마(`,`)를 사용한다.
 

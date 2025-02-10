@@ -66,6 +66,20 @@ parent: Setups
 
 # Settings
 
+VSCode의 주요 설정:
+
+1. Enable Preview 기능 비활성화
+2. Tab Size를 2로 설정 (업계 표준)
+3. Word Wrap 활성화 - 긴 줄 자동 줄바꿈
+4. Mouse Wheel Zoom 활성화 - 마우스 휠로 확대/축소 가능
+5. Auto Save 설정
+   - After Delay로 설정
+   - Delay 값을 500ms로 지정
+6. Emmet 설정
+   - Variables에 lang:ko 추가하여 한국어 지원
+
+아니면 아래의 json파일을 settings.json에 추가하면 된다.
+
 ```json
 {
   "code-runner.runInTerminal": true,
