@@ -48,7 +48,7 @@ parent: CSS
 
 ## 배치 스타일 속성
 
-- `display` - 요소 표시 방법을 지정한다. 값은 `block, inline, flex, grid, none` 등이 있다.
+- `display` - 요소 표시 방법을 지정한다. 값은 `block, inline, flex, grid, none` 등이 있다. 블록요소가 보통 한 행의 공간을 차지하는 것을 활용하여 그때 그때 추가하고 제거해야하는 `br`태그 대신, 스타일에 `display` 속성으로 줄바꿈을 자유자재로 조절하여 코드의 재사용성을 높일 수 있다.
 
   `block` | 요소를 블록 요소로 만든다.
   `inline` | 요소를 인라인 요소로 만든다.

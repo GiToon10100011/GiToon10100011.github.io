@@ -24,7 +24,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 <span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
 
-- 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다.
+- 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다. 
 
 - 앵커 태그 - `a`태그는 <span style="color: yellowgreen">href(hyper reference) 속성</span>을 사용해 링크를 지정한다. 이때, <span style="color: red">절대경로와 상대경로</span>를 잘 구분해야한다.
 
