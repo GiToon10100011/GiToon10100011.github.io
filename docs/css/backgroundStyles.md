@@ -15,7 +15,7 @@ parent: CSS
 - `background-image` - 배경 이미지
 - `background-repeat` - 배경 반복, 값은 `repeat, repeat-x, repeat-y, no-repeat` 등이 있다.
 - `background-position` - 배경 위치, 값은 `left, right, center, top, bottom, px, %` 등이 있다.
-- `background-size` - 배경 크기, 값은 `cover, contain, px, %` 등이 있다. `cover`는 <span style="color: yellowgreen;">원본이미지의 가로폭</span>을 기준으로 채우고, `contain`은 <span style="color: yellowgreen;">원본 이미지의 세로폭</span>을 기준으로 채운다.
+- `background-size` - 배경 크기, 값은 `cover, contain, px, %` 등이 있다. `cover`는 <span style="color: yellowgreen;" id="background-size">원본이미지의 가로폭</span>을 기준으로 채우고, `contain`은 <span style="color: yellowgreen;">원본 이미지의 세로폭</span>을 기준으로 채운다. background-size와 같이 이미지 혹은 미디어 태그의 비율을 유지한채로 크기를 조절하고 싶다면, [object-fit](/docs/html/mediaTags.html#object-fit) 속성을 사용하면 된다.
 - `background-attachment` - 배경 이미지 고정, 값은 `scroll, fixed` 등이 있다. `fixed`는 배경 이미지를 고정시키고, `scroll`는 배경 이미지를 스크롤과 함께 배경이미지도 스크롤되게끔 한다.
 - `background-clip` - 배경을 어디까지 적용할지 지정할 수 있게 해준다. 값은 `border-box, padding-box, content-box` 등이 있다.
 - `background-origin` - 배경 이미지의 배치 기준점을 지정할 수 있게 해준다. 값은 `border-box, padding-box, content-box` 등이 있다.

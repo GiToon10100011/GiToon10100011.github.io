@@ -7,4 +7,6 @@ has_children: true
 nav_order: 10000
 ---
 
-> 기타 페이지.
+> 기타사항들을 모아둔 페이지.
+
+

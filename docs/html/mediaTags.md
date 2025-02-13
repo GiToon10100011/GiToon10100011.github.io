@@ -64,6 +64,20 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
   <source src="video.webm" type="video/webm" codecs="vp9" />
 </video>
 ```
+✅ 이미지와 비디오 태그의 비율을 유지하여 화면에 표시하기
+
+<span id="object-fit"></span>
+
+```css
+.video{
+  object-fit: cover;
+}
+.img{
+  object-fit: cover;
+}
+```
+
+`object-fit` 이라는 스타일 속성을 이용해 [background-size](/docs/css/backgroundStyles.html#background-size)와 같은 효과를 낼 수 있다.
 
 ---
 

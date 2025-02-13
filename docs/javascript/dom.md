@@ -1,5 +1,5 @@
 ---
-layout: post-with-comments
+layout: home-with-toc
 title: DOM
 date: 2024-06-19 17:29:00 +0900
 categories: Coding
@@ -21,9 +21,10 @@ DOM은 동기적 처리방식으로 코드를 처리하기 때문에, 브라우�
 ```html
 <script src="script.js" defer></script>
 ```
+
 실생활의 예를 통해 동기와 비동기의 차이를 이해해보자.
 
-- 동기적 처리방식 - 알바가 주문을 받는 중에는 음식이나 음료를 제작하지 못함. 
+- 동기적 처리방식 - 알바가 주문을 받는 중에는 음식이나 음료를 제작하지 못함.
 - 비동기적 처리방식 - 키오스크를 통해 주문을 받으면서 음료를 동시에 제작할 수 있게 됨.
 
 ---
@@ -59,5 +60,44 @@ DOM은 동기적 처리방식으로 코드를 처리하기 때문에, 브라우�
 
 <img src="/assets/images/js/BOM.png" alt="BOM">
 
+---
 
+## QuerySelector
 
+> DOM의 특정 요소를 선택하고 제어를 하기 위한 메소드 함수.
+
+```javascript
+const element = document.querySelector("[css 선택자]");
+```
+
+`querySelector`의 인자값으로는 <span style="color: yellowgreen">선택자 문법을 사용</span>한다.
+
+```javascript
+const classElement = document.querySelector('.class');
+const idElement = document.querySelector('#id');
+const tagElement = document.querySelector('tag');
+const attributeElement = document.querySelector('[attribute="value"]');
+const childElement = document.querySelector('parent > child');
+...
+
+```
+
+`querySelector`는 DOM의 <u>요소 하나만을 선택</u>하고, <u>여러 요소를 선택</u>하기 위해서는 `querySelectorAll`을 사용한다.
+
+```javascript
+const multipleElement = document.querySelectorAll("[css 선택자]");
+```
+
+`querySelectorAll`은 여러 요소들을 <span style="color: yellowgreen">배열과 유사한 형태</span>로 값을 반환한다. 기존의 `querySelector`과 똑같이 인자값으로는 `css 선택자`를 받는데, 이때 선택자에 해당되는 모든 요소들을 `NodeList` 형태로 반환한다.
+
+`NodeList`는 배열과 동일한 자료구조는 아니지만 <span style="color: yellowgreen">이터러블한 객체</span>로, 배열의 사용 가능 메소드들을 거의 다 사용가능하다. (`map, filter, reduce` 등은 사용할 수 없으며, 이들을 사용하기 위해서는 `Array.from()`을 통해 배열로 변환하여 사용할 수 있다. 이는 [여기](/docs/javascript/array.html)에서 더 자세히 알아볼 수 있다.)
+
+```javascript
+multipleElement.forEach((element) => {
+  console.log(element);
+});
+```
+
+```javascript
+const array = Array.from(multipleElement);
+```

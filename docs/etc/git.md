@@ -3,6 +3,7 @@ layout: home-with-toc
 title: "Git"
 date: 2025-06-17 17:00:00 +0900
 categories: Coding
+parent: ETC.
 ---
 
 # Git

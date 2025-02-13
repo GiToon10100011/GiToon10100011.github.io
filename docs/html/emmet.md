@@ -139,7 +139,15 @@ ul>li+a
   <a href=""></a>
 </ul>
 ```
+`input`태그의 type 지정 또한 에밋으로 빠르게 작성할 수 있다. 
 
+```html
+input:button
+```
+
+```html
+<input type="button">
+```
 
 `head`태그 내에서도 메타데이터를 에밋으로 빠르게 작성할 수 있다. 
 

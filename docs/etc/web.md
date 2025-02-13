@@ -1,12 +1,69 @@
 ---
-layout: post
+layout: home-with-toc
 title: "Web"
 date: 2024-05-13 16:57:00 +0900
 categories: Coding
 parent: ETC.
+nav_order: 1
 ---
 
 # Web
-> 웹은 인터넷을 통해 접근할 수 있는 문서를 말한다. 
 
-웹은 클라이언트에서 요청(Request)을 보내면 서버가 응답(Response)을 보내는 형태로 동작한다. 이때 클라이언트는 서버에게 요청을 보내는 방법으로 주소창에 주소를 입력하는 방법과 링크를 클릭하는 방법이 있다. 
+> 웹은 인터넷을 통해 접근할 수 있는 문서를 말한다.
+
+웹은 클라이언트에서 `요청(Request)`을 보내면 서버가 `응답(Response)`을 보내는 형태로 동작한다. 이때 <span style="color: yellowgreen">주소창에 주소를 입력 및 링크를 클릭하는 행위들이 클라이언트가 서버에게 요청을 보내</span>는 방법들이다. (GET요청)
+
+## 웹 프로토콜 및 URL 구성 요소
+
+> 웹 프로토콜이란 웹에서의 통신 방식/규약을 의미한다. 웹 프로토콜에는 여러 가지가 있지만, 주로 사용되는 프로토콜은 `HTTP`와 `HTTPS`이다.
+
+### 1. 웹 프로토콜
+
+웹에서 주로 사용하는 프로토콜은 다음과 같다.
+
+- **HTTP (HyperText Transfer Protocol):** 일반적인 웹 통신 프로토콜
+- **HTTPS (HyperText Transfer Protocol Secure):** <span style="color: red">보안</span>을 강화하여 데이터 암호화를 제공하는 프로토콜
+
+브라우저의 주소창에는 보통 URL을 입력하게 되는데, 이때 URL의 앞부분에 프로토콜(`http://` 또는 `https://`)이 포함되어야 한다. 예를 들어, 사용자가 `localhost:3000`이라고 입력하더라도 실제로는 `http://localhost:3000`으로 처리된다.
+
+### 2. URL의 구성 요소
+
+URL은 여러 부분으로 구성되며, 주요 구성 요소는 다음과 같다.
+
+- **프로토콜 (scheme):** 통신 방식을 나타내며, URL의 시작 부분에 위치한다.  
+  예: `http://` 또는 `https://`
+
+- **베이스 URL (origin):** 프로토콜, 호스트(도메인 또는 IP) 및 포트번호를 포함한다.  
+  예: `http://localhost:3000`
+
+- **경로 (path):** 베이스 URL 이후, 서버 내에서 특정 자원을 나타내는 부분
+  예: `/about` 또는 `/users/profile`
+
+- **쿼리스트링 (query string):** 경로 뒤에 `?` 기호로 시작되며, 웹 페이지에 추가적인 정보를 전달하는 문자열
+  예: `?id=123&name=alice`
+
+  복수의 쿼리스트링을 사용할 경우, `&` 기호를 사용하여 구분한다.
+
+### 3. 보안 및 CORS 정책
+
+HTTP와 HTTPS는 서로 다른 프로토콜로, 동일한 도메인임에도 불구하고 **오리진(origin)**이 달라진다. 특히, HTTPS 페이지에서 HTTP 리소스에 접근하려면 **혼합 콘텐츠(mixed content)** 문제와 함께 `CORS(Cross-Origin Resource Sharing)` 정책이 적용되어 접근이 제한될 수 있다. 이와 같은 제한 사항은 <span style="color: yellowgreen">보안을 강화하기 위한 브라우저의 정책</span>이다. (이에 대해서는 추후 더 자세히 다룰 예정이다.)
+
+---
+
+## API
+
+> API는 "Application Programming Interface"의 약자로, <span style="color: red">어플리케이션들이 서로 상호작용할 수 있도록 제공</span>하는 규칙과 인터페이스의 집합을 의미한다. 다른 말로 하면, 소프트웨어 구성 요소나 시스템이 서로 소통할 수 있도록 하는 계약(Contract) 또는 중간 매개체라고 볼 수 있다.
+
+✅ **예시**
+
+`setTimeout`, `setInterval`, `setImmediate` 등은 브라우저 환경에서 제공하는 클라이언트 측 API이다. 이 함수들은 `JS 런타임`과 상호작용하기 위한 API이다.
+
+`navigator`, `canvas` 또한 브라우저에서 제공하는 API지만, 해당 API는 개발자가 브라우저 관련 기능을 활용할 수 있도록 해주는 API이다.
+
+`fetch API`를 통해 외부에서 얻어오는 `JSON 데이터` 역시 `API`를 통해 제공되는 데이터로, 특정한 요청과 응답의 약속(프로토콜)에 따라 데이터를 주고 받게 된다.
+
+📝 **정리**
+
+상호 작용하는 두 시스템이나 컴포넌트가 협업 방식이나 데이터 교환 규약을 명확하게 정의하고 있다 - API ✅
+
+하지만, 아무런 규약 없이 단순히 데이터나 기능이 주고받는다고 해서 무조건 API라고 하지는 않고, 명확한 계약(Documentation, Format, 프로토콜 등)을 기반으로 작동하는 상호작용을 가진 경우에 API라고 볼 수 있음.

@@ -4,6 +4,7 @@ title: "VSCode"
 date: 2025-02-09 21:34:00 +0900
 categories: Coding
 parent: Setups
+grand_parent: ETC.
 ---
 
 # VSCode
@@ -63,6 +64,7 @@ parent: Setups
 - `Colonize`: 세미콜론 자동 추가
 - `Styled Variables`: styled-components 전역 변수 자동완성
 - `Material Theme`: Material 테마
+- `Paste Image`: 마크다운에서 클립보드의 이미지 쉽게 붙여넣기
 
 # Settings
 
@@ -221,6 +223,3 @@ VSCode의 주요 설정:
 `alt`를 누른 채로 클릭을 하면 커서를 여러개 놓을 수 있다.
 `alt+shift+up/down`을 누르면 커서가 위치해있는 줄이 윗줄/아랫줄로 복사된다.
 `alt+up/down`을 누르면 커서가 위치해있는 줄이 윗줄/아랫줄로 이동한다.
-
-
-
