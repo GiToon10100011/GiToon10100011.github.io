@@ -79,6 +79,8 @@ VSCode의 주요 설정:
    - Delay 값을 500ms로 지정
 6. Emmet 설정
    - Variables에 lang:ko 추가하여 한국어 지원
+7. 폴더 표시 설정
+   - Explorer의 Compact Folder 비활성화
 
 아니면 아래의 json파일을 settings.json에 추가하면 된다.
 
@@ -109,7 +111,11 @@ VSCode의 주요 설정:
   "workbench.sideBar.location": "right",
   "liveSassCompile.settings.showOutputWindowOn": "Error",
   "background.useDefault": false,
-  "background.customImages": [".png", ".png", ".png"],
+  "background.customImages": [
+    "file:///C:/Users/tyler/OneDrive/문서/ydh (1).png",
+    "file:///C:/Users/tyler/OneDrive/문서/ydh (2).png",
+    "file:///C:/Users/tyler/OneDrive/문서/ydh (3).png"
+  ],
   "background.style": {
     "images": [],
     "background-size": "cover",
@@ -214,7 +220,8 @@ VSCode의 주요 설정:
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "explorer.compactFolders": false
 }
 ```
 

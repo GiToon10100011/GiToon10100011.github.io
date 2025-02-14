@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: 미디어 태그
 date: 2024-05-27 17:31:00 +0900
 categories: etc

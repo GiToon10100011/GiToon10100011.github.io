@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home-with-toc
 title: "Typescript"
 date: 2025-02-09 21:10:00 +0900
 categories: Coding

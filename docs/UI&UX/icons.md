@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "아이콘 사용법"
 date: 2024-06-17 15:57:00 +0900
 categories: Coding

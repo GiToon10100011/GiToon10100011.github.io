@@ -22,12 +22,12 @@ parent: ETC.
 - `dothome`
 - `cafe24`
 
-현대 방식
+현대 방식 (각 플랫폼의 배포법을 자세히 알아보고 싶다면 클릭)
 
-- `firebase` - 클라우드 서비스
-- `netlify` - 서버리스 플랫폼
-- `aws` - 클라우드 서비스
-- `vercel` - `Next.js` 환경에 최적화된 서버리스 플랫폼
+- [`firebase`](/docs/etc/deployments/firebase.html) - 클라우드 서비스
+- [`netlify`](/docs/etc/deployments/netlify.html) - 서버리스 플랫폼
+- [`aws`](/docs/etc/deployments/aws.html) - 클라우드 서비스
+- [`vercel`](/docs/etc/deployments/vercel.html) - `Next.js` 환경에 최적화된 서버리스 플랫폼
 
 ---
 

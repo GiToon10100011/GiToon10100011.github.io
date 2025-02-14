@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: input 태그
 date: 2024-05-18 17:17:00 +0900
 categories: etc

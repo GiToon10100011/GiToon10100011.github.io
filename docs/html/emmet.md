@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-with-comments
 title: "Emmet"
 date: 2024-06-17 21:10:00 +0900
 categories: Coding
