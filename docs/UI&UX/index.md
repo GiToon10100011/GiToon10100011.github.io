@@ -16,6 +16,16 @@ UI는 웹 사이트의 디자인을 의미하며, 웹 사이트의 디자인을 
 
 현재 가장 많이 사용되는 다양한 레이아웃 및 디자인 패턴을 확인하려면 <a href="https://gs.statcounter.com/screen-resolution-stats">statcounter(통계 사이트)</a>를 활용하는 것이 좋다.
 
+### GUI 
+
+> Graphical User Interface의 약자, 사용자로 하여금 눈에 보여지는 아이콘 혹은 이미지들을 제어할 수 있도록 만들어진 인터페이스 형식
+
+### CLI
+
+> Command Line Interface의 약자, 사용자로 하여금 명령어를 입력하여 컴퓨터를 제어할 수 있도록 만들어진 인터페이스 형식
+
+---
+
 ## 폰트
 
 폰트는 웹 사이트의 디자인을 최적화하여 사용자 경험을 향상시키는 것을 목표로 한다.

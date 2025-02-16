@@ -80,7 +80,7 @@ parent: CSS
 }
 ```
 
-<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다.
+<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다. <span style="color: yellowgreen;">flexbox내의 자식 요소들은 전부 `block`레벨 요소</span>가 된다.
 
 display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(유연한 박스)로 변환된다.
 
@@ -96,7 +96,7 @@ display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(
 
   <img src="/assets/images/css/flexBox/alignContent.png" alt="align-content" style="height: 70%;">
 
-- `justify-content` - 박스의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+- `justify-content` - 박스의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around(둘레에 평등한 간격), space-evenly(모든 간격이 동일한 간격)` 등이 있다.
 
 - `flex-flow` - `flex-direction`과 `flex-wrap`을 한번에 지정한다. 값은 `flex-direction값 flex-wrap값`의 형태로 사용된다.
 

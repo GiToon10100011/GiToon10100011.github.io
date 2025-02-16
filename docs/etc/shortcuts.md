@@ -9,12 +9,14 @@ parent: ETC.
 # 단축키
 
 > 단축키들을 모아둔 페이지
-
+  
 ## VSCode
 
 - `alt/option` + `up/down` - 라인 이동
 
 - `alt/option` + `shift` + `up/down` - 라인 복사
+
+- `ctrl/command` + `alt/option` + `up/down` - 라인 다중 선택
 
 - `ctrl/command` + `\` - 탭 쪼개기
 

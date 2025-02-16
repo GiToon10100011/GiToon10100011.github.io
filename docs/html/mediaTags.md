@@ -37,6 +37,9 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
 
 두 태그 모두 `preload(페이지가 로드될 때 비디오파일이 같이 로드할 것인가의 여부), autoplay, loop, muted, controls`와 같은 속성들이 존재한다.
 
+<del style="color: #aaa;"> audio나 video태그는 실제로는 실무에서 많이 안쓰인다고 한다. imdb가 올라가고, 트래픽에 따라 부가되는 서버 임대료가 커지기 때문이다. 대신 비디오 파일을 썸네일로 사용하는 방법을 사용한다.
+</del>
+
 ---
 
 ## source 태그
@@ -64,15 +67,16 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
   <source src="video.webm" type="video/webm" codecs="vp9" />
 </video>
 ```
+
 ✅ 이미지와 비디오 태그의 비율을 유지하여 화면에 표시하기
 
 <span id="object-fit"></span>
 
 ```css
-.video{
+.video {
   object-fit: cover;
 }
-.img{
+.img {
   object-fit: cover;
 }
 ```

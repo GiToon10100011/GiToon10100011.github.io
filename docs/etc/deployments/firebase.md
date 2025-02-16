@@ -40,6 +40,12 @@ npm install -g firebase-tools
 
 ```bash
 firebase login
+
+# 프로젝트가 안불러와지거나 프로젝트 초기화 과정에서 문제가 생긴다면 재로그인
+firebase login --reauth
+
+# 로그아웃
+firebase logout
 ```
 
 firebase 계정과 연동

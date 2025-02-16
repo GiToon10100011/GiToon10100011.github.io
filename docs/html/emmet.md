@@ -50,7 +50,7 @@ div.container를 적고 탭을 누르면 위와 같은 태그가 자동으로 �
 <div class="container"></div>
 ```
 
-클래스를 여러개 지니고 있는 태그를 작성하려면 다음과 같이 쓰면 된다. 
+클래스를 여러개 지니고 있는 태그를 작성하려면 다음과 같이 쓰면 된다.
 
 ```html
 div.container.item
@@ -60,7 +60,7 @@ div.container.item
 <div class="container item"></div>
 ```
 
-클래스뿐만 아니라 아이디도 빠르게 작성할 수 있다. 
+클래스뿐만 아니라 아이디도 빠르게 작성할 수 있다.
 
 ```html
 div#container
@@ -68,6 +68,16 @@ div#container
 
 ```html
 <div id="container"></div>
+```
+
+dummy text를 작성하고 싶다면 `lorem`을 사용하면 된다.
+
+```html
+p>lorem
+```
+
+```html
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
 ```
 
 에밋으로 빠르게 부모 자식 관계를 표현할 수도 있다.
@@ -100,7 +110,7 @@ div.container>div.item를 적고 탭을 누르면 아래와 같은 태그가 자
 </ul>
 ```
 
-그렇다면 에밋으로는 어떻게 작성해야할까? 
+그렇다면 에밋으로는 어떻게 작성해야할까?
 
 ```html
 ul>li>a*5
@@ -119,6 +129,7 @@ ul>li>a\*5를 적고 탭을 누르면 아래와 같은 태그가 자동으로 �
   </li>
 </ul>
 ```
+
 즉, li와 a를 괄호로 묶어야 그룹으로 반복이 된다.
 
 ```html
@@ -139,17 +150,18 @@ ul>li+a
   <a href=""></a>
 </ul>
 ```
-`input`태그의 type 지정 또한 에밋으로 빠르게 작성할 수 있다. 
+
+`input`태그의 type 지정 또한 에밋으로 빠르게 작성할 수 있다.
 
 ```html
 input:button
 ```
 
 ```html
-<input type="button">
+<input type="button" />
 ```
 
-`head`태그 내에서도 메타데이터를 에밋으로 빠르게 작성할 수 있다. 
+`head`태그 내에서도 메타데이터를 에밋으로 빠르게 작성할 수 있다.
 
 ```html
 <!-- 파비콘 링크(자동으로 favicon.ico 파일 경로 지정) -->
@@ -161,14 +173,12 @@ script:module
 ```
 
 ```html
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="style.css" />
 <script src="script.js" type="module"></script>
 ```
-## 심화 문법
 
-중괄호 안에 $를 사용한다면 연속되는 값을 집어 넣을 수 있다. 
-예를 들어, span{place$}*3이라면, 각각 place1, place2, place3의 내용이 들어가 있는 span태그가 형성된다. 
+## 심화 문법
 
 ```html
 span{place$}*3
@@ -180,10 +190,19 @@ span{place$}*3
 <span>place3</span>
 ```
 
+중괄호 안에 $를 사용한다면 연속되는 값을 집어 넣을 수 있다. 
+예를 들어, `span{place$}\*3`이라면, 각각 `place1, place2, place3`의 내용이 들어가 있는 `span`태그가 형성된다.
 
+```html
+option[value = "$"]{$일}*31
+```
 
+다음과 같이 작성하면 1일부터 31일까지 연속되는 내용이 들어가 있는 option태그를 빠르고 쉽게 작성할 수 있다.
 
-
-
-
-
+```html
+<option value="1">1일</option>
+<option value="2">2일</option>
+<option value="3">3일</option>
+...
+<option value="31">31일</option>
+```

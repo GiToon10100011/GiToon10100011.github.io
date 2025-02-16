@@ -175,12 +175,16 @@ input[type="text"] {
 
 - `:반응`를 사용한다. `:active, :checked, :hover, :focus, :disabled` 등이 있다. 반응 선택자는 <u>특정 요소의 특정 반응 시의 상태를 선택</u>한다.
 
-  ```css
-  /* 버튼에 호버 시 배경색이 변경 */
-  button:hover {
-    background-color: red;
-  }
-  ```
+⚠️ **active와 focus의 차이**
+
+active는 클릭 시 발생하는 이벤트이며, focus는 커서가 올라가 있는 상태(활성화 된 상태, `input`태그에 커서가 올라가 있는 상태)이다.
+
+```css
+/* 버튼에 호버 시 배경색이 변경 */
+button:hover {
+  background-color: red;
+}
+```
 
 ---
 
@@ -282,16 +286,14 @@ input[type="text"] {
 해당 선택자는 주로 콘텐츠를 추가하는데 사용된다. 요소의 바로 뒤, 혹은 앞쪽에 콘텐츠를 추가할 수 있다는 것이 특징이며, 이를 활용하여 레이어를 겹치는 효과 등도 줄 수 있다.
 
 ```css
-div{
-  &::before{
+div {
+  &::before {
     content: "Hello";
   }
 }
 ```
 
-가장 중요한 점은, 전후 문자 선택자는 반드시 `content` 속성을 사용해야 요소가 나온다. 
-
-
+가장 중요한 점은, 전후 문자 선택자는 반드시 `content` 속성을 사용해야 요소가 나온다.
 
 이외의 선택자들도 존재하는데, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">mdn docs</a>에서 확인해보자. <span style="color: #aaa;">참고로 mdn docs에서 휴지통 모양이 표시된 속성은 곧 중단될 의미이며, 필터 아이콘이 표시되어 있다면 아직 테스팅(특정 브라우저에서만 되어 현재 실험중) 중인 속성이다.</span>
 

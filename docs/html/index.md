@@ -5,7 +5,6 @@ date: 2024-09-07 17:33:43 +0900
 categories: etc
 has_children: true
 nav_order: 1
-
 ---
 
 # HTML
@@ -24,7 +23,14 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 <span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
 
-- 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다. 
+- 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다.
+
+  h1 | 32px | 최상위 제목
+  h2 | 24px | 두번째 제목
+  h3 | 20px | 세번째 제목
+  h4 | 18px | 네번째 제목
+  h5 | 16px | 다섯번째 제목
+  h6 | 14px | 여섯번째 제목
 
 - 앵커 태그 - `a`태그는 <span style="color: yellowgreen">href(hyper reference) 속성</span>을 사용해 링크를 지정한다. 이때, <span style="color: red">절대경로와 상대경로</span>를 잘 구분해야한다.
 
@@ -32,7 +38,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > <span style="color: yellowgreen">target속성</span>을 통해 링크를 열 때 새로운 창을 열지 아니면 현재 창에서 열지를 지정할 수 있다. `target="_blank"`는 새로운 창을 열어주고, `target="_self"`는 현재 창에서 열어준다. (기본값은 `_self`)
 
-- 글자 모양 태그 - `strong, b(bold), em, i(italic), u(underline), small, sub(아래첨자), sup(위첨자), ins(밑줄), del(취소선)` 등이 있다. 글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
+- 글자 모양 태그 - `strong, b(bold), em, i(italic), u(underline), small, sub(아래첨자), sup(위첨자), ins(밑줄), del(취소선), mark(형광펜 효과)` 등이 있다. 글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
 
 - 미디어 태그 - 자세한건 [여기를](/docs/html/mediaTags.html)를 참고하자.
 
@@ -44,20 +50,37 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > dl태그는 dt(definition term)태그와 dd(definition description)태그를 사용해 사전처럼 사용된다. dt태그는 정의되는 용어를 지정하고, dd태그는 용어에 대한 설명을 지정한다.
 
-- 표 태그 - `table, tr(table row), td(table data), th(table header)` table은 표를 삽입하는 태그이고, tr은 표의 행을 삽입하는 태그이며, td는 표의 셀을 삽입하는 태그이다.
+- 표 태그 - `table, tr(table row), td(table data), th(table header)` table은 표를 삽입하는 태그이고, `tr`은 표의 행을 삽입하는 태그이며, `td`는 표의 셀을 삽입하는 태그이다. <span style="color: #aaa;">`tr`은 공간을 나누는 척도라, 스타일을 잘 적용하지 않는다.</span>
 
   > <span style="color: red">table은 왼쪽에서 오른쪽으로 데이터가 삽입</span>되며, <span style="color: red">다음 행으로 넘어갈 때 tr</span>을 사용하면 된다.
 
   > table태그에는 테두리의 두께를 지정해주는 border 속성이 존재한다. th, tr, td에는 align속성으로 글자 정렬을 지정해줄 수 있으며, th와 td는 colspan, rowspan과 같이 셀의 너비와 높이를 지정해 병합시켜주는 속성이 존재한다. rowspan은 원래 가로지만 세로로 병합이 되며, colspan 또한 원래 세로지만 가로로 병합이 된다.
 
-  > table태그에는 border속성으로 border를 줄수도 있지만, <span style="color: yellowgreen;">border-collapse 속성</span>을 사용해 테두리를 합칠 수도 있다. collapse값을 주면 테두리를 합치고, separate값을 주면 테두리를 따로 둔다.
+  > colspan이나 rowspan대신 colgroup태그를 사용해 셀의 너비와 높이를 지정할 수도 있다. colgroup태그는 표의 열을 그룹으로 묶어주는 태그이다. 다음과 같은 형태로 사용할 수 있다.
 
-  > <span id="tabledesc" style="color: yellowgreen;">thead, tbody, tfoot</span>은 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다.
+  ```html
+  <!-- 이때 span은 2개의 열에 스타일을 입히겠다는 뜻이다. -->
+  <colgroup>
+    <col span="2" style="background: #f00" />
+  </colgroup>
+  ```
+
+  > table태그에는 border속성으로 border를 줄수도 있지만,
+  > <span style="color: yellowgreen;">border-collapse 속성</span>을 사용해
+  > 테두리를 합칠 수도 있다. collapse값을 주면 테두리를 합치고, separate값을 주면
+  > 테두리를 따로 둔다. >
+  > <span id="tabledesc" style="color: yellowgreen;">thead, tbody, tfoot</span>은
+  > 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다. 이때문에
+  > 스타일링을 할때 선택자를 `tbody`를 넣어야 적용된다.
+
+  ```
+
+  ```
 
 - 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: red">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
   `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
 
-  `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함.
+  `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함. `gnb(Global Navigation Bar), lnb(Local Navigation Bar)`에 주로 사용됨.
 
   `main` | 문서의 주요 내용을 지정하는 태그이다. 주로 문서의 내용을 구분하기 위해 사용된다.
 
@@ -71,7 +94,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   `address` | 주로 문서에서 제작자의 연락처 정보를 지정할 때 사용된다.
 
-  `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. figure태그 내에 미디어 태그를 넣는 형식으로 사용한다.
+  `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. `figure`태그 내에 미디어 태그를 넣는 형식으로 사용한다. `figure`태그 안에는 반드시 `figcaption`태그가 들어가야 한다. `figcaption` 태그 내에 문구를 넣고, `figure` 태그 내에 설명 문구를 부여하고자 하는 요소를 넣는다.
 
   `figcaption` | 주로 문서에서 이미지나 동영상 등의 설명을 지정할 때 사용된다.
 
@@ -91,13 +114,13 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > name속성은 앞서 말했듯이 서버로 값을 보낼때 지정되는 이름이므로, 사용자에게 보여져서는 안되는 데이터를 서버로 전송할때 사용되는 `hidden` type의 input태그에서 name속성이 유용하게 사용된다. 접속일시, 회원가입일시, 상태값을 전송할때 hidden이 사용된다.
 
-- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: red">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span>
+- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: red">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span> `label`안에 `input`태그를 넣어 두 태그를 연결할 수도 있다.
 
 - form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: red">GET, POST, PUT, DELETE</span> 등이 존재한다.
 
   > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/etc/restAPI.html)를 다룰때 더 자세히 알아보자.
 
-- select 태그 - 선택 양식을 삽입하는 태그이다. `<select><option value="1">1</option><option value="2">2</option></select>`와 같은 형식으로 사용하며, 다중 선택을 원할 경우 `multiple`속성을 사용할 수 있다. 선택 옵션은 option태그를 사용해 삽입한다. 옵션들을 그룹으로 묶기 위해서는 `<optgroup label="그룹이름">`과 같은 형식으로 사용할 수 있다.
+- select 태그 - 선택 양식을 삽입하는 태그이다. `<select><option value="1">1</option><option value="2">2</option></select>`와 같은 형식으로 사용하며, 다중 선택을 원할 경우 `multiple`속성을 사용할 수 있다. 선택 옵션은 `option`태그를 사용해 삽입한다. `option`태그에서 `selected`속성으로 처음에 나올 옵션을 지정해줄 수 있다. 옵션들을 그룹으로 묶기 위해서는 `<optgroup label="그룹이름">`과 같은 형식으로 사용할 수 있다.
 
 - textarea 태그 - 여러줄의 텍스트를 입력할 수 있는 태그이다. `<textarea cols="30" rows="10"></textarea>`와 같은 형식으로 사용하며, cols와 rows는 텍스트 영역의 너비와 높이를 지정해준다.
 

@@ -101,3 +101,34 @@ multipleElement.forEach((element) => {
 ```javascript
 const array = Array.from(multipleElement);
 ```
+
+### JS로 동적으로 스타일 부여하기
+
+```javascript
+const element = document.querySelector("div");
+element.style.color = "red";
+element.style.backgroundColor = "blue";
+element.style = `
+  color: red;
+  background-color: blue;
+  font-size: 16px;
+  text-align: center;
+`;
+```
+
+style객체는 객체 형태로 스타일을 부여할 수 있는 객체이다. 이 객체는 속성을 추가하거나 수정하거나 삭제할 수 있다. 이때 값은 문자열의 형태로 입력하고, 부여했던 스타일을 리셋 시키려면 빈 문자열을 입력한다.
+
+⚠️ **스타일 속성 부여 시 주의할 점**
+
+> 스타일 속성을 부여할 때, 속성 이름에 띄어쓰기가 있는 경우 띄어쓰기를 빼고 소문자로 입력해야 한다. 예를 들어, `background-color`는 `backgroundColor`로 입력해야 한다. 즉, 카멜표기법으로 속성을 입력한다고 생각하면 된다. 이는 `스크립트`에서 <span style="color: red">객체 속성에 특수문자는 들어갈 수 없</span>기 때문이다.
+
+### JS로 동적으로 클래스 부여하기
+
+```javascript
+const element = document.querySelector("div");
+element.classList.add("class");
+element.classList.remove("class");
+element.classList.toggle("class");
+```
+
+classList는 클래스 목록을 관리하는 객체이다. 이 객체는 클래스를 추가하거나 제거하거나 토글할 수 있다. 이때 클래스는 문자열의 형태로 입력한다.
