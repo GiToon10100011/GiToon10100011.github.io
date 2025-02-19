@@ -94,13 +94,13 @@ input[type="text"] {
 
 ## 자식 선택자
 
-- `>`를 사용한다. 자식 선택자는 <u>특정 요소의 자식 요소를 선택</u>한다. table태그에는 자손 선택자를 사용할 수 없으며, `table > tr > th`가 아닌, `table tr th{}` 와 같이 사용해야 한다. 이는 [HTML문서](/docs/html/index.md#tabledesc)에서 언급했듯이 <span style="color: yellowgreen;">웹 브라우저에서 tbody, thead, tfoot 태그를 자동으로 추가</span>하기 때문이다.
+- `>`를 사용한다. 자식 선택자는 <u>특정 요소의 자식 요소를 선택</u>한다. table태그에는 후손 선택자를 사용할 수 없으며, `table > tr > th`가 아닌, `table tr th{}` 와 같이 사용해야 한다. 이는 [HTML문서](/docs/html/index.md#tabledesc)에서 언급했듯이 <span style="color: yellowgreen;">웹 브라우저에서 tbody, thead, tfoot 태그를 자동으로 추가</span>하기 때문이다.
 
 ---
 
-## 자손 선택자
+## 후손 선택자
 
-- ` `(공백)을 사용한다. 자손 선택자는 <u>특정 요소의 자손 요소를 선택</u>한다.<span style="color: red;"> >는 직계 자식을 선택하는 것이며, 자손 선택자는 모든 자손을 선택</span>한다.
+- ` `(공백)을 사용한다. 후손 선택자는 <u>특정 요소의 후손 요소를 선택</u>한다.<span style="color: red;"> >는 직계 자식을 선택하는 것이며, 후손 선택자는 모든 자손을 선택</span>한다.
 
 ---
 
@@ -175,6 +175,8 @@ input[type="text"] {
 
 - `:반응`를 사용한다. `:active, :checked, :hover, :focus, :disabled` 등이 있다. 반응 선택자는 <u>특정 요소의 특정 반응 시의 상태를 선택</u>한다.
 
+  문자에만 적용되는 반응 문자 선택자도 존재한다. `::selected`은 선택된 텍스트(드래그 된)를 선택한다.
+
 ⚠️ **active와 focus의 차이**
 
 active는 클릭 시 발생하는 이벤트이며, focus는 커서가 올라가 있는 상태(활성화 된 상태, `input`태그에 커서가 올라가 있는 상태)이다.
@@ -201,53 +203,21 @@ button:hover {
 
 ---
 
-## 첫 번째 자식 선택자
+## 일반 구조 선택자
 
-- `:first-child`를 사용한다. 첫 번째 자식 선택자는 <u>특정 요소의 첫 번째 자식 요소를 선택</u>한다.
+- `:nth-child()`를 사용한다. 일반구조선택자는 <u>특정 요소의 첫 번째 자식 요소를 선택</u>한다. 1개의 부모 요소 안에 있는 모든 형제들을 형태와 관계없이 입력된 순서대로 카운팅한다.
 
----
+  이때, 맨 첫번째 자식은 `:first-child`, 맨 마지막 자식은 `:last-child`로 선택할 수 있다.
 
-## 마지막 자식 선택자
-
-- `:last-child`를 사용한다. 마지막 자식 선택자는 <u>특정 요소의 마지막 자식 요소를 선택</u>한다.
-
----
-
-## 첫 번째 형식 구조 선택자
-
-- `:first-of-type`를 사용한다. 첫 번째 형식 구조 선택자는 <u>특정 요소의 첫 번째 형식 구조 요소를 선택</u>한다. -child는 자식을 선택하는 것이며, -of-type은 형식 구조를 선택하는 것이다.
+  뒤쪽에서부터 카운팅을 하고 싶다면 `:nth-last-child()`를 사용하면 된다.
 
   ```css
-  /*첫번째 자식*/
-  div:first-child {
+  /* 두번째 자식 */
+  li:nth-child(2) {
     color: red;
   }
 
-  /* 첫 번째 <p> 요소 선택 */
-  p:first-of-type {
-    color: red;
-  }
-  ```
-
-  ***
-
-## 마지막 형식 구조 선택자
-
-- `:last-of-type`를 사용한다. 마지막 형식 구조 선택자는 <u>특정 요소의 마지막 형식 구조 요소를 선택</u>한다.
-
----
-
-## n번째 자식 선택자
-
-- `:nth-child()`를 사용한다. n번째 자식 선택자는 <u>특정 요소의 n번째 자식 요소를 선택</u>한다.
-
-  ```css
-  /* 마지막 자식 요소 선택 */
-  li:last-child {
-    color: red;
-  }
-
-  /* 홀수번째 자식 요소들을 선택 */
+  /* 홀수번째 자식 */
   li:nth-child(odd) {
     color: red;
   }
@@ -255,29 +225,85 @@ button:hover {
   li:nth-child(2n + 1) {
     color: red;
   }
+
+  /* 짝수번째 자식 */
+  li:nth-child(even) {
+    color: red;
+  }
+
+  li:nth-child(2n) {
+    color: red;
+  }
+
+  /* 뒤쪽에서부터 카운팅 */
+  li:nth-last-child(2) {
+    color: red;
+  }
   ```
 
 ---
 
-## n번째 형식 구조 선택자
+## 형식 구조 선택자
 
-- `:nth-of-type()`를 사용한다. n번째 형식 구조 선택자는 <u>특정 요소의 n번째 형식 구조 요소를 선택</u>한다.
+- `:nth-of-type()`를 사용한다. 형식 구조 선택자는 <u>특정 요소의 형식 구조 요소를 선택</u>한다. 1개의 부모 요소 안에 동일한 형태의 형제요소(ex: 동일한 클래스를 가지고 있는 구조의 형태/동일한 태그)가 여러개 있을 때, 순서대로 카운팅한다. `-child`는 자식을 선택하는 것이며, `-of-type`은 형식 구조를 선택하는 것이다.
+
+  마찬가지로 `first-of-type`, `last-of-type`, `nth-last-of-type`도 사용할 수 있다.
+
+  ```css
+  /* 첫 번째 <p> 요소 선택 */
+  p:first-of-type {
+    color: red;
+  }
+
+  /* 마지막 <p> 요소 선택 */
+  p:last-of-type {
+    color: red;
+  }
+
+  /* 두번째 <p> 요소 선택 */
+  p:nth-of-type(2) {
+    color: red;
+  }
+
+  /* 홀수번째 <p> 요소 선택 */
+  p:nth-of-type(odd) {
+    color: red;
+  }
+  ```
 
 ---
 
-## n번째 뒤쪽에서 마지막 자식 선택자
+## 링크 선택자
 
-- `:nth-last-child()`를 사용한다. n번째 뒤쪽에서 마지막 자식 선택자는 <u>특정 요소의 n번째 뒤쪽에서 마지막 자식 요소를 선택</u>한다.
+- `:link(링크를 지닌 요소), :visited(클릭 후), :hover(호버 시), :active(클릭 시)`를 사용한다. 링크 선택자는 <u>특정 요소의 링크 상태를 선택</u>한다.
+
+  ```css
+  a:link {
+    color: red;
+  }
+
+  a:visited {
+    color: blue;
+  }
+  ```
 
 ---
 
-## n번째 뒤쪽에서 마지막 형식 구조 선택자
+## 문자 선택자
 
-- `:nth-last-of-type()`를 사용한다. n번째 뒤쪽에서 마지막 형식 구조 선택자는 <u>특정 요소의 n번째 뒤쪽에서 마지막 형식 구조 요소를 선택</u>한다. 구조 선택자에는 이 말고도 :root라는 선택자가 있다. 해당 선택자는 html계층 최상위에 위치해있어 스타일을 적용시 모든 요소에 적용된다.
+- `:first-letter`, `:first-line`을 사용한다. 문자 선택자는 <u>특정 요소의 첫번째 문자 혹은 첫번째 문장을 선택</u>한다. 이때, 줄은 줄바꿈이 되는 기준까지를 줄로 친다.
 
----
+  ```css
+  p:first-letter {
+    color: red;
+  }
 
-## 전후문자선택자
+  p:first-line {
+    color: red;
+  }
+  ```
+
+### 전후문자선택자
 
 - `::before, ::after`를 사용한다. 전후문자선택자는 <u>특정 요소의 전후문자를 선택</u>한다.
 
@@ -294,6 +320,20 @@ div {
 ```
 
 가장 중요한 점은, 전후 문자 선택자는 반드시 `content` 속성을 사용해야 요소가 나온다.
+
+`content` 속성을 활용하여 css의 `attr()` 함수를 사용할 수 있다.
+
+```html
+<div data-text="Hello">Hello</div>
+```
+
+```css
+div::before {
+  content: attr(data-text);
+}
+```
+
+이를 활용하여 개별적으로 요소의 컨텐츠 설정을 유용하게 할 수 있다.
 
 이외의 선택자들도 존재하는데, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">mdn docs</a>에서 확인해보자. <span style="color: #aaa;">참고로 mdn docs에서 휴지통 모양이 표시된 속성은 곧 중단될 의미이며, 필터 아이콘이 표시되어 있다면 아직 테스팅(특정 브라우저에서만 되어 현재 실험중) 중인 속성이다.</span>
 
