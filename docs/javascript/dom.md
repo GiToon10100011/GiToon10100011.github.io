@@ -144,7 +144,6 @@ element.classList.toggle("class");
 | **사용 목적** | 요소 내부의 HTML 구조 전체(태그 포함)를 동적으로 수정하거나 확인할 때 유용하다. | 사용자에게 보여지는 텍스트를 얻거나 조작할 때 주로 사용한다.                                            | 순수 텍스트만 필요할 경우 (비교, 검색 등) 성능상의 이점으로 사용된다.     |
 
 ```html
-⁠
 <div id="example">Hello <span style="display: none;">world</span>!</div>
 ```
 

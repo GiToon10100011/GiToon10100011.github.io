@@ -207,3 +207,14 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 ```html
 <script src="script.js"></script>
 ```
+
+⚠️ **Head태그 내에 CDN 혹은 SDK 사용시 주의사항**
+
+직접 제작한 커스텀 스크립트 혹은 스타일시트 보다 외부 CDN, SDK 등을 먼저 불러오는 것이 좋다. 이는 외부 스크립트 혹은 스타일시트가 먼저 불러와지지 않으면 커스텀 스크립트 혹은 스타일시트가 적용되지 않을 수 있기 때문이다.
+
+```html
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="custom.js"></script>
+</head>
+```

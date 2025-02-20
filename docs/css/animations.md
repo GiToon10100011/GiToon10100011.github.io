@@ -49,7 +49,7 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 
 ⚠️ transition을 사용할 때 유의할 점은 <span style="color: red;">특정 스타일 속성은 transition이 적용되지 않는다.</span> <br>
 
-> `display`, `z-index`, `속성의 값이 auto일 경우` 등
+> `display`, `z-index`, `속성의 값이 auto일 경우`, `background가 linear-gradient와 이미지를 같이 사용한 경우` 등
 
 ---
 
