@@ -25,3 +25,32 @@ const element = document.querySelector("[css 선택자]");
 
 element.addEventListener("이벤트 이름", 이벤트 핸들러);
 ```
+---
+
+## 이벤트 종류
+
+### Mouse Event
+
+- `click`
+- `dblclick`
+- `mouseenter`
+- `mouseleave`
+- `mousemove`
+- `mousedown`
+- `mouseup`
+- `mouseover`
+- `mouseout`
+- `mouseenter`
+- `mouseleave`
+
+### Keyboard Event
+
+- `keydown`
+- `keyup`
+- `keypress`
+
+### Form Event
+
+- `submit`
+- `reset`
+- `change`
