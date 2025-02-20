@@ -7,6 +7,7 @@ layout: home
 
 <div class="welcome-section">
   <h1>{{ site.title }}에 오신 것을 환영합니다! 🌱</h1>
+  <p class="wip-notice">🚧 현재 이 블로그는 계속 작업이 진행 중입니다. 더 나은 콘텐츠로 찾아뵙도록 하겠습니다!</p>
   <p class="intro-text">{{ site.description }}</p>
   
   <div class="featured-posts">
