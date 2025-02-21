@@ -25,6 +25,7 @@ const element = document.querySelector("[css 선택자]");
 
 element.addEventListener("이벤트 이름", 이벤트 핸들러);
 ```
+
 ---
 
 ## 이벤트 종류
@@ -36,12 +37,23 @@ element.addEventListener("이벤트 이름", 이벤트 핸들러);
 - `mouseenter`
 - `mouseleave`
 - `mousemove`
-- `mousedown`
+- `mousedown` - 마우스 버튼을 누르고 있는 상태
 - `mouseup`
 - `mouseover`
 - `mouseout`
 - `mouseenter`
 - `mouseleave`
+
+✅ 이벤트 버블링
+
+> 이벤트 버블링이란 부모에게 이벤트가 전파되는 것을 의미한다.
+
+mouseover&mouseout | mouseenter&mouseleave
+이벤트 버블링 발생 | 이벤트 버블링 X
+
+✅ 이벤트 캡쳐링
+
+> 이벤트 캡쳐링이란 자식에게 이벤트가 전파되는 것을 의미한다.
 
 ### Keyboard Event
 

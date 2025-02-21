@@ -43,6 +43,11 @@ DOM은 동기적 처리방식으로 코드를 처리하기 때문에, 브라우�
 - `document.removeChild()`: 요소 삭제
 - `document.replaceChild()`: 요소 교체
 - `document.cloneNode()`: 요소 복제
+
+  인자값 | 효과
+  `true` | 깊은 복사(자식 요소까지 모두 복사)
+  `false` | 얕은 복사(자식 요소는 복사하지 않음)
+
 - `document.getAttribute()`: 속성 출력
 - `document.setAttribute()`: 속성 추가
 - `document.removeAttribute()`: 속성 삭제
