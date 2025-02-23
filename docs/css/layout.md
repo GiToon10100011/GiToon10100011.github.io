@@ -11,7 +11,7 @@ parent: CSS
 ## Box-sizing
 
 - `box-sizing` - 요소의 크기를 계산하는 방법을 지정한다. 값은 `content-box, border-box` 등이 있다.
-  - `content-box` - 기본값으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다. 너비 공식은 `(margin + border + padding)*2 + width`이다.
+  - `content-box` - <span style="color: yellowgreen;">기본값</span>으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다. 너비 공식은 `(margin + border + padding)*2 + width`이다.
   - `border-box` - 요소의 크기를 계산할 때, 테두리와 패딩을 포함한다. 너비 공식은 `(margin*2) + width`이다.
 
 <img src="/assets/images/css/layout/boxSizing.webp" alt="box-sizing" style="margin-top: 30px;">
@@ -24,11 +24,13 @@ parent: CSS
 
 전에 [html](/docs/html/index.html#inline&block)에서 블록태그와 인라인 태그에 대해 설명했었다. <span style="color: yellowgreen;">블록태그는 차지하는 공간이 한줄</span>이며, <span style="color: violet;">인라인 태그는 차지하는 공간이 해당 요소의 크기만큼 차지</span>한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
-포지셔닝에서 가장 중요한 점 중 하나는, <span style="color: red;">포지셔닝할 요소의 왼쪽 위 꼭짓점을 기준으로 위치가 지정된다</span>는 것이다. 이 때문에 보통 transform의 translate 속성을 사용하여 요소의 기준점을 가운데로 옮긴다.
+포지셔닝에서 가장 중요한 점 중 하나는, <span style="color: red;">포지셔닝할 요소의 왼쪽 위 꼭짓점을 기준으로 위치가 지정된다</span>는 것이다. 이 때문에 보통 `transform`의 `translate` 속성을 사용하여 요소의 기준점을 가운데로 옮긴다.
 
 ⚠️ 참고로, 포지션 속성이 지정된 요소와 지정이 안된 요소는 포지션 속성이 지정된 요소가 레이어링에서 우선순위를 가지게 된다.
 
-- `static` - 기본값으로, 요소를 일반적인 문서 흐름에 따라 배치한다. `top, right, bottom, left` <span style="color: red;">속성을 사용할 수 없다.</span>
+또한, `z-index` 속성을 사용하지 않은 상태에서는 `position: absolute`를 부여한 요소들 기준으로, 아래서부터 차곡차곡 쌓이게 된다.
+
+- `static` - 기본값으로, 요소를 일반적인 문서 흐름에 따라 배치한다. `top, right, bottom, left, z-index` <span style="color: red;">속성을 사용할 수 없다.</span>
 
 - `relative` - 요소를 일반적인 문서 흐름에 따라 배치하지만, 요소의 위치를 지정할 수 있다.
 
@@ -80,23 +82,59 @@ parent: CSS
 }
 ```
 
-<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다. <span style="color: yellowgreen;">flexbox내의 자식 요소들은 전부 `block`레벨 요소</span>가 된다.
+<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다. <span style="color: yellowgreen;">flexbox내의 자식 요소들은 전부 <code>block</code>레벨 요소</span>가 된다.
 
-display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(유연한 박스)로 변환된다.
+✅ flexbox를 사용할때는 부모요소에 `display: flex`를 준다.
+
+`display` 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 `flexbox(유연한 박스)`로 변환된다.
 
 `flex`는 박스레벨 요소, `inline-flex`는 인라인레벨 요소로 변환된다.
+
+### flexbox를 부여한 요소에게 부여하는 속성
 
 - `flex-direction` - 박스의 방향을 지정한다. 값은 `row, column, row-reverse, column-reverse` 등이 있다.
 
 - `align-items` - 박스의 수직 정렬을 지정한다. 값은 `flex-start, flex-end, center, baseline, stretch` 등이 있다.
 
-- `align-self` - `align-items`의 영향에서 벗어나 현재 요소의 수직 정렬을 지정한다. 값은 `flex-start, flex-end, center, baseline, stretch` 등이 있다.
+  `flex-start` | 박스를 위쪽에 정렬한다.
+  `flex-end` | 박스를 아래쪽에 정렬한다.
+  `center` | 박스를 가운데에 정렬한다.
+  `baseline` | 축의 중심 수평선을 기준으로 요소들의 아랫부분을 해당 선에 맞춰서 정렬시킨다. <span style="color: yellowgreen">이미지와 텍스트를 같이 사용하거나 다른 크기의 텍스트들을 맞추기 위해 사용</span>한다.
+  `stretch` | 기본값으로, 높이가 따로 지정되지 않았을 경우, 부모요소의 높이만큼 늘어남.
 
-- `align-content` - 플렉스 항목이 여러 줄로 표시될 때의 배치 방법을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+  ```css
+  .icon-text {
+    display: flex;
+    align-items: baseline;
+  }
+  ```
+
+  ```html
+  <!-- 아이콘과 텍스트 정렬 -->
+  <div class="icon-text">
+    <img src="icon.svg" width="24" height="24" />
+    <span>텍스트</span>
+  </div>
+
+  <!-- 다른 크기의 텍스트 정렬 -->
+  <div class="icon-text">
+    <h2>큰 제목</h2>
+    <p>일반 텍스트</p>
+  </div>
+  ```
+
+- `align-content` - 플렉스 항목이 여러 줄로 표시될 때의 배치 방법을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다. flex-wrap이 wrap일 경우에 사용된다.
 
   <img src="/assets/images/css/flexBox/alignContent.png" alt="align-content" style="height: 70%;">
 
-- `justify-content` - 박스의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around(둘레에 평등한 간격), space-evenly(모든 간격이 동일한 간격)` 등이 있다.
+- `justify-content` - 박스의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+
+  `flex-start` | 박스를 왼쪽에 정렬한다. (모든 웹상의 요소들은 좌 -> 우 방향으로 나열된다.)
+  `flex-end` | 박스를 오른쪽에 정렬한다.
+  `center` | 박스를 가운데에 정렬한다.
+  `space-between` | 박스를 양쪽에 정렬한다.
+  `space-around` | 박스를 둘레에 평등한 간격으로 정렬한다.
+  `space-evenly` | 박스를 모든 간격이 동일한 간격으로 정렬한다.
 
 - `flex-flow` - `flex-direction`과 `flex-wrap`을 한번에 지정한다. 값은 `flex-direction값 flex-wrap값`의 형태로 사용된다.
 
@@ -104,9 +142,11 @@ display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(
 
 - `gap` - 박스 사이의 간격을 지정한다. 값은 `length, %, calc` 등이 있다.
 
+### flexbox의 자식요소들에게 부여하는 속성
+
 - `order` - 박스의 순서를 지정한다. 값은 정수를 사용한다. 기본값은 0이다. 반응형에서 <span style="color: #aaa;">특정 요소의 순서를 낮추고 싶으면 의도적으로 음수의 값</span>을 주면 된다.
 
-- `flex` - 아래 3가지 flex 속성의 축약형. 값은 `flex-grow값, flex-shrink값, flex-basis값`의 형태로 사용된다. 값을 하나만 주면 나머지는 0으로 처리된다.
+- `flex` - 아래 3가지 flex 속성의 축약형. 값은 `flex-grow값, flex-shrink값, flex-basis값`의 형태로 사용된다. `flex-grow`값은 필수값으로, 값을 하나만 준다면 나머지는 0으로 처리된다.
 
   ```css
   .parent {
@@ -129,17 +169,23 @@ display 속성을 `flex` 또는 `inline-flex`로 지정하면 요소가 flexbox(
   }
   ```
 
-- `flex-grow` - 박스의 너비가 넘칠 경우 박스의 너비를 늘리는 정도를 지정한다. 값은 정수를 사용한다. 기본값은 0이다.
+- `flex-grow` - 자식요소들의 너비 비율을 결정한다. 값은 정수를 사용한다. 기본값은 0이다.
 
-- `flex-shrink` - 박스의 너비가 넘칠 경우 박스의 너비를 줄이는 정도를 지정한다. 값은 정수를 사용한다. 기본값은 1이다.
+- `flex-shrink` - 자식요소들의 너비가 줄어들 때의 비율을 결정한다. 값은 정수를 사용한다. 기본값은 1이다.
 
-- `flex-basis` - 박스의 너비를 지정한다. 값은 `px, %, auto` 등이 있다.
+- `flex-basis` - 박스의 기본 크기를 지정한다. 값은 `auto, length(px, em, rem 등), %` 등이 있다. `width` 속성과 비슷하지만 더 유연하게 동작한다.
+
+- `justify-self` - 자식요소들의 수평 정렬을 지정한다. 값은 `flex-start, flex-end, center, space-between, space-around, space-evenly` 등이 있다.
+
+- `align-self` - `align-items`의 영향에서 벗어나 현재 요소의 수직 정렬을 지정한다. 값은 `flex-start, flex-end, center, baseline, stretch` 등이 있다.
 
 ---
 
 ## Grid
 
 <span id="grid">grid</span>는 요소를 그리드로 만든다.
+
+grid는 가로와 세로에 대한 구획이 완벽한 레이아웃일 때 사용하는것이 좋다.
 
 - `grid-template-columns`
 - `grid-template-rows`

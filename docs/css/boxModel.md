@@ -26,6 +26,18 @@ parent: CSS
 - `margin-bottom` - 테두리와 다른 요소 사이의 <u>아래쪽 여백</u>
 - `margin-left` - 테두리와 다른 요소 사이의 <u>왼쪽 여백</u>
 
+✅ **Margin 속성의 응용**
+
+```css
+div {
+  margin: 0 auto;
+}
+```
+
+위 코드에서 `div` 요소의 좌우 여백을 0으로 지정하고 위아래 여백을 자동으로 지정하여 가운데 정렬을 할 수 있다. 이때 주의해야할 점은 `div`에는 `width`가 지정되어 있어야 가운데 정렬이 된다.
+
+이때, `width`값을 고정값으로 지정하고 그리드 레이아웃을 사용하여 레이아웃을 일관적으로 가져갈 수 있게된다.
+
 ---
 
 ## Padding
@@ -54,6 +66,23 @@ parent: CSS
   `ridge` | 3D 돌출된 경계 효과 (groove의 반대 방향)
   `inset` | 요소가 안으로 눌린 듯한 3D 효과
   `outset` | 요소가 바깥으로 튀어나온 듯한 3D 효과 (inset의 반대 효과)
+
+⚠️ **Border의 자연스러운 transition 효과**
+
+```css
+div {
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+div:hover {
+  border: 1px solid black;
+}
+```
+
+위 코드에서 `div` 요소에 마우스를 올리면 테두리 색상이 검정색으로 변경된다. 이렇게 자연스러운 효과를 주기 위해서는 `transition` 속성을 사용해야 한다.
+
+`border`이 없는 상태에서 `border`가 생기게 되면 요소의 크기가 조금 줄어들게 된다. 이 때문에 크기가 갑자기 변동되어 부자연스럽게 `transition`이 되는 현상이 발생한다. 이를 방지하기 위해서는 미리 `border`을 지정하고 투명하게 만들어놓아 크기의 변동이 없도록 하면 된다.
 
 ---
 

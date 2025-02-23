@@ -16,7 +16,7 @@ parent: CSS
 다양한 변형함수들을 알아보자. 해당 변형함수들은 사용시 `transform : 변형함수()` 형식으로 사용된다.
 
 - `translate` - 요소를 이동시키는 속성
-- `rotate` - 요소를 회전시키는 속성
+- `rotate` - 요소를 회전시키는 속성, 값을 양수로 두면 시계방향, 음수로 두면 반시계방향으로 회전한다.
 - `scale` - 요소를 확대하거나 축소하는 속성
 - `skew` - 요소를 기울이는 속성
 - `matrix` - 요소를 변형시키는 속성, 4\*4 행렬을 사용하여 이동, 확대/축소, 회전 등의 변환을 3차원 함수에서 지정해준다.
@@ -200,6 +200,8 @@ transform: perspective(1000px);
 ```
 
 - `perspective` - 요소를 3D로 변형시키는 속성과 함께 사용되는 속성, 값이 클수록 원근감이 덜하다.
+
+  <p style="color: #aaa;">가끔 브라우저 호환성을 위해 <code>perspective</code> 사용시 <a href="/docs/css/index.html#브라우저-접두사">브라우저 접두사</a>를 붙여야 하는 경우가 있다.</p>
 
 - `perspective-origin` - 요소를 3D로 변형시키는 속성의 기준점을 설정하는 속성, `transform-origin`과 같이 x축, y축 값을 설정할 수 있다.
 

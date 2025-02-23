@@ -16,7 +16,7 @@ has_children: true
 
 > 프로젝트 진행 과정 정리
 
-- IA(Information Architecture) 
+- IA(Information Architecture)
 - 와이어프레임
 - WBS(Work Breakdown Structure)
 - 스타일가이드 확립
@@ -51,10 +51,18 @@ github issues 페이지에 정리된것도 확인해보려면 <a href="https://g
 
 ---
 
-## 프로젝트 정리 
+## 프로젝트 정리
 
 > 진행한 프로젝트들을 정리
 
 - [프로젝트 1](https://github.com/issues)
 - [프로젝트 2](https://github.com/issues)
 - [프로젝트 3](https://github.com/issues)
+
+## 느낀점
+
+기획단계에서 어떤 기능을 넣을것인지 상세히 서술하고 그에 맞게 구조를 짜자.
+
+<!-- - 주석정리를 잘하자
+- 진정한 클론코딩은 기존 웹사이트의 부족한 부분을 찾아서 개선하는 것이다.
+- 기획할때 상세 헤더 메인 푸터 그다음 상세페이지 뭐 들어갈지 마인드맵으로 정리해보기, (ai의 구조화도 도움 받아보자!)  -->

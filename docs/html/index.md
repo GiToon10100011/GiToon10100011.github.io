@@ -38,7 +38,21 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   > <span style="color: yellowgreen">target속성</span>을 통해 링크를 열 때 새로운 창을 열지 아니면 현재 창에서 열지를 지정할 수 있다. `target="_blank"`는 새로운 창을 열어주고, `target="_self"`는 현재 창에서 열어준다. (기본값은 `_self`)
 
-- 글자 모양 태그 - `strong, b(bold), em, i(italic), u(underline), small, sub(아래첨자), sup(위첨자), ins(밑줄), del(취소선), mark(형광펜 효과)` 등이 있다. 글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
+  ✅ 앵커태그의 `href`속성에 `mailto:이메일주소`을 붙이면 이메일 링크를 만들 수 있다. 이메일 링크를 누르게 되면 바로 이메일을 전송할 수 있다.
+
+  ```html
+  <a href="mailto:example@example.com">이메일 보내기</a>
+  ```
+
+- 글자 모양 태그 - `strong, b(bold), em, i(italic), u(underline), small, sub(아래첨자), sup(위첨자), ins(밑줄), del(취소선), mark(형광펜 효과)` 등이 있다.
+
+  이때, `strong`과 `b`는 둘다 굵은 글씨를 지정하는데 무엇이 다른걸까?
+
+  이는 사실 뉘앙스의 차이로, `i`와 `em`도 마찬가지이다. `strong`은 본문 내 중요한 글자를 강조하기 위해 사용되며, `b`는 타이틀이나 소제목에 볼드체를 사용하기 위해 사용된다.
+
+  글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
+
+  ![글자 모양 태그](/assets/images/html/copy.png) | `&copy;` HTML 엔티티로 왼쪽의 아이콘을 띄울 수도 있다.
 
 - 미디어 태그 - 자세한건 [여기를](/docs/html/mediaTags.html)를 참고하자.
 
@@ -73,10 +87,6 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   > 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다. 이때문에
   > 스타일링을 할때 선택자를 `tbody`를 넣어야 적용된다.
 
-  ```
-
-  ```
-
 - 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: red">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
   `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
 
@@ -97,6 +107,8 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   `figure` | 주로 문서에서 이미지나 동영상 등을 삽입할 때 사용된다. `figure`태그 내에 미디어 태그를 넣는 형식으로 사용한다. `figure`태그 안에는 반드시 `figcaption`태그가 들어가야 한다. `figcaption` 태그 내에 문구를 넣고, `figure` 태그 내에 설명 문구를 부여하고자 하는 요소를 넣는다.
 
   `figcaption` | 주로 문서에서 이미지나 동영상 등의 설명을 지정할 때 사용된다.
+
+  `address` | 주로 문서에서 제작자의 주소 및 연락처 정보를 지정할 때 사용된다. 기본적으로 기울임체가 적용된다.
 
 ---
 
@@ -198,7 +210,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 스크립트 또한 스타일시트와 마찬가지로 인라인, 내부, 외부 방식이 있다.
 
-- 인라인 방식 - 태그 내에 script 속성을 사용하는 방식, [on 이벤트 핸들러](/docs/javascript/index.html) 들을 사용할 수 있다.
+- 인라인 방식 - 태그 내에 script 속성을 사용하는 방식, [on 이벤트 핸들러](/docs/javascript/event.html) 들을 사용할 수 있다.
 - 내부 방식 - head태그 내에 script 태그를 사용하는 방식
 - 외부 방식 - 외부 파일을 불러와 사용하는 방식
 
@@ -215,6 +227,8 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 ```html
 <head>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <!-- 마지막에 커스텀 스타일시트 & 스크립트를 불러오기-->
+  <link rel="stylesheet" href="custom.css" />
   <script src="custom.js"></script>
 </head>
 ```

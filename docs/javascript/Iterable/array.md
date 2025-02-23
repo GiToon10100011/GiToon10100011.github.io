@@ -105,4 +105,27 @@ const allEven = array.every((item) => item % 2 === 0);
 console.log(allEven); // false
 ```
 
-### 배열의 메소드 체이닝
+### includes
+
+`includes()` 메소드는 배열에 특정 요소가 포함되어 있는지 확인하여 그 결과를 불리언 값으로 반환한다.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+const hasThree = array.includes(3);
+console.log(hasThree); // true
+```
+
+---
+
+## 배열의 구조분해할당
+
+배열의 구조분해할당은 배열의 요소를 변수에 할당하는 방법이다.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = array;
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
+```
+

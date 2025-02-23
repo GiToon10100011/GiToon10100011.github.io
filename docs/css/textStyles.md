@@ -34,11 +34,13 @@ parent: CSS
 
 - `letter-spacing` - 글자 간격(자간)
 
-- `line-height` - 글자 줄 간격(행간)
+- `line-height` - 텍스트의 높이 조절, 행간은 오히려 `margin`으로 조절하는 것이 좋다.
 
 - `word-spacing` - 단어 간격
 
-- `white-space` - 공백 처리 방법, 값은 `normal, nowrap, pre, pre-wrap, pre-line` 등이 있으며, 기본값은 `normal`이다.
+- `white-space` - 공백 처리 방법, 값은 `normal, nowrap, pre, pre-wrap, pre-line` 등이 있으며, 기본값은 `normal`이다. 
+
+    `html`은 기본적으로 부모요소 내의 자식요소가 텍스트일 경우 보호하려는 속성이 있다. 이를 바로 `white-space`라 하는데, 텍스트가 영역 밖으로 나가는 경우 자동으로 줄바꿈을 시켜준다. 이를 방지하는 것이 바로 `no-wrap`값이다.
 
   `normal` | 연속 공백을 하나로 합치고, 자동 줄바꿈 발생 <span style="color: #aaa;">(기본값)</span>
   `nowrap` | 연속 공백을 합치지만 줄바꿈 없이 한 줄로 표시 <span style="color: #aaa;">(overflow 발생)</span>
@@ -68,6 +70,17 @@ parent: CSS
   white-space: nowrap;
 }
 ```
+한줄을 그냥 말줄임표로 표시하고 싶다면 아래와 같이 사용하면 된다.
+
+```css
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+```
+
+이 3인방은 항상 같이 사용된다.
 
 ## 문단 스타일링
 

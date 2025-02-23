@@ -27,6 +27,34 @@ DOM은 동기적 처리방식으로 코드를 처리하기 때문에, 브라우�
 - 동기적 처리방식 - 알바가 주문을 받는 중에는 음식이나 음료를 제작하지 못함.
 - 비동기적 처리방식 - 키오스크를 통해 주문을 받으면서 음료를 동시에 제작할 수 있게 됨.
 
+옛날에 `defer`속성이 없었을 때는 `DOMContentLoaded` 이벤트를 사용하여 동기적 처리방식을 구현했다.
+
+```javascript
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded"); // 문서가 완전히 로드되면 실행됨
+});
+```
+
+---
+
+## DOM 속성
+
+- `document.title`: 문서 제목
+- `document.URL`: 문서 URL
+- `document.domain`: 문서 도메인
+- `document.referrer`: 문서 참조 URL
+- `document.body`: 문서 본문
+- `document.head`: 문서 헤드
+- `document.outerHeight`: 내 현재 브라우저 창의 높이
+- `document.outerWidth`: 내 현재 브라우저 창의 너비
+- `document.scrollHeight`: 문서의 총 높이
+- `document.scrollWidth`: 문서 너비
+- `document.clientHeight`: 문서 높이
+- `document.clientWidth`: 문서 너비
+- `document.offsetHeight`: 문서 높이
+- `document.offsetWidth`: 문서 너비
+
+
 ---
 
 ## DOM 조작 메소드
@@ -55,6 +83,8 @@ DOM은 동기적 처리방식으로 코드를 처리하기 때문에, 브라우�
 - `document.getAttributeNode()`: 속성 노드 출력
 - `document.setAttributeNode()`: 속성 노드 추가
 - `document.removeAttributeNode()`: 속성 노드 삭제
+
+❗️ 사실 `document`는 `window`라는 객체의 하위 속성인데, `window`는 최상위 객체이기 때문에 생략이 가능하여 `document.~` 형식으로 사용할 수 있다.
 
 ---
 
@@ -94,9 +124,11 @@ const childElement = document.querySelector('parent > child');
 const multipleElement = document.querySelectorAll("[css 선택자]");
 ```
 
-`querySelectorAll`은 여러 요소들을 <span style="color: yellowgreen">배열과 유사한 형태</span>로 값을 반환한다. 기존의 `querySelector`과 똑같이 인자값으로는 `css 선택자`를 받는데, 이때 선택자에 해당되는 모든 요소들을 `NodeList` 형태로 반환한다.
+`querySelectorAll`은 여러 요소들을 <span style="color: yellowgreen">배열과 유사한 형태</span>로 값을 반환한다. 기존의 `querySelector`과 똑같이 인자값으로는 `css 선택자`를 받는데, 이때 선택자에 해당되는 모든 요소들을 `NodeList` 형태로 반환한다. 
 
 `NodeList`는 배열과 동일한 자료구조는 아니지만 <span style="color: yellowgreen">이터러블한 객체</span>로, 배열의 사용 가능 메소드들을 거의 다 사용가능하다. (`map, filter, reduce` 등은 사용할 수 없으며, 이들을 사용하기 위해서는 `Array.from()`을 통해 배열로 변환하여 사용할 수 있다. 이는 [여기](/docs/javascript/array.html)에서 더 자세히 알아볼 수 있다.)
+
+‼️ 이러한 점들 때문에 `querySelectorAll`로 가져온 요소는 반복문을 거쳐야지만 사용할 수 있다. 
 
 ```javascript
 multipleElement.forEach((element) => {
@@ -128,7 +160,7 @@ style객체는 객체 형태로 스타일을 부여할 수 있는 객체이다. 
 
 > 스타일 속성을 부여할 때, 속성 이름에 띄어쓰기가 있는 경우 띄어쓰기를 빼고 소문자로 입력해야 한다. 예를 들어, `background-color`는 `backgroundColor`로 입력해야 한다. 즉, 카멜표기법으로 속성을 입력한다고 생각하면 된다. 이는 `스크립트`에서 <span style="color: red">객체 속성에 특수문자는 들어갈 수 없</span>기 때문이다.
 
-### JS로 동적으로 클래스 부여하기
+### JS로 동적으로 클래스 제어하기
 
 ```javascript
 const element = document.querySelector("div");
@@ -138,6 +170,20 @@ element.classList.toggle("class");
 ```
 
 `classList`는 클래스 목록을 관리하는 객체이다. 이 객체는 클래스를 추가하거나 제거하거나 토글할 수 있다. 이때 클래스는 문자열의 형태로 입력한다.
+
+### JS로 동적으로 속성 제어하기
+
+```html
+<div id="example">Hello <span style="display: none;">world</span>!</div>
+```
+
+```javascript
+const element = document.querySelector("div");
+element.setAttribute("attribute", "value");
+element.getAttribute("attribute"); //value
+element.removeAttribute("attribute");
+element.hasAttribute("attribute"); //false
+```
 
 ---
 

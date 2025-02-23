@@ -206,3 +206,60 @@ option[value = "$"]{$일}*31
 ...
 <option value="31">31일</option>
 ```
+
+$를 2번 쓰면 앞에 0을 채워준다. 예를 들어, `option[value = "$"]{$일}\*31`이라면, 각각 `01일, 02일, 03일, ... , 31일`의 내용이 들어가 있는 option태그가 형성된다.
+
+```html
+option[value = "$$"]{$일}*31
+```
+
+```html
+<option value="01">01일</option>
+<option value="02">02일</option>
+...
+<option value="31">31일</option>
+```
+
+`$`를 `@`랑 같이 사용하여 숫자를 텍스트로 자동 생성할 수 있다.
+
+```html
+ul>li.item$@*5
+```
+
+```html
+<ul>
+  <li class="item1">1</li>
+  <li class="item2">2</li>
+  <li class="item3">3</li>
+  <li class="item4">4</li>
+  <li class="item5">5</li>
+</ul>
+```
+
+이때, `@-` 를 사용하면 <span style="color: yellowgreen;">카운트를 역순</span>으로 셀 수 있다.
+
+```html
+ul>li.item$@-*3
+```
+
+```html
+<ul>
+  <li class="item3">3</li>
+  <li class="item2">2</li>
+  <li class="item1">1</li>
+</ul>
+```
+
+`@`를 활용하여 <span style="color: yellowgreen;">특정 숫자부터 카운트</span>되도록 할 수 있다.
+
+```html
+ul>li.item$@3*3
+```
+
+```html
+<ul>
+  <li class="item3">3</li>
+  <li class="item4">4</li>
+  <li class="item5">5</li>
+</ul>
+```

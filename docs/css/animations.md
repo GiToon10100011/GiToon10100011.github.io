@@ -16,7 +16,7 @@ parent: CSS
 transition: all 1s linear 0.5s;
 ```
 
-- `transition` - 아래 속성들의 축약형. `transition: property duration timing-function delay`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다.
+- `transition` - 아래 속성들의 축약형(short-hand property). `transition: property duration timing-function delay`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다.
 - `transition-property` - 애니메이션을 적용할 요소의 스타일 속성을 지정한다. 값은 `all, none` 또는 속성 이름으로 지정한다.
 - `transition-duration` - 애니메이션의 지속 시간을 지정한다. 기본값은 `0s`이다.
 - `transition-timing-function` - 애니메이션의 타이밍 함수를 지정한다. 값은 `ease, ease-in, ease-out, ease-in-out, linear, cubic-bezier(n,n,n,n)` 등이 있다.
@@ -51,6 +51,8 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 
 > `display`, `z-index`, `속성의 값이 auto일 경우`, `background가 linear-gradient와 이미지를 같이 사용한 경우` 등
 
+이때문에 js에서 background 사진만 지정해두고, css에서 전후 문제 선택자 등을 활용하여 필터를 씌워주는것이 좋다.
+
 ---
 
 ## Animation
@@ -61,23 +63,23 @@ cubic-bezier 함수는 4개의 값을 받아서 애니메이션의 타이밍을 
 animation: rotation 1s linear 0.5s infinite;
 ```
 
-- `animation` - 아래 속성들의 축약형. `animation: name duration timing-function delay iteration-count direction fill-mode play-state`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다. 
+- `animation` - 아래 속성들의 축약형. `animation: name duration timing-function delay iteration-count direction fill-mode play-state`와 같은 형식으로 사용한다. 필요한 속성들만 사용하여 불필요한 속성들은 생략하여 사용할 수 있다.
 
 ### ⚠️ 이때 순서가 중요한 속성들이 몇가지 존재한다.
 
-  > `duration`(필수)은 항상 `delay`(선택)보다 앞에 위치 <br> `iteration-count`는 `duration`/`delay` 다음에 위치 <br> `animation-duration`은 필수값 <br>
-  > 다른 속성들은 생략 가능하나, 포함할 경우 지정된 순서를 따라야 함.
+> `duration`(필수)은 항상 `delay`(선택)보다 앞에 위치 <br> `iteration-count`는 `duration`/`delay` 다음에 위치 <br> `animation-duration`은 필수값 <br>
+> 다른 속성들은 생략 가능하나, 포함할 경우 지정된 순서를 따라야 함.
 
-  ```css
-  /* duration(1s) → delay(0.5s) */
-  animation: slide 1s ease 0.5s 3 alternate;
+```css
+/* duration(1s) → delay(0.5s) */
+animation: slide 1s ease 0.5s 3 alternate;
 
-  /* duration만 사용 (delay 생략) */
-  animation: pulse 200ms linear infinite;
+/* duration만 사용 (delay 생략) */
+animation: pulse 200ms linear infinite;
 
-  /* 잘못된 예: delay가 duration 앞에 위치 */
-  animation: bounce 0.5s 2s ease; /* 0.5s를 delay로, 2s를 duration로 해석됨! */
-  ```
+/* 잘못된 예: delay가 duration 앞에 위치 */
+animation: bounce 0.5s 2s ease; /* 0.5s를 delay로, 2s를 duration로 해석됨! */
+```
 
 - `animation-name` - keyframes로 지정한 애니메이션의 이름을 지정한다.
 - `animation-duration` - 애니메이션의 지속 시간을 지정한다. 기본값은 `0s`이다.

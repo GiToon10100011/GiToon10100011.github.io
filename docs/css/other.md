@@ -41,3 +41,5 @@ parent: CSS
   `invert` | 요소의 색상을 반전한다.
   `saturate` | 요소의 채도를 조절한다.
   `sepia` | 요소에 세피아 필터를 추가한다.
+
+- `backdrop-filter` - 요소의 배경(뒤쪽)에 필터를 추가한다. 값은 `backdrop-filter: blur(10px);` 형식으로 사용한다.

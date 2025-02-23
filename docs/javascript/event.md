@@ -23,7 +23,15 @@ parent: Javascript
 ```javascript
 const element = document.querySelector("[css 선택자]");
 
-element.addEventListener("이벤트 이름", 이벤트 핸들러);
+element.addEventListener("이벤트 이름", 콜백함수(이벤트가 발생했을 때 실행되는 함수));
+```
+
+### on 이벤트 핸들러
+
+> on 이벤트 핸들러는 이벤트 핸들러를 등록하는 방법 중 하나이다.
+
+```javascript
+element.on이벤트 이름 = 이벤트 핸들러;
 ```
 
 ---
@@ -57,9 +65,9 @@ mouseover&mouseout | mouseenter&mouseleave
 
 ### Keyboard Event
 
-- `keydown`
-- `keyup`
-- `keypress`
+- `keydown` - 키를 누르고 있는 상태
+- `keyup` - 키를 눌렀다 땠을 때 실행
+- `keypress` - 키를 눌렀을 때 실행
 
 ### Form Event
 
