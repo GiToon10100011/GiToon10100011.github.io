@@ -22,6 +22,20 @@ parent: ETC.
 
 협업 프로젝트를 할 때는 레포지토리에 브랜치로 작업을 나누어 진행한다.
 
+✅ bash에서는 명령어를 한꺼번에 사용하는 방법이 있다.
+
+```bash
+git add . && git commit -m "커밋 메시지" && git push origin main
+```
+
+파워쉘환경에서는 다음과 같이 작성한다.
+
+```bash
+git add .; git commit -m "커밋 메시지"; git push origin main
+```
+
+이러면 순차적으로 명령어를 한번에 실행할 수 있다.
+
 ---
 
 ## 레포지토리
@@ -136,11 +150,35 @@ git -v
 
 <h3 id="push" class="hidden-header">push</h3>
 
-- `push` - 로컬상에서 일어난 변동사항을 클라우드 공간에 업로드하는 작업이다.
+- `push` - 로컬상에서 일어난 변동사항을 원격 저장소에 업로드하는 작업이다.
+
+  ```bash
+  git push
+  ```
+
+  `git push`는 현재 브랜치의 변경사항을 연결된 원격 브랜치(upstream branch)에 푸시한다. 업스트림이란 로컬 브랜치와 원격 브랜치 간의 연결 관계를 의미한다.
+
+  main 브랜치의 경우:
+
+  - `git clone`으로 저장소를 복제할 때 자동으로 업스트림이 설정된다
+  - `git init`으로 새 저장소를 만들 때는 첫 push 시 `-u` 옵션을 사용하는데, 이것이 바로 초기 설정 과정이다:
+    ```bash
+    git push -u origin main  # 저장소 초기화 시 사용했던 이 명령어가 업스트림을 설정한다
+    ```
+
+  새로운 브랜치를 만들 때는 수동으로 업스트림을 설정해야 한다:
+
+  ```bash
+  git push -u origin feature  # feature 브랜치의 업스트림을 origin/feature로 설정
+  ```
+
+  한번 업스트림을 설정하면 이후에는 `git push`만으로도 설정된 원격 브랜치로 푸시할 수 있다. 하지만 어느 브랜치로 푸시되는지 명시적이지 않을 수 있다.
 
   ```bash
   git push origin main
   ```
+
+  `git push origin main`은 명시적으로 로컬의 main 브랜치를 원격의 main 브랜치로 푸시한다. 협업 시에는 이처럼 명시적인 방식을 사용하는 것이 실수를 방지할 수 있어 더 안전하다.
 
 <h3 id="fetch" class="hidden-header">fetch</h3>
 
@@ -175,6 +213,56 @@ git -v
 
   ```bash
   git checkout (커밋 해시)
+  ```
+
+  ✅ checkout 명령어를 통해 특정 파일만을 현재 브랜치로 가져올 수도 있다.
+
+  ```bash
+  git checkout (가져올 파일이 있는 브랜치 이름) -- (파일 경로)
+  ```
+
+  사용 예시:
+
+  ```bash
+  git checkout feature-detail -- src/components/Detail.js src/components/List.js
+  ```
+
+  위의 명령어는 `feature-detail` 브랜치에서 `src/components/Detail.js`와 `src/components/List.js` 파일을 가져오는 명령어이다. 이처럼 파일을 여러개 가져올 수도 있다.
+
+  이때, 주의해야할 점은 다른 팀원이 만든 새로운 브랜치를 처음으로 가져오거나 가져오고자 하는 브랜치가 로컬상에서 존재하지 않는 경우 오류가 발생한다. 이때는 다음과 같이 작성한다.
+
+  ```bash
+  git fetch
+  git checkout -b feature-detail origin/feature-detail
+  ```
+
+  위의 명령어는 `feature-detail` 브랜치를 가져오는 명령어이다.
+
+  이때, `origin/feature-detail`은 원격 저장소에 있는 `feature-detail` 브랜치를 의미한다.
+
+<h3 id="branch-upload" class="hidden-header">브랜치 생성하기</h3>
+
+- `checkout` 명령어에 `-b` 플래그를 붙이면 새로운 브랜치를 생성하고 이동할 수 있다.
+
+  ```bash
+  git checkout -b (브랜치 이름)
+  ```
+
+  브랜치를 분업할때 이름은 보통 `feature-"기능"`과 같은 형태의 제목으로 작성한다.
+
+  이때, 로컬상에서 만든 브랜치를 원격 저장소에도 업데이트하기 위해서 다음과 같이 작성한다.
+
+  ```bash
+  git push origin -u (브랜치 이름)
+  ```
+
+  이때, `-u` 플래그는 `--set-upstream` 플래그로, 로컬 브랜치와 원격 브랜치를 연결하는 역할을 한다.
+
+  ⭐️ 이보다 더 간단하게 브랜치를 생성하고 원격에 업로드하는 방법이 있다.
+
+  ```bash
+  git checkout -b (생성할 브랜치 이름)
+  git push --set-upstream origin (생성할 브랜치 이름)
   ```
 
 <h3 id="log" class="hidden-header">log</h3>
@@ -213,6 +301,34 @@ git -v
   git reset (커밋 해시)
   ```
 
+<h3 id="diff" class="hidden-header" style>diff/h3>
+
+- `diff` - 현재 브랜치와 다른 브랜치끼리의 차이점을 비교할 수 있다.
+
+  ```bash
+  git diff (브랜치 이름)
+  ```
+
+<h3 id="stash" class="hidden-header" style>stash</h3>
+
+- `stash` - 작업 중인 내용을 임시로 저장하는 작업이다.
+
+  ```bash
+  git stash
+  ```
+
+  실수로 현재 작업중인 디렉토리와 원격상의 디렉토리가 달라 커밋이 맞지 않게 되면 `stash`를 통해 임시로 현재 내용을 저장하여 원격 저장소를 `pull`한 후 임시저장 해둔 내용을 다시 `apply` 할 수 있다.
+
+  ```bash
+  git stash apply
+  ```
+
+  또는, 임시저장한 내용을 삭제하고 싶다면 다음과 같이 작성한다.
+
+  ```bash
+  git stash pop
+  ```
+
 ### ⚠️ 깃 폴더 지정 취소
 
 ```bash
@@ -225,23 +341,66 @@ rm -r .git
 git rm -r --cached -r (파일 이름 또는 폴더 이름)
 ```
 
-## 기타 팁
+---
 
-여러 명령어를 한번에 실행하고 싶다면 다음과 같이 작성하면 된다.
-
-```bash
-git add . && git commit -m "커밋 메시지" && git push origin main
-```
-
-`git add .` | staging area에 모든 파일을 추가 (`.`은 현재 디렉토리를 의미하며, 현재 디렉토리의 모든 파일을 의미.)
-`git commit -m "커밋 메시지"` | 커밋 메시지를 작성하고 커밋을 생성
-`git push origin main` | 원격 저장소에 푸시
-
-파워쉘 환경에서는 다음과 같이 작성하면 된다.
+## 커스텀 명령어 사용하기
 
 ```bash
-git add .; git commit -m "커밋 메시지"; git push origin main
+git config --global alias.(커스텀 명령어 이름) (실제 실행될 명령어)
 ```
+
+> bash는 alias를 사용하여 커스텀 명령어를 만들 수 있다. 
+
+사용예시: 
+
+```bash
+git config --global alias.acp "git add . && git commit -m 'update' && git push origin main"
+```
+
+위와 같이 alias를 선언하고 이후에는 `git acp` 명령어를 사용하면 된다. 허나, 해당 명령어를 사용하게 되면 커밋 메시지를 오직 `update`로 설정해야한다. 
+
+물론 사용할때 
+
+```bash
+git acp "커밋 메시지"; git push
+```
+위와 같이 사용하면 되긴 하지만, 아무래도 좀 불편하다. 
+
+`git` 명령어는 기본적으로 매우 정적으로, 동적으로 사용하기 위해 `shell 스크립트`의 변수를 사용할 수 있다. 
+
+```bash
+git config --global alias.acp '!git add . && git commit -m "$1" && git push;'
+```
+
+위와 같이 작성하면 된다. 
+
+⚠️ **주의사항**
+
+1. `!`접두사를 반드시 추가해야 shell 명령어로 인식한다. 
+
+2. 전체 명령어를 작은 따옴표로 감싸줘야한다. 
+
+3. `shell 스크립트`이므로, 반드시 `&&`를 사용하여 명령어를 구분한다.
+
+이때, shell 스크립트의 변수를 사용할때 명령어 뒤에 파라미터를 넣어서 사용한다.
+
+```bash
+git acp "커밋 메시지"
+```
+
+`$1`은 커스텀 명령어를 사용할때 첫번째 파라미터를 의미한다. 만약 복수의 파라미터를 사용하고 싶다면 `$2, $3 ...` 등과 같이 `$n`의 형태로 사용할 수 있다.
+
+하지만, `git config --global`로 `alias`를 설정한다면, 다른 기기에서는 적용되지 않는다. 이러한 경우를 방지하기 위해서는 따로 `.gitconfig` 파일을 만들어 레포지토리에 업로드 하여 `alias` 사용을 용이하게 하자. 
+
+```bash
+# .gitconfig
+[alias]
+  acp = "!git add . && git commit -m "$1" && git push;"
+```
+
+위와 같이 작성하면 된다. 
+
+이를 응용하여, git 명령어 뿐만 아니라, 커스텀 bash 스크립트를 제작하여 더 많은 기능을 사용할 수 있다. 
 
 ---
 
@@ -283,6 +442,8 @@ git config --unset --global user.email
 
 <i style="color: #aaa;">만약 그래도 안되면 제어판에서 자격증명을 제거하고 다시 설정을 해보자.</i>
 
+---
+
 ### .gitignore
 
 .gitignore 파일은 레포지토리에서 무시할 파일을 지정하는 파일이다. 업로드하고 싶지 않은 폴더 및 파일명을 .gitignore파일에 추가하면 된다.
@@ -294,3 +455,54 @@ git config --unset --global user.email
 .env
 node_modules
 ```
+
+---
+
+### 협업환경 설정
+
+#### 브랜치 보호
+
+협업환경에서는 실수로 메인 브랜치(최종 프로덕트)에 업로드하지 않기위해 브랜치를 보호해야한다. 이는 브랜치설정을 통해 보호할 수 있다.
+
+```
+레포지토리의 settings에서 branches탭의 add classic branch protection rule을 추가한다.
+
+이때, branch name pattern에 보호할 브랜치를 선택하고,
+
+- Require a pull request before merging 체크
+- lock branch 체크
+- do not allow bypassing the above settings 체크
+
+```
+
+이렇게 설정하면 메인 브랜치에 업로드하지 않기 위해 풀 리퀘스트를 생성해야한다.
+
+#### 풀 리퀘스트하기
+
+완성된 데이터를 병합하고 싶다면 풀 리퀘스트를 생성해야한다.
+
+Pull requests탭에서 New pull request를 클릭한다.
+
+이때, base repository에 병합이 완료될 브랜치를 선택하고, compare repository에 병합할 브랜치를 선택한다.
+
+PM은 pull request 알림을 보고 코드 리뷰를 진행하고 Review changes를 클릭한다.
+
+`Request Changes` | 리뷰 후 수정사항을 요청할 수 있다. (거절)
+`Approve` | 리뷰 후 병합을 진행할 수 있다. (승인)
+`Comment` | 리뷰 후 코멘트를 남길 수 있다. (추가내용)
+
+PM이 Approve를 했다면 이후에 Merge Pull Request를 클릭하여 병합을 진행한다.
+
+마지막으로 PM이 confirm merge를 클릭하여 병합을 완료한다.
+
+⚠️ 이때, 팀원들이 여러명이 갑자기 Pull Request를 하게 되면 conflict가 발생할 수 있으므로 Github에서 지시하는 Command Line을 통해 해결해야한다.
+
+---
+
+## ‼️ Git 최대 파일 용량 초과
+
+> 레포지토리에 용량이 너무 큰 파일을 올리게 되면 레포지토리 용량이 초과되어 오류가 발생할 수 있다.
+
+이러한 오류는 상당히 성가셔서, `git reset head` 명령어를 통해 최근 커밋을 초기화하고 다시 커밋을 진행하는 방법을 사용한다.
+
+만약 커밋이 여러번 된 상태라면 `git reset HEAD~n` 명령어를 통해 n번째 커밋 상태로 되돌리고 다시 커밋을 진행할 수 있다.

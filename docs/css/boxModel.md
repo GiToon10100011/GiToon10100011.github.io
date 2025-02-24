@@ -53,8 +53,50 @@ div {
 ## Border
 
 - `border` - 아래 속성들의 축약형으로, `border: 1px solid black;`와 같은 형식으로 사용한다. 이 때, 축약형은 <span style="color: yellowgreen;">테두리 두께, 테두리 스타일, 테두리 색상</span>을 한번에 지정해줄 수 있다.
-- `border-radius` - 테두리 모서리를 둥글게 만들어준다. 이 때, 둥글게 만들어주는 값은 테두리 모서리의 반지름이다. 단위는 `px, %, em`으로 준다. `margin`과 마찬가지로 4개의 값을 지정할 수 있다.
+- `border-radius` - 테두리 모서리를 둥글게 만들어준다. 이 때, 둥글게 만들어주는 값은 테두리 모서리의 반지름이다. 단위는 `px, %, em`으로 준다. `margin`과 유사하게 4개의 값을 지정할 수 있다.
+
+  값이 1개일 경우 | 좌상단, 우상단, 우하단, 좌하단 모두 동일한 값
+  값이 2개일 경우 | 좌상단, 우상단, 우하단, 좌하단 순서대로 값 지정
+  값이 3개일 경우 | 좌상단, 우상단, 우하단, 좌하단 순서대로 값 지정
+  값이 4개일 경우 | 좌상단, 우상단, 우하단, 좌하단 순서대로 값 지정
+
+  이때, border-radius는 중첩해서 사용할 수도 있다. 예를 들어,
+
+  ```css
+  border-radius: 20px 10px / 120px 50px;
+  ```
+
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <div style="border: 2px solid white; width: 200px; height: 150px; border-radius: 20px 10px / 120px 50px;">
+      <div style="padding: 20px;">
+        타원형 모서리 예시
+      </div>
+    </div>
+  </div>
+
+  위 코드는 다음과 같이 해석됩니다:
+
+  - `20px 10px`: 첫 번째 값들은 시계방향으로 각 모서리에 순서대로 적용된다.
+
+  - `120px 50px`: 두 번째 값들도 같은 방식으로 적용된다.
+
+  즉, 각 모서리는 (가로크기/세로크기) 형태로 타원을 그리게 된다:
+
+  - 왼쪽 위 모서리: `20px/120px`
+  - 오른쪽 위 모서리: `10px/50px`
+  - 오른쪽 아래 모서리: `20px/120px`
+  - 왼쪽 아래 모서리: `10px/50px`
+
 - `border-width` - 테두리 두께, 값은 `thin, medium, thick, px` 등이 있다.
+
+  border-width도 값을 여러개 지정할 수 있다. 예를 들어,
+
+  ```css
+  border-width: 10px 20px 30px 40px;
+  ```
+
+  위 코드에서 10px은 위쪽 테두리 두께, 20px은 오른쪽 테두리 두께, 30px은 아래쪽 테두리 두께, 40px은 왼쪽 테두리 두께이다.
+
 - `border-color` - 테두리 색상
 - `border-style` - 테두리 스타일, 값은 `dotted, dashed, solid, double, groove, ridge, inset, outset` 등이 있다.
 
