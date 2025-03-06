@@ -180,3 +180,359 @@ html {
   color: #666;
   margin-top: 0.5rem;
 }
+
+// 특정 레이아웃에만 적용되는 TOC 스타일
+.special-toc-layout {
+  .toc {
+    color: var(--body-text-color);
+    font-size: 0.75rem;
+    background: var(--body-background-color);
+
+    // 데스크탑에서는 오른쪽 사이드바로 표시
+    @media (min-width: 75em) {
+      position: fixed;
+      right: 0;
+      top: 4rem;
+      max-width: 240px;
+      height: calc(100vh - 6rem);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.75rem;
+      padding-left: 4rem;
+      margin-right: 0px;
+      width: 240px;
+      display: block;
+    }
+    @media (min-width: 85em) {
+      width: 300px;
+    }
+    @media (min-width: 95em) {
+      width: 360px;
+    }
+
+    // 모바일 및 태블릿에서는 상단에 표시
+    @media (max-width: 74.99em) {
+      position: static;
+      width: 100%;
+      max-width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: block;
+      background: var(--body-background-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      overflow-x: auto;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      &::-webkit-scrollbar-thumb {
+        background: var(--link-color);
+        border-radius: 3px;
+      }
+
+      & > ul {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+
+        & > li {
+          margin-right: 1.5rem;
+          border-left: none;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    // 나머지 TOC 스타일은 그대로 유지
+    a.toc-active {
+      font-weight: bold;
+      transition: all 0.125s ease-in 0s;
+      font-size: 0.8rem;
+      color: white;
+      &::before {
+        content: "👉";
+        margin-right: 0.5rem;
+      }
+    }
+
+    &::before {
+      content: "✨ 목차";
+      display: block;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--link-color);
+    }
+
+    & > ul {
+      list-style-type: none;
+      list-style: none;
+      margin-bottom: 0.1rem;
+      padding-left: 0;
+      position: relative;
+
+      @media (min-width: 75em) {
+        & > li {
+          border-left: 1px solid rgba(255, 255, 255, 0.3);
+          padding-left: 0.5rem;
+        }
+      }
+    }
+
+    ul li {
+      list-style: none;
+      word-break: keep-all;
+      &::before {
+        display: none;
+      }
+    }
+
+    a {
+      color: var(--body-text-color);
+      opacity: 0.7;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--link-color);
+        opacity: 1;
+        background: var(--border-color);
+      }
+    }
+  }
+}
+
+// 데스크탑용 TOC
+.desktop-toc {
+  color: var(--body-text-color);
+  font-size: 0.75rem;
+  background: var(--body-background-color);
+
+  @media (min-width: 75em) {
+    position: fixed;
+    right: 0;
+    top: 4rem;
+    max-width: 240px;
+    height: calc(100vh - 6rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.75rem;
+    padding-left: 4rem;
+    margin-right: 0px;
+    width: 240px;
+    display: block;
+  }
+  @media (min-width: 85em) {
+    width: 300px;
+  }
+  @media (min-width: 95em) {
+    width: 360px;
+  }
+
+  // 모바일 및 태블릿에서는 숨김
+  @media (max-width: 74.99em) {
+    display: none;
+  }
+
+  a.toc-active {
+    font-weight: bold;
+    transition: all 0.125s ease-in 0s;
+    font-size: 0.8rem;
+    color: white;
+    &::before {
+      content: "👉";
+      margin-right: 0.5rem;
+    }
+  }
+
+  &::before {
+    content: "✨ 목차";
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--link-color);
+  }
+
+  & > ul {
+    list-style-type: none;
+    list-style: none;
+    margin-bottom: 0.1rem;
+    padding-left: 0;
+    position: relative;
+
+    & > li {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      padding-left: 0.5rem;
+    }
+  }
+
+  ul li {
+    list-style: none;
+    word-break: keep-all;
+    &::before {
+      display: none;
+    }
+  }
+
+  a {
+    color: var(--body-text-color);
+    opacity: 0.7;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--link-color);
+      opacity: 1;
+      background: var(--border-color);
+    }
+  }
+}
+
+// 모바일 및 태블릿용 TOC
+.mobile-toc {
+  color: var(--body-text-color);
+  font-size: 0.75rem;
+  background: var(--body-background-color);
+  display: none;
+
+  @media (max-width: 74.99em) {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--body-background-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &::before {
+    content: "✨ 목차";
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--link-color);
+  }
+
+  & > ul {
+    @media (max-width: 74.99em) {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 0.5rem;
+    }
+
+    list-style-type: none;
+    list-style: none;
+    margin-bottom: 0.1rem;
+    padding-left: 0;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--link-color);
+      border-radius: 3px;
+    }
+
+    & > li {
+      @media (max-width: 74.99em) {
+        margin-right: 1.5rem;
+        border-left: none;
+      }
+
+      @media (min-width: 75em) {
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        padding-left: 0.5rem;
+      }
+    }
+  }
+
+  ul li {
+    list-style: none;
+    word-break: keep-all;
+    &::before {
+      display: none;
+    }
+  }
+
+  a {
+    color: var(--body-text-color);
+    opacity: 0.7;
+    text-decoration: none;
+
+    &:hover,
+    &.toc-active {
+      color: var(--link-color);
+      opacity: 1;
+    }
+
+    &.toc-active {
+      font-weight: bold;
+      transition: all 0.125s ease-in 0s;
+      font-size: 0.8rem;
+      color: white;
+      &::before {
+        content: "👉";
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// 기존 .toc 클래스는 유지하되, 이 레이아웃에서는 사용하지 않음
+.special-toc-layout .toc {
+  display: none;
+}
+
+// 탑 버튼 스타일
+#top-button {
+  display: none; // 기본적으로 숨김
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--link-color);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken(#0366d6, 10%); // 링크 색상보다 약간 어둡게
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  // 데스크탑에서는 항상 숨김
+  @media (min-width: 75em) {
+    display: none !important; 
+  }
+}

@@ -369,7 +369,7 @@ git acp "커밋 메시지"; git push
 `git` 명령어는 기본적으로 매우 정적으로, 동적으로 사용하기 위해 `shell 스크립트`의 변수를 사용할 수 있다. 
 
 ```bash
-git config --global alias.acp '!git add . && git commit -m "$1" && git push;'
+git config --local alias.acp '!f() { git add . && git commit -m "$1" && git push; }; f'
 ```
 
 위와 같이 작성하면 된다. 
