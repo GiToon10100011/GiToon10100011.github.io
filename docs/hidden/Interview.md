@@ -1198,7 +1198,7 @@ SCSS를 통한 효율적인 스타일 관리 시스템 구축이 뭘 말하는�
 앞으로 대비해야할 질문들이 많이보인다!
 우선 내이력서 위주로 질문을 정리하고, 회사의 요구 기술스택에 대한 질문에 대비해야할 것 같음.
 
-https://velog.io/@yukina1418/%EC%B7%A8%EC%A4%80%EC%83%9D%EB%93%A4%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%A9%B4%EC%A0%91-%EA%B0%80%EC%9D%B4%EB%93%9C
+<a href="https://velog.io/@yukina1418/%EC%B7%A8%EC%A4%80%EC%83%9D%EB%93%A4%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%A9%B4%EC%A0%91-%EA%B0%80%EC%9D%B4%EB%93%9C" target="_blank">신입 면접 질문 대비 블로그</a>
 
 여기 블로그 정말 좋으니 잘 보고 생각하자
 
