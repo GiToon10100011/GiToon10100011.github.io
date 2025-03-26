@@ -12,9 +12,9 @@ Static Web Page(정적 페이지)
 - 문서를 미리 다 만들어놔서 변화가 존재하지 않음. 
 
 Dynamic Server Web Page
-- 문서를 미리 만들 수 없는 페이지 (농구 경기의 스코어 등) 
-- Dynamic Page, Server Page, On Demand Page
-- PHP, Linux, Apache, MySQL을 사용
+- 문서를 미리 만들 수 없는 페이지 (농구 경기의 스코어 등 예측 불가한 페이지) 
+- Dynamic Page / Server Page / On Demand Page
+- LAMP(PHP, Linux, Apache, MySQL)
 - WISA(Windows, IIS, MSSQL, ASP)
 - JSP, Tomcat, MySQL, Linux 등 
 - 서버사이드가 중심인 방식, DOM, JS/jQuery와 sprint/node.js, ASP 등으로 제작
@@ -22,7 +22,7 @@ Dynamic Server Web Page
 Fat Client
 - 기존에는 서버에서 무조건 만들어져서 오는 페이지를 봤어야함. (장바구니 아이템을 삭제할때, DB서버한테 삭제해달라고 부탁해서, 삭제된 문서를 서버측에서 받아왔어야함. )
 - DOM & JS을 사용하게 됨. 
-- 클라이언트의 기능이 많아져 Fat Client가 됨. 
+- 클라이언트의 기능이 많아져 Fat Client라고 불리게 됨. 
 
 SPA 
 - XHR(XMl & HTTP Request)
