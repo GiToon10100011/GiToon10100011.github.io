@@ -31,12 +31,12 @@ SPA
 
 Full-Stack
 - SPA를 원활하게 만들어주는 기능
-- MEAN Stack, MongoDB, Express, Node, Angular
+- MEAN Stack(MongoDB, Express, Node, Angular)
 - React, Vue, Angular + spring/fastAPI/nest.js
 
 Frontend: SSR
-- SPA 정말 좋다. 하지만, SEO최적화가 안됨. (서버에서는 빈페이지만 있으니까 최ㅁ적화가 안됨.)
-- Next, Nuxt(Vue), Angular Universal (가장 미래형)
+- SPA 정말 좋다. 하지만, SEO최적화가 안됨. (서버에서는 빈페이지만 있으니까 최적화가 안됨.)
+- Next, Nuxt(Vue), Angular Universal (가장 미래형) 등과 같은 기술 스택을 활용함.
 
 100개의 페이지가 있는 프로젝트가 있다고 가정하자. 
 CSR이 기반인데, SSR도 필요한 
