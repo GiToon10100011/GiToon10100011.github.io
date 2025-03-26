@@ -56,4 +56,5 @@ false가 먼저 오고 true가 나중에 온다면, falsy의 값이 반환될 �
 
 - 기본값 연산
 - NaN과 Infinity 비교
-	- isNaN(), isFinite() 함수를 통해 비교 확인 가능 
+	- isNaN(), isFinite() 함수를 통해 비교 확인 가능
+
