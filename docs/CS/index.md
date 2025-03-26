@@ -1,6 +1,6 @@
 ---
 layout: home-with-toc
-title: "컴퓨터 공학"
+title: CS
 date: 2025-06-17 16:04:00 +0900
 categories: Coding
 ---
