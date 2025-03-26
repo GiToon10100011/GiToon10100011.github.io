@@ -79,7 +79,7 @@ console.log(sum); // 15
 const array = [1, 2, 3, 4, 5];
 array.forEach((item) => console.log(item)); // 1 2 3 4 5
 ```
-
+ 
 ---
 ## Deque 구현 배열 메소드
 
