@@ -19,6 +19,50 @@ const obj = {
 
 `함수, 배열, 문자열, 숫자, 불리언` 등은 모두 객체에 포함된다.
 
+자바스크립트에서의 객체는 동적으로 크기를 확장시키거나, 속성을 동적으로 할당 시킬 수 있는것이 특징이다. 
+
+```js
+let exam = new Object();
+exam.kor = 30;
+exam.eng = 70;
+exam.math = 80;
+
+console.log(exam.kor + exam.eng); // 100
+```
+
+객체의 속성에 접근하는 방법은 크게 2가지이다. 
+
+1. 온점 표기법
+2. 대괄호 표기법
+
+대괄호표기법은 문자열로 키를 접근하거나, 변수로 키를 직접 접근할 때 사용하며, 이러한 특성때문에 평소에는 객체의 키에 사용하기 힘든 특수문자를 대괄호 표기법을 통해 사용할 수 있다. 
+
+```js
+exam.background-image = "Test" //불가능
+exam["background-image"] = "Test" //가능
+```
+
+이를 이용하여, 모든 데이터를 객체화 시키는 자바스크립트의 특성에 따라 함수를 대괄호 표기법으로 지정하여 동적으로 함수를 바꿔줄 수도 있다. 
+
+```js
+function solution(my_string) {
+    return Array.from(my_string).map(t => {
+        return t[t.charCodeAt() < 91 ? 'toLowerCase' : 'toUpperCase']()
+    }).join('');
+}
+```
+
+객체의 속성을 제거하고 싶을때는 delete예약어를 통해 제거할 수 있다. 
+
+```js
+let exam = new Object();
+exam.kor = 30;
+console.log(exam); //{ kor: 30 }
+
+delete exam.kor;
+console.log(exam); //{}
+```
+
 ---
 
 ### 객체지향형 언어
