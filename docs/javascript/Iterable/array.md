@@ -149,7 +149,7 @@ const arr8 = [1, 2, 3, 4, 5];
 arr8.splice(0, arr8.length, 'x', 'y', 'z'); // 반환값: [1, 2, 3, 4, 5]
 console.log(arr8); // ['x', 'y', 'z']
 ```
-위 코드는 배열의 2번째 인덱스에 "a", "b"를 추가한다. 3번째 인자부터는 추가할 요소들이다.
+세번째 인자 부터는 추가할 값, 2번째 인자값은 1번째 인덱스 부터 몇개의 요소를 제거할 것인지를 결정한다. 
 
 splice는 인자값을 1~2개만 받을 수도 있다.
 
@@ -199,6 +199,43 @@ console.log(array); // [5, 4, 3, 2, 1]
 
 ---
 ## 기타 배열의 메소드
+
+### find
+
+`find()` 메소드는 배열의 요소 중 주어진 함수를 만족하는 첫 번째 요소를 반환한다.
+
+```javascript
+const array = [1, 2, 3, 5, 4];
+const found = array.find((item) => item > 3);
+console.log(found); // 5
+```
+
+find는 배열을 순회하면서 주어진 함수를 만족하는 첫 번째 요소를 반환한다. 만족하는 요소가 없으면 undefined를 반환한다. 
+이때문에 5가 반환되었다.
+
+### findIndex
+
+`findIndex()` 메소드는 배열의 요소 중 주어진 함수를 만족하는 첫 번째 요소의 인덱스를 반환한다.
+
+```javascript
+const array = [1, 2, 3, 5, 4];
+const foundIndex = array.findIndex((item) => item > 3);
+console.log(foundIndex); // 3
+```
+
+`findIndex`는 배열을 순회하면서 주어진 함수를 만족하는 첫 번째 요소의 인덱스를 반환한다. 만족하는 요소가 없으면 `-1`을 반환한다.
+
+### indexOf
+
+`indexOf()` 메소드는 배열의 요소 중 주어진 값이 처음 나타나는 인덱스를 반환한다.
+
+```javascript
+const array = [1, 2, 3, 3, 5, 3];
+const foundIndex = array.indexOf(3); //3의 값이 나타나는 첫 번째 인덱스를 반환
+console.log(foundIndex); // 2
+```
+
+`indexOf`는 배열을 순회하면서 주어진 값이 처음 나타나는 인덱스를 반환한다. 찾지 못하면 `-1`을 반환한다.
 
 ### fill
 
@@ -255,6 +292,72 @@ const array = [1, 2, 3, 4, 5];
 const hasThree = array.includes(3);
 console.log(hasThree); // true
 ```
+
+### join
+
+`join()` 메소드는 배열의 모든 요소를 연결하여 하나의 문자열로 반환한다.
+
+```Javascript
+const array = [1, 2, 3, 4, 5];
+const joined = array.join();
+console.log(joined); // "1, 2, 3, 4, 5"
+```
+
+join은 배열의 요소를 문자열로 변환하여 연결한다. 따라서 배열의 요소가 문자열이 아니면 문자열로 변환된다.
+인자값으로 구분자를 받을 수 있다. 구분자를 생략하면 기본값은 쉼표(,)이다.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+const joined = array.join("-");
+console.log(joined); // "1-2-3-4-5"
+```
+
+### concat
+
+`concat()` 메소드는 배열을 합치고, 합친 배열을 반환한다.
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const combined = array1.concat(array2);
+console.log(combined); // [1, 2, 3, 4, 5, 6]
+```
+concat은 ES6이후 도입된 전개 연산자(...)가 나오면서 더 간단하게 사용할 수 있다.
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const combined = [...array1, ...array2];
+console.log(combined); // [1, 2, 3, 4, 5, 6]
+```
+
+---
+
+## 다차원 배열 평탄화
+
+### flat
+
+`flat()` 메소드는 배열의 중첩된 배열을 하나의 배열로 평탄화하여 반환한다.
+
+```javascript
+const array = [1, [2, 3], [4, 5]];
+const flattened = array.flat();
+console.log(flattened); // [1, 2, 3, 4, 5]
+```
+
+flat은 인자값으로 평탄화할 깊이를 지정할 수 있다. 기본값은 1이다.
+
+### flatMap
+
+`flatMap()` 메소드는 배열의 각 요소에 대해 주어진 함수를 실행하고, 그 결과를 평탄화하여 반환한다.
+
+```javascript
+const array = [1, 2, 3, [4, 5]];
+const mapped = array.flatMap((item) => [item * 2]);
+console.log(mapped); // [2, 4, 6, 8, 10]
+```
+
+flatMap은 `map`과 `flat`을 합친 메소드이다. 
 
 ---
 
