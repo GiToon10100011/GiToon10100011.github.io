@@ -13,9 +13,11 @@ nav_order: 4
 JS로만 운영되며, Node 기반으로 작동된다. 이때문에 리엑트를 사용하기 위해서는 반드시 컴퓨터에 노드가 설치되어 있어야 한다. <br><br>
 노드 준비가 완료되었다면, 다음과 같은 프로젝트 제작절차를 따르면 된다.
 
-1. React 프로젝트를 제작하기 위해서는 `npx create-react-app .` 을 사용한다.
-2. 프로젝트 폴더가 성공적으로 만들어 졌다면, `npm start`로 리엑트 서버를 호출 한다.
+1. React 프로젝트를 제작하기 위해서는 ~~`npx create-react-app .`~~ `npm create vite@latest` 을 사용한다.
+2. 프로젝트 폴더가 성공적으로 만들어 졌다면, `npm run dev`로 리엑트 서버를 호출 한다.
 3. 서버를 닫고 싶을때는 `ctrl + c`<br>
+
+<span style="color:rgb(143, 143, 143)">2025년 02월 14일 기준, cra템플릿의 지원이 종료되어 vite나 기타 번들 시스템을 통해 프로젝트 제작이 권장된다..</span>
 
 제작된 프로젝트 폴더를 살펴보면, <span style = "color : yellowgreen">**node_modules**</span>라는 폴더를 찾을 수 있다. 해당 폴더 안에는 보통 내가 설치한 패키지들이 담겨 있으며, 루트폴더의 package.json의 dependencies에서 모듈이 어느 모듈을 기반으로 동작하는지 등을 확인할 수 있다. <br>
 
@@ -35,7 +37,9 @@ React 프로젝트를 Git에 업로드할때, node_modules는 용량이 크므�
 
 ---
 
-### React를 사용해야 하는 이유 
+### React의 등장배경
+
+> React 이전의 개발환경에서는 
 
 React는 ssr(server-side-rendering)방식이 아닌 <span style = "color: violet">csr(client-side-rendering)</span>방식을 사용한다. <br>
 기존의 DOM은 서버가 클라이언트에 제공한것에 반해, 가상돔(VDOM)은 해당 돔을 그대로 복제해서 클라이언트에서 관리한다. <bR><BR>

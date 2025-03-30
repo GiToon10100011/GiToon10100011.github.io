@@ -170,4 +170,74 @@ let baz = 0 ?? 42 // 0
 특정 값이`NaN`인지 `Infinity`인지 확인하는 방법은 한가지 밖에 없다. 
 `isNaN(), isFinite()` 함수를 통해 비교 확인 가능
 
+---
+## 전개연산자
 
+전개연산자는 배열이나 객체를 펼치는 연산자이다. 배열/객체 내의 요소들을 펼치는 역할을 한다.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+const result = [...array];
+console.log(result) //[1, 2, 3, 4, 5]
+```
+
+전개연산자는 어디에 쓰이냐에 따라 다른 역할을 한다.
+
+- 배열 복사
+
+얕은 복사를 할때 사용한다. (참조타입까지는 연결이 끊어지지 않는다.)
+
+```js
+//원시 타입은 연결이 끊어진다.
+const original = [1, 2, 3];
+const copy = [...original];
+
+// 배열 자체는 별개의 인스턴스
+console.log(original === copy); // false
+
+// 최상위 요소 변경은 서로 영향 없음
+copy[0] = 100;
+console.log(original[0]); // 1 (변경되지 않음)
+console.log(copy[0]); // 100
+
+//but, 참조타입은 연결이 끊어지지 않는다.
+const original = [1, {name: 'John'}, [3, 4]];
+const copy = [...original];
+
+// 참조 타입 요소 변경은 서로 영향을 미침
+copy[1].name = 'Jane';
+copy[2][0] = 99;
+
+console.log(original[1].name); // 'Jane' (변경됨)
+console.log(original[2][0]); // 99 (변경됨)
+```
+
+깊은 복사에 대한 내용은 <a href="/docs/javascript/index.html#deep-copy">여기</a>에서 더 자세히 확인해볼 수 있다.
+
+- 배열 결합
+
+```js
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const result = [...array1, ...array2];
+console.log(result) //[1, 2, 3, 4, 5, 6]
+```
+
+- 객체 복사
+
+```js
+const obj = {a: 1, b: 2, c: 3};
+const result = {...obj};
+console.log(result) //{a: 1, b: 2, c: 3}
+```
+
+- 객체 결합
+
+```js
+const obj1 = {a: 1, b: 2};
+const obj2 = {c: 3, d: 4};
+const result = {...obj1, ...obj2};
+console.log(result) //{a: 1, b: 2, c: 3, d: 4}
+```
+
+- [함수 매개변수](/docs/javascript/function.html#rest-parameter)로 사용되면, 명칭과 사용법이 달라진다.

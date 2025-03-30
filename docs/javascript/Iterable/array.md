@@ -29,9 +29,10 @@ array[2]; // 3
 <mark style="background: #D2B3FFA6;">index번호는 항상 0부터 시작</mark>한다.
 
 ---
-## 배열의 데이터 변환 메소드 
 
-> 대부분의 함수들이 고차함수(Higher Order Functions)로, 다른 함수를 인자로 받거나 함수를 반환하는 함수이다. 해당 섹션에는 없지만 find, findIndex, from 등도 고차함수에 해당된다. 
+## 배열의 데이터 변환 메소드
+
+> 대부분의 함수들이 고차함수(Higher Order Functions)로, 다른 함수를 인자로 받거나 함수를 반환하는 함수이다. 해당 섹션에는 없지만 find, findIndex, from 등도 고차함수에 해당된다.
 
 ### map
 
@@ -58,9 +59,23 @@ console.log(newArray); // [2, 4]
 `sort()` 메소드는 배열의 요소를 정렬하고, 정렬된 배열을 반환한다. 또한, 원본배열을 변경한다.
 
 ```Javascript
-const array = [5, 3, 2, 4, 1];
-array.sort();
-console.log(array); // [1, 2, 3, 4, 5]
+const array1 = [5, 3, 2, 4, 1];
+array1.sort();
+console.log(array1); // [1, 2, 3, 4, 5]
+
+// 주의: sort() 메소드는 기본적으로 요소를 문자열로 변환하여 정렬합니다.
+// 숫자 정렬 시 예상치 못한 결과가 나올 수 있습니다.
+const array2 = [5, 10, 3, 20, 1];
+array2.sort();
+console.log(array2); // [1, 10, 20, 3, 5] (문자열 기준 정렬)
+
+// 숫자를 올바르게 정렬하려면 비교 함수를 제공해야 합니다.
+const array3 = [5, 10, 3, 20, 1];
+array3.sort((a, b) => a - b); // 오름차순 정렬
+console.log(array3); // [1, 3, 5, 10, 20]
+
+array3.sort((a, b) => b - a); // 내림차순 정렬
+console.log(array3); // [20, 10, 5, 3, 1]
 ```
 
 ### reduce
@@ -81,11 +96,12 @@ console.log(sum); // 15
 const array = [1, 2, 3, 4, 5];
 array.forEach((item) => console.log(item)); // 1 2 3 4 5
 ```
- 
+
 ---
+
 ## 자료구조 구현 배열 메소드
 
-[Deque](/docs/CS/index.html#deque)는 양쪽 끝에서 요소를 추가하고 제거할 수 있는 자료구조이다. JS에서는 `shift()`와 `unshift()` 메소드를 사용하여 덱의 자료구조를 구현할 수 있다. 
+[Deque](/docs/CS/index.html#deque)는 양쪽 끝에서 요소를 추가하고 제거할 수 있는 자료구조이다. JS에서는 `shift()`와 `unshift()` 메소드를 사용하여 덱의 자료구조를 구현할 수 있다.
 
 ### shift
 
@@ -130,6 +146,7 @@ console.log(array); // [1, 2, 3, 4, 5, 6]
 ```
 
 ---
+
 ## 원본배열 조작 메소드
 
 ### splice
@@ -138,20 +155,21 @@ console.log(array); // [1, 2, 3, 4, 5, 6]
 
 ```javascript
 const arr6 = [1, 2, 3, 4, 5];
-arr6.splice(2, 1, 'a', 'b'); // 반환값: [3] (제거된 요소)
+arr6.splice(2, 1, "a", "b"); // 반환값: [3] (제거된 요소)
 console.log(arr6); // [1, 2, 'a', 'b', 4, 5]
 
 // 삭제 없이 요소만 추가 (두 번째 인자가 0)
 const arr7 = [1, 2, 3, 4, 5];
-arr7.splice(2, 0, 'a', 'b', 'c'); // 반환값: [] (제거된 요소 없음)
+arr7.splice(2, 0, "a", "b", "c"); // 반환값: [] (제거된 요소 없음)
 console.log(arr7); // [1, 2, 'a', 'b', 'c', 3, 4, 5]
 
 // 모든 요소 제거 후 새 요소로 대체
 const arr8 = [1, 2, 3, 4, 5];
-arr8.splice(0, arr8.length, 'x', 'y', 'z'); // 반환값: [1, 2, 3, 4, 5]
+arr8.splice(0, arr8.length, "x", "y", "z"); // 반환값: [1, 2, 3, 4, 5]
 console.log(arr8); // ['x', 'y', 'z']
 ```
-세번째 인자 부터는 추가할 값, 2번째 인자값은 1번째 인덱스 부터 몇개의 요소를 제거할 것인지를 결정한다. 
+
+세번째 인자 부터는 추가할 값, 2번째 인자값은 1번째 인덱스 부터 몇개의 요소를 제거할 것인지를 결정한다.
 
 splice는 인자값을 1~2개만 받을 수도 있다.
 
@@ -176,6 +194,7 @@ const arr5 = [1, 2, 3, 4, 5];
 arr5.splice(3, 10); // 반환값: [4, 5] (제거된 요소들)
 console.log(arr5); // [1, 2, 3]
 ```
+
 이처럼 splice() 메소드는 매우 유연하게 배열을 수정할 수 있어, 삭제, 추가, 교체 등 다양한 작업을 할 수 있다.
 
 ### slice
@@ -187,6 +206,7 @@ const array = [1, 2, 3, 4, 5];
 const newArray = array.slice(2, 4);
 console.log(newArray); // [3, 4]
 ```
+
 splice와 slice의 중요한 차이점은, splice는 원본 배열을 변경하지만, slice는 원본 배열을 변경하지 않는다는 것이다.
 
 ### reverse
@@ -200,6 +220,7 @@ console.log(array); // [5, 4, 3, 2, 1]
 ```
 
 ---
+
 ## 기타 배열의 메소드
 
 ### find
@@ -212,7 +233,7 @@ const found = array.find((item) => item > 3);
 console.log(found); // 5
 ```
 
-find는 배열을 순회하면서 주어진 함수를 만족하는 첫 번째 요소를 반환한다. 만족하는 요소가 없으면 undefined를 반환한다. 
+find는 배열을 순회하면서 주어진 함수를 만족하는 첫 번째 요소를 반환한다. 만족하는 요소가 없으면 undefined를 반환한다.
 이때문에 5가 반환되었다.
 
 ### findIndex
@@ -247,6 +268,20 @@ console.log(foundIndex); // 2
 const array = [1, 2, 3, 4, 5];
 array.fill(0);
 console.log(array); // [0, 0, 0, 0, 0]
+
+// fill() 메소드는 시작 인덱스와 종료 인덱스(미포함)를 지정할 수 있습니다.
+const array2 = [1, 2, 3, 4, 5];
+array2.fill(0, 2, 4); // 인덱스 2부터 4 이전까지(인덱스 2, 3) 0으로 채움
+console.log(array2); // [1, 2, 0, 0, 5]
+
+// 음수 인덱스도 사용 가능 (배열 끝에서부터 계산)
+const array3 = [1, 2, 3, 4, 5];
+array3.fill(0, -3, -1); // 뒤에서 3번째부터 뒤에서 1번째 이전까지
+console.log(array3); // [1, 2, 0, 0, 5]
+
+// 배열 초기화에 유용
+const newArray = new Array(5).fill(1); // 길이가 5이고 모든 요소가 1인 배열 생성
+console.log(newArray); // [1, 1, 1, 1, 1]
 ```
 
 ### from
@@ -256,6 +291,36 @@ console.log(array); // [0, 0, 0, 0, 0]
 ```javascript
 Array.from("hello"); // ["h", "e", "l", "l", "o"]
 Array.from({ length: 5, 0: "a", 1: "b" }); // ["a", "b", undefined, undefined, undefined]
+
+// 문자열에서 배열 생성
+Array.from("hello"); // ["h", "e", "l", "l", "o"]
+
+// 유사 배열 객체(array-like object)에서 배열 생성
+// 유사 배열 객체는 length 속성과 인덱싱된 요소를 가진 객체입니다.
+const arrayLike = { length: 5, 0: "a", 1: "b" };
+Array.from(arrayLike); // ["a", "b", undefined, undefined, undefined]
+
+// Set에서 배열 생성 (중복 제거)
+const set = new Set([1, 2, 2, 3, 3, 3]);
+Array.from(set); // [1, 2, 3]
+
+// 반복 가능한(iterable) 객체에서 배열 생성
+function* generateNumbers() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+Array.from(generateNumbers()); // [1, 2, 3]
+```
+
+from() 메소드는 두번째 인자값으로 매핑 함수를 받아 배열의 요소를 변형할 수 있다.
+
+```javascript
+// 두 번째 인자로 매핑 함수를 제공
+Array.from([1, 2, 3], x => x * 2); // [2, 4, 6]
+
+// 특정 길이의 배열 생성과 초기화 (인덱스를 활용)
+Array.from({ length: 5 }, (_, i) => i + 1); // [1, 2, 3, 4, 5]
 ```
 
 ### isArray
@@ -265,6 +330,7 @@ Array.from({ length: 5, 0: "a", 1: "b" }); // ["a", "b", undefined, undefined, u
 ```javascript
 Array.isArray([1, 2, 3]); // true
 ```
+
 ### some
 
 `some()` 메소드는 배열의 요소 중 하나 이상이 주어진 함수를 만족하는지 확인하여 그 결과를 불리언 값으로 반환한다.
@@ -314,6 +380,26 @@ const joined = array.join("-");
 console.log(joined); // "1-2-3-4-5"
 ```
 
+### split
+
+`split()` 메소드는 문자열을 배열로 변환하여 반환한다.
+
+```javascript
+const string = "1-2-3-4-5";
+const array = string.split("-");
+console.log(array); // ["1", "2", "3", "4", "5"]
+```
+
+split은 인자값으로 구분자를 받을 수 있다. 구분자를 생략하면 기본값은 쉼표(,)이다.
+
+이때, 구분자로 정규표현식을 사용할 수도 있다. 
+
+```javascript
+const string = "1-2-3-4-5";
+const array = string.split(/-\d+/);
+console.log(array); // ["1", "2", "3", "4", "5"]
+```
+
 ### concat
 
 `concat()` 메소드는 배열을 합치고, 합친 배열을 반환한다.
@@ -324,6 +410,7 @@ const array2 = [4, 5, 6];
 const combined = array1.concat(array2);
 console.log(combined); // [1, 2, 3, 4, 5, 6]
 ```
+
 concat은 ES6이후 도입된 전개 연산자(...)가 나오면서 더 간단하게 사용할 수 있다.
 
 ```javascript
@@ -352,14 +439,25 @@ flat은 인자값으로 평탄화할 깊이를 지정할 수 있다. 기본값�
 ### flatMap
 
 `flatMap()` 메소드는 배열의 각 요소에 대해 주어진 함수를 실행하고, 그 결과를 평탄화하여 반환한다.
+이때, 주의할 점은 중첩된 배열을 평탄화한 후에 데이터를 변형하는 것이 아니라, 반환된 데이터가 중첩배열의 형식이라면, 해당 배열을 평탄화시켜서 반환하는 것이다. 
 
 ```javascript
-const array = [1, 2, 3, [4, 5]];
-const mapped = array.flatMap((item) => [item * 2]);
-console.log(mapped); // [2, 4, 6, 8, 10]
+const array1 = [1, 2, 3, 4];
+const mapped1 = array1.flatMap((item) => [item * 2]);
+console.log(mapped1); // [2, 4, 6, 8]
+
+// flatMap()이 유용한 일반적인 사례
+const sentences = ["Hello world", "How are you?"];
+const words = sentences.flatMap(sentence => sentence.split(" "));
+console.log(words); // ["Hello", "world", "How", "are", "you?"]
+
+// map()과 flat() 비교
+const array2 = [1, 2, 3];
+console.log(array2.map(x => [x, x * 2])); // [[1, 2], [2, 4], [3, 6]] (중첩 배열)
+console.log(array2.flatMap(x => [x, x * 2])); // [1, 2, 2, 4, 3, 6] (평탄화된 결과)
 ```
 
-flatMap은 `map`과 `flat`을 합친 메소드이다. 
+flatMap은 `map`과 `flat`을 합친 메소드이다.
 
 ---
 
@@ -374,4 +472,3 @@ console.log(first); // 1
 console.log(second); // 2
 console.log(rest); // [3, 4, 5]
 ```
-
