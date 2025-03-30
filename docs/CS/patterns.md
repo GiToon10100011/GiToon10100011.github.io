@@ -5,7 +5,7 @@ date: 2025-06-17 16:04:00 +0900
 categories: Coding
 parent: CS
 ---
-## MVC
+<h2 id="mvc">MVC</h2>
 
 DOM 조작 메소드 (createElement, appendChild etc.)를 통해 만들게 되면, 일명 Spaghetti code(실타래 코드)로, 한번꼬이면 대책이 없으며 오류가 찾기 어려운 코드로 만들수밖에 없게 된다. 
 
@@ -49,7 +49,7 @@ MVC는 라이브러리가 아닌 방법론으로, php, jsp등에서도 존재한
 MVC패턴을 사용할때, querySelector을 통해 dom요소를 접근할때, 일일이 document 객체에 접근하지 말고, root가 되는 요소를 document로 접근한 후, 그 이후 가져온 요소에서 부터 querySelector를 사용하자. (이는 아이디의 중복을 최대한 방지하기 위해서임. )
 
 ---
-## Flux
+<h2 id="flux">Flux</h2>
 
 문제점이 없을 것만 같던 `MVC` 패턴도 여러가지 문제점을 가지고 있었다. 
 
