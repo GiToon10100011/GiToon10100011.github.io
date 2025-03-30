@@ -193,6 +193,11 @@ forEach((item) => {
 위 코드에서 `forEach` 함수는 콜백 함수를 인자로 받아 배열의 각 요소에 대해 콜백 함수를 실행한다. forEach의 인자값으로 준 콜백 함수는 배열의 각 요소를 매개변수로 받아 실행된다.
 
 ---
+## 클로저 함수(Closure)
+
+
+
+---
 ## 즉시 실행 함수(Self-Invoking Functions)
 
 ```js
