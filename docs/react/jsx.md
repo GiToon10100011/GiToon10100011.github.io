@@ -10,6 +10,8 @@ parent: REACT
 
 > JSX는 REACT의 기본 문법이다. Javascript + XML
 
+JSX는 브라우저에서 실행되기 전에 번들링 시스템에 의해 자바스크립트로 변환된다. 이때문에 `babel`과 같은 트랜스파일러가 필요하다.
+
 ### JSX문법 규칙
 
 1. html과 달리, class를 _className_ 속성으로 부여해야한다.

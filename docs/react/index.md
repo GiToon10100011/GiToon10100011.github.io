@@ -54,9 +54,7 @@ React 프로젝트를 Git에 업로드할때, node_modules는 용량이 크므�
 
 ### React를 사용해야하는 이유
 
-> 리엑트는 MVC의 양방향 바인딩의 복잡한 상태관리를 
-
-React는 ssr(server-side-rendering)방식이 아닌 <span style = "color: violet">csr(client-side-rendering)</span>방식을 사용한다. <br>
+React는 SSR(Server-Side-Rendering)방식이 아닌 <span style = "color: violet">CSR(Client-Side-Rendering)</span>방식을 사용한다. <br>
 기존의 DOM은 서버가 클라이언트에 제공한것에 반해, 가상돔(VDOM)은 해당 돔을 그대로 복제해서 클라이언트에서 관리한다. 
 
 이로 인해 이벤트나 작업 등은 가상돔에서 먼저 확인을 하고, 해당 요소만 서버한테 받아와 상당히 효율적으로 작업이 진행되며, 로딩도 안걸리게 되어 속도가 향상된다.
