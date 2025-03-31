@@ -11,17 +11,17 @@ nav_order: 1
 
 > 마크업 언어로, 태그를 사용하는 언어이다.
 
-html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&gt;과 같은 문법으로 사용한다. `<div></div>` 앞은 열리는 태그, 뒤는 닫히는 태그라고 불린다. 각 태그는 고유 <span style="color: yellowgreen">속성</span>을 지니고 있으며 속성은 태그 이름 뒤에 `속성 이름 = "속성 값" `형태로 사용한다.
+html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&gt;과 같은 문법으로 사용한다. `<div></div>` 앞은 열리는 태그, 뒤는 닫히는 태그라고 불린다. 각 태그는 고유 <mark style="background: #BBFABBA6;">속성</mark>을 지니고 있으며 속성은 태그 이름 뒤에 `속성 이름 = "속성 값" `형태로 사용한다.
 
 ## 태그의 종류
 
-태그는 <span style="color: yellowgreen">홑태그</span>와 <span style="color: yellowgreen">쌍태그</span>로 나뉜다. 홑태그는 태그 이름 뒤에 속성을 붙이지 않는 태그이다. 쌍태그는 태그 이름 뒤에 속성을 붙이는 태그이다.
+태그는 <mark style="background: #BBFABBA6;">홑태그</mark>와 <mark style="background: #BBFABBA6;">쌍태그</mark>로 나뉜다. 홑태그는 태그 이름 뒤에 속성을 붙이지 않는 태그이다. 쌍태그는 태그 이름 뒤에 속성을 붙이는 태그이다.
 
 홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다. <span style="color: #aaa">(하지만 정석대로 /> 로 끝맺음 시키는것이 직관적이고 좋다.)</span>
 
-또한 차지하는 공간에 따라 크게 <span style="color: red" id="inline&block"><b>블록태그</b></span>와 <span style="color: red"><b>인라인 태그</b></span>로 나뉜다. 블록태그는 차지하는 공간이 한 행이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+또한 차지하는 공간에 따라 크게 <mark style="background: #FF5582A6;" id="inline&block"><b>블록태그</b></mark>와 <mark style="background: #FF5582A6;"><b>인라인 태그</b></mark>로 나뉜다. 블록태그는 차지하는 공간이 한 행이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
-<span style="color: violet">세부적으로 분류</span>해보자면 다음처럼 분류할 수 있다.
+<mark style="background: #D2B3FFA6;">세부적으로 분류</mark>해보자면 다음처럼 분류할 수 있다.
 
 - 텍스트 태그 - `h1~h6(heading), p(paragraph), br(line break), hr(horizontal rule), span` 등이 있다.
 
@@ -32,11 +32,11 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   h5 | 16px | 다섯번째 제목
   h6 | 14px | 여섯번째 제목
 
-- 앵커 태그 - `a`태그는 <span style="color: yellowgreen">href(hyper reference) 속성</span>을 사용해 링크를 지정한다. 이때, <span style="color: red">절대경로와 상대경로</span>를 잘 구분해야한다.
+- 앵커 태그 - `a`태그는 <mark style="background: #BBFABBA6;">href(hyper reference) 속성</mark>을 사용해 링크를 지정한다. 이때, <mark style="background: #FF5582A6;">절대경로와 상대경로</mark>를 잘 구분해야한다.
 
-  > 페이지 내의 특정 지점으로 이동하기 위해서는 <span style="color: yellowgreen">아이디 경로</span>를 사용한다. 아이디 경로는 특정 글자를 눌렀을때 그 곳으로 이동시켜준다. `<a href="#id"></a>`라면 `<div id="id">`이 있어야 한다. #top이나 #을 넣으면 페이지 최상단으로 이동시켜준다.
+  > 페이지 내의 특정 지점으로 이동하기 위해서는 <mark style="background: #BBFABBA6;">아이디 경로</mark>를 사용한다. 아이디 경로는 특정 글자를 눌렀을때 그 곳으로 이동시켜준다. `<a href="#id"></a>`라면 `<div id="id">`이 있어야 한다. #top이나 #을 넣으면 페이지 최상단으로 이동시켜준다.
 
-  > <span style="color: yellowgreen">target속성</span>을 통해 링크를 열 때 새로운 창을 열지 아니면 현재 창에서 열지를 지정할 수 있다. `target="_blank"`는 새로운 창을 열어주고, `target="_self"`는 현재 창에서 열어준다. (기본값은 `_self`)
+  > <mark style="background: #BBFABBA6;">target속성</mark>을 통해 링크를 열 때 새로운 창을 열지 아니면 현재 창에서 열지를 지정할 수 있다. `target="_blank"`는 새로운 창을 열어주고, `target="_self"`는 현재 창에서 열어준다. (기본값은 `_self`)
 
   ✅ 앵커태그의 `href`속성에 `mailto:이메일주소`을 붙이면 이메일 링크를 만들 수 있다. 이메일 링크를 누르게 되면 바로 이메일을 전송할 수 있다.
 
@@ -58,7 +58,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - 목록 태그 - `ul(unordered list), ol(ordered list), dl(definition list), li(list item)`등이 있다.
 
-  > 순서가 없는 목록인 ul태그는 목록 앞에 <span style="color: yellowgreen">불릿</span>이 찍히고 네비게이션 바에 주로 사용된다. 순서가 있는 목록인 ol태그는 목록 앞에 순서를 의미하는 숫자가 찍힌다. dl태그는 정의 목록을 나타내며, 사전처럼 설명하는 목록에 사용된다.
+  > 순서가 없는 목록인 ul태그는 목록 앞에 <mark style="background: #BBFABBA6;">불릿</mark>이 찍히고 네비게이션 바에 주로 사용된다. 순서가 있는 목록인 ol태그는 목록 앞에 순서를 의미하는 숫자가 찍힌다. dl태그는 정의 목록을 나타내며, 사전처럼 설명하는 목록에 사용된다.
 
   > 이러한 목록태그들에는 `list-style, list-style-position` 등의 자체 스타일 속성이 존재한다. list-style은 불릿의 모양을 지정해주는 속성이며 주로 none을 사용하여 불릿을 없애는 경우가 많다. list-style-position은 불릿의 위치를 지정해주는 속성이다. 불릿을 없애는 경우애는 자동적으로 들여쓰기가 적용되어 이를 없애기 위해 padding-left 속성을 0으로 줘서 사용하기도 한다.
 
@@ -66,7 +66,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - 표 태그 - `table, tr(table row), td(table data), th(table header)` table은 표를 삽입하는 태그이고, `tr`은 표의 행을 삽입하는 태그이며, `td`는 표의 셀을 삽입하는 태그이다. <span style="color: #aaa;">`tr`은 공간을 나누는 척도라, 스타일을 잘 적용하지 않는다.</span>
 
-  > <span style="color: red">table은 왼쪽에서 오른쪽으로 데이터가 삽입</span>되며, <span style="color: red">다음 행으로 넘어갈 때 tr</span>을 사용하면 된다.
+  > <mark style="background: #FF5582A6;">table은 왼쪽에서 오른쪽으로 데이터가 삽입</mark>되며, <mark style="background: #FF5582A6;">다음 행으로 넘어갈 때 tr</mark>을 사용하면 된다.
 
   > table태그에는 테두리의 두께를 지정해주는 border 속성이 존재한다. th, tr, td에는 align속성으로 글자 정렬을 지정해줄 수 있으며, th와 td는 colspan, rowspan과 같이 셀의 너비와 높이를 지정해 병합시켜주는 속성이 존재한다. rowspan은 원래 가로지만 세로로 병합이 되며, colspan 또한 원래 세로지만 가로로 병합이 된다.
 
@@ -80,14 +80,14 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   ```
 
   > table태그에는 border속성으로 border를 줄수도 있지만,
-  > <span style="color: yellowgreen;">border-collapse 속성</span>을 사용해
+  > <mark style="background: #BBFABBA6;">border-collapse 속성</mark>을 사용해
   > 테두리를 합칠 수도 있다. collapse값을 주면 테두리를 합치고, separate값을 주면
   > 테두리를 따로 둔다. >
-  > <span id="tabledesc" style="color: yellowgreen;">thead, tbody, tfoot</span>은
+  > <mark style="background: #BBFABBA6;">thead, tbody, tfoot</mark>은
   > 원래 생략해도 되지만 표의 구조를 명확하게 하기 위해 사용한다. 이때문에
   > 스타일링을 할때 선택자를 `tbody`를 넣어야 적용된다.
 
-- 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <span style="color: red">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</span>된다.
+- 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <mark style="background: #FF5582A6;">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</mark>된다.
   `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
 
   `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함. `gnb(Global Navigation Bar), lnb(Local Navigation Bar)`에 주로 사용됨.
@@ -118,17 +118,17 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - input 태그 - input태그는 다양한 유형이 존재한다. 이러한 유형은 type속성으로 지정하여 사용한다. 대표적인 유형으로 `text, password, number, email, tel, search, date, time, datetime-local, month, week, url, color`등이 있다.
 
-  > input태그에는 <span style="color: yellowgreen">name속성</span>과 <span style="color: yellowgreen">value속성</span>이 존재하는데, name속성은 입력 양식의 이름을 지정하는 속성이며 서버로 전송할 때 사용된다. value속성은 입력 양식의 값을 지정하는 속성이다. text같은 경우에는 사용자가 직접 입력하기 때문에, value가 추가적으로 필요하지 않다.
+  > input태그에는 <mark style="background: #BBFABBA6;">name속성</mark>과 <mark style="background: #BBFABBA6;">value속성</mark>이 존재하는데, name속성은 입력 양식의 이름을 지정하는 속성이며 서버로 전송할 때 사용된다. value속성은 입력 양식의 값을 지정하는 속성이다. text같은 경우에는 사용자가 직접 입력하기 때문에, value가 추가적으로 필요하지 않다.
 
   > `type이 submit || reset || button`일 경우 value속성은 버튼에 표시되는 글자를 지정해줄 수 있다. 자세한 type 속성에 대한 것은 [input 태그](/docs/html/inputTags.html)를 참고하자.
 
-  > <span style="color: red">checkbox나 radio는 반드시 같은 name속성</span>을 가져야 한다. 같은 이름을 가진 입력 양식들은 하나의 그룹으로 묶이기 때문이다. 이때문에 다른 input타입은 name이 같아서는 안된다.
+  > <mark style="background: #FF5582A6;">checkbox나 radio는 반드시 같은 name속성</mark>을 가져야 한다. 같은 이름을 가진 입력 양식들은 하나의 그룹으로 묶이기 때문이다. 이때문에 다른 input타입은 name이 같아서는 안된다.
 
   > name속성은 앞서 말했듯이 서버로 값을 보낼때 지정되는 이름이므로, 사용자에게 보여져서는 안되는 데이터를 서버로 전송할때 사용되는 `hidden` type의 input태그에서 name속성이 유용하게 사용된다. 접속일시, 회원가입일시, 상태값을 전송할때 hidden이 사용된다.
 
-- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <span style="color: red">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</span> `label`안에 `input`태그를 넣어 두 태그를 연결할 수도 있다.
+- label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <mark style="background: #FF5582A6;">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</mark> `label`안에 `input`태그를 넣어 두 태그를 연결할 수도 있다.
 
-- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <span style="color: yellowgreen">method속성</span>을 통해 데이터 전송방식을 알 수 있는데, <span style="color: red">GET, POST, PUT, DELETE</span> 등이 존재한다.
+- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <mark style="background: #BBFABBA6;">method속성</mark>을 통해 데이터 전송방식을 알 수 있는데, <mark style="background: #FF5582A6;">GET, POST, PUT, DELETE</mark> 등이 존재한다.
 
   > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/etc/restAPI.html)를 다룰때 더 자세히 알아보자.
 

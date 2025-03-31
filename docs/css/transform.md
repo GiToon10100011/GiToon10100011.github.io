@@ -39,7 +39,7 @@ parent: CSS
 
 transform 속성은 해당 함수들을 한번에 적용할 수 있는데, 이때 주의해야하는것은 순서이다. 순서에 따라 변형되는 결과가 달라질 수 있기 때문이다. (예: `rotate(45deg) translateX(100px)`와 `translateX(100px) rotate(45deg)`는 서로 다른 결과를 만듦)
 
-이는 CSS transform 함수들의 적용 순서가 다른 결과를 만드는 이유는 좌표계 변환의 누적 효과 때문이다. <span style="color: red;">rotate를 먼저 사용한다면 좌표계도 함께 회전</span>되어 좌표계가 회전된 채로 요소를 이동하면 원하는 결과가 나오지 않을 수 있다. 따라서 `rotate속성`을 마지막에 사용하는 것이 의도한 바대로 대부분 작동할 것이다.
+이는 CSS transform 함수들의 적용 순서가 다른 결과를 만드는 이유는 좌표계 변환의 누적 효과 때문이다. <mark style="background: #FF5582A6;">rotate를 먼저 사용한다면 좌표계도 함께 회전</mark>되어 좌표계가 회전된 채로 요소를 이동하면 원하는 결과가 나오지 않을 수 있다. 따라서 `rotate속성`을 마지막에 사용하는 것이 의도한 바대로 대부분 작동할 것이다.
 
 `scale`도 마찬가지로 비슷한 이유로 마지막에 적용되어야 한다. 이때, `rotate`보다 마지막에 사용되어야한다.
 
@@ -96,7 +96,7 @@ transform: translate(100px, 100px);
 - `translateZ(z)` - 요소를 z축으로 이동시키는 속성
 - `translate3d(x, y, z)` - 요소를 x축, y축, z축으로 이동시키는 속성
 
-`translate` 속성은 [position 속성](/docs/css/layout.html#position)과 함께 사용되어 요소를 이동시키는 것이 일반적이다. <span style="color: yellowgreen;">요소의 위치는 기준점이 왼쪽 위 꼭짓점이 기준</span>인데, `translate` 속성을 통해 <span style="color: yellowgreen;">기준점을 중간으로 변경</span>할 수 있다.
+`translate` 속성은 [position 속성](/docs/css/layout.html#position)과 함께 사용되어 요소를 이동시키는 것이 일반적이다. <mark style="background: #BBFABBA6;">요소의 위치는 기준점이 왼쪽 위 꼭짓점이 기준</mark>인데, `translate` 속성을 통해 <mark style="background: #BBFABBA6;">기준점을 중간으로 변경</mark>할 수 있다.
 
 ```css
 div {
@@ -123,7 +123,7 @@ transform: rotate(45deg);
 - `rotateZ(angle)` - 요소를 z축으로 회전시키는 속성
 - `rotate3d(x, y, z, angle)` - 요소를 x축, y축, z축으로 회전시키는 속성
 
-css 에서는 js와 달리 주로 `각도(degree)` 단위를 사용한다. `1도(1deg)`는 원 한 바퀴`(360도)`의 `1/360`을 의미한다. CSS에서도 `라디안(rad)` 단위를 사용할 수 있지만, <span style="color: yellowgreen;">일반적으로 더 직관적인 <span style="color: white;">`degree`</span> 단위가 더 자주 사용</span>된다. <span style="color: #aaa;">(JavaScript의 Math 관련 함수는 기본 단위로 라디안을 사용)</span>
+css 에서는 js와 달리 주로 `각도(degree)` 단위를 사용한다. `1도(1deg)`는 원 한 바퀴`(360도)`의 `1/360`을 의미한다. CSS에서도 `라디안(rad)` 단위를 사용할 수 있지만, <mark style="background: #BBFABBA6;">일반적으로 더 직관적인 <span style="color: white;">`degree`</mark> 단위가 더 자주 사용</span>된다. <span style="color: #aaa;">(JavaScript의 Math 관련 함수는 기본 단위로 라디안을 사용)</span>
 
 ---
 
@@ -141,7 +141,7 @@ transform: scale(1.2);
 - `scaleZ(z)` - 요소를 z축으로 확대하거나 축소하는 속성
 - `scale3d(x, y, z)` - 요소를 x축, y축, z축으로 확대하거나 축소하는 속성
 
-`scale` 속성을 통해 요소들을 <span style="color: yellowgreen;">좌우, 상하반전</span> 시킬 수 있다.
+`scale` 속성을 통해 요소들을 <mark style="background: #BBFABBA6;">좌우, 상하반전</mark> 시킬 수 있다.
 
 ```css
 /* 좌우반전 */

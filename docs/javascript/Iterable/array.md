@@ -317,7 +317,7 @@ from() 메소드는 두번째 인자값으로 매핑 함수를 받아 배열의 
 
 ```javascript
 // 두 번째 인자로 매핑 함수를 제공
-Array.from([1, 2, 3], x => x * 2); // [2, 4, 6]
+Array.from([1, 2, 3], (x) => x * 2); // [2, 4, 6]
 
 // 특정 길이의 배열 생성과 초기화 (인덱스를 활용)
 Array.from({ length: 5 }, (_, i) => i + 1); // [1, 2, 3, 4, 5]
@@ -392,7 +392,7 @@ console.log(array); // ["1", "2", "3", "4", "5"]
 
 split은 인자값으로 구분자를 받을 수 있다. 구분자를 생략하면 기본값은 쉼표(,)이다.
 
-이때, 구분자로 정규표현식을 사용할 수도 있다. 
+이때, 구분자로 정규표현식을 사용할 수도 있다.
 
 ```javascript
 const string = "1-2-3-4-5";
@@ -439,7 +439,7 @@ flat은 인자값으로 평탄화할 깊이를 지정할 수 있다. 기본값�
 ### flatMap
 
 `flatMap()` 메소드는 배열의 각 요소에 대해 주어진 함수를 실행하고, 그 결과를 평탄화하여 반환한다.
-이때, 주의할 점은 중첩된 배열을 평탄화한 후에 데이터를 변형하는 것이 아니라, 반환된 데이터가 중첩배열의 형식이라면, 해당 배열을 평탄화시켜서 반환하는 것이다. 
+이때, 주의할 점은 중첩된 배열을 평탄화한 후에 데이터를 변형하는 것이 아니라, 반환된 데이터가 중첩배열의 형식이라면, 해당 배열을 평탄화시켜서 반환하는 것이다.
 
 ```javascript
 const array1 = [1, 2, 3, 4];
@@ -448,13 +448,13 @@ console.log(mapped1); // [2, 4, 6, 8]
 
 // flatMap()이 유용한 일반적인 사례
 const sentences = ["Hello world", "How are you?"];
-const words = sentences.flatMap(sentence => sentence.split(" "));
+const words = sentences.flatMap((sentence) => sentence.split(" "));
 console.log(words); // ["Hello", "world", "How", "are", "you?"]
 
 // map()과 flat() 비교
 const array2 = [1, 2, 3];
-console.log(array2.map(x => [x, x * 2])); // [[1, 2], [2, 4], [3, 6]] (중첩 배열)
-console.log(array2.flatMap(x => [x, x * 2])); // [1, 2, 2, 4, 3, 6] (평탄화된 결과)
+console.log(array2.map((x) => [x, x * 2])); // [[1, 2], [2, 4], [3, 6]] (중첩 배열)
+console.log(array2.flatMap((x) => [x, x * 2])); // [1, 2, 2, 4, 3, 6] (평탄화된 결과)
 ```
 
 flatMap은 `map`과 `flat`을 합친 메소드이다.

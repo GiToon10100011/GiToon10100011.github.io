@@ -76,9 +76,9 @@ firebase init hosting
 
   해당 단계들이 끝나면 지정한 프로젝트 디렉토리에 호스팅 설정 파일 등이 생성된다.
 
-  <span style="color: violet;">MPA(Multi Page Application)환경</span>에서는 `index, 404.html`파일을 제거하고 배포할 파일들을 선택해서 해당 디렉토리에 붙여넣어야한다. 
+  <mark style="background: #D2B3FFA6;">MPA(Multi Page Application)환경</mark>에서는 `index, 404.html`파일을 제거하고 배포할 파일들을 선택해서 해당 디렉토리에 붙여넣어야한다. 
 
-  <span style="color: violet;">SPA환경(React, Next.js, Vue.js 등)</span>에서는 `index.html`파일을 덮어쓸 것인지 아닌지 여부를 결정하게 되는데, `No`를 눌러 기존에 우리가 빌드를 하여 만들어진 `SPA` 파일을 그대로 배포하자. 
+  <mark style="background: #D2B3FFA6;">SPA환경(React, Next.js, Vue.js 등)</mark>에서는 `index.html`파일을 덮어쓸 것인지 아닌지 여부를 결정하게 되는데, `No`를 눌러 기존에 우리가 빌드를 하여 만들어진 `SPA` 파일을 그대로 배포하자. 
 
 Final. 배포
 

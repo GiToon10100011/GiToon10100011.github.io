@@ -8,11 +8,11 @@ parent: CSS
 
 # 텍스트 스타일
 
-- `font` - 아래 속성들의 축약형으로 `font: italic bold 16px/20px Arial, sans-serif;`와 같은 형식으로 사용한다. 이 때, 축약형은 <span style="color: yellowgreen;">글자 스타일, 글자 굵기, 글자 크기, 글자 글꼴, 글자 줄 간격</span>을 한번에 지정해줄 수 있다.
+- `font` - 아래 속성들의 축약형으로 `font: italic bold 16px/20px Arial, sans-serif;`와 같은 형식으로 사용한다. 이 때, 축약형은 <mark style="background: #BBFABBA6;">글자 스타일, 글자 굵기, 글자 크기, 글자 글꼴, 글자 줄 간격</mark>을 한번에 지정해줄 수 있다.
 
   > 주의해야할 점은, `font-size`와 `line-height`를 함께 설정할때 `슬래시(/)`를 사용하여 두값을 구분해야한다. <span style="color: #aaa;">(슬래시 없이 공백만 사용하면 브라우저가 두번째 값을 줄간격으로 인식 못하고 다른 속성으로 오해하기 때문이다.)</span>
 
-- `font-family` - 글자 글꼴, `ex) body {font-family : 맑은 고딕,  돋움, 굴림}` 이런 형식으로 사용한다. <span style="color: yellowgreen">콤마로 구분된 글꼴 이름들은 순서대로 우선순위</span>를 가진다. 즉, 첫번째 글꼴(맑은 고딕)이 없으면 두번째 글꼴(돋움)을 사용하고, 두번째 글꼴(돋움)이 없으면 세번째 글꼴(굴림)을 사용한다.
+- `font-family` - 글자 글꼴, `ex) body {font-family : 맑은 고딕,  돋움, 굴림}` 이런 형식으로 사용한다. <mark style="background: #BBFABBA6;">콤마로 구분된 글꼴 이름들은 순서대로 우선순위</mark>를 가진다. 즉, 첫번째 글꼴(맑은 고딕)이 없으면 두번째 글꼴(돋움)을 사용하고, 두번째 글꼴(돋움)이 없으면 세번째 글꼴(굴림)을 사용한다.
 
 - `font-size` - 글자 크기
 
@@ -26,7 +26,7 @@ parent: CSS
 
 - `text-decoration` - 글자 장식, 주로 a태그의 기본 스타일을 없애기 위해 none값을 주기도 한다. 값은 `none, underline(밑줄), overline(윗줄), line-through(취소줄)` 등이 있다.
 
-- `text-transform` - 글자 대소문자, 값은 `none, capitalize(첫글자만 대문자), uppercase(대문자), lowercase(소문자), full-width(전각문자)` 등이 있다. <span style="color: yellowgreen">full-width</span>는 반각문자를 전각문자로 변환시켜주는 것으로, <span style="color: yellowgreen">한자, 히라가나, 한글은 모두 전각문자</span>인거에 반해, 한국에서 사용되는 특수문자들은 대부분 반각문자로 사용된다. 이때문에 다국어 서비스를 개발하는 경우, 전각문자를 반각문자로 자동 치환해주는 작업이 필요하다.
+- `text-transform` - 글자 대소문자, 값은 `none, capitalize(첫글자만 대문자), uppercase(대문자), lowercase(소문자), full-width(전각문자)` 등이 있다. <mark style="background: #BBFABBA6;">full-width</mark>는 반각문자를 전각문자로 변환시켜주는 것으로, <mark style="background: #BBFABBA6;">한자, 히라가나, 한글은 모두 전각문자</mark>인거에 반해, 한국에서 사용되는 특수문자들은 대부분 반각문자로 사용된다. 이때문에 다국어 서비스를 개발하는 경우, 전각문자를 반각문자로 자동 치환해주는 작업이 필요하다.
 
 - `text-shadow` - 글자 그림자, 값은 `x축, y축, 그림자 크기, 그림자 색상` 형식으로 사용한다. x축, y축의 값값은 원래 요소에서 부터 그림자를 어느정도로 띄워놓을지 결정한다.
 
@@ -56,7 +56,7 @@ parent: CSS
 
 - `word-wrap` - 단어 줄바꿈 처리
 
-> <span style="color: yellowgreen;">만약 특정 줄에서 말줄임표를 표시하고 싶다면</span>, `display: -webkit-box` 속성과 `-webkit-line-clamp` 속성, `-webkit-box-orient: vertical` 속성, `text-overflow: ellipsis` 속성, `white-space: nowrap` 속성을 함께 사용하면 된다.
+> <mark style="background: #BBFABBA6;">만약 특정 줄에서 말줄임표를 표시하고 싶다면</mark>, `display: -webkit-box` 속성과 `-webkit-line-clamp` 속성, `-webkit-box-orient: vertical` 속성, `text-overflow: ellipsis` 속성, `white-space: nowrap` 속성을 함께 사용하면 된다.
 
 예시:
 

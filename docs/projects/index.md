@@ -47,7 +47,7 @@ has_children: true
 
 문제점 - 해결과정 - 도출결과 순으로 진행.
 
-github issues 페이지에 정리된것도 확인해보려면 <a href="https://github.com/issues" style="color: #aaa;">여기</a>를 클릭.
+github issues 페이지에 정리된것도 확인해보려면 <mark style="background: #E0E0E060;"><a href="https://github.com/issues" ">여기</a></mark>를 클릭.
 
 ---
 

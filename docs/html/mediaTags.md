@@ -12,7 +12,7 @@ html4까지는 웹에서 멀티미디어를 직접 재생할 수 없어 플러�
 
 html5에 와서는 멀티미디어 웹 표준화가 이루어져 플러그인 프로그램 없이 웹 브라우저 자체에서 멀티미디어 재생이 가능해졌으나, 브라우저마다 재생할 수 있는 멀티미디어 파일 종류가 달라 여러 종류의 파일 형식을 지정해줘야 한다.
 
-<span style="color: yellowgreen">src 속성</span>을 사용해 미디어 파일을 지정하며, `img, audio, video, iframe` 등이 있다.
+<mark style="background: #BBFABBA6;">src 속성</mark>을 사용해 미디어 파일을 지정하며, `img, audio, video, iframe` 등이 있다.
 
 참고로 컴퓨터 로컬 스토리지에 저장된 미디어파일 뿐만아니라 파일 호스팅 url또한 사용할 수 있다. 이를 활용하여 닷홈으로 도메인 무료 호스팅, filezilla나 다른 FTP 프로그램을 찾아서 연결하면 파일 업로드 후 웹 브라우저에서 직접 미디어 파일을 재생할 수 있다.
 
@@ -22,7 +22,7 @@ html5에 와서는 멀티미디어 웹 표준화가 이루어져 플러그인 �
 
 ## img 태그
 
-img 태그는 외부 파일을 불러와 사용하는 것이 일반적이다. `<img src="image.jpg" alt="이미지 설명">`와 같은 형태로 사용되며 <span style="color: yellowgreen">alt속성</span>은 이미지를 불러올 수 없을때 대체 텍스트를 의미한다. <span style="color: #aaa">(청각장애인들을 위해서기도 함)</span>
+img 태그는 외부 파일을 불러와 사용하는 것이 일반적이다. `<img src="image.jpg" alt="이미지 설명">`와 같은 형태로 사용되며 <mark style="background: #BBFABBA6;">alt속성</mark>은 이미지를 불러올 수 없을때 대체 텍스트를 의미한다. <mark style="background: #E0E0E060;">(청각장애인들을 위해서기도 함)</mark>
 
 img태그와 video태그 둘다 width와 height속성을 사용해 너비와 높이를 조절할 수 있다.
 
@@ -36,7 +36,7 @@ img태그와 video태그 둘다 width와 height속성을 사용해 너비와 높
 
 4. 추가 요소 배치: 이미지 위에 캡션이나 오버레이 등 추가 요소를 배치하기 쉽다.
 
-다시말해, <p style="color: yellowgreen;">미디어태그 자체에는 호환되지 않는 스타일 속성이 많기 때문에</p> 미디어태그를 감싸는 태그를 만들어 주는 것이 편하다. 
+다시말해, <mark style="background: #BBFABBA6;">미디어태그 자체에는 호환되지 않는 스타일 속성이 많기 때문에</mark> 미디어태그를 감싸는 태그를 만들어 주는 것이 편하다. 
 
 ---
 
@@ -45,7 +45,7 @@ img태그와 video태그 둘다 width와 height속성을 사용해 너비와 높
 audio 태그는 오디오 파일을 재생하는 태그이다. `<audio src="audio.mp3" controls></audio>`와 같은 형태로 사용된다.
 video 태그는 비디오 파일을 재생하는 태그이다. `<video src="video.mp4" controls></video>`와 같은 형태로 사용된다.
 
-video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸네일을 지정해주는 <span style="color: yellowgreen">poster속성</span> 또한 존재한다.
+video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸네일을 지정해주는 <mark style="background: #BBFABBA6;">poster속성</mark> 또한 존재한다.
 
 두 태그 모두 `preload(페이지가 로드될 때 비디오파일이 같이 로드할 것인가의 여부), autoplay, loop, muted, controls`와 같은 속성들이 존재한다.
 
@@ -64,7 +64,7 @@ video태그에는 동영상이 플레이되기 전 사용자에게 보여질 썸
 
 ## source 태그
 
-미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <span style="color: red">미디어 태그 내에서 source태그를 사용</span>하여 type속성으로 확장자를 지정하는 것이 좋다.
+미디어 태그는 정석으로 사용하기 위해서는 src속성이 아닌 <mark style="background: #FF5582A6;">미디어 태그 내에서 source태그를 사용</mark>하여 type속성으로 확장자를 지정하는 것이 좋다.
 
 <span style="color: #aaa;"> type은 video/ogg, video/mp4, video/webm과 같이 형식을 지정해주면 된다. </span>
 

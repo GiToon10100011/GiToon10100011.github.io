@@ -11,7 +11,7 @@ nav_order: 1
 
 > 웹은 인터넷을 통해 접근할 수 있는 문서를 말한다.
 
-웹은 클라이언트에서 `요청(Request)`을 보내면 서버가 `응답(Response)`을 보내는 형태로 동작한다. 이때 <span style="color: yellowgreen">주소창에 주소를 입력 및 링크를 클릭하는 행위들이 클라이언트가 서버에게 요청을 보내</span>는 방법들이다. (GET요청)
+웹은 클라이언트에서 `요청(Request)`을 보내면 서버가 `응답(Response)`을 보내는 형태로 동작한다. 이때 <mark style="background: #BBFABBA6;">주소창에 주소를 입력 및 링크를 클릭하는 행위들이 클라이언트가 서버에게 요청을 보내</mark>는 방법들이다. (GET요청)
 
 ## 웹 프로토콜 및 URL 구성 요소
 
@@ -22,7 +22,7 @@ nav_order: 1
 웹에서 주로 사용하는 프로토콜은 다음과 같다.
 
 - **HTTP (HyperText Transfer Protocol):** 일반적인 웹 통신 프로토콜
-- **HTTPS (HyperText Transfer Protocol Secure):** <span style="color: red">보안</span>을 강화하여 데이터 암호화를 제공하는 프로토콜
+- **HTTPS (HyperText Transfer Protocol Secure):** <mark style="background: #FF5582A6;">보안</mark>을 강화하여 데이터 암호화를 제공하는 프로토콜
 
 브라우저의 주소창에는 보통 URL을 입력하게 되는데, 이때 URL의 앞부분에 프로토콜(`http://` 또는 `https://`)이 포함되어야 한다. 예를 들어, 사용자가 `localhost:3000`이라고 입력하더라도 실제로는 `http://localhost:3000`으로 처리된다.
 
@@ -46,13 +46,13 @@ URL은 여러 부분으로 구성되며, 주요 구성 요소는 다음과 같�
 
 ### 3. 보안 및 CORS 정책
 
-HTTP와 HTTPS는 서로 다른 프로토콜로, 동일한 도메인임에도 불구하고 **오리진(origin)**이 달라진다. 특히, HTTPS 페이지에서 HTTP 리소스에 접근하려면 **혼합 콘텐츠(mixed content)** 문제와 함께 `CORS(Cross-Origin Resource Sharing)` 정책이 적용되어 접근이 제한될 수 있다. 이와 같은 제한 사항은 <span style="color: yellowgreen">보안을 강화하기 위한 브라우저의 정책</span>이다. (이에 대해서는 추후 더 자세히 다룰 예정이다.)
+HTTP와 HTTPS는 서로 다른 프로토콜로, 동일한 도메인임에도 불구하고 **오리진(origin)**이 달라진다. 특히, HTTPS 페이지에서 HTTP 리소스에 접근하려면 **혼합 콘텐츠(mixed content)** 문제와 함께 `CORS(Cross-Origin Resource Sharing)` 정책이 적용되어 접근이 제한될 수 있다. 이와 같은 제한 사항은 <mark style="background: #BBFABBA6;">보안을 강화하기 위한 브라우저의 정책</mark>이다. (이에 대해서는 추후 더 자세히 다룰 예정이다.)
 
 ---
 
 ## API
 
-> API는 "Application Programming Interface"의 약자로, <span style="color: red">어플리케이션들이 서로 상호작용할 수 있도록 제공</span>하는 규칙과 인터페이스의 집합을 의미한다. 다른 말로 하면, 소프트웨어 구성 요소나 시스템이 서로 소통할 수 있도록 하는 계약(Contract) 또는 중간 매개체라고 볼 수 있다.
+> API는 "Application Programming Interface"의 약자로, <mark style="background: #FF5582A6;">어플리케이션들이 서로 상호작용할 수 있도록 제공</mark>하는 규칙과 인터페이스의 집합을 의미한다. 다른 말로 하면, 소프트웨어 구성 요소나 시스템이 서로 소통할 수 있도록 하는 계약(Contract) 또는 중간 매개체라고 볼 수 있다.
 
 ✅ **예시**
 

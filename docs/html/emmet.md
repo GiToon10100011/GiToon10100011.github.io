@@ -236,7 +236,7 @@ ul>li.item$@*5
 </ul>
 ```
 
-이때, `@-` 를 사용하면 <span style="color: yellowgreen;">카운트를 역순</span>으로 셀 수 있다.
+이때, `@-` 를 사용하면 <mark style="background: #BBFABBA6;">카운트를 역순</mark>으로 셀 수 있다.
 
 ```html
 ul>li.item$@-*3
@@ -250,7 +250,7 @@ ul>li.item$@-*3
 </ul>
 ```
 
-`@`를 활용하여 <span style="color: yellowgreen;">특정 숫자부터 카운트</span>되도록 할 수 있다.
+`@`를 활용하여 <mark style="background: #BBFABBA6;">특정 숫자부터 카운트</mark>되도록 할 수 있다.
 
 ```html
 ul>li.item$@3*3

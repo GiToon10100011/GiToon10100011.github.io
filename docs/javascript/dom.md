@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const element = document.querySelector("[css 선택자]");
 ```
 
-`querySelector`의 인자값으로는 <span style="color: yellowgreen">선택자 문법을 사용</span>한다.
+`querySelector`의 인자값으로는 <mark style="background: #BBFABBA6;">선택자 문법을 사용</mark>한다.
 
 ```javascript
 const classElement = document.querySelector('.class');
@@ -124,9 +124,9 @@ const childElement = document.querySelector('parent > child');
 const multipleElement = document.querySelectorAll("[css 선택자]");
 ```
 
-`querySelectorAll`은 여러 요소들을 <span style="color: yellowgreen">배열과 유사한 형태</span>로 값을 반환한다. 기존의 `querySelector`과 똑같이 인자값으로는 `css 선택자`를 받는데, 이때 선택자에 해당되는 모든 요소들을 `NodeList` 형태로 반환한다. 
+`querySelectorAll`은 여러 요소들을 <mark style="background: #BBFABBA6;">배열과 유사한 형태</mark>로 값을 반환한다. 기존의 `querySelector`과 똑같이 인자값으로는 `css 선택자`를 받는데, 이때 선택자에 해당되는 모든 요소들을 `NodeList` 형태로 반환한다. 
 
-`NodeList`는 배열과 동일한 자료구조는 아니지만 <span style="color: yellowgreen">이터러블한 객체</span>로, 배열의 사용 가능 메소드들을 거의 다 사용가능하다. (`map, filter, reduce` 등은 사용할 수 없으며, 이들을 사용하기 위해서는 `Array.from()`을 통해 배열로 변환하여 사용할 수 있다. 이는 [여기](/docs/javascript/array.html)에서 더 자세히 알아볼 수 있다.)
+`NodeList`는 배열과 동일한 자료구조는 아니지만 <mark style="background: #BBFABBA6;">이터러블한 객체</mark>로, 배열의 사용 가능 메소드들을 거의 다 사용가능하다. (`map, filter, reduce` 등은 사용할 수 없으며, 이들을 사용하기 위해서는 `Array.from()`을 통해 배열로 변환하여 사용할 수 있다. 이는 [여기](/docs/javascript/array.html)에서 더 자세히 알아볼 수 있다.)
 
 ‼️ 이러한 점들 때문에 `querySelectorAll`로 가져온 요소는 반복문을 거쳐야지만 사용할 수 있다. 
 
@@ -158,7 +158,7 @@ style객체는 객체 형태로 스타일을 부여할 수 있는 객체이다. 
 
 ⚠️ **스타일 속성 부여 시 주의할 점**
 
-> 스타일 속성을 부여할 때, 속성 이름에 띄어쓰기가 있는 경우 띄어쓰기를 빼고 소문자로 입력해야 한다. 예를 들어, `background-color`는 `backgroundColor`로 입력해야 한다. 즉, 카멜표기법으로 속성을 입력한다고 생각하면 된다. 이는 `스크립트`에서 <span style="color: red">객체 속성에 특수문자는 들어갈 수 없</span>기 때문이다.
+> 스타일 속성을 부여할 때, 속성 이름에 띄어쓰기가 있는 경우 띄어쓰기를 빼고 소문자로 입력해야 한다. 예를 들어, `background-color`는 `backgroundColor`로 입력해야 한다. 즉, 카멜표기법으로 속성을 입력한다고 생각하면 된다. 이는 `스크립트`에서 <mark style="background: #FF5582A6;">객체 속성에 특수문자는 들어갈 수 없</mark>기 때문이다.
 
 ### JS로 동적으로 클래스 제어하기
 

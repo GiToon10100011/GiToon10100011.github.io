@@ -11,8 +11,8 @@ parent: REACT
 > 컴포넌트 기반의 요소들이 서로간에 데이터를 주고 받기 위한 객체(Properties)의 약자.
 
 Props는 컴포넌트들 사이에서 주고받을 수 있다. <br><br>
-Props를 사용할때 가장 유의해야할 점은, 반드시 <span style="color: red">부모에서 직계자식</span>한테만 Props를 보내줄 수 있다. <br>
-이로인해, 단계가 깊은 자식들한테 props를 전달해주기 위해서, 자식의 자식의 자식의 자식... 이런식으로 계속 타고타고 props를 전달할 수 밖에 없는 상황이 발생하게 됐다. <span style="color: yellowgreen">(Props Drilling)</span><br><br>
+Props를 사용할때 가장 유의해야할 점은, 반드시 <mark style="background: #FF5582A6;">부모에서 직계자식</mark>한테만 Props를 보내줄 수 있다. <br>
+이로인해, 단계가 깊은 자식들한테 props를 전달해주기 위해서, 자식의 자식의 자식의 자식... 이런식으로 계속 타고타고 props를 전달할 수 밖에 없는 상황이 발생하게 됐다. <mark style="background: #BBFABBA6;">(Props Drilling)</mark><br><br>
 이러한 Props Drilling을 막기 위해, REACT에서 사용할 수 있는 유틸리티들이 대거 등장하게 됐다.
 
 > Redux, Saga, Thunk, React Query...<br>
@@ -112,9 +112,9 @@ const Body = ({ children }) => {
 };
 ```
 
-다음과 같이 컴포넌트를 props로 전달할 때는 <span style = "color: violet">전송할 컴포넌트</span>를 <span style = "color: yellowgreen">전송받을 컴포넌트 </span> 안에 넣어줘야한다. 수신부에서는 컴포넌트를 받을 때는 반드시 children이라는 키로 전송된다. 컴포넌트를 여러개로 보내면 children의 값에는 배열의 형태로 값들이 나열된다. <Br>
+다음과 같이 컴포넌트를 props로 전달할 때는 <mark style="background: #D2B3FFA6;">전송할 컴포넌트</mark>를 <mark style="background: #BBFABBA6;">전송받을 컴포넌트 </mark> 안에 넣어줘야한다. 수신부에서는 컴포넌트를 받을 때는 반드시 children이라는 키로 전송된다. 컴포넌트를 여러개로 보내면 children의 값에는 배열의 형태로 값들이 나열된다. <Br>
 
-- <p style="color: #aaa">이러한 배열의 형태를 출력시키기 위해서는 보통 <span style = "color: red">map함수</span>를 사용한다.</p>
+- <mark style="background: #E0E0E060;">이러한 배열의 형태를 출력시키기 위해서는 보통 <mark style="background: #FF5582A6;">map함수</mark>를 사용한다.</mark>
 
 <br><br>
 

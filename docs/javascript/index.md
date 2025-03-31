@@ -30,7 +30,7 @@ nav_order: 3
 
 위와 같이 `script`태그의 `type`속성을 `module`로 작성하면 모듈화를 사용할 수 있다.
 
-`script`는 <span style="color: yellowgreen;">기능을 분리해서 각 파일을 만드는것이 좋</span>기 때문에 서로 간의 데이터 공유를 위해서 모듈 형식을 사용한다.
+`script`는 <mark style="background: #BBFABBA6;">기능을 분리해서 각 파일을 만드는것이 좋</mark>기 때문에 서로 간의 데이터 공유를 위해서 모듈 형식을 사용한다.
 
 ## 변수
 
@@ -174,7 +174,7 @@ console.log(obj8); // {a: 1, b: 2, c: [3, 4, 5]}
 
 <h4 id="explicit-type-conversion" class="hidden-header">명시적 형변환</h4>
 
-<span style="color: violet;">명시적 형변환</span>은 개발자가 의도적으로 데이터의 형식을 변환하는 것을 의미한다.
+<mark style="background: #D2B3FFA6;">명시적 형변환</mark>은 개발자가 의도적으로 데이터의 형식을 변환하는 것을 의미한다.
 
 ```javascript
 let a = "10";
@@ -182,9 +182,9 @@ let b = Number(a);
 console.log(b); // 10
 ```
 
-<h4 id="implicit-type-conversion" class="hidden-header">암시적 형변환</h4>
+<span id="implicit-type-conversion" class="hidden-header">암시적 형변환</span>
 
-<span style="color: violet;">암시적 형변환</span>은 자바스크립트 엔진이 자동으로 데이터의 형식을 변환하는 것을 의미한다.
+<mark style="background: #D2B3FFA6;">암시적 형변환</mark>은 자바스크립트 엔진이 자동으로 데이터의 형식을 변환하는 것을 의미한다.
 
 ```javascript
 let a = "10";

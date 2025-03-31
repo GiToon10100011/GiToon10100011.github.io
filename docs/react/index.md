@@ -18,13 +18,13 @@ JS로만 운영되며, Node 기반으로 작동된다. 이때문에 리엑트를
 2. 프로젝트 폴더가 성공적으로 만들어 졌다면, `npm run dev`로 리엑트 서버를 호출 한다.
 3. 서버를 닫고 싶을때는 `ctrl + c`<br>
 
-<span style="color:rgb(143, 143, 143)">2025년 02월 14일 기준, cra템플릿의 지원이 종료되어 vite나 기타 번들 시스템을 통해 프로젝트 제작이 권장된다..</span>
+<mark style="background: #E0E0E060;">2025년 02월 14일 기준, cra템플릿의 지원이 종료되어 vite나 기타 번들 시스템을 통해 프로젝트 제작이 권장된다..</mark>
 
 제작된 프로젝트 폴더를 살펴보면, <span style = "color : yellowgreen">**node_modules**</span>라는 폴더를 찾을 수 있다. 해당 폴더 안에는 보통 내가 설치한 패키지들이 담겨 있으며, 루트폴더의 package.json의 dependencies에서 모듈이 어느 모듈을 기반으로 동작하는지 등을 확인할 수 있다. <br>
 
 ---
 
-React또한 css를 reset하는 것처럼 <span style = "color: yellowgreen">리셋</span>해주는 프로세스가 존재한다.
+React또한 css를 reset하는 것처럼 <mark style="background: #BBFABBA6;">리셋</mark>해주는 프로세스가 존재한다.
 
 1. 루트폴더의 src폴더에 App.test, logo.svg, reportWebVitals.js, setupTest.js를 삭제
 2. App.js에 logo 관련 코드 줄을 모두 주석처리/삭제한다.
@@ -46,7 +46,7 @@ Flux패턴은 데이터 흐름이 단방향이며, 데이터 흐름을 파악하
 
 이러한 특성 때문에 소셜, ott 등 서비스를 개발하는 업체들은 이처럼 Flux 패턴을 사용하게 된다. 이러한 Flux 패턴을 사용하는 라이브러리가 바로 React이며, Netflix, 페이스북, 트위터 등 많은 회사들이 React를 사용하고 있다. 
 
-React는 SSR(Server-Side-Rendering)방식이 아닌 <span style = "color: violet">CSR(Client-Side-Rendering)</span>방식을 사용한다. <br>
+React는 SSR(Server-Side-Rendering)방식이 아닌 <mark style="background: #D2B3FFA6;">CSR(Client-Side-Rendering)</mark>방식을 사용한다. <br>
 기존의 DOM은 서버가 클라이언트에 제공한것에 반해, 가상돔(VDOM)은 해당 돔을 그대로 복제해서 클라이언트에서 관리한다. 
 
 이로 인해 이벤트나 작업 등은 가상돔에서 먼저 확인을 하고, 해당 요소만 서버한테 받아와 상당히 효율적으로 작업이 진행되며, 로딩도 안걸리게 되어 속도가 향상된다.
@@ -121,7 +121,7 @@ REACT에서 스타일을 먹이기 위해서는 기존처럼 CSS를 사용하거
 
 > 기존의 js와는 다르게, 반드시 onHandler로 이벤트를 부여한다. (REACT에서는 EventListener를 거의 안쓴다.)
 
-on핸들러를 사용함으로써, [JSX](/docs/react/jsx.html#JSX-Event)의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: crimson">리펙토링</span>하는것이 거의 필수화된다. <br><br>
+on핸들러를 사용함으로써, [JSX](/docs/react/jsx.html#JSX-Event)의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <mark style="background: #FF5582A6;">리펙토링</mark>하는것이 거의 필수화된다. <br><br>
 
 ### Event 함수 사용시 주의사항
 
@@ -129,7 +129,7 @@ on핸들러를 사용함으로써, [JSX](/docs/react/jsx.html#JSX-Event)의 문�
 
 > 반드시 콜백으로 사용해야함 (REACT는 Virtual DOM을 사용하기 때문)
 
-Event가 발생될때, on핸들러에 부여한 함수는 반드시 <span style = "color: crimson">콜백함수</span>의 형태로 실행되어야 한다. 따로 리펙토링을 시켜서 콜백을 만들어주거나, 아니면 실행할 함수 내용을 반드시 콜백으로 호출해야한다.<br><br>
+Event가 발생될때, on핸들러에 부여한 함수는 반드시 <mark style="background: #FF5582A6;">콜백함수</mark>의 형태로 실행되어야 한다. 따로 리펙토링을 시켜서 콜백을 만들어주거나, 아니면 실행할 함수 내용을 반드시 콜백으로 호출해야한다.<br><br>
 
 이는 REACT가 VDOM을 사용하기 때문이다. VDOM은 기존에 있던 DOM을 그대로 복제해서 가져오는 건데, <span style = "color : crimson">브라우저가 마운트가 됐을때 바로 실행</span>되는 함수의 특성 때문에 일반 DOM에서도 해당 함수가 바로 실행되게 된다. <br>
 허나 일반 DOM에서는 함수에 대한 데이터가 전무하므로 기능을 수행하지 못하는 함수는 계속 무한루프에 빠지게 된다. 이 때문에 우리는 콜백함수를 사용하여 큐(Queue)의 자료구조를 띠는 CallStack에 넣어서 마운트되자 함수가 실행되는것을 막아줘야한다. <br>
@@ -176,7 +176,7 @@ React는 컴포넌트를 기반으로 만들어짐으로 인해, 마운트 - 렌
 
 > 컴포넌트들을 횡으로 나열해 뒀을때, 교차/겹쳐지는(Cross) 렌더링.
 
-메인기능 역할을 담당하는 <span style = "color: yellowgreen">메인 컴포넌트들은 종단(세로)로 배치</span> 되고, 여기저기에서 사용되는 <span style = "color: yellowgreen">공통 컴포넌트(헤더, 푸터)들은 횡단(가로)로 배치</span>된다. 즉, 공통컴포넌트는 횡단 관심사의 요소로, <span style = "color: crimson">고차컴포넌트화를 통해 횡단관심사에서 요소를 빼내는 최적화 작업</span>이 필요하다. 고차컴포넌트화에 대한 내용은 [`React.memo()`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback)에서 더 자세히 확인할 수 있다.
+메인기능 역할을 담당하는 <mark style="background: #BBFABBA6;">메인 컴포넌트들은 종단(세로)로 배치</mark> 되고, 여기저기에서 사용되는 <mark style="background: #BBFABBA6;">공통 컴포넌트(헤더, 푸터)들은 횡단(가로)로 배치</mark>된다. 즉, 공통컴포넌트는 횡단 관심사의 요소로, <mark style="background: #FF5582A6;">고차컴포넌트화를 통해 횡단관심사에서 요소를 빼내는 최적화 작업</mark>이 필요하다. 고차컴포넌트화에 대한 내용은 [`React.memo()`](/docs/react/hooks.html#6-usememo--reactmemo--usecallback)에서 더 자세히 확인할 수 있다.
 
 ## 메모이제이션(Memoization)
 

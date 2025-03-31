@@ -37,7 +37,7 @@ if(1 < x < 3) console.log("hi") //hi
 ### Falsy값
 
 <img src="../../assets/images/Pasted%20image%2020250326194049.png" style="width: 250px"/>
-<p style="color:rgb(143, 143, 143)">0n은 BigInt의 자료형이다. </p>
+<mark style="background: #E0E0E060;">0n은 BigInt의 자료형이다. </mark>
 
 ---
 ## 단락 회로 평가
@@ -165,7 +165,7 @@ let baz = 0 ?? 42 // 0
 3 * "a" // NaN
 ```
 
-<span style="color:rgb(143, 143, 143)">NaN은 Not a Number의 약자</span>
+<mark style="background: #E0E0E060;">NaN은 Not a Number의 약자</mark>
 
 특정 값이`NaN`인지 `Infinity`인지 확인하는 방법은 한가지 밖에 없다. 
 `isNaN(), isFinite()` 함수를 통해 비교 확인 가능

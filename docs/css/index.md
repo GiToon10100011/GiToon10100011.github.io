@@ -11,7 +11,7 @@ nav_order: 2
 
 > CSS는 Cascading Style Sheets의 약자로, 이름과 동일하게 언어를 위에서 아래로 폭포가 흐르듯이 순차적으로 스타일이 부여되는 언어이다. <span style="color: #aaa;">(`Cascading`은 폭포가 흐르듯이 순차적으로 스타일이 부여되는 것을 의미한다.)</span>
 
-css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한다. <a href="/docs/css/selectors.html" style="color: #aaa;">선택자에 대해 자세히 알아보기</a> <br><br>
+css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한다. <mark style="background: #E0E0E060;"><a href="/docs/css/selectors.html" ">선택자에 대해 자세히 알아보기</a></mark> <br><br>
 스타일은 다양한 스타일 속성들을 통해 부여할 수 있는데, 이는 다음과 같다.
 
 1. [텍스트 스타일](/docs/css/textStyles.html)
@@ -25,14 +25,14 @@ css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한�
 
 ## 단위
 
-- `px` - 픽셀 단위이다. <span style = "color: yellowgreen">절대적인 크기</span>를 지정할 때 사용한다.
-- `%` - 백분율 단위이다. <span style = "color: yellowgreen">상대적인 크기</span>를 지정할 때 사용한다.
+- `px` - 픽셀 단위이다. <mark style="background: #BBFABBA6;">절대적인 크기</mark>를 지정할 때 사용한다.
+- `%` - 백분율 단위이다. <mark style="background: #BBFABBA6;">상대적인 크기</mark>를 지정할 때 사용한다.
 - `em` - 배수 단위이다. <span style="color: #aaa;"><del>em을 읽으면 m, 즉, multiple의 약자라고 생각하자.</del></span> 해당 단위는 부모요소가 중첩될 경우 크기가 달라져, rem이 등장하게 되었다.
 - `rem` - 루트 기준의 배수(루트는 html 요소) 팀환경에서는 루트 기준의 배수를 사용하는 것이 좋다. 1rem은 16px, 2rem은 32px, 3rem은 48px 등으로 사용된다. rem을 확인하고 싶다면 개발자 도구의 computed 탭에서 확인할 수 있다.
 - `vh` - 뷰포트 높이(뷰포트는 브라우저 화면)
 - `vw` - 뷰포트 너비
 - `rgb()` - 빛의 삼원색 모두 조합하여 색상을 표현하는 방법이다.
-- `rgba()` - 빛의 삼원색 모두 조합하여 색상을 표현하는 방법이다. <span style="color: yellowgreen;">알파값을 추가하여 투명도를 조절</span>할 수 있다.
+- `rgba()` - 빛의 삼원색 모두 조합하여 색상을 표현하는 방법이다. <mark style="background: #BBFABBA6;">알파값을 추가하여 투명도를 조절</mark>할 수 있다.
 - `hsl()` - 색상, 채도, 명도를 조합하여 색상을 표현하는 방법이다.
 - `hsla()` - 색상, 채도, 명도를 조합하여 색상을 표현하는 방법이다. 알파값을 추가하여 투명도를 조절할 수 있다.
 - `#000` - 16진수 색상 코드이다. 본래는 6자리 코드이지만, 3자리 코드도 사용할 수 있다. 이런 경우에는 각 자리가 두번씩 반복되어 표현된다.
@@ -106,7 +106,7 @@ div {
 
 ⚠️ **네스팅 사용시 주의사항**
 
-반응형 미디어 쿼리를 작성할때 <p style="color: red;">반드시 네스팅 구조를 전부 동일하게 맞춰줘야 한다.</p> 안그러면 스타일이 적용되지 않는 현상이 발생할 수 있다.
+반응형 미디어 쿼리를 작성할때 <mark style="background: #FF5582A6;">반드시 네스팅 구조를 전부 동일하게 맞춰줘야 한다.</mark> 안그러면 스타일이 적용되지 않는 현상이 발생할 수 있다.
 
 ---
 
@@ -211,7 +211,7 @@ div {
 
 2. CSS에서 `var(--i)`를 사용하여 이 값을 참조할 수 있다.
 
-즉, <span style="color: red;">html에서 커스텀 변수를 선언 및 할당</span>을 하여 css에서 동적으로 스타일을 적용할 수 있다.
+즉, <mark style="background: #FF5582A6;">html에서 커스텀 변수를 선언 및 할당</mark>을 하여 css에서 동적으로 스타일을 적용할 수 있다.
 
 앞서 말했듯이 변수는 어디에서든 선언할 수 있기에, 요소마다 자기만의 값을 할당받아 사용할 수 있는 것이다. 
 

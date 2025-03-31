@@ -33,7 +33,7 @@ nav_order: 6
 <script defer src="https://cdn.jsdelivr.nset/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 ```
 
-이렇게 사용할 수 있다. 해당 예시는 jQuery 라이브러리를 사용하는 예시이다. <p style="color: #aaa">변수에 달러기호가 붙어있다면 무조건 <code style="color: white">jQuery</code>를 사용했다는 뜻이다.</p>
+이렇게 사용할 수 있다. 해당 예시는 jQuery 라이브러리를 사용하는 예시이다. <mark style="background: #E0E0E060;">변수에 달러기호가 붙어있다면 무조건 <mark style="background: #BBFABBA6;"><code>jQuery</code></mark>를 사용했다는 뜻이다.</mark>
 
 위의 예시와 같이 라이브러리 역시 `defer` 속성을 사용하여 브라우저가 페이지를 렌더링 하기 전에 먼저 로드 할 수 있도록 하자.
 

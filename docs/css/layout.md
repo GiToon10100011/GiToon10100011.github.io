@@ -11,7 +11,7 @@ parent: CSS
 ## Box-sizing
 
 - `box-sizing` - 요소의 크기를 계산하는 방법을 지정한다. 값은 `content-box, border-box` 등이 있다.
-  - `content-box` - <span style="color: yellowgreen;">기본값</span>으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다. 너비 공식은 `(margin + border + padding)*2 + width`이다.
+  - `content-box` - <mark style="background: #BBFABBA6;">기본값</mark>으로, 요소의 크기를 계산할 때, 테두리와 패딩을 포함하지 않는다. 너비 공식은 `(margin + border + padding)*2 + width`이다.
   - `border-box` - 요소의 크기를 계산할 때, 테두리와 패딩을 포함한다. 너비 공식은 `(margin*2) + width`이다.
 
 <img src="/assets/images/css/layout/boxSizing.webp" alt="box-sizing" style="margin-top: 30px;">
@@ -22,21 +22,21 @@ parent: CSS
 
 <span id="position"></span>
 
-전에 [html](/docs/html/index.html#inline&block)에서 블록태그와 인라인 태그에 대해 설명했었다. <span style="color: yellowgreen;">블록태그는 차지하는 공간이 한줄</span>이며, <span style="color: violet;">인라인 태그는 차지하는 공간이 해당 요소의 크기만큼 차지</span>한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+전에 [html](/docs/html/index.html#inline&block)에서 블록태그와 인라인 태그에 대해 설명했었다. <mark style="background: #BBFABBA6;">블록태그는 차지하는 공간이 한줄</mark>이며, <mark style="background: #D2B3FFA6;">인라인 태그는 차지하는 공간이 해당 요소의 크기만큼 차지</mark>한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
-포지셔닝에서 가장 중요한 점 중 하나는, <span style="color: red;">포지셔닝할 요소의 왼쪽 위 꼭짓점을 기준으로 위치가 지정된다</span>는 것이다. 이 때문에 보통 `transform`의 `translate` 속성을 사용하여 요소의 기준점을 가운데로 옮긴다.
+포지셔닝에서 가장 중요한 점 중 하나는, <mark style="background: #FF5582A6;">포지셔닝할 요소의 왼쪽 위 꼭짓점을 기준으로 위치가 지정된다</mark>는 것이다. 이 때문에 보통 `transform`의 `translate` 속성을 사용하여 요소의 기준점을 가운데로 옮긴다.
 
 ⚠️ 참고로, 포지션 속성이 지정된 요소와 지정이 안된 요소는 포지션 속성이 지정된 요소가 레이어링에서 우선순위를 가지게 된다.
 
 또한, `z-index` 속성을 사용하지 않은 상태에서는 `position: absolute`를 부여한 요소들 기준으로, 아래서부터 차곡차곡 쌓이게 된다.
 
-- `static` - 기본값으로, 요소를 일반적인 문서 흐름에 따라 배치한다. `top, right, bottom, left, z-index` <span style="color: red;">속성을 사용할 수 없다.</span>
+- `static` - 기본값으로, 요소를 일반적인 문서 흐름에 따라 배치한다. `top, right, bottom, left, z-index` <mark style="background: #FF5582A6;">속성을 사용할 수 없다.</mark>
 
 - `relative` - 요소를 일반적인 문서 흐름에 따라 배치하지만, 요소의 위치를 지정할 수 있다.
 
-- `absolute` - 요소를 일반적인 문서 흐름에서 제거하고, <span style="color: red;">요소의 절대적인 위치를 지정</span>할 수 있다. 이때, <span style="color: red;">position을 relative로 준 요소를 기준으로 위치를 지정</span>한다. 이를 활용하여 특정 요소 안에서만 포지셔닝을 할 수 있다. <span style="color: #aaa;">relative 요소가 존재하지 않으면 루트 요소를 기준으로 위치를 지정</span>한다.
+- `absolute` - 요소를 일반적인 문서 흐름에서 제거하고, <mark style="background: #FF5582A6;">요소의 절대적인 위치를 지정</mark>할 수 있다. 이때, <mark style="background: #FF5582A6;">position을 relative로 준 요소를 기준으로 위치를 지정</mark>한다. 이를 활용하여 특정 요소 안에서만 포지셔닝을 할 수 있다. <span style="color: #aaa;">relative 요소가 존재하지 않으면 루트 요소를 기준으로 위치를 지정</span>한다.
 
-- `fixed` - 요소를 일반적인 문서 흐름에서 제거하고, 반드시 루트 요소의 기준으로 위치를 지정할 수 있다. <span style="color: yellowgreen;">스크롤을 내려도 요소의 위치가 변하지 않는다.</span>
+- `fixed` - 요소를 일반적인 문서 흐름에서 제거하고, 반드시 루트 요소의 기준으로 위치를 지정할 수 있다. <mark style="background: #BBFABBA6;">스크롤을 내려도 요소의 위치가 변하지 않는다.</mark>
 
 - `sticky` - 요소를 일반적인 문서 흐름에 따라 배치하지만, 요소의 위치를 지정할 수 있다. 이때, 스크롤 시 요소가 계속 따라오다가 요소가 특정 위치에 도달하면 그 위치에 고정된다.
   > ⚠️ `sticky`를 충족시키기 위한 조건들이 있다.
@@ -54,7 +54,7 @@ parent: CSS
 
   `block` | 요소를 블록 요소로 만든다.
   `inline` | 요소를 인라인 요소로 만든다.
-  `inline-block` | 요소를 인라인 블록 요소로 만든다. 인라인 블록 요소는 요소를 <span style="color: yellowgreen;">인라인 레벨로 배치할 수 있음과 동시에 블록 레벨 속성도 사용</span>할 수 있다.
+  `inline-block` | 요소를 인라인 블록 요소로 만든다. 인라인 블록 요소는 요소를 <mark style="background: #BBFABBA6;">인라인 레벨로 배치할 수 있음과 동시에 블록 레벨 속성도 사용</mark>할 수 있다.
   `flex` | 요소를 유연한 박스로 만든다. 자세한 사항은 <a href="#flexbox">여기</a>서 알아보자.
   `grid` | 요소를 그리드로 만든다. 자세한 사항은 <a href="#grid">여기</a>서 알아보자.
   `none` | 요소를 표시하지 않는다. 당연히 요소가 차지하고 있던 공간 또한 사라지게 된다.
@@ -82,7 +82,7 @@ parent: CSS
 }
 ```
 
-<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다. <span style="color: yellowgreen;">flexbox내의 자식 요소들은 전부 <code>block</code>레벨 요소</span>가 된다.
+<span id="flexbox">flexbox</span>는 요소를 유연한 박스로 만든다. <mark style="background: #BBFABBA6;">flexbox내의 자식 요소들은 전부 <code>block</mark>레벨 요소</span>가 된다.
 
 ✅ flexbox를 사용할때는 부모요소에 `display: flex`를 준다.
 
@@ -99,7 +99,7 @@ parent: CSS
   `flex-start` | 박스를 위쪽에 정렬한다.
   `flex-end` | 박스를 아래쪽에 정렬한다.
   `center` | 박스를 가운데에 정렬한다.
-  `baseline` | 축의 중심 수평선을 기준으로 요소들의 아랫부분을 해당 선에 맞춰서 정렬시킨다. <span style="color: yellowgreen">이미지와 텍스트를 같이 사용하거나 다른 크기의 텍스트들을 맞추기 위해 사용</span>한다.
+  `baseline` | 축의 중심 수평선을 기준으로 요소들의 아랫부분을 해당 선에 맞춰서 정렬시킨다. <mark style="background: #BBFABBA6;">이미지와 텍스트를 같이 사용하거나 다른 크기의 텍스트들을 맞추기 위해 사용</mark>한다.
   `stretch` | 기본값으로, 높이가 따로 지정되지 않았을 경우, 부모요소의 높이만큼 늘어남.
 
   ```css

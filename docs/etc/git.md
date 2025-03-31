@@ -423,14 +423,14 @@ git config --global user.email "이메일"
 
 `--global` 플래그를 통해 전역 설정을 할 수 있다. 전역 설정은 모든 레포지토리에 적용된다.
 
-⚠️ 만일 다른 사람이 있다던가 데이터 리셋이 필요한 경우, <span style="color: violet;">관리자 모드</span>에서 다음과 같이 설정을 초기화할 수 있다.
+⚠️ 만일 다른 사람이 있다던가 데이터 리셋이 필요한 경우, <mark style="background: #D2B3FFA6;">관리자 모드</mark>에서 다음과 같이 설정을 초기화할 수 있다.
 
 ```bash
 git config --global --unset credential.helper
 git config --system --unset credential.helper
 ```
 
-<span style="color: yellowgreen;">일반모드</span>에서
+<mark style="background: #BBFABBA6;">일반모드</mark>에서
 
 ```bash
 git config --local --unset credential.helper

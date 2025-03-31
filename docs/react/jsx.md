@@ -18,26 +18,26 @@ JSX는 브라우저에서 실행되기 전에 번들링 시스템에 의해 자�
 
 2. 출력부에서는 "**문**"을 사용불가! only "**식**"만 가능
 
-   > if"문", for"문" 중괄호로 <span style = "color: yellowgreen">블럭안에 코드를 넣는것을 "문"</span>, <br>
+   > if"문", for"문" 중괄호로 <mark style="background: #BBFABBA6;">블럭안에 코드를 넣는것을 "문"</mark>, <br>
    > 삼항조건"식", `() => ~`와 같이, 함수가 실행문이거나 연산자, 식일 경우에는 사용 가능하다.
 
 3. 출력부의 공간에서는 반드시 숫자, 문자형태의 자료형만 들어올 수 있음.
 
-   > 이러한 점 때문에 JS의 내장객체들을 사용할때 인스턴스 객체들을 출력부에 넣을 수 없으므로 <span style = "color : yellowgreen">형변환</span>을 따로 해줘야한다. 대표적인 예로는 <span style = "color: yellowgreen">new Date()</span>가 다음과 같이 toDateString이라는 메소드를 통해 문자열로 변환한 날짜를 받아올 수 있다.
+   > 이러한 점 때문에 JS의 내장객체들을 사용할때 인스턴스 객체들을 출력부에 넣을 수 없으므로 <span style = "color : yellowgreen">형변환</span>을 따로 해줘야한다. 대표적인 예로는 <mark style="background: #BBFABBA6;">new Date()</mark>가 다음과 같이 toDateString이라는 메소드를 통해 문자열로 변환한 날짜를 받아올 수 있다.
 
    ```jsx
    <h1>{new Date().toDateString()}</h1>
    ```
 
-   허나 toDateString은 미국기준으로 날짜를 표기하기 때문에 <span style = "color: yellowgreen">toLocaleDateString</span> 메소드 함수를 통해 형변환을 시켜주자.
+   허나 toDateString은 미국기준으로 날짜를 표기하기 때문에 <mark style="background: #BBFABBA6;">toLocaleDateString</mark> 메소드 함수를 통해 형변환을 시켜주자.
 
 4. 반드시 모든 요소를 감싸주는 최상위 부모가 존재해야함. (Fragment Element <> </>)
 
-5. JSX에서는 반드시 속성값들을 문자열이 아닌 다른 자료형일 경우에는 <span style = "color: red">중괄호</span>로 감싸줘야한다.<br>
+5. JSX에서는 반드시 속성값들을 문자열이 아닌 다른 자료형일 경우에는 <mark style="background: #FF5582A6;">중괄호</mark>로 감싸줘야한다.<br>
 
    - `<h2>{name}은 {age}세, {value}</h2> `<br>
    - `<Body name={name} age={age} value={"true"} />` <br><br>
-     <span style = "color: red">!!</span> 이 때문에 객체의 형태와 혼돈하지 말아야한다.
+     <mark style="background: #FF5582A6;">!!</mark> 이 때문에 객체의 형태와 혼돈하지 말아야한다.
 
 6. 태그안의 내용또한 변수를 통해 부여하고 싶다면 중괄호로 감싸줘야한다. 또한 2에 의거하여 특정 조건을 만족할때만 컴포넌트를 넣거나 값을 부여할 수 있다.
 
@@ -57,7 +57,7 @@ JSX는 브라우저에서 실행되기 전에 번들링 시스템에 의해 자�
 
 > 기존의 js와는 다르게, 반드시 onHandler로 이벤트를 부여한다. (REACT에서는 EventListener를 거의 안쓴다.)
 
-on핸들러를 사용함으로써, JSX의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <span style = "color: red">리펙토링</span>하는것이 거의 필수화된다. <br><br>
+on핸들러를 사용함으로써, JSX의 문법 특성상 절대로 출력부에는 "문"이 들어올 수 없으므로, 함수를 <mark style="background: #FF5582A6;">리펙토링</mark>하는것이 거의 필수화된다. <br><br>
 
 보통 on핸들러의 값으로 오는 함수이름을 `onHandle~` 아니면 `handle~`로 시작해서 기능 내용을 덧붙여서 만든다. (일종의 함수이름 형식)
 또한, on핸들러는 모두 카멜표기법을 사용한다.(onClick, onChange ... )
