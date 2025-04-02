@@ -162,7 +162,20 @@ let array2: string[] = ["hi", "hello"]
 배열 내 요소들의 타입이 섞여 있다면, 직접 타입을 지정해줘야한다. 
 
 ```ts
+let array3: [number, string] = [1, "hello"]
 ```
+
+하지만, 위와 같은 방법으로 타입을 지정하게 되면, 타입을 확장하거나, 나중에 데이터가 커지면 타입을 지정하기 어려워진다. 
+
+이때, 타입을 확장하는 방법이 있다. 
+
+```ts
+let array4: (number | string)[] = [1, "hello"]
+let array5: Array<number | string> = [1, "hello"]
+
+type Array<T> = T[];
+```
+array4와 같이, 유니온 타입으로 타입을 지정하여 타입을 확장하거나, 나중에 자세히 다뤄볼 [제네릭](#generic) 타입을 통해 타입을 확장할 수 있다. 
 
 객체 타입 지정
 
