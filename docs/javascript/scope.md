@@ -39,7 +39,7 @@ console.log(x); // ReferenceError: x is not defined
 
 ### var과 let, const의 스코프 차이
 
-var는 함수 스코프, 전역스코프 두가지를 가지며, let과 const는 블록 스코프를 가진다.
+ES6 이전에는 함수 스코프, 전역스코프 두가지만을 가졌으며 이에 따라 var도 마찬가지로 2가지 스코프만을 가졌었다. ES6이후에 도입된 let과 const는 블록 스코프를 가진다.
 
 ```javascript
 var x = 10;
