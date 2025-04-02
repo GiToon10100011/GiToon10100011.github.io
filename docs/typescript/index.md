@@ -51,12 +51,38 @@ greet("Brendan") //Brendan, undefined
 
 이러한 여러 문제점들 때문에 자바스크립트의 슈퍼셋 언어인 타입스크립트가 등장하게 됐다.
 
-자바스크립트에서 타입을 조회하기 위해 typeof 연산자를 사용할 수 있는데, 이때 조회할 데이터의 형식이 원시타입이어야만 제대로 타입을 조회할 수 있고, 참조형 타입은 전부 object로 나오게 된다. 
+자바스크립트는 타입의 종류가 2가지로 크게 나뉜다. 
 
-참조형 타입을 그러면 확인하기 위해서는 instanceof연산자를 사용할 수 있다. 이를 사용하게 되면 특정 타입의 instance인지 조회하여 불린값을 반환해준다. 
+1. Primitive Wrapper Type
+2. Reference Type
+
+1)은 `Boolean, Null, Undefined, Number, BigInt, String, Symbol` 등이 해당되고, 
+
+2)는 `Array, Object, Date, Function, RegExp, UserType` 등이 해당된다. 
+
+자바스크립트의 `typeof` 연산자는 <mark style="background: #BBFABBA6;">원시형 타입의 데이터의 타입을 조회</mark>하기 위해 생겼다. <span style="color:rgb(143, 143, 143)">(조회할 데이터의 형식이 원시타입이어야만 제대로 타입을 조회할 수 있음) </span>
+참조형 타입을 typeof로 조회하게 되면, 전부 object로 나오게 된다. 
+
+```js
+var count = 10;
+var array = [1,2,3];
+
+console.log(typeof count); //number
+console.log(typeof array); //object
+```
+
+<mark style="background: #D2B3FFA6;">참조형 타입을 확인</mark>하기 위해서는 `instanceof` 연산자를 사용할 수 있다. 이를 사용하게 되면 특정 타입의 instance인지 조회하여 불린값을 반환해준다. 
+
+```js
+var name = "newlec";
+var array = [1,2,3];
+
+console.log(name instanceof String); // false
+console.log(array instanceof Array); // true
+```
 
 이때, 배열은 배열만 가지는 검증 방법이 존재한다. 
-isArray를 통해 배열인지 확인해볼 수 있다. 
+`isArray`를 통해 배열인지 확인해볼 수 있다. 
 
 ```js
 var nums = [];
@@ -101,7 +127,22 @@ outDir은 컴파일된 JS파일들을 어디에 넣어 놓을 건지에 대한 �
 이후에 tsc만 사용하여 모든 ts파일들을 dist폴더에 넣을 수 있다. 이때, include를 통해 어떤 ts파일들만 컴파일할 것인지 결정할 수 있다. 
 ![](../../assets/images/Pasted%20image%2020250328110441.png)
 
+---
+## 타입 지정법
+
+> 다른 타입 기반 언어들과 다르게, 타입스크립트에서는 타입 지정을 왼쪽이 아닌 오른쪽에 한다. 
+
+```C
+int number = 1;
+```
+
+```ts
+const number:number = 1;
+```
+
 원시형 타입 지정
+
+> string, number, boolean, null, undefined, bigint, symbol, Infinity, NaN...
 
 ```ts
 let msg:string = "hello world";
@@ -114,6 +155,13 @@ msg = 2; //typeError 발생
 ```ts
 let array: number[] = [1, 2, 3, 4]
 let array2: string[] = ["hi", "hello"]
+```
+
+위와 같은 타입은, 배열에 들어갈 요소들의 타입이 전부 일관될때만 사용할 수 있다. 
+
+배열 내 요소들의 타입이 섞여 있다면, 직접 타입을 지정해줘야한다. 
+
+```ts
 ```
 
 객체 타입 지정
