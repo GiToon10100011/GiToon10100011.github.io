@@ -98,8 +98,50 @@ let module1 = require("./app.js");
 선언해둔 변수나 함수를 내보내고 싶으면 `exports.변수명 = 변수명` 과 같이 내보내면 된다. 직접적으로 바로 내보내고 싶으면 `module.exports = 변수명` 과 같이 내보내면 된다.
 가져올때는 해당 파일의 경로를 적어주면 된다. 만약, index라는 이름으로 스크립트가 작성됐다면, .js를 생략하고 파일명만 적어주면 된다.
 
+```js
+//newlec-hello/index.js
+var msg = "Hello Javascript";
+exports.hello = function () {
+  console.log(msg);
+};
 
+// app.js
+let module2 = require("./newlec-hello");
+```
+
+### ESM
+
+```js
+//내보내고 싶을 때 
+export const add = (a, b) => a + b;
+
+//기본값으로 내보내고 싶을 때 
+export default function hello() {
+  console.log("Hello");
+}
+
+//app.js
+import hi, { add } from "./app.js";
+console.log(hi()); // Hello
+```
+
+ESM은 내보내는 방법이 2가지로, 기본값으로 내보내고 싶을 때는 `export default`를 사용하고, 기본값으로 내보낸 값을 가져올때는 `import 임의의 이름 from 경로`를 사용하고, 이름을 붙여서 가져오고 싶을 때는 `import { 이름 } from "경로"` 와 같이 사용한다.
+
+---
+그렇다면 이제 비동기 방식의 api를 사용해보자.
 File System 모듈을 예시로 보자.
+
+기존의 동기 방식의 코드를 먼저 확인해보자. 
+
+```js
+const fs = require("fs");
+
+const data = fs.readFileSync("example.txt", "utf8");
+console.log(data);
+```
+
+위의 코드는 동기 방식의 api를 사용하여, 파일을 읽는 작업이 끝나면 콜백 함수가 실행된다.  
+~~<span style="color:rgb(143, 143, 143)">해당 코드는 보통 백준환경에서 코테를 node.js로 풀때 사용된다.</span>~~
 
 ```js
 const fs = require("fs");
@@ -107,9 +149,10 @@ const fs = require("fs");
 fs.readFile("example.txt", "utf8", (err, data) => {
   if (err) {
     console.error("Error reading file:", err);
-    return;
+    return; 
   }
   console.log("File content:", data);
+
 });
 ```
 
