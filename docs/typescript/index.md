@@ -7,6 +7,8 @@ nav_order: 5
 ---
 # Typescript
 
+`npm i -g typescript`
+
 ## Typescript가 등장하게 된 배경
 
 JS는 기본적으로 변수를 할당할때 메모리를 참조하는 특성을 띤다. 값의 형식이 따로 명확하게 지정되어 있지 않고, Wrapper클래스를 통해 <mark style="background: #D2B3FFA6;">Boxing</mark>이 이루어진다. 
@@ -36,9 +38,8 @@ x = x + "abc" //x는 문자열이 된다. 20abc
 
 ```js
 const obj = {width :10, height: 15};
-const area = obj.width * obj.heigth;
-console.log(area) // NaN
-
+const area = obj.width * obj.heigth; //고의적으로 오타를 냄
+console.log(area) // NaN, undefined와 함깨 연산이 됨. 
 
 //JS에서는 지정한 파라미터 개수와 인자 개수가 달라도 오류가 발생하지 않는다. 
 function greet(person, date){
@@ -82,7 +83,7 @@ tsc(typescript complier)을 먼저 전역적으로 설치하기
 
 tsconfig.json설정
 컴파일된 js파일을 따로 다른 폴더에서 관리하고 싶은데 어떻게 해야할까?
-![[../../../../images/Pasted image 20250328105724.png]]
+![](../../assets/images/Pasted%20image%2020250328105724.png)
 다음과 같이 직접 플래그로 지정해줄 수 있지만, 매번 이렇게 플래그 설정을 해주기 너무 귀찮다. 
 
 tsconfig.json에서 이를 해결할 수 있다. 
@@ -95,8 +96,10 @@ tsconfig.json에서 이를 해결할 수 있다.
 "include": ["code.ts"]
 }
 ```
+outDir은 컴파일된 JS파일들을 어디에 넣어 놓을 건지에 대한 옵션이다. 
+
 이후에 tsc만 사용하여 모든 ts파일들을 dist폴더에 넣을 수 있다. 이때, include를 통해 어떤 ts파일들만 컴파일할 것인지 결정할 수 있다. 
-![[../../../../images/Pasted image 20250328110441.png]]
+![](../../assets/images/Pasted%20image%2020250328110441.png)
 
 원시형 타입 지정
 
@@ -276,3 +279,41 @@ interface IPoint{
 구조가 맞는지 안맞는지에 대한 일치여부 확인: 타입 사용
 
 인터페이스와 타입은 일관되게 사용하고, 각자의 장단점이 있으니 회사의 컨벤션에 맞춰서 사용하면 되겠다. 
+
+```ts
+function printCoord(pt: Point) {
+  console.log(pt.x);
+  console.log(pt.y);
+}
+
+printCoord({ x: 100, y: 100 });
+
+{
+  class Exam {
+    constructor(public kor: number, public eng: number) {}
+    total() {
+      return this.kor + this.eng;
+    }
+  }
+
+  const exam: Exam = new Exam(100, 90);
+}
+
+{
+  interface Exam {
+    kor: number;
+    eng: number;
+    total(): number;
+  }
+
+  class ExamImpl implements Exam {
+    constructor(public kor: number, public eng: number) {}
+    total() {
+      return this.kor + this.eng;
+    }
+  }
+
+  const exam: Exam = new ExamImpl(100, 70);
+}
+
+```
