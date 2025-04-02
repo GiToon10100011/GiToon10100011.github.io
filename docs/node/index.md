@@ -65,7 +65,7 @@ NodeJS는 다양한 입출력 API들을 모듈형식으로 붙일 수 있게 해
 기본적으로 노드는 모듈이 동기적으로 작동한다. 이때문에 blocking이 되는 코드들이 많아져, 비동기 방식의 api를 사용할 수 있다.
 
 비동기 방식의 api 사용법을 알아보기 전에, 모듈 사용법을 먼저 알아보고 가자.
-Node.js에서는 모듈을 사용할때 이전에는 파일간의 고립화가 안되어 변수들이 충돌하는 것과 같은 문제들이 발생했다. 이러한 문제를 해결하기 위해 반드시 가져와야하는 시스템과, 고립화가 가능한 시스템이 있어야했다. 
+Node.js에서는 모듈을 사용할때 이전에는 파일간의 고립화가 안되어 변수들이 충돌하는 것과 같은 문제들이 발생했다. 이러한 문제를 해결하기 위해 반드시 가져와야하는 시스템과, 고립화가 가능한 시스템이 있어야했다.
 
 1. AMD (Asynchronous Module Definition)
 2. CommonJS
@@ -77,20 +77,20 @@ ES6이후로는 ESM 모듈 시스템을 사용하게 된다. 하지만, 여전�
 
 ```js
 //app.js
-// 새로 만들어서 내보내고 싶을때 
+// 새로 만들어서 내보내고 싶을때
 module.exports = {
   name: "John",
   age: 30,
 };
 
-// 이미 만들어둔것을 내보내고 싶을때 
+// 이미 만들어둔것을 내보내고 싶을때
 function add() {
   return x + y;
 }
 
-exports.add = add; // {add : add}와 같음 
+exports.add = add; // {add : add}와 같음
 
-//가져올때 
+//가져올때
 let module1 = require("./app.js");
 ```
 
@@ -112,10 +112,10 @@ let module2 = require("./newlec-hello");
 ### ESM
 
 ```js
-//내보내고 싶을 때 
+//내보내고 싶을 때
 export const add = (a, b) => a + b;
 
-//기본값으로 내보내고 싶을 때 
+//기본값으로 내보내고 싶을 때
 export default function hello() {
   console.log("Hello");
 }
@@ -128,17 +128,20 @@ console.log(hi()); // Hello
 ESM은 내보내는 방법이 2가지로, 기본값으로 내보내고 싶을 때는 `export default`를 사용하고, 기본값으로 내보낸 값을 가져올때는 `import 임의의 이름 from 경로`를 사용하고, 이름을 붙여서 가져오고 싶을 때는 `import { 이름 } from "경로"` 와 같이 사용한다.
 
 ---
+
 그렇다면 이제 비동기 방식의 api를 사용해보자.
 File System 모듈을 예시로 보자.
 
-기존의 동기 방식의 코드를 먼저 확인해보자. 
+기존의 동기 방식의 코드를 먼저 확인해보자.
 
 ```js
 const fs = require("fs");
-
+//readFileSync는 동기형 함수이다.
 const data = fs.readFileSync("example.txt", "utf8");
 console.log(data);
 ```
+
+<span style="color:rgb(143, 143, 143)">참고로, 파일을 실행시, 실행한 위치에 해당 파일이 존재해야하기 때문에 해당 파일의 루트디렉토리 이외의 경로에서 실행하게 되면 작동하지 않는다는 것을 유의하자. </span>
 
 위의 코드는 동기 방식의 api를 사용하여, 파일을 읽는 작업이 끝나면 콜백 함수가 실행된다.  
 ~~<span style="color:rgb(143, 143, 143)">해당 코드는 보통 백준환경에서 코테를 node.js로 풀때 사용된다.</span>~~
@@ -149,17 +152,30 @@ const fs = require("fs");
 fs.readFile("example.txt", "utf8", (err, data) => {
   if (err) {
     console.error("Error reading file:", err);
-    return; 
+    return;
   }
   console.log("File content:", data);
-
 });
 ```
 
-위의 코드는 비동기 방식의 api를 사용하여, 파일을 읽는 작업이 끝나면 콜백 함수가 실행된다.
+위의 코드는 비동기 방식의 api를 사용하여, 파일을 읽는 작업이 끝나면 콜백 함수가 실행된다. 위와 같이 Callback을 이용하여 비동기 api를 사용할 수도 있지만, Promise를 이용한 방법도 있다.
+
+```js
+const fs = require("fs/promises");
+
+async function readFileAsync() {
+  try {
+    const data = await fs.readFile("example.txt", "utf8");
+    console.log("File content:", data);
+  } catch (err) {
+    console.error("Error reading file:", err);
+  }
+}
+
+readFileAsync();
+```
 
 ---
-
 ## NPM(Node Package Manager)
 
 > 모듈은 코드를 나눈 라이브러리 시스템이다.
