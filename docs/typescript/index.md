@@ -146,7 +146,7 @@ const number: number = 1;
 
 ### 기본 타입 📊
 
-#### 원시 타입 지정 🔢
+**원시 타입 지정** 🔢
 
 ```ts
 let msg: string = "hello world";
@@ -156,7 +156,7 @@ msg = 2; //typeError 발생
 
 기본 원시 타입: `string`, `number`, `boolean`, `null`, `undefined`, `bigint`, `symbol`
 
-#### 배열 타입 지정 📚
+**배열 타입 지정** 📚
 
 ```ts
 let array: number[] = [1, 2, 3, 4];
@@ -176,7 +176,7 @@ let array4: (number | string)[] = [1, "hello"];
 let array5: Array<number | string> = [1, "hello"];
 ```
 
-#### 객체 타입 지정 🏢
+**객체 타입 지정** 🏢
 
 ```ts
 const user: { name: string; age: number } = { name: "Alice", age: 22 };
@@ -213,14 +213,14 @@ const total1 = exam1.kor + exam2.eng;
 
 ### Special 타입 🔮
 
-#### any와 unknown 🤔
+**any와 unknown** 🤔
 
 | 타입        | 설명           | 특징                                                                                           | 사용 시점                                   |
 | ----------- | -------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | **any**     | 모든 타입 허용 | <mark style="background: #FF5582A6;">타입 안전성 포기</mark>, 어떤 연산이나 메서드도 사용 가능 | 타입을 알 수 없거나 중요하지 않을 때        |
 | **unknown** | 모든 타입 허용 | <mark style="background: #BBFABBA6;">타입 가드</mark>나 단언 후에만 사용 가능                  | 타입은 알 수 없지만 안전하게 처리해야 할 때 |
 
-##### any 예시
+**any 예시**
 
 ```ts
 let msg: any = "hello world";
@@ -229,7 +229,7 @@ msg = 123;
 let total = msg + 10; // 오류가 발생하지 않음, 133이 됨
 ```
 
-##### unknown 예시
+**unknown 예시**
 
 ```ts
 let msg: unknown = "hello world";
@@ -299,7 +299,7 @@ type Bear = Animal & {
 
 ### 유니온과 인터섹션 타입 🔀
 
-#### 유니온 타입 (Union Type) ∪
+**유니온 타입 (Union Type)** ∪
 
 여러 타입 중 하나를 가질 수 있는 타입입니다:
 
@@ -313,7 +313,7 @@ type ID = string | number;
 }
 ```
 
-#### 인터섹션 타입 (Intersection Type) ∩
+**인터섹션 타입 (Intersection Type)** ∩
 
 여러 타입을 모두 만족하는 타입입니다:
 
@@ -434,7 +434,7 @@ printCoord({ x: 100, y: 100 });
 
 ### 특수 연산자 ⚡
 
-#### 확정 할당 단언 (!)
+**확정 할당 단언 (!)**
 
 변수나 속성이 선언 시점에 초기화되지 않아도 나중에 반드시 값이 할당될 것임을 컴파일러에 알립니다:
 
@@ -444,7 +444,7 @@ class User {
 }
 ```
 
-#### Not-null 단언 연산자 (!)
+**Not-null 단언 연산자 (!)**
 
 값이 null 또는 undefined가 아님을 컴파일러에 알립니다:
 
