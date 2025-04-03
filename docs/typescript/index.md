@@ -181,9 +181,19 @@ array4와 같이, 유니온 타입으로 타입을 지정하여 타입을 확장
 
 ```ts
 const user: {name: string; age: number} = {name: "Alice", age: 22}
+
+//함수의 매개변수를 객체로 받는 경우 
+function printUser(user: {name: string; age: number}){
+	console.log(user.name, user.age)
+}
+
+//객체 구조 분해할당의 타입 지정
+function printUser({name, age}: {name: string; age: number}){
+	console.log(name, age)
+}
 ```
 
-일회성으로 타입을 사용한다면 다음과 같이 직접 지정할 수 있다. 하지만 재사용이 필요하다면, type혹은 interface라는 타입별칭을 통해 사용 가능하다. 
+일회성으로 타입을 사용한다면 위와 같이 직접 지정할 수 있다. 하지만 재사용이 필요하다면, type혹은 interface라는 타입별칭을 통해 사용 가능하다. 
 
 ```ts
 interface IExam {
@@ -202,14 +212,15 @@ const exam2: IExam = { kor: 100, eng: 90 };
 const total1 = exam1.kor + exam2.eng;
 ```
 
+둘의 차이는 [추후에](#type-interface) 알아보도록 하자. 
 ### special 타입
 
 1. any: 모든 타입을 허용(안정성이 떨어짐)
 2. unknown: 알 수 없는 타입 (안전한 any대안)
 
-any는 형변환이 막 일어나서 전용 타입 메소드를 사용할때도 오류가 생기지 않는다는 문제가 있다. 
+`any`는 형변환이 막 일어나서 전용 타입 메소드를 사용할때도 <mark style="background: #FF5582A6;">오류가 생기지 않는다는 문제</mark>가 있다. 
 
-unknown은 모든 타입의 데이터를 받되, 타입 가드(조건문)을 통해 특정 타입 전용 메소드를 사용할 수 있도록 해준다. 
+`unknown`은 모든 타입의 데이터를 받되, 타입 가드(조건문)을 통해 <mark style="background: #BBFABBA6;">특정 타입 전용 메소드를 사용할 수 있</mark>도록 해준다. 
 
 ```ts
 {
@@ -222,6 +233,8 @@ unknown은 모든 타입의 데이터를 받되, 타입 가드(조건문)을 통
 ```
 
 <span style="color:rgb(97, 97, 97)">(중괄호는 지역화를 위해 적용)</span>
+
+참고로, `any`는 프로젝트 빌드시에 빌드 오류가 발생한다. 이는 any타입을 사용하면 안되는 ts의 규약 때문인데, 이를 무시하고자 하면 eslint의 noEmplicitAny를 지정해주면 된다. 
 
 ### Type Assertions
 
