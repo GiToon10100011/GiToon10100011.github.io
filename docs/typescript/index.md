@@ -12,11 +12,11 @@ nav_order: 5
 
 ## TypeScript가 등장하게 된 배경 🔎
 
-JavaScript는 기본적으로 변수를 할당할때 메모리를 참조하는 특성을 띠며, 값의 형식이 명확하게 지정되어 있지 않습니다. 필요할 때 자동으로 <mark style="background: #D2B3FFA6;">Boxing</mark>이 이루어집니다.
+JavaScript는 기본적으로 변수를 할당할때 메모리를 참조하는 특성을 띠며, 값의 형식이 명확하게 지정되어 있지 않다. 필요할 때 자동으로 <mark style="background: #D2B3FFA6;">Boxing</mark>이 이루어진다.
 
-> Boxing이란 원시형 데이터를 객체로 변환하는 과정입니다. JavaScript에서는 필요할 때 자동으로 이루어지며, 명시적인 `new Number()`와 같은 생성자 호출은 일반적으로 권장되지 않습니다.
+> Boxing이란 원시형 데이터를 객체로 변환하는 과정이다. JavaScript에서는 필요할 때 자동으로 이루어지며, 명시적인 `new Number()`와 같은 생성자 호출은 일반적으로 권장되지 않는다.
 
-일반적인 타입 기반 언어는 <mark style="background: #BBFABBA6;">컴파일러에 의한 오류확인이 가능</mark>하지만, JavaScript에서는 실행환경에 의한 오류 확인때문에 <mark style="background: #D2B3FFA6;">직접 코드를 실행해야 오류 여부</mark>를 알 수 있는 불편함이 존재합니다.
+일반적인 타입 기반 언어는 <mark style="background: #BBFABBA6;">컴파일러에 의한 오류확인이 가능</mark>하지만, JavaScript에서는 실행환경에 의한 오류 확인때문에 <mark style="background: #D2B3FFA6;">직접 코드를 실행해야 오류 여부</mark>를 알 수 있는 불편함이 존재한다.
 
 ### JavaScript의 타입 시스템 구조 🏗️
 
@@ -38,7 +38,7 @@ let x = 20;
 x = x + "abc"; //x는 문자열이 된다. 20abc
 ```
 
-타입 기반 언어에서는 위 코드가 에러를 발생시키지만, JavaScript에서는 에러가 발생하지 않고 연산까지 수행됩니다.
+타입 기반 언어에서는 위 코드가 에러를 발생시키지만, JavaScript에서는 에러가 발생하지 않고 연산까지 수행한다.
 
 ```js
 const obj = { width: 10, height: 15 };
@@ -53,12 +53,12 @@ function greet(person, date) {
 greet("Brendan"); //Brendan, undefined
 ```
 
-이러한 여러 문제점들 때문에 자바스크립트의 슈퍼셋 언어인 타입스크립트가 등장하게 되었습니다.
+이러한 여러 문제점들 때문에 자바스크립트의 슈퍼셋 언어인 타입스크립트가 등장하게 됐다.
 
 ### JavaScript의 타입 확인 방법 🔍
 
-자바스크립트의 `typeof` 연산자는 <mark style="background: #BBFABBA6;">원시형 타입의 데이터 타입을 조회</mark>하기 위해 생겼습니다. <span style="color:rgb(143, 143, 143)">(조회할 데이터의 형식이 원시타입이어야만 제대로 타입을 조회할 수 있음)</span>
-참조형 타입을 typeof로 조회하면 대부분 'object'로 나오게 됩니다.
+자바스크립트의 `typeof` 연산자는 <mark style="background: #BBFABBA6;">원시형 타입의 데이터 타입을 조회</mark>하기 위해 생겼다. <span style="color:rgb(143, 143, 143)">(조회할 데이터의 형식이 원시타입이어야만 제대로 타입을 조회할 수 있음)</span>
+참조형 타입을 typeof로 조회하면 대부분 'object'로 나오게 된다.
 
 ```js
 var count = 10;
@@ -68,7 +68,7 @@ console.log(typeof count); //number
 console.log(typeof array); //object
 ```
 
-<mark style="background: #D2B3FFA6;">참조형 타입을 확인</mark>하기 위해서는 `instanceof` 연산자를 사용할 수 있습니다.
+<mark style="background: #D2B3FFA6;">참조형 타입을 확인</mark>하기 위해서는 `instanceof` 연산자를 사용할 수 있다.
 
 ```js
 var name = "newlec";
@@ -78,7 +78,7 @@ console.log(name instanceof String); // false (원시 문자열이므로)
 console.log(array instanceof Array); // true
 ```
 
-배열은 `Array.isArray()` 메서드로 확인할 수 있습니다.
+배열은 `Array.isArray()` 메서드로 확인할 수 있다.
 
 ```js
 var nums = [];
@@ -93,7 +93,7 @@ console.log(null == undefined); //true (느슨한 비교에서는 같게 취급)
 console.log(null === undefined); //false (엄격한 비교에서는 다른 타입)
 ```
 
-<mark style="background: #FFB86CA6;">타입스크립트를 사용하면 이러한 불편한 타입 검사를 따로 할 필요가 없습니다</mark>.
+<mark style="background: #FFB86CA6;">타입스크립트를 사용하면 이러한 불편한 타입 검사를 따로 할 필요가 없다</mark>.
 
 ---
 
@@ -105,7 +105,7 @@ console.log(null === undefined); //false (엄격한 비교에서는 다른 타�
 npm i -g typescript
 ```
 
-TypeScript 컴파일러(tsc)를 전역 설치합니다.
+TypeScript 컴파일러(tsc)를 전역 설치한다.
 
 ### tsconfig.json 설정 📝
 
@@ -113,7 +113,7 @@ TypeScript 컴파일러(tsc)를 전역 설치합니다.
 
 ![](../../assets/images/Pasted%20image%2020250328105724.png)
 
-명령줄에서 플래그로 지정할 수 있지만, tsconfig.json을 사용하면 더 편리합니다:
+명령줄에서 플래그로 지정할 수 있지만, tsconfig.json을 사용하면 더 편리하다:
 
 ```json
 {
@@ -124,7 +124,7 @@ TypeScript 컴파일러(tsc)를 전역 설치합니다.
 }
 ```
 
-`outDir`은 컴파일된 JS 파일들을 저장할 경로고, `include`는 컴파일할 파일들을 지정합니다.
+`outDir`은 컴파일된 JS 파일들을 저장할 경로고, `include`는 컴파일할 파일들을 지정한다.
 
 ![](../../assets/images/Pasted%20image%2020250328110441.png)
 
@@ -132,7 +132,7 @@ TypeScript 컴파일러(tsc)를 전역 설치합니다.
 
 ## 타입 지정법 🏷️
 
-> 타입스크립트에서는 다른 타입 기반 언어들과 달리, 타입 지정을 변수 이름 뒤에 콜론(:)으로 합니다.
+> 타입스크립트에서는 다른 타입 기반 언어들과 달리, 타입 지정을 변수 이름 뒤에 콜론(:)으로 한다.
 
 ```c
 // C 언어 예시
@@ -163,7 +163,7 @@ let array: number[] = [1, 2, 3, 4];
 let array2: string[] = ["hi", "hello"];
 ```
 
-배열 내 요소들의 타입이 섞여 있다면, 튜플 타입을 사용하거나 유니온 타입을 지정할 수 있습니다:
+배열 내 요소들의 타입이 섞여 있다면, 튜플 타입을 사용하거나 유니온 타입을 지정할 수 있다:
 
 ```ts
 // 튜플 타입 (정확한 위치에 정확한 타입)
@@ -192,7 +192,7 @@ function printUser({ name, age }: { name: string; age: number }) {
 }
 ```
 
-일회성으로 타입을 사용한다면 위와 같이 직접 지정할 수 있습니다. 재사용이 필요하다면, `type`이나 `interface`를 사용합니다:
+일회성으로 타입을 사용한다면 위와 같이 직접 지정할 수 있다. 재사용이 필요하다면, `type`이나 `interface`를 사용한다:
 
 ```ts
 interface IExam {
@@ -247,11 +247,11 @@ msg.toUpperCase(); // 타입 에러: 'unknown' 타입에 'toUpperCase' 메서드
 }
 ```
 
-TypeScript 프로젝트에서 `noImplicitAny` 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생합니다.
+TypeScript 프로젝트에서 `noImplicitAny` 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생한다.
 
 ### Type Assertions (타입 단언) 👉 {#type-assertions}
 
-타입 단언은 개발자가 컴파일러보다 더 정확하게 타입을 알고 있을 때 사용합니다:
+타입 단언은 개발자가 컴파일러보다 더 정확하게 타입을 알고 있을 때 사용한다:
 
 | 문법        | 예시                           | 비고                    |
 | ----------- | ------------------------------ | ----------------------- |
@@ -263,11 +263,11 @@ let someValue: unknown = "this is a string";
 let strLength: number = (someValue as string).length;
 ```
 
-<mark style="background: #BBFABBA6;">타입 단언은 타입을 변환하는 것이 아니라, 컴파일러에게 "이 값은 이 타입이다"라고 알려주는 것입니다.</mark>
+<mark style="background: #BBFABBA6;">타입 단언은 타입을 변환하는 것이 아니라, 컴파일러에게 "이 값은 이 타입이다"라고 알려주는 것이다.</mark>
 
 ### Interface vs Type 📌 {#type-interface}
 
-TypeScript에서 `interface`와 `type`은 모두 타입을 정의하는 방법이지만, 몇 가지 중요한 차이점이 있습니다:
+TypeScript에서 `interface`와 `type`은 모두 타입을 정의하는 방법이지만, 몇 가지 중요한 차이점이 있다:
 
 | 특성          | interface                      | type                                 |
 | ------------- | ------------------------------ | ------------------------------------ |
@@ -301,7 +301,7 @@ type Bear = Animal & {
 
 **유니온 타입 (Union Type)** ∪
 
-여러 타입 중 하나를 가질 수 있는 타입입니다:
+여러 타입 중 하나를 가질 수 있는 타입이다:
 
 ```ts
 type ID = string | number;
@@ -315,7 +315,7 @@ type ID = string | number;
 
 **인터섹션 타입 (Intersection Type)** ∩
 
-여러 타입을 모두 만족하는 타입입니다:
+여러 타입을 모두 만족하는 타입이다:
 
 ```ts
 type ID = string | number;
@@ -327,11 +327,11 @@ user = 1; // 오류: number 타입은 불가능
 user = null; // 오류: null 타입은 불가능
 ```
 
-<mark style="background: #D2B3FFA6;">인터섹션 타입에서는 모든 타입이 공통으로 가지는 속성만 사용할 수 있습니다.</mark>
+<mark style="background: #D2B3FFA6;">인터섹션 타입에서는 모든 타입이 공통으로 가지는 속성만 사용할 수 있다.</mark>
 
 ### 리터럴 타입 📌
 
-리터럴 타입은 값 자체가 타입이 되는 타입입니다:
+리터럴 타입은 값 자체가 타입이 되는 타입이다:
 
 ```ts
 let level: 1;
@@ -351,7 +351,7 @@ greet("TypeScript"); // Hello, TYPESCRIPT!!
 greet(42); // 타입 오류: 숫자를 전달할 수 없음
 ```
 
-함수의 매개변수와 반환값에 타입을 지정할 수 있습니다. 반환값은 생략하면 타입 추론이 됩니다.
+함수의 매개변수와 반환값에 타입을 지정할 수 있다. 반환값은 생략하면 타입 추론이 된다.
 
 ```ts
 // Promise를 반환하는 함수
@@ -362,7 +362,7 @@ async function getFavoriteNumber(): Promise<number> {
 
 ### Enum 🔢
 
-열거형 타입(Enum)은 상수 값의 집합을 정의합니다:
+열거형 타입(Enum)은 상수 값의 집합을 정의한다:
 
 ```ts
 enum Direction {
@@ -376,13 +376,13 @@ let dir: Direction = Direction.Down;
 console.log(dir); // 2
 ```
 
-첫 번째 값을 초기화하면, 이후 값들은 자동으로 1씩 증가합니다.
+첫 번째 값을 초기화하면, 이후 값들은 자동으로 1씩 증가한다.
 
 ---
 
 ## Interface와 Class 🏛️
 
-인터페이스는 객체의 구조를 정의하는 계약(contract)입니다:
+인터페이스는 객체의 구조를 정의하는 계약(contract)이다:
 
 ```ts
 interface IPoint {
@@ -436,7 +436,7 @@ printCoord({ x: 100, y: 100 });
 
 **확정 할당 단언 (!)**
 
-변수나 속성이 선언 시점에 초기화되지 않아도 나중에 반드시 값이 할당될 것임을 컴파일러에 알립니다:
+변수나 속성이 선언 시점에 초기화되지 않아도 나중에 반드시 값이 할당될 것임을 컴파일러에 알린다:
 
 ```ts
 class User {
@@ -446,7 +446,7 @@ class User {
 
 **Not-null 단언 연산자 (!)**
 
-값이 null 또는 undefined가 아님을 컴파일러에 알립니다:
+값이 null 또는 undefined가 아님을 컴파일러에 알린다:
 
 ```ts
 function getLength(str: string | null) {
