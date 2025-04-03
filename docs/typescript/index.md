@@ -220,9 +220,22 @@ const total1 = exam1.kor + exam2.eng;
 
 `any`는 형변환이 막 일어나서 전용 타입 메소드를 사용할때도 <mark style="background: #FF5582A6;">오류가 생기지 않는다는 문제</mark>가 있다. 
 
-`unknown`은 모든 타입의 데이터를 받되, 타입 가드(조건문)을 통해 <mark style="background: #BBFABBA6;">특정 타입 전용 메소드를 사용할 수 있</mark>도록 해준다. 
+```ts
+let msg: any = "hello world";
+msg = 123;
+
+let total = msg + 10; //오류가 나지 않는다. 133이 나온다. 
+```
+
+`unknown`은 모든 타입의 데이터를 받되, 거의 모든 연산에 직접 사용할 수 없다. 타입 가드(조건문)나 [단언](#assertion)을 통해 <mark style="background: #BBFABBA6;">특정 타입 전용 메소드를 사용할 수 있</mark>도록 해준다. 
 
 ```ts
+let msg: unknown = "hello world";
+msg = 2;
+let total = msg + 10 
+console.log(total) //typeError(Object is of type unknown)
+msg.toUpperCase(); //typeError
+
 {
   let msg: unknown = "hello world";
   msg = 123;
@@ -234,19 +247,26 @@ const total1 = exam1.kor + exam2.eng;
 
 <span style="color:rgb(97, 97, 97)">(중괄호는 지역화를 위해 적용)</span>
 
-참고로, `any`는 프로젝트 빌드시에 빌드 오류가 발생한다. 이는 any타입을 사용하면 안되는 ts의 규약 때문인데, 이를 무시하고자 하면 eslint의 noEmplicitAny를 지정해주면 된다. 
+TypeScript 프로젝트에서 noImplicitAny 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생한다. 이를 무시하려면 tsconfig.json 파일에서 noImplicitAny 옵션을 false로 설정하면 된다.
 
-### Type Assertions
-
+<h3 id="assertion">Type Assertions</h3>
 이때, 일일이 if조건문을 사용해야하는 타입가드의 불편함 때문에 타입단언(as)가 등장하게 됐다. 
-`let total = msg as number + 10;`
 
 ```ts
 {
-	let kor: number = 33;
-	let eng: number;
-	console.log(typeof eng)
+  let msg: unknown = "hello world";
+  msg = 123;
+  let total = (msg as number) + 10;
 }
+```
+
+`as`를 사용하여 확장된 타입을 좁히는 등, 안전하게 연산을 수행할 수 있다. 
+
+`<>`을 사용하여 타입단언을 하는 방법도 존재한다. 하지만 이는 JSX문법과 충돌할 수 있어 as문법이 권장된다. 
+
+```ts
+let total = (<number>msg) + 10;
+let strLength: number = (<string>someValue).length;
 ```
 
 유니온 타입
