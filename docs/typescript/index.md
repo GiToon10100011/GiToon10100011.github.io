@@ -247,8 +247,7 @@ msg.toUpperCase(); //typeError
 
 <span style="color:rgb(97, 97, 97)">(중괄호는 지역화를 위해 적용)</span>
 
-TypeScript 프로젝트에서 noImplicitAny 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생한다. 이를 무시하려면 tsconfig.json 파일에서 noImplicitAny 옵션을 false로 설정하면 된다.
-
+TypeScript 프로젝트에서 noImplicitAny 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생한다. 이를 무시하려면 tsconfig.json 파일에서 noImplicitAny 옵션을 false로 설정하면 된다. 
 <h3 id="assertion">Type Assertions</h3>
 이때, 일일이 if조건문을 사용해야하는 타입가드의 불편함 때문에 타입단언(as)가 등장하게 됐다. 
 
@@ -268,6 +267,8 @@ TypeScript 프로젝트에서 noImplicitAny 컴파일러 옵션이 활성화된 
 let total = (<number>msg) + 10;
 let strLength: number = (<string>someValue).length;
 ```
+
+`!`를 사용해서 좀 다른 타입의 단언을 사용할 수 있다. 
 
 유니온 타입
 
