@@ -1,3 +1,18 @@
+---
+layout: home-with-toc
+title: Class
+date: 2025-04-03 20:18:00 +0900
+categories: Coding
+parent: Javascript
+---
+
+## Class
+### 객체지향 프로그래밍의 3대요소
+
+1. 캡슐화(Encapsulation)
+2. 상속(Inheritance)
+3. 다형성(Polymorphism)
+
 ```js
 {
   function Exam() {
