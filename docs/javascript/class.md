@@ -245,3 +245,22 @@ function Exam(kor, eng, math) {
 ```
 
 ## this 속성
+
+클래스에서 this는 상위 인스턴스를 가리키게 된다. 이때, 생성자가 만들어낼 객체를 의미 하는 것이다. 그래서 파라미터로 받은 인자들을 만들어질 객체의 속성인 this.kor, this.eng에 할당시켜야하는 것이다. 
+
+메소드들 또한 객체 내의 속성이므로 this바인딩으로 접근이 가능한것이다. 
+
+```ts
+function Exam(kor, eng, math) {
+	this.kor = kor || 0;
+	this.eng = eng || 0;
+	this.math = math || 0;
+	this.total = function(){
+		return this.kor+this.eng+this.math;
+	}
+	this.avg = function(){
+		return this.total() / 3;
+	}
+}
+```
+
