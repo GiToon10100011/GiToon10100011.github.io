@@ -68,7 +68,7 @@ console.log(exam1.avg()); // 0
 // 매개변수와 함께 호출
 var exam2 = new Exam(1, 2, 3);
 console.log(exam2.total()); // 6
-console.log(exam2.avg()); // 2
+console.log(exam2.avg()); // 2=77 
 ```
 
 이 방식이 "생성자 오버로드"로 간주되는 이유는 다음과 같다:
