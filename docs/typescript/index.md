@@ -249,8 +249,7 @@ msg.toUpperCase(); // 타입 에러: 'unknown' 타입에 'toUpperCase' 메서드
 
 TypeScript 프로젝트에서 `noImplicitAny` 컴파일러 옵션이 활성화된 경우, 타입이 명시되지 않아 암시적으로 any로 추론되는 상황에서 오류가 발생한다.
 
-### Type Assertions (타입 단언) 👉 {#type-assertions}
-
+<h3 id="type-assertion">Type Assertions (타입 단언) 👉</h3>
 타입 단언은 개발자가 컴파일러보다 더 정확하게 타입을 알고 있을 때 사용한다:
 
 | 문법        | 예시                           | 비고                    |
@@ -265,8 +264,7 @@ let strLength: number = (someValue as string).length;
 
 <mark style="background: #BBFABBA6;">타입 단언은 타입을 변환하는 것이 아니라, 컴파일러에게 "이 값은 이 타입이다"라고 알려주는 것이다.</mark>
 
-### Interface vs Type 📌 {#type-interface}
-
+<h3 id="type-interface">Interface vs Type 📌</h3>
 TypeScript에서 `interface`와 `type`은 모두 타입을 정의하는 방법이지만, 몇 가지 중요한 차이점이 있다:
 
 | 특성          | interface                      | type                                 |
@@ -299,7 +297,7 @@ type Bear = Animal & {
 
 ### 유니온과 인터섹션 타입 🔀
 
-**유니온 타입 (Union Type)** ∪
+**유니온 타입 (Union Type)**
 
 여러 타입 중 하나를 가질 수 있는 타입이다:
 
@@ -313,7 +311,7 @@ type ID = string | number;
 }
 ```
 
-**인터섹션 타입 (Intersection Type)** ∩
+**인터섹션 타입 (Intersection Type)**
 
 여러 타입을 모두 만족하는 타입이다:
 
@@ -362,21 +360,180 @@ async function getFavoriteNumber(): Promise<number> {
 
 ### Enum 🔢
 
-열거형 타입(Enum)은 상수 값의 집합을 정의한다:
+열거형 타입(Enum)은 관련된 상수 값들의 집합을 정의한다. Enum은 코드의 가독성과 유지보수성을 높여주며, 특히 제한된 선택지가 있는 상황에서 유용하다.
+
+- Enum 사용 이유와 장점
+
+  1. **가독성 향상**: 숫자 상수 대신 의미 있는 이름을 사용할 수 있다
+  2. **타입 안전성**: 해당 Enum 타입에 정의된 값만 사용할 수 있도록 제한한다
+  3. **자동 완성**: IDE에서 Enum 멤버들을 자동 완성으로 보여준다
+  4. **리팩토링 용이성**: 상수 값이 변경되어도 사용처에서 수정할 필요가 없다
+
+- Enum 종류
+
+  **1. 숫자 Enum (Numeric Enum)**
+
+  ```ts
+  enum Direction {
+    Up = 1,
+    Down, // 자동으로 2가 됨
+    Left, // 자동으로 3이 됨
+    Right, // 자동으로 4가 됨
+  }
+
+  let dir: Direction = Direction.Down;
+  console.log(dir); // 2
+  console.log(Direction[2]); // "Down" (역방향 매핑)
+  ```
+
+  초기값을 지정하지 않으면 0부터 시작한다:
+
+  ```ts
+  enum Color {
+    Red, // 0
+    Green, // 1
+    Blue, // 2
+  }
+  ```
+
+  **2. 문자열 Enum (String Enum)**
+
+  ```ts
+  enum MediaTypes {
+    JSON = "application/json",
+    XML = "application/xml",
+    TEXT = "text/plain",
+  }
+
+  fetch("api/data", {
+    headers: {
+      "Content-Type": MediaTypes.JSON,
+    },
+  });
+  ```
+
+  **3. 이종 Enum (Heterogeneous Enum)**
+
+  문자열과 숫자를 혼합해서 사용할 수 있지만, 일반적으로 권장되지 않는다:
+
+  ```ts
+  enum BooleanLikeEnum {
+    No = 0,
+    Yes = "YES",
+  }
+  ```
+
+  **4. 상수 Enum (const enum)**
+
+  성능 최적화를 위해 사용한다. 컴파일 시 Enum 객체 자체가 생성되지 않고, 사용처에 직접 값이 인라인된다:
+
+  ```ts
+  const enum Directions {
+    Up,
+    Down,
+    Left,
+    Right,
+  }
+
+  let directions = [
+    Directions.Up,
+    Directions.Down,
+    Directions.Left,
+    Directions.Right,
+  ];
+  // 컴파일 결과: let directions = [0, 1, 2, 3];
+  ```
+
+#### Enum 실사용 예시
+
+**HTTP 상태 코드 관리**
 
 ```ts
-enum Direction {
-  Up = 1,
-  Down, // 2
-  Left, // 3
-  Right, // 4
+enum HttpStatus {
+  OK = 200,
+  Created = 201,
+  BadRequest = 400,
+  Unauthorized = 401,
+  Forbidden = 403,
+  NotFound = 404,
+  InternalServerError = 500,
 }
 
-let dir: Direction = Direction.Down;
-console.log(dir); // 2
+function handleResponse(status: HttpStatus) {
+  if (status === HttpStatus.OK) {
+    console.log("요청 성공");
+  } else if (status === HttpStatus.NotFound) {
+    console.log("리소스를 찾을 수 없음");
+  }
+}
 ```
 
-첫 번째 값을 초기화하면, 이후 값들은 자동으로 1씩 증가한다.
+**권한 관리**
+
+```ts
+enum UserRole {
+  Admin = "ADMIN",
+  Editor = "EDITOR",
+  Viewer = "VIEWER",
+}
+
+function checkAccess(user: { role: UserRole }) {
+  switch (user.role) {
+    case UserRole.Admin:
+      return true;
+    case UserRole.Editor:
+      return true;
+    default:
+      return false;
+  }
+}
+```
+
+**설정 옵션**
+
+```ts
+enum ThemeMode {
+  Light = "light",
+  Dark = "dark",
+  System = "system",
+}
+
+function setTheme(mode: ThemeMode) {
+  localStorage.setItem("theme", mode);
+  applyTheme(mode);
+}
+
+// 사용 예
+setTheme(ThemeMode.Dark);
+```
+
+- Enum의 주의사항과 대안
+
+  1. **트리 쉐이킹 문제**: 숫자 Enum은 역방향 매핑을 위한 객체가 생성되어 번들 크기가 커질 수 있다
+  2. **타입스크립트만의 문법**: Enum은 자바스크립트에 없는 기능이라 트랜스파일 시 추가 코드가 생성된다
+
+  이런 문제를 피하고 싶다면 다음과 같은 대안을 고려할 수 있다:
+
+  **유니온 타입과 const 객체 사용**
+
+  ```ts
+  // 대신 이렇게 사용할 수 있다
+  const Directions = {
+    Up: "UP",
+    Down: "DOWN",
+    Left: "LEFT",
+    Right: "RIGHT",
+  } as const;
+
+  type Direction = (typeof Directions)[keyof typeof Directions];
+
+  function move(direction: Direction) {
+    console.log(`Moving ${direction}`);
+  }
+
+  move(Directions.Up); // OK
+  move("SIDEWAYS"); // 오류: "SIDEWAYS"는 Direction 타입이 아님
+  ```
 
 ---
 
@@ -390,6 +547,156 @@ interface IPoint {
   y: number;
 }
 ```
+
+### 상속과 확장 (Inheritance & Extension) 🔄
+
+타입스크립트에서는 `extends` 키워드를 사용하여 인터페이스와 클래스의 상속을 구현할 수 있다.
+
+**인터페이스 확장 (Interface Extension)**
+
+인터페이스는 다른 인터페이스를 확장하여 새로운 속성을 추가할 수 있다:
+
+```ts
+interface BaseEntity {
+  id: number;
+  createdAt: Date;
+}
+
+interface User extends BaseEntity {
+  name: string;
+  email: string;
+}
+
+// User 타입은 id, createdAt, name, email 속성을 모두 가짐
+const user: User = {
+  id: 1,
+  createdAt: new Date(),
+  name: "홍길동",
+  email: "hong@example.com",
+};
+```
+
+하나의 인터페이스가 여러 인터페이스를 확장할 수도 있다:
+
+```ts
+interface Named {
+  name: string;
+}
+
+interface Aged {
+  age: number;
+}
+
+interface Person extends Named, Aged {
+  gender: string;
+}
+
+// Person은 name, age, gender 속성을 모두 가짐
+const person: Person = { name: "김철수", age: 30, gender: "남성" };
+```
+
+**클래스 상속 (Class Inheritance)**
+
+클래스는 다른 클래스를 상속받아 기능을 확장할 수 있다:
+
+```ts
+class Animal {
+  constructor(public name: string) {}
+
+  move(distance: number = 0) {
+    console.log(`${this.name}이(가) ${distance}m 이동했습니다.`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name: string) {
+    super(name); // 부모 클래스의 생성자 호출 필수
+  }
+
+  bark() {
+    console.log("멍멍!");
+  }
+
+  // 메서드 오버라이딩
+  move(distance: number = 5) {
+    console.log("달리는 중...");
+    super.move(distance); // 부모 클래스의 메서드 호출
+  }
+}
+
+const dog = new Dog("뽀삐");
+dog.bark(); // 멍멍!
+dog.move(); // 달리는 중... 뽀삐이(가) 5m 이동했습니다.
+```
+
+**상속 시 주의사항**:
+
+1. 클래스 상속 시 `super()` 호출은 생성자에서 필수이다.
+2. 자식 클래스에서 부모 메서드를 오버라이딩할 때, `super.메서드명()`으로 부모 메서드를 호출할 수 있다.
+3. 타입스크립트는 **단일 상속**만 지원한다 (다중 상속 불가).
+
+**추상 클래스 vs 인터페이스**
+
+추상 클래스와 인터페이스는 모두 추상화를 제공하지만 중요한 차이점이 있다:
+
+| 특성            | 추상 클래스                             | 인터페이스                         |
+| --------------- | --------------------------------------- | ---------------------------------- |
+| **구현 코드**   | 일반 메서드와 추상 메서드 모두 가능     | 메서드 시그니처만 정의 가능        |
+| **생성자**      | 생성자를 가질 수 있음                   | 생성자를 가질 수 없음              |
+| **접근 제한자** | private, protected, public 사용 가능    | 모든 멤버는 기본적으로 public      |
+| **상속 방식**   | 클래스는 하나의 추상 클래스만 상속 가능 | 클래스는 여러 인터페이스 구현 가능 |
+| **속성**        | 상태(필드)를 가질 수 있음               | 상태 없이 순수 계약만 정의         |
+| **용도**        | 관련 클래스 간 공통 기능 공유           | 서로 다른 객체 간 계약 정의        |
+
+```ts
+// 추상 클래스 예시
+abstract class Database {
+  // 상태를 포함할 수 있음
+  protected connection: string;
+
+  // 구현된 메서드
+  constructor(connectionString: string) {
+    this.connection = connectionString;
+  }
+
+  // 공통 기능 구현
+  disconnect(): void {
+    console.log("연결 종료");
+  }
+
+  // 추상 메서드
+  abstract connect(): void;
+}
+
+// 인터페이스 예시
+interface Repository {
+  // 구현 없는 메서드 시그니처만 정의
+  findAll(): unknown[];
+  findById(id: number): unknown;
+  save(entity: unknown): void;
+}
+
+// 클래스는 하나의 추상 클래스만 상속 가능하지만, 여러 인터페이스 구현 가능
+class PostgresDatabase extends Database implements Repository {
+  connect(): void {
+    console.log(`${this.connection}에 연결 중...`);
+  }
+
+  findAll(): unknown[] {
+    return [];
+  }
+
+  findById(id: number): unknown {
+    return {};
+  }
+
+  save(entity: unknown): void {
+    console.log("엔티티 저장");
+  }
+}
+```
+
+추상 클래스는 "is-a" 관계를 나타내고, 인터페이스는 "can-do" 관계를 나타낸다. 공통 기능과 상태를 공유하는 관련 클래스들이 있다면 추상 클래스를, 서로 다른 클래스들이 특정 기능을 구현해야 한다면 인터페이스를 사용하는 것이 적합하다.
 
 ### 클래스와 인터페이스 활용 📚
 
