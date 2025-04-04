@@ -70,5 +70,4 @@ console.log(obj1 === obj3);  // true (같은 객체 참조)
 
 ```Javascript
 
-
 ```
