@@ -41,6 +41,27 @@ console.log(1 === '1'); // false
 console.log(1 == '1'); // true
 ```
 
+이때 중요한 것은, 참조형 변수와의 비교에서는 얕은비교, 깊은비교의 차이가 없이 둘다 참조 비교를 하게 된다. 이는 자바스크립트의 비교 연산 규칙이다. 
+
+```js
+const obj1 = { x: 10 };
+const obj2 = { x: 10 };  // 같은 내용이지만 다른 객체
+const obj3 = obj1;       // obj1과 같은 참조
+
+console.log(obj1 == obj2);   // false (다른 객체 참조)
+console.log(obj1 === obj2);  // false (다른 객체 참조)
+console.log(obj1 == obj3);   // true (같은 객체 참조)
+console.log(obj1 === obj3);  // true (같은 객체 참조)
+```
+
+참조형 타입은 항상 메모리 주소를 비교하며, 내용이 같더라도 다른 객체면 false를 반환한다. 
+
+내용 비교가 필요한 경우:
+
+- 객체/배열:`JSON.stringify(obj1) === JSON.stringify(obj2)` 또는 깊은 비교 함수 사용
+
+- 함수: 함수 내용 비교는 일반적으로 불가능 (함수의 `toString()`을 비교할 수는 있지만 권장되지 않음)
+
 ### 논리 연산자
 
 - `&&` : 논리곱 (모든 조건이 참이어야 참)

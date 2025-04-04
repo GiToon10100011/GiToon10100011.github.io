@@ -42,6 +42,8 @@ console.log("exam2", exam2); // Exam {}
 
 ### 생성자 오버로드
 
+> 객체지향 언어에서, 같은 이름의 생성자를 여러개 정의하되, 매개변수의 개수나 타입이 다른 것.
+
 자바스크립트는 C++이나 Java와 같은 전통적인 객체지향 언어처럼 함수 시그니처 기반의 오버로딩을 공식적으로 지원하지 않는다. 그러나 매개변수의 존재 여부나 타입을 확인하는 방식으로 오버로딩 효과를 구현할 수 있다.
 
 ```js
@@ -156,7 +158,41 @@ class Exam {
 
 생성자 오버로드 패턴은 API의 유연성을 높이지만, 함수 내부 로직이 복잡해질 수 있으므로 적절히 주석을 달아 사용 방법을 명확히 하는 것이 좋다.
 
+### 생성자의 메모리 효율성 문제
+
+```js
+function Exam(kor, eng, math) {
+  this.kor = kor || 0;
+  this.eng = eng || 0;
+  this.math = math || 0;
+
+  this.total = function () {
+    return this.kor + this.eng + this.math;
+  };
+
+  this.avg = function () {
+    return this.total() / 3;
+  };
+}
+
+var exam1 = new Exam(1, 2, 3);
+var exam2 = new Exam(1, 2, 3);
+
+console.log(exam1.total == exam2.total); // false
+console.log(exam1.total === exam2.total); // false  
+```
+
+생성자 함수 내에서 메소드를 정의하면, 매 인스턴스마다 새로운 함수 객체가 생성된다. exam1과 exam2는 서로 다른 두 객체이며, 각자의 total 메소드도 별개의 함수 객체이다. 두 합수는 코드 내용은 동일하지만 메모리 상에서는 완전히 다른 객체이다. 
+
+왜 문제인가?
+
+동일한 기능의 메소드가 객체마다 중복 생성이 되어 메모리 공간을 과도하게 잡아먹게 된다.또한, 수천개의 객체를 생성하게 되면 수천개의 중복 함수가 메모리를 차지하게 되어 메모리 부족, 누수 현상이 발생할 수 있다.
+
+이런 문제점때문에 일종의 형식을 가지고 이를 공유하고자 하는 "형식"이 만들어졌으며, 이가 바로 프로토타입이다.
+
 ## 프로토타입
+
+> 모든 인스턴스가 메소드를 공유할 수 있게 해주는 형식 
 
 자바스크립트는 기본적으로 객체를 동적으로 확장하는 습성 때문에, this바인딩을 통해 만들어진 변수들은 속성까지도 객체에 추가된다. 이러한 이유때문에, 인스턴스를 찍어낼때마다 항상 빈객체인 상태에서 속성을 추가하기 때문에 공간을 무지막지하게 잡아먹게 된다. 이런 문제점때문에 일종의 형식을 가지고 이를 공유하고자 하는 "형식"이 만들어졌으며, 이가 바로 프로토타입이다.
 
@@ -170,6 +206,31 @@ Array.prototype.aaa = function () {
 };
 ```
 
+```js
+function Exam(kor, eng, math) {
+  this.kor = kor || 0;
+  this.eng = eng || 0;
+  this.math = math || 0;
+}
+
+// 프로토타입에 메소드 정의
+Exam.prototype.total = function() {
+  return this.kor + this.eng + this.math;
+};
+
+Exam.prototype.avg = function() {
+  return this.total() / 3;
+};
+
+var exam = new Exam(20, 30, 40);
+var exam1 = new Exam(20, 30, 40);
+
+console.log(exam.total == exam1.total);   // true
+console.log(exam.total === exam1.total);  // true
+```
+
+total은 prototype으로 정의된 메소드로서 Exam으로 찍어낸 모든 인스턴스가 공유하는 메소드가 되니까 참조도 똑같아져서 true가 되는것이다. 
+
 has a 상속
 
 이것저것 다른걸 가져와서 상속을 받음(조립해서 사용)
@@ -180,6 +241,17 @@ is 상속
 
 코드 재사용
 바이너리 재사용(배포된 바이너리를 그대로 가져와서 사용)
+즉, 기존 객체의 prototype도 확장시켜서 내가 원하는 기능을 추가할 수도 있다. 
+예를 들어, 배열 객체에 내가 원하는 기능을 추가할 수도 있다. 
+
+```js
+Array.prototype.print2 = function(){
+for(var i=0; i<this.length; i++)
+console.log(this[i]);
+}
+var ar = [1,2,3,4,5];
+ar.print2();
+```
 
 ```js
 {
@@ -246,21 +318,20 @@ function Exam(kor, eng, math) {
 
 ## this 속성
 
-클래스에서 this는 상위 인스턴스를 가리키게 된다. 이때, 생성자가 만들어낼 객체를 의미 하는 것이다. 그래서 파라미터로 받은 인자들을 만들어질 객체의 속성인 this.kor, this.eng에 할당시켜야하는 것이다. 
+클래스에서 this는 상위 인스턴스를 가리키게 된다. 이때, 생성자가 만들어낼 객체를 의미 하는 것이다. 그래서 파라미터로 받은 인자들을 만들어질 객체의 속성인 this.kor, this.eng에 할당시켜야하는 것이다.
 
-메소드들 또한 객체 내의 속성이므로 this바인딩으로 접근이 가능한것이다. 
+메소드들 또한 객체 내의 속성이므로 this바인딩으로 접근이 가능한것이다.
 
 ```ts
 function Exam(kor, eng, math) {
-	this.kor = kor || 0;
-	this.eng = eng || 0;
-	this.math = math || 0;
-	this.total = function(){
-		return this.kor+this.eng+this.math;
-	}
-	this.avg = function(){
-		return this.total() / 3;
-	}
+  this.kor = kor || 0;
+  this.eng = eng || 0;
+  this.math = math || 0;
+  this.total = function () {
+    return this.kor + this.eng + this.math;
+  };
+  this.avg = function () {
+    return this.total() / 3;
+  };
 }
 ```
-
