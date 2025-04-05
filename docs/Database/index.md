@@ -119,11 +119,11 @@ Logical Design 단계에서는 <mark style="background: #D2B3FFA6;">관계를 �
 이처럼 다이어그램을 그려서 DBMS를 설계해보자!
 https://app.diagrams.net/
 
-![[../../../images/Pasted image 20250331121201.png]]
+![](../../assets/images/Pasted%20image%2020250331121201.png)
 
 처음에 다이어그램을 그릴때 우리가 이해할 수 있는 한국어로 작성을 하고, 이후에 영어로 치환하는 프로세스로 진행하는 것이 좋을 것이다. 
 
-![[../../../images/Pasted image 20250331121526.png]]
+![](../../assets/images/Pasted%20image%2020250331121526.png)
 
 아이디를 통해 엔티티를 식별할 수 있게 해야 관리를 할 수 있다. PK(Primary Key)
 
