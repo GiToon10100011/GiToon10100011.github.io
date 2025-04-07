@@ -4,7 +4,6 @@ title: Database
 date: 2025-04-04 17:42:00 +0900
 categories: Coding
 ---
-
 # Database Modeling 📊
 
 > 컨셉디자인 - Logical 디자인 -> Physical 디자인의 과정을 거친다.
