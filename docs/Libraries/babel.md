@@ -3,7 +3,7 @@ layout: home-with-toc
 title: Babel
 date: 2025-06-17 16:04:00 +0900
 categories: Coding
-parent: CS
+parent: 라이브러리
 ---
 
 # Babel

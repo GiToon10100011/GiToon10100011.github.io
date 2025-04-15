@@ -3,6 +3,7 @@ layout: home-with-toc
 title: CS
 date: 2025-06-17 16:04:00 +0900
 categories: Coding
+has_children: true
 ---
 
 > 공학적 지식을 모아둔 페이지.

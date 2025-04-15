@@ -21,7 +21,7 @@ parent: CS
 api - 인터페이스 어댑터 계층 
 레포지토리는 db에서 데이터를 받아와서 엔티티에 담음
 
-![[../../../../images/Pasted image 20250403142003.png]]
+<img src="../../../../assets/images/Pasted image 20250403142003.png" alt="" width="200">
 
 계층의 명칭으로 먼저 폴더를 만들자. 이때 usecases의 root에 있는 menu는 조회, admin내의 menu는 menu관리(crud)시스템이다. 
 
