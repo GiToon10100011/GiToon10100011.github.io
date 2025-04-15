@@ -5,6 +5,7 @@ date: 2025-03-25 20:09:00 +0900
 categories: Coding
 parent: CS
 ---
+
 ## FrontEnd의 변화
 
 Static Web Page(정적 페이지)
