@@ -31,7 +31,7 @@ parent: Database
 1. Supabase에서는 New Organization으로 팀별로 조직을 만들기
 2. New Project로 특정 팀 내에 프로젝트 생성하기
 
-<img src="../../assets/images/Pasted%20image%2020250401141314.png" alt="Supabase 프로젝트 생성" width="600">
+=<img src="../../assets/images/Pasted%20image%2020250401141314.png" alt="Supabase 프로젝트 생성" width="600">
 
 > ⚠️ **주의사항**: 무료 티어는 프로젝트를 2개만 사용할 수 있으며, 무료 티어로 생성한 프로젝트는 일정 기간 이후 접근이 제한될 수 있다.
 
