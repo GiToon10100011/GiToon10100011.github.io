@@ -96,7 +96,7 @@ Supabase에서 제공하는 자료형은 PostgreSQL 자료형을 기반으로 �
 
 ### 제약조건 설정 🛡️
 
-![[../../../images/Pasted image 20250401151549.png]]
+ ![200](../../../images/Pasted%20image%2020250401151549.png)
 
 SQL Editor를 통해 제약조건을 추가할 수 있다:
 
