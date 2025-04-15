@@ -31,7 +31,7 @@ parent: Database
 1. Supabase에서는 New Organization으로 팀별로 조직을 만들기
 2. New Project로 특정 팀 내에 프로젝트 생성하기
 
-![](../../assets/images/Pasted%20image%2020250401141314.png)
+<img src="../../assets/images/Pasted%20image%2020250401141314.png" alt="Supabase 프로젝트 생성" width="600">
 
 > ⚠️ **주의사항**: 무료 티어는 프로젝트를 2개만 사용할 수 있으며, 무료 티어로 생성한 프로젝트는 일정 기간 이후 접근이 제한될 수 있다.
 
@@ -41,7 +41,7 @@ parent: Database
 
 Table Editor에서 테이블을 생성할 수 있다.
 
-![](../../../images/Pasted%20image%2020250401141907.png)
+<img src="../../../assets/images/Pasted%20image%2020250401141907.png" alt="Table Editor" width="600">
 
 #### 데이터 타입 선택 🔤
 
@@ -57,7 +57,7 @@ Supabase에서 제공하는 자료형은 PostgreSQL 자료형을 기반으로 �
 | boolean     | 참/거짓 값                 | 활성화 상태 등                                                  |
 | jsonb       | JSON 데이터                | 설정, 메타데이터 등                                             |
 
-![](../../../images/Pasted%20image%2020250401142616.png)
+<img src="../../../assets/images/Pasted%20image%2020250401142616.png" alt="데이터 타입 설정" width="600">
 
 #### 컬럼 속성 설정 ⚙️
 
@@ -66,7 +66,7 @@ Supabase에서 제공하는 자료형은 PostgreSQL 자료형을 기반으로 �
 - 주키(Primary Key) 설정 시 식별자로 사용 여부 지정
 - 대량의 데이터가 예상되면 int8 선택 (int4는 용량이 부족할 수 있음)
 
-![](../../../images/Pasted%20image%2020250401145604.png)
+<img src="../../../assets/images/Pasted%20image%2020250401145604.png" alt="컬럼 속성 설정" width="600">
 
 #### 외래키 설정 🔗
 
@@ -92,15 +92,15 @@ Supabase에서 제공하는 자료형은 PostgreSQL 자료형을 기반으로 �
 
 데이터 삽입 화면:
 
-![](../../../images/Pasted%20image%2020250401145752.png)
+<img src="../../../assets/images/Pasted%20image%2020250401145752.png" alt="데이터 삽입 화면" width="600">
 
 ### 제약조건 설정 🛡️
 
-![](../../../images/Pasted%20image%2020250401151549.png)
+<img src="../../../assets/images/Pasted%20image%2020250401151549.png" alt="제약조건 설정" width="200">
 
 SQL Editor를 통해 제약조건을 추가할 수 있다:
 
-![](../../../images/Pasted%20image%2020250401151610.png)
+<img src="../../../assets/images/Pasted%20image%2020250401151610.png" alt="SQL Editor" width="600">
 
 > 💡 CHECK 제약조건은 프론트엔드에서도 검증 가능하므로 적절히 사용하는 것이 좋다. UI 변경 시 유지보수 비용을 고려하라.
 
@@ -108,20 +108,20 @@ SQL Editor를 통해 제약조건을 추가할 수 있다:
 
 Database 메뉴에서 ERD(Entity-Relationship Diagram) 다이어그램을 확인할 수 있다:
 
-![](../../../images/Pasted%20image%2020250401153444.png)
+<img src="../../../assets/images/Pasted%20image%2020250401153444.png" alt="ERD 다이어그램" width="600">
 
 ## API 활용하기 🔌
 
 Next.js와 같은 프레임워크에서 Supabase를 접근하여 데이터를 관리할 수 있다. 팀 내에서는 한 명만 Supabase 프로젝트를 만들고 API 키를 공유하는 것이 효율적이다.
 
-![](../../../images/Pasted%20image%2020250401161140.png)
+<img src="../../../assets/images/Pasted%20image%2020250401161140.png" alt="API 활용" width="600">
 
 API Docs에서 curl 명령이나 JavaScript 코드 예제를 확인할 수 있다:
 
 - 🐚 curl은 유닉스 환경(git bash, zsh 등)에서 사용
 - 🔑 Settings -> API에서 Project API Keys의 anon 키를 클라이언트에서 사용
 
-![](../../../images/Pasted%20image%2020250401162043.png)
+<img src="../../../assets/images/Pasted%20image%2020250401162043.png" alt="API 키 설정" width="600">
 
 ## 데이터 무결성과 제약조건 🔒
 
