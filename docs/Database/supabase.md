@@ -172,3 +172,23 @@ API Docs에서 curl 명령이나 JavaScript 코드 예제를 확인할 수 있�
 - 🌐 쿼리스트링은 화면 상태를 결정하는 변수로, 제거 시 기본 상태로 돌아간다
 - 🔐 프로덕션 환경에서는 anon 키의 보안에 주의하고, 서버 측 검증을 반드시 구현하라
 - 📊 대규모 데이터 처리가 필요한 경우 Row Level Security(RLS)를 활용하여 성능과 보안을 최적화하라
+
+## Next.js와 Supabase 연동하기 🔌
+
+먼저, Supabase를 사용하여 DB를 연동해보자
+https://supabase.com/docs
+
+다양한 환경세팅에 대한 가이드를 제공해준다. 
+https://supabase.com/docs/guides/getting-started/quickstarts/nextjs
+
+이미 넥스트 프로젝트를 만든 상태에서 supabase를 연동하기 위해서는 어떻게 해야할까?
+
+`npm i @supabase/ssr @supabase/supabase-js`
+
+환경변수를 만들어서 supabase경로와 클라이언트 키를 할당하자. 
+해당 환경변수들은 프로젝트 대시보드의 Project Settings의 Data API에서 확인할 수 있다. 시크릿 키를 사용해야한다. 환경변수들은 공개되면 안되니까 따로 외장 드라이브 등을 통해 관리하는것이 좋다. 
+
+테이블에서 데이터를 가져올때 그냥은 못가져온다. RLS 정책을 추가해야한다. 
+
+![](../../assets/images/Pasted%20image%2020250416230038.png)
+
