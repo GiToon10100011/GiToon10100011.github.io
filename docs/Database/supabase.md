@@ -192,3 +192,10 @@ https://supabase.com/docs/guides/getting-started/quickstarts/nextjs
 
 ![](../../assets/images/Pasted%20image%2020250416230038.png)
 
+하지만 Data API의 service_role(시크릿키)는 전부 접근이 가능하다. 
+![](../../assets/images/Pasted%20image%2020250416230739.png)
+가이드에 나와있는대로, utils/supabase/server.ts와, page.tsx(루트페이지에 넣기)를 만들자. 
+
+<img src="../../assets/images/Pasted%20image%2020250416230815.png" width="400"/>
+
+`supabase.from`의 인자값으로 테이블 명을 적으면 된다. 우리는 menus니까 menus로 하자. 
