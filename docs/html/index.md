@@ -232,3 +232,12 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   <script src="custom.js"></script>
 </head>
 ```
+
+---
+
+## 웹 표준
+
+---
+
+## 웹 접근성
+
