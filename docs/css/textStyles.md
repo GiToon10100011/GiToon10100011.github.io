@@ -36,9 +36,6 @@ parent: CSS
 
 - `text-underline-offset` - 글자 장식 위치 오프셋, 축약형에 포함되지 않는 속성이다.
 
-
-
-
 - `text-transform` - 글자 대소문자, 값은 `none, capitalize(첫글자만 대문자), uppercase(대문자), lowercase(소문자), full-width(전각문자)` 등이 있다. <mark style="background: #BBFABBA6;">full-width</mark>는 반각문자를 전각문자로 변환시켜주는 것으로, <mark style="background: #BBFABBA6;">한자, 히라가나, 한글은 모두 전각문자</mark>인거에 반해, 한국에서 사용되는 특수문자들은 대부분 반각문자로 사용된다. 이때문에 다국어 서비스를 개발하는 경우, 전각문자를 반각문자로 자동 치환해주는 작업이 필요하다.
 
 - `text-shadow` - 글자 그림자, 값은 `x축, y축, 그림자 크기, 그림자 색상` 형식으로 사용한다. x축, y축의 값값은 원래 요소에서 부터 그림자를 어느정도로 띄워놓을지 결정한다.
