@@ -24,7 +24,20 @@ parent: CSS
 
 - `text-align` - 글자 정렬, 값은 `left, right, center, justify(양쪽정렬)` 등이 있다.
 
-- `text-decoration` - 글자 장식, 주로 a태그의 기본 스타일을 없애기 위해 none값을 주기도 한다. 값은 `none, underline(밑줄), overline(윗줄), line-through(취소줄)` 등이 있다.
+- `text-decoration` - 아래 속성들의 축약형으로 `text-decoration: underline 1px dotted red;`와 같은 형식으로 사용한다. 
+
+- `text-decoration-line` - 글자 장식 라인, 값은 `none, underline(밑줄), overline(윗줄), line-through(취소줄)` 등이 있다.
+
+- `text-decoration-color` - 글자 장식 색상
+
+- `text-decoration-style` - 글자 장식 스타일, 값은 `solid(실선), double(이중선), dotted(점선), dashed(대쉬선), wavy(진동선)` 등이 있다.
+
+- `text-decoration-thickness` - 글자 장식 두께
+
+- `text-underline-offset` - 글자 장식 위치 오프셋, 축약형에 포함되지 않는 속성이다.
+
+
+
 
 - `text-transform` - 글자 대소문자, 값은 `none, capitalize(첫글자만 대문자), uppercase(대문자), lowercase(소문자), full-width(전각문자)` 등이 있다. <mark style="background: #BBFABBA6;">full-width</mark>는 반각문자를 전각문자로 변환시켜주는 것으로, <mark style="background: #BBFABBA6;">한자, 히라가나, 한글은 모두 전각문자</mark>인거에 반해, 한국에서 사용되는 특수문자들은 대부분 반각문자로 사용된다. 이때문에 다국어 서비스를 개발하는 경우, 전각문자를 반각문자로 자동 치환해주는 작업이 필요하다.
 

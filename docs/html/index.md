@@ -19,7 +19,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 홑태그는 `hr, br, img, input, meta, link, audio, video` 등이 있다. html5 이후로 홑태그는 단축 끝태그도 안써도 되게 되어 기존의 `<br/>`이 아닌 `<br>`과 같은 형태로 사용할 수 있게 됐다. <span style="color: #aaa">(하지만 정석대로 /> 로 끝맺음 시키는것이 직관적이고 좋다.)</span>
 
-또한 차지하는 공간에 따라 크게 <mark style="background: #FF5582A6;" id="inline&block"><b>블록태그</b></mark>와 <mark style="background: #FF5582A6;"><b>인라인 태그</b></mark>로 나뉜다. 블록태그는 차지하는 공간이 한 행이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
+또한 차지하는 공간에 따라 크게 <mark style="background: #FF5582A6;" id="inline&block">블록태그</mark>와 <mark style="background: #FF5582A6;" id="inline&block">인라인 태그</mark>로 나뉜다. 블록태그는 차지하는 공간이 한 행이며, 인라인태그는 차지하는 공간이 해당 요소의 크기만큼 차지한다. 대표적인 예시로 `div, p`는 블록태그이고, `a, span`은 인라인 태그이다.
 
 <mark style="background: #D2B3FFA6;">세부적으로 분류</mark>해보자면 다음처럼 분류할 수 있다.
 
@@ -32,9 +32,9 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   h5 | 16px | 다섯번째 제목
   h6 | 14px | 여섯번째 제목
 
-- 앵커 태그 - `a`태그는 <mark style="background: #BBFABBA6;">href(hyper reference) 속성</mark>을 사용해 링크를 지정한다. 이때, <mark style="background: #FF5582A6;">절대경로와 상대경로</mark>를 잘 구분해야한다.
+- 앵커 태그 - `a`태그는 <mark style="background: #BBFABBA6;">href(hyper reference) 속성</mark>을 사용해 링크를 지정한다. 이때, <mark style="background: #FF5582A6;">절대경로와 상대경로</mark>를 잘 구분해야한다. 
 
-  > 페이지 내의 특정 지점으로 이동하기 위해서는 <mark style="background: #BBFABBA6;">아이디 경로</mark>를 사용한다. 아이디 경로는 특정 글자를 눌렀을때 그 곳으로 이동시켜준다. `<a href="#id"></a>`라면 `<div id="id">`이 있어야 한다. #top이나 #을 넣으면 페이지 최상단으로 이동시켜준다.
+  > 페이지 내의 특정 지점으로 이동하기 위해서는 <mark style="background: #BBFABBA6;">아이디 경로</mark>를 사용한다. 아이디 경로는 특정 글자를 눌렀을때 그 곳으로 이동시켜준다. `<a href="#id"></a>`라면 `<div id="id">`이 있어야 한다. #top이나 #을 넣으면 페이지 최상단으로 이동시켜준다. 만약 임시 링크가 페이지 내 이동시키는 것을 방지하고 싶다면, #void를 사용한다. 
 
   > <mark style="background: #BBFABBA6;">target속성</mark>을 통해 링크를 열 때 새로운 창을 열지 아니면 현재 창에서 열지를 지정할 수 있다. `target="_blank"`는 새로운 창을 열어주고, `target="_self"`는 현재 창에서 열어준다. (기본값은 `_self`)
 
@@ -52,7 +52,9 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
   글자 모양 태그 내부에 블록태그는 넣을 수 없다. 이는 웹 표준에 위반되는 것이므로 주의해야한다. 태그는 아니지만 `&nbsp;` 공백문자를 의미하는 HTML엔티티가 존재한다.
 
-  ![글자 모양 태그](/assets/images/html/copy.png) | `&copy;` HTML 엔티티로 왼쪽의 아이콘을 띄울 수도 있다.
+  <img src="../../assets/images/html/copy.png" alt="copy icon" width="50"/> | `&copy;` HTML 엔티티로 왼쪽의 아이콘을 띄울 수도 있다.
+
+- 아이콘 태그 - `i`태그는 아이콘 태그이다. 본래는 이탤릭체를 위한 태그였으나, `em`태그가 나오면서 아이콘 사용시 사용되는 태그로 용도가 변경되었다.
 
 - 미디어 태그 - 자세한건 [여기를](/docs/html/mediaTags.html)를 참고하자.
 
@@ -88,7 +90,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
   > 스타일링을 할때 선택자를 `tbody`를 넣어야 적용된다.
 
 - 시맨틱 태그 - `header, footer, section, article, aside, nav, main, figure, figcaption`등이 있다. 시맨틱 태그는 태그 자체가 의미를 가지고 있는 태그이다. 예를 들어 header태그는 헤더를 의미하며, footer태그는 푸터를 의미한다. <mark style="background: #FF5582A6;">이러한 태그들은 웹 페이지의 구조를 명확하게 하기 위해 사용</mark>된다.
-  `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨.
+  `header` | form태그를 활용해 검색 창을 넣거나, nav태그를 사용해 사이트 메뉴를 넣어 주로 페이지 맨 위쪽에 삽입됨. 주로 로고, 메뉴, gnb와 같은 것들이 들어간다. 
 
   `nav` | 메뉴를 지정해주는 태그이다. 같은 사이트 안의 문서나 다른 사이트의 문서로 연결하는 링크를 나타내며, footer에 있는 사이트맵 등에서도 주로 사용되기도 함. `gnb(Global Navigation Bar), lnb(Local Navigation Bar)`에 주로 사용됨.
 
@@ -128,7 +130,7 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 - label 태그 - 입력 양식의 이름을 지정하는 태그이다. `<label for="id">이름</label><input type="text" id="id" name="name">`와 같은 형식으로 사용한다. label태그는 클릭 시 해당 input 입력 양식이 포커싱되는 기능을 가지고 있다. <mark style="background: #FF5582A6;">for속성으로 연결된 input태그의 id속성을 지정해줘야 한다.</mark> `label`안에 `input`태그를 넣어 두 태그를 연결할 수도 있다.
 
-- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <mark style="background: #BBFABBA6;">method속성</mark>을 통해 데이터 전송방식을 알 수 있는데, <mark style="background: #FF5582A6;">GET, POST, PUT, DELETE</mark> 등이 존재한다.
+- form 태그 - 대다수의 input태그들이 이 form태그 내에서 사용된다. `<form><input type = "text" name = "search"></form>`과 같은 형식으로 사용하며, <mark style="background: #BBFABBA6;">method속성</mark>을 통해 데이터 전송방식을 알 수 있는데, <mark style="background: #FF5582A6;">GET, POST, PUT, DELETE</mark> 등이 존재한다. `action` 속성으로 submit이 발생하면 action속성값으로 페이지를 이동하며, 생략이 가능하다. 여타 다른 `input`태그처럼 `name`속성도 받을 수 있다. 
 
   > GET방식은 값을 가져오는 것으로, 흔히 검색창에 무엇을 검색할 때 `www.naver.com?search=eoisvh9w834` 과 같은 식으로 주소에 데이터를 직접 입력해 전달해준다. 이 때문에 보안에 상당히 취약하다. 따라서 회원가입, 금융정보, 주소 등등과 같은 정보를 입력할 때는 서버에 값을 입력하는 POST방식을 사용한다. <span style="color: #aaa">(유저의 credentials를 드러나게하면 안됨.)</span> GET과 POST, 그리고 기타 방식에 관한 내용은 [REST API](/docs/etc/restAPI.html)를 다룰때 더 자세히 알아보자.
 
@@ -163,8 +165,8 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 1. `<!DOCTYPE html>`: 현재 document의 형식이 HTML5 문서임을 선언
 2. `<html lang="ko">`: 문서의 루트 요소, lang 속성으로 언어 지정(ko=한국어). <span style="color: #aaa">만약, 쿠팡 같은 페이지가 lang이 en으로 설정되어 있다면 우리가 접속할때 번역 여부를 물어본다.</span>
 3. `<head>`: 메타데이터 영역
-   - `meta charset="UTF-8"`: 문자 인코딩 방식 지정
-   - `meta viewport`: 반응형 웹을 위한 뷰포트 설정, content 속성으로 뷰포트의 너비와 초기 확대 배율을 지정한다.
+   - `meta charset="UTF-8"`: 문자 인코딩 방식 지정, 해당 속성이 없다면 글자가 모두 깨지게 된다.
+   - `meta viewport`: 반응형 웹을 위한 뷰포트 설정, content 속성으로 뷰포트의 너비와 초기 확대 배율을 지정한다. 해당 속성이 없다면 반응형이 적용되지 않는다.
    - `title`: 브라우저 탭에 표시되는 제목 <span style="color: #aaa"><del>(현재 페이지의 title은 HTML | 툰로그)</del></span>
 4. `<body>`: 실제 화면에 표시되는 콘텐츠 영역
 5. 주석 `<!-- 본문내용 -->`: 개발자용 설명문 (화면에 표시되지 않음)
@@ -237,7 +239,57 @@ html 태그는 &lt;태그 이름&gt;태그를 적용할 내용&lt;/태그이름&
 
 ## 웹 표준
 
+> 웹 표준은 웹 표준화 기구인 W3C에서 제정한 표준이다. 웹 표준을 준수하면 브라우저 호환성 문제를 해결할 수 있고, 검색 엔진 최적화(SEO)에 도움이 된다. 
+
+웹표준을 위한 준수 방법 몇가지를 알아보자. 
+
+1. 사이트의 헤더에 위치한 로고는, `h1`으로 만들고 반드시 링크가 연결되어 있어야 한다. 
+2. 사이트의 메뉴는 `nav`태그로 만들어야 한다. 
+3. 사이트의 메뉴는 반드시 목록태그로 만들어야 한다. 
+4. 인라인 요소내에 블럭요소 사용을 최대한 자제하기 
+5. `article, section`태그는 반드시 안에 제목태그를 작성해야한다. 
+  - 이때, 제목태그를 작성할때 꼭 article/section바로 이후에 작성될 필요는 없으나, div태그 내에 제목태그가 작성되어야한다. 
+  - 원칙적으로 `article`안에 `section`을 넣었으나, 혼돈을 방지하기 위해 사람들이 더 이상 `article`을 사용하지 않는 추세가 되었고, `section`을 사용해 페이지를 구분한다고 한다. 
+
+
+🚫 html 작성 유의사항
+
+- h1태그는 보통 페이지에 한번만 사용하자. (로고 제외)
+- 본문 제목은 h2태그를 사용하자. h2태그 이후에 오는 자식 요소들에 제목태그를 사용시 h3~ 레벨의 제목태그를 사용하자. 
+- 인라인 요소끼리 묶이는것을 최대한 지양하고 블럭태그를 섞어서 사용하자. (css 최소화)
+- html내에 태그로 텍스트를 감싸지 않고 쌩으로 작성하는 것을 최대한 지양하자. 
+- b태그 대신에 더 시맨틱한 strong태그를 사용하자. 
+- 어디로 사용자를 이동시켜주는 요소는 반드시 a태그를 사용하여 만들자. 
+- header태그에 있는 요소는 대부분 다 일종의 메뉴여서, ul과 li를 사용해서 제작하는 것이 좋다. (ex) 토글 버튼)
+- footer태그 같은경우, 중요도가 떨어져 푸터에 들어가는 로고 또한 제목태그를 사용하지 않고 무엇을 강조할때는 strong태그를 더 많이 사용하며, 로고 또한 블럭태그 내에 img요소로 넣는다.
+- header, main, footer는 페이지내에서 거의 한번만 사용되어 아이디를 줘야하는 경우가 거의 없다.
+
 ---
 
 ## 웹 접근성
+
+> 웹 접근성은 웹 페이지에 접근할 수 있는 모든 사람이 웹 페이지를 사용할 수 있도록 하는 것을 의미한다. 웹 접근성을 준수하면 장애인, 노인, 어린이 등 다양한 사람들이 웹 페이지를 사용할 수 있도록 한다.
+
+웹 접근성을 위한 준수 방법 몇가지를 알아보자. 
+
+1. img태그에는 반드시 alt속성을 사용해야 한다. 
+2. 모든 태그는 각자 title이라는 속성이 존재한다. 해당 속성을 통해 리더기가 태그의 역할을 알 수 있도록 한다. 
+3. 제목태그를 작성했지만 굳이 화면에 띄우고 싶지 않다면, 작성은 하되, css등으로 안보이게 만들면 된다. 제목태그의 의의는 결국 리더기로 일종의 목차와 같은 제목태그가 읽힐 수 있도록 만드는것이 중요한 것이다. 이때, `display:none`은 줘선 안된다. 리더기가 못읽어서, 반드시 페이지 어디에선가는 있어야함. 
+  - 허나, 저 멀리 치워버려도 리더기가 못 읽을 가능성이 존재한다고 한다. 
+  - 그래서 WCAG 가이드라인에서 제시해준 다음과 같은 안정적인 방법으로 처리해줄 수 있다. 
+
+  ```css
+  .hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+  ```
+---
 
