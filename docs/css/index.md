@@ -11,7 +11,7 @@ nav_order: 2
 
 > CSS는 Cascading Style Sheets의 약자로, 이름과 동일하게 언어를 위에서 아래로 폭포가 흐르듯이 순차적으로 스타일이 부여되는 언어이다. <span style="color: #aaa;">(`Cascading`은 폭포가 흐르듯이 순차적으로 스타일이 부여되는 것을 의미한다.)</span>
 
-css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한다. <mark style="background: #E0E0E060;"><a href="/docs/css/selectors.html" ">선택자에 대해 자세히 알아보기</a></mark> <br><br>
+css는 선택자를 통해 특정 요소를 선택하여 스타일을 부여한다. <mark style="background: #E0E0E060;"><a href="/docs/css/selectors.html">선택자에 대해 자세히 알아보기</a></mark> <br><br>
 스타일은 다양한 스타일 속성들을 통해 부여할 수 있는데, 이는 다음과 같다.
 
 1. [텍스트 스타일](/docs/css/textStyles.html)
@@ -121,14 +121,69 @@ div {
   box-sizing: border-box;
 }
 
-ul,
-li {
-  list-style: none;
-}
-
 a {
   text-decoration: none;
   color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+address, i, em{
+  font-style: normal;
+}
+
+button{
+  cursor: pointer;
+}
+
+/* 공통 클래스 */
+
+.skip-menu a {
+  display: block;
+  position: absolute;
+  top: -9999px;
+  line-height: 50px;
+  text-align: center;
+  background: #0099DA;
+  &:focus {
+    top: 0;
+  }
+}
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 ```
 
