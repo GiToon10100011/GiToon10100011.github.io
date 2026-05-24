@@ -769,6 +769,93 @@ PM이 Approve를 했다면 이후에 Merge Pull Request를 클릭하여 병합�
 
 ---
 
+## 브랜치 전략
+
+팀 프로젝트에서 일반적으로 쓰는 브랜치 구조이다. 역할에 따라 브랜치를 나눠두면 배포 버전과 개발 중인 코드가 섞이지 않는다.
+
+| **브랜치** | **용도** |
+| --------- | ------- |
+| `main` | 실제 배포 버전 |
+| `dev` | 통합 개발 브랜치 |
+| `feat/기능명` | 새로운 기능 개발 |
+| `release/버전` | 릴리즈 준비 (버그 수정, 스타일 정리) |
+| `hotfix/이슈` | 배포 후 긴급 수정 |
+
+---
+
+## PR 병합 방식
+
+GitHub에서 PR을 병합할 때 3가지 방식 중 선택할 수 있다. 커밋 기록이 어떻게 남는지와 잔디(commit) 반영 여부가 다르다.
+
+| **방식** | **설명** | **커밋 기록** | **잔디** |
+| ------- | ------- | ----------- | ------- |
+| **Merge Commit** | 일반 머지. PR을 그대로 병합 + 머지 커밋 추가 | 복잡해짐 | ✅ 심김 |
+| **Squash and Merge** | PR의 모든 커밋을 하나로 합쳐 병합 | 깔끔 (1커밋) | ❌ 안 심길 수 있음 |
+| **Rebase and Merge** | PR 커밋을 main 뒤에 재배치 후 병합 | 커밋 보존 + 깔끔 | ✅ 잘 심김 |
+
+보통 <mark style="background: #BBFABBA6;">로컬 feature 브랜치에서만 rebase</mark>를 쓰고, 원격 main은 merge 방식으로 합친다. 다만 팀 컨벤션에 따라 다르다.
+
+---
+
+## Issue 연동
+
+### 커밋에 이슈 번호 연결
+
+```bash
+git commit -m "Fix: 점수 계산 로직 수정 #42"
+```
+
+커밋 메시지에 `#이슈번호`를 포함하면 GitHub에서 해당 이슈와 자동으로 연결된다.
+
+### PR 머지 시 이슈 자동 닫기
+
+```bash
+git commit -m "Fixes #42: 점수 계산 문제 해결"
+# Fixes / Closes / Resolves 모두 가능
+```
+
+> 커밋만으로는 이슈가 닫히지 않는다. **PR이 머지될 때** 닫히며, 기본 브랜치에만 적용된다.
+
+---
+
+## PR 템플릿
+
+`.github/PULL_REQUEST_TEMPLATE.md` 파일에 양식을 저장해두면 PR을 생성할 때 자동으로 본문이 채워진다.
+
+```md
+# Pull Request
+
+## Issue Number
+resolves #
+
+## 요약
+<!-- 무엇을, 왜 수정했는지 -->
+
+## PR 유형
+- [ ] 새로운 기능 추가
+- [ ] 버그 수정
+- [ ] 코드 리팩토링
+- [ ] 문서 수정
+- [ ] 빌드/패키지 수정
+
+## 변경사항 상세 설명
+
+## 스크린샷 및 데모
+
+## PR Checklist
+- [ ] 커밋 메시지 컨벤션에 맞게 작성했습니다.
+- [ ] 변경 사항에 대한 테스트를 했습니다.
+- [ ] 브랜치가 최신 dev 브랜치와 병합 가능합니다.
+```
+
+---
+
+## 템플릿 레포지토리
+
+PR, Issues, Wiki, Projects, Actions 설정을 매번 새 레포마다 추가하기 귀찮다면 **템플릿 레포지토리**를 만들어 재사용할 수 있다. 폴더 구조(예: Next.js 기본 세팅)도 함께 포함시킬 수 있어, 새 프로젝트를 시작할 때 같은 세팅을 반복하지 않아도 된다.
+
+---
+
 ## ‼️ Git 최대 파일 용량 초과
 
 > 레포지토리에 용량이 너무 큰 파일을 올리게 되면 레포지토리 용량이 초과되어 오류가 발생할 수 있다.
@@ -776,3 +863,66 @@ PM이 Approve를 했다면 이후에 Merge Pull Request를 클릭하여 병합�
 이러한 오류는 상당히 성가셔서, `git reset head` 명령어를 통해 최근 커밋을 초기화하고 다시 커밋을 진행하는 방법을 사용한다.
 
 만약 커밋이 여러번 된 상태라면 `git reset HEAD~n` 명령어를 통해 n번째 커밋 상태로 되돌리고 다시 커밋을 진행할 수 있다.
+
+---
+
+## 자주 쓰는 명령어 한눈에 보기
+
+```bash
+# 초기 설정
+git config --global user.name "이름"
+git config --global user.email "이메일"
+git config --list
+
+# 연동
+git init
+git clone <주소>
+git clone --depth=1 <주소>             # 빠른 clone
+git remote add origin <주소>
+git remote -v                           # 연동 확인
+
+# 작업 흐름
+git status
+git add .
+git commit -m "메시지"
+git commit -am "메시지"                 # add + commit 동시
+git push origin main
+git pull origin main
+
+# 브랜치
+git branch                             # 목록
+git branch -a                          # 원격 포함 전체
+git switch 브랜치명                    # 전환
+git switch -c 새브랜치명               # 생성 + 전환
+git branch -d 브랜치명                 # 삭제
+git push origin -d 브랜치명            # 원격 브랜치 삭제
+
+# 임시 저장
+git stash
+git stash pop
+git stash list
+
+# 병합
+git merge 브랜치명
+git merge --no-ff 브랜치명
+git rebase main
+git rebase -i HEAD~3                   # 커밋 편집
+
+# 되돌리기
+git restore 파일명                     # 파일 변경 취소
+git restore --staged 파일명            # add 취소
+git reset HEAD~1                       # 커밋 취소 (파일 유지)
+git reset --hard HEAD~1                # 커밋 + 파일 변경 전부 취소
+git stash                              # 변경사항 임시 저장 후 초기화
+
+# 확인
+git log --graph --oneline
+git diff --staged
+git reflog                             # 모든 동작 기록
+git fetch --all                        # 원격 정보 새로고침
+
+# 파일 관리
+git rm --cached -r 파일명              # Git 추적에서만 제거
+```
+
+> [gitignore 템플릿 생성기](https://www.toptal.com/developers/gitignore) — 프로젝트에 맞는 `.gitignore`를 자동으로 만들어준다.
