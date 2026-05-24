@@ -54,7 +54,10 @@ git init
 git remote add origin <레포지토리 URL>
 # 원격 저장소 연결
 git remote -v
-# 원격 저장소 연결 확인
+# 원격 저장소 연결 확인 (fetch/push 주소 출력)
+# git remote -r          → 원격 저장소의 브랜치 목록
+# git remote update      → 원격 저장소 정보 업데이트
+# git remote remove origin → 원격 저장소 연결 제거
 git add .
 # 모든 파일을 스테이징
 git commit -m "커밋 메시지"
@@ -83,7 +86,16 @@ git push -u origin main
 
 ```bash
 git clone (url)
+git clone --depth=1 (url)          # 최신 커밋 1개만 받아오기 (속도 빠름)
+git clone --branch 브랜치명 (url)  # 특정 브랜치만 clone
+git clone --single-branch (url)    # 지정한 브랜치 하나만 받아옴 (기본은 전체)
 ```
+
+| **플래그** | **의미** |
+| --------- | ------- |
+| `--depth=N` | 최근 N개의 커밋 히스토리만 받아옴. 대형 레포지토리를 빠르게 받을 때 사용 |
+| `--branch 브랜치명` | 특정 브랜치만 clone |
+| `--single-branch` | 지정한 브랜치 하나만 받아옴 (기본은 전체) |
 
 아예 최초가 아니고 기존의 레포지토리를 로컬상으로 가져오고 싶다면 클론을 사용하면 된다.
 
@@ -102,21 +114,55 @@ git -v
 - `branch` - 레포지토리의 브랜치목록을 확인할 수 있다.
 
   ```bash
-  git branch
+  git branch              # 로컬 브랜치 목록 (현재 브랜치에 * 표시)
+  git branch 새브랜치명   # 브랜치 생성 (전환은 하지 않음)
+  git branch -v           # 각 브랜치의 최신 커밋 해시 + 메시지도 표시
   ```
 
-  - `-r`를 붙이면 원격 브랜치를 확인할 수 있다.
-  - `-a`를 붙이면 모든 브랜치를 확인할 수 있다.
-  - `-d`를 붙이면 브랜치를 삭제할 수 있다.
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-r` / `--remotes` | 원격 브랜치만 표시 |
+  | `-a` / `--all` | 로컬 + 원격 브랜치 모두 표시 |
+  | `-v` / `--verbose` | 각 브랜치의 최신 커밋 해시 + 메시지도 표시 |
+  | `-m` / `--move` | 현재 브랜치 이름 변경 |
+  | `-M` | 강제로 이름 변경 (`--move --force`) |
+  | `-d` / `--delete` | 브랜치 삭제 (이미 merge된 브랜치만) |
+  | `-D` | 강제 삭제 (`--delete --force`, merge 안 해도 됨) |
 
-    > ⚠️ 주의해야할 점은 일반 `git branch -d`를 사용하면 원격상에서 브랜치가 삭제되지 않는다. 원격상에서도 브랜치를 삭제하고 싶다면 `git push origin -d (브랜치 이름)`을 사용해야 한다.
+  > ⚠️ 주의해야할 점은 일반 `git branch -d`를 사용하면 원격상에서 브랜치가 삭제되지 않는다. 원격상에서도 브랜치를 삭제하고 싶다면 `git push origin -d (브랜치 이름)`을 사용해야 한다.
 
-    ```bash
-    # 로컬상에서 브랜치 삭제
-    git branch -d (브랜치 이름)
-    # 원격상에서 브랜치 삭제
-    git push origin -d (브랜치 이름)
-    ```
+  ```bash
+  # 로컬상에서 브랜치 삭제
+  git branch -d (브랜치 이름)
+  # merge 안 된 브랜치 강제 삭제
+  git branch -D (브랜치 이름)
+  # 원격상에서 브랜치 삭제
+  git push origin -d (브랜치 이름)
+  # 브랜치 이름 변경
+  git branch -m 새이름
+  ```
+
+<h3 id="add" class="hidden-header">add</h3>
+
+- `add` - 변경된 파일을 Staging Area(대기장소)에 올리는 작업이다. 바로 GitHub에 올라가는 게 아니라 커밋 전 중간 체크포인트 역할을 한다.
+
+  ```bash
+  git add .                               # 현재 경로의 변경된 파일 전부 추가
+  git add 파일명                          # 특정 파일만 추가
+  git add 파일1 파일2 파일3               # 여러 파일 (띄어쓰기로 구분)
+  git add src/index.html styles/main.css  # 경로 포함
+  git add *.js                            # 특정 확장자 전부
+  ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-A` / `--all` | 삭제된 파일 포함 모든 변경사항 추가 |
+  | `-p` / `--patch` | 파일의 변경 부분을 하나씩 확인하면서 선택적으로 추가 |
+  | `-n` / `--dry-run` | 실제로 추가하지 않고 어떤 파일이 추가될지 미리 보기 |
+
+  Git의 3단계 흐름: **로컬 폴더 → Staging Area → Remote Repository(GitHub)**
+
+  > 👉 로그인 기능과 회원가입 기능을 동시에 작업했는데 커밋을 따로 하고 싶을 때: `git add src/login.js` → `git commit -m "feat: 로그인"` → `git add src/signup.js` → `git commit -m "feat: 회원가입"`처럼 파일 단위로 add해서 커밋을 분리할 수 있다.
 
 <h3 id="status" class="hidden-header">status</h3>
 
@@ -132,18 +178,37 @@ git -v
   git status -s
   ```
 
+  `git status -s` 출력에서 각 기호의 의미:
+
+  | **표시** | **의미** |
+  | ------- | ------- |
+  | `U` | Untracked — Git이 추적하지 않는 새 파일 |
+  | `M` | Modified — 기존 파일이 수정됨 |
+  | `A` | Added — 스테이징된 새 파일 |
+  | `D` | Deleted — 삭제된 파일 |
+
 <h3 id="commit" class="hidden-header">commit</h3>
 
 - `commit` - 파일의 변경사항을 저장하는 작업이다.
 
   ```bash
   git commit -m "커밋 메시지"
+  git commit -am "커밋 메시지"   # add + commit 동시 (새 파일 Untracked는 제외)
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-m "메시지"` | 커밋 메시지 인라인으로 작성 |
+  | `-a` / `--all` | 추적 중인 파일 전부 자동으로 add 후 commit (새 파일은 제외) |
+  | `--amend` | 가장 최근 커밋 수정 (메시지 변경 또는 파일 추가) |
+  | `--no-edit` | `--amend`와 함께 사용. 메시지는 그대로 두고 파일만 수정할 때 |
 
   만약 바로 직전의 커밋 메시지를 수정하고 싶다면 다음과 같이 작성한다.
 
   ```bash
   git commit --amend -m "수정할 커밋 메시지"
+  # 메시지는 그대로 두고 파일만 추가하고 싶을 때
+  git add 빠진파일 && git commit --amend --no-edit
   ```
 
   만약 이미 푸시한 커밋이었다면 amend를 사용하고 강제로 저장소에 푸시해야한다. `git push --force`
@@ -180,9 +245,19 @@ git -v
 
   `git push origin main`은 명시적으로 로컬의 main 브랜치를 원격의 main 브랜치로 푸시한다. 협업 시에는 이처럼 명시적인 방식을 사용하는 것이 실수를 방지할 수 있어 더 안전하다.
 
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-u` / `--set-upstream` | 로컬 브랜치와 원격 브랜치를 연결. 이후 `git push`만 써도 됨 |
+  | `-f` / `--force` | 강제 push. 원격 기록을 덮어씀 (위험, 팀 작업 시 금지) |
+  | `--force-with-lease` | 강제 push인데 원격에 내가 모르는 변경이 있으면 거부. `-f`보다 안전 |
+  | `-d` / `--delete` | 원격 브랜치 삭제: `git push origin -d 브랜치명` |
+  | `--tags` | 태그도 함께 push |
+
+  > ⚠️ rebase 후 히스토리가 달라졌을 때는 `-f` 대신 `--force-with-lease` 사용. 팀 공유 브랜치(`main`, `dev`)에는 강제 push 절대 금지.
+
 <h3 id="fetch" class="hidden-header">fetch</h3>
 
-- `fetch` - 클라우드 공간에서 일어난 변동사항을 로컬상에 업데이트 해주는 작업이다.
+- `fetch` - 클라우드 공간에서 일어난 변동사항을 로컬상에 업데이트 해주는 작업이다. `pull`과 달리 실제로 파일을 내려받지 않고 정보만 업데이트한다. 브랜치가 안 보일 때 먼저 실행해보기.
 
   ```bash
   git fetch origin (브랜치 이름)
@@ -191,15 +266,30 @@ git -v
   ```bash
   # 모든 변동사항을 가져오기
   git fetch --all
+  # 원격에서 삭제된 브랜치를 로컬 목록에서도 제거
+  git fetch --prune
+  git fetch -p           # 위와 동일
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--all` | 등록된 모든 원격 저장소 정보 업데이트 |
+  | `--prune` / `-p` | 원격에서 삭제된 브랜치를 로컬 목록에서도 제거 |
 
 <h3 id="pull" class="hidden-header">pull</h3>
 
-- `pull` - 클라우드 공간에서 일어난 변동사항을 로컬상에 가져오는 작업이다.
+- `pull` - 클라우드 공간에서 일어난 변동사항을 로컬상에 가져오는 작업이다. `fetch` + `merge`를 한 번에 실행하는 것과 같다.
 
   ```bash
   git pull origin main
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--rebase` | merge 대신 rebase 방식으로 pull (커밋 히스토리가 깔끔해짐) |
+  | `--no-rebase` | 기본 merge 방식 (기본값) |
+  | `--ff-only` | Fast-forward만 허용. 충돌 가능성 있으면 pull 거부 |
+  | `--depth=N` | 최근 N개 커밋만 받아옴 |
 
 <h3 id="checkout" class="hidden-header">checkout</h3>
 
@@ -240,6 +330,23 @@ git -v
 
   이때, `origin/feature-detail`은 원격 저장소에 있는 `feature-detail` 브랜치를 의미한다.
 
+<h3 id="switch" class="hidden-header">switch</h3>
+
+- `switch` - 브랜치 전환 전용 명령어. Git 2.23부터 도입되어 `checkout`의 브랜치 전환 기능만 분리했다.
+
+  ```bash
+  git switch 브랜치명          # 브랜치 전환
+  git switch -c 새브랜치명     # 브랜치 생성 + 전환
+  ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-c` / `--create` | 브랜치 생성 후 전환 |
+  | `-C` | 같은 이름 브랜치가 있어도 강제로 생성 후 전환 |
+  | `--detach` | detached HEAD 상태로 전환 (특정 커밋에 직접 붙이기) |
+
+  > 👉 `git switch`는 브랜치 전환 전용이고, `git checkout`은 파일 복원도 겸하기 때문에 헷갈리기 쉽다. 최신 버전에서는 `switch` 사용 권장.
+
 <h3 id="branch-upload" class="hidden-header">브랜치 생성하기</h3>
 
 - `checkout` 명령어에 `-b` 플래그를 붙이면 새로운 브랜치를 생성하고 이동할 수 있다.
@@ -265,12 +372,77 @@ git -v
   git push --set-upstream origin (생성할 브랜치 이름)
   ```
 
+<h3 id="restore" class="hidden-header">restore</h3>
+
+- `restore` - `git checkout --`의 파일 복원 기능만 분리해 나온 최신 명령어. 파일 되돌리기 전용이다.
+
+  ```bash
+  git restore 파일명                    # 워킹 디렉토리의 변경사항 취소 (마지막 커밋으로 복원)
+  git restore .                         # 현재 경로의 모든 변경사항 취소
+  git restore --staged 파일명           # 스테이징 취소 (add 취소, 파일 변경은 유지)
+  git restore --staged .                # 스테이징 전부 취소
+  git restore --source=브랜치명 파일명  # 다른 브랜치의 특정 파일 가져오기
+  git restore --source=HEAD~2 파일명    # 2커밋 전 시점의 파일로 복원
+  git restore --source=커밋해시 파일명  # 특정 커밋 시점으로 복원
+  ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--staged` | 스테이징 취소 (`git reset HEAD -- 파일명`과 동일한 역할) |
+  | `--worktree` | 워킹 디렉토리만 복원 (기본값) |
+  | `--source=<커밋/브랜치>` | 어떤 시점/브랜치의 파일로 복원할지 지정 |
+  | `-p` / `--patch` | 변경 부분을 하나씩 확인하면서 선택적으로 복원 |
+
+  명령어 정리:
+
+  | **상황** | **명령어** |
+  | ------- | --------- |
+  | 파일 변경 취소 | `git restore 파일명` |
+  | add 취소 | `git restore --staged 파일명` |
+  | 커밋 취소 | `git reset HEAD~1` |
+  | 특정 파일만 과거 상태로 | `git restore --source=커밋해시 파일명` |
+
+  > 👉 `git checkout -- 파일명`과 `git restore 파일명`은 결과가 동일하다. Git 2.23 이후부터 checkout의 파일 복원 역할을 restore가 대체하므로 최신 프로젝트에서는 restore 사용 권장.
+
+  > ⚠️ `git restore 파일명`은 복구가 불가능하므로 신중하게 사용할 것.
+
 <h3 id="log" class="hidden-header">log</h3>
 
 - `log` - 커밋 해시는 커밋 메시지 옆에 있는 해시 값으로, git log 명령어를 사용하면 확인할 수 있다.
 
   ```bash
   git log
+  git log --graph --oneline     # 브랜치 흐름을 그래프로, 한 줄씩 (가장 많이 씀)
+  git log --oneline -10         # 최근 10개만 한 줄씩
+  git log --all                 # 모든 브랜치의 커밋 표시
+  ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--graph` | 브랜치 흐름을 ASCII 그래프로 표시 |
+  | `--oneline` | 커밋 해시 + 메시지를 한 줄로 출력 |
+  | `--all` | 모든 브랜치의 커밋 표시 |
+  | `-N` | 최근 N개 커밋만 출력 (예: `-10`) |
+  | `--author="이름"` | 특정 작성자의 커밋만 필터 |
+  | `--since="2주 전"` | 특정 날짜 이후 커밋만 |
+  | `-p` | 각 커밋의 변경 내용(diff)도 함께 출력 |
+  | `--stat` | 변경된 파일 수와 라인 수 요약 표시 |
+
+  `git log --graph --oneline` 예시 — merge 후:
+
+  ```
+  *   f1e2a3b Merge branch 'feature'
+  |\
+  | * 3d4e5f6 fix: bug fix
+  * | 9c8d7e6 update docs
+  ```
+
+  rebase 후:
+
+  ```
+  * 7d8e9f0 feat: add feature
+  * 3d4e5f6 fix: bug fix
+  * 9c8d7e6 update docs
   ```
 
 <h3 id="reflog" class="hidden-header">reflog</h3>
@@ -287,27 +459,117 @@ git -v
 
   ```bash
   git merge (브랜치 이름)
+  git merge --no-ff (브랜치 이름)    # 항상 머지 커밋 생성 (Fast-forward 방지)
+  git merge --abort                   # 충돌 상태에서 머지 취소
+  git merge --continue                # 충돌 해결 후 머지 계속
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--no-ff` | no fast-forward: 항상 머지 커밋을 남김 (히스토리 추적 용이) |
+  | `--ff-only` | Fast-forward만 가능한 경우에만 머지 (불가능하면 오류) |
+  | `--squash` | 상대 브랜치 커밋을 하나로 합쳐서 스테이징 (커밋은 직접 해야 함) |
+  | `--abort` | 충돌 발생 시 머지 자체를 취소하고 이전 상태로 복원 |
+  | `--continue` | 충돌 해결 후 머지 계속 진행 |
 
   이때 주의해야할 점은, 병합을 진행하고자 하는 브랜치로 `checkout` 하고 병합을 진행해야 한다는 것이다.
 
   👉 예를 들어, `main` 브랜치에서 `feature` 브랜치를 병합하고 싶다면, `main` 브랜치로 `checkout` 하고 병합을 진행해야 한다.
+
+<h3 id="rebase" class="hidden-header">rebase</h3>
+
+- `rebase` - 현재 브랜치의 커밋들을 다른 브랜치 끝에 직렬로 재배치하는 작업이다.
+
+  ```bash
+  git rebase main              # 현재 브랜치를 main 위로 재배치
+  git rebase --abort           # 리베이스 취소, 이전 상태로 복원
+  git rebase --continue        # 충돌 해결 후 리베이스 계속
+  git rebase --skip            # 현재 충돌 커밋을 건너뜀
+  git rebase -i HEAD~3         # 최근 3개 커밋을 인터랙티브 모드로 편집
+  ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-i` / `--interactive` | 인터랙티브 모드. 커밋 순서 변경, 합치기, 메시지 수정 등 가능 |
+  | `--abort` | 리베이스 중단 + 이전 상태로 복원 |
+  | `--continue` | 충돌 해결 후 다음 단계 진행 |
+  | `--skip` | 현재 충돌 커밋을 건너뜀 |
+
+  **rebase vs merge 비교:**
+
+  | **방식** | **히스토리** | **머지 커밋** | **특징** |
+  | ------- | ----------- | ----------- | ------- |
+  | `merge` | 갈래 형태 | 생김 | 히스토리가 복잡해지지만 작업 흐름 보존 |
+  | `rebase` | 일직선 | 없음 | 히스토리가 깔끔하나 커밋 해시가 바뀜 |
+
+  > ⚠️ 공유된 원격 브랜치(`main`, `dev`)에는 rebase 사용 자제. 본인만 사용하는 feature 브랜치에서만 권장.
+
+  **인터랙티브 모드 (`git rebase -i`):**
+
+  PR 올리기 전 커밋 정리, 메시지 수정, 커밋 합치기 등에 사용. 실행하면 에디터가 열리고 커밋 목록이 나온다.
+
+  ```
+  pick a1b2c3d feat: 로그인 화면 UI
+  pick e4f5g6h fix: 버튼 색상 수정
+  pick i7j8k9l chore: 콘솔 로그 삭제
+  ```
+
+  각 줄 맨 앞의 명령어를 바꿔서 커밋을 편집한다:
+
+  | **명령어** | **약자** | **의미** |
+  | --------- | ------- | ------- |
+  | `pick` | `p` | 그대로 사용 (기본값) |
+  | `reword` | `r` | 커밋 메시지만 수정 |
+  | `edit` | `e` | 커밋 내용(파일)도 수정 |
+  | `squash` | `s` | 바로 위 커밋과 합치기 (합친 메시지 편집 가능) |
+  | `fixup` | `f` | 바로 위 커밋과 합치기 (내 메시지는 버림) |
+  | `drop` | `d` | 이 커밋 삭제 |
+
+  rebase -i로 히스토리를 변경하면 원격과 달라져 일반 push가 거부된다. 이때는:
+
+  ```bash
+  git push --force-with-lease origin 브랜치명
+  ```
+
+  > ⚠️ `--force-with-lease`는 원격에 내가 모르는 커밋이 없을 때만 강제 push. 팀 공유 브랜치에는 절대 사용 금지.
 
 <h3 id="reset" class="hidden-header" style>reset</h3>
 
 - `reset` - 커밋 히스토리를 초기화하는 작업이다.
 
   ```bash
-  git reset (커밋 해시)
+  git reset              # 스테이징 에리어에 올라간 파일 전부 내리기
+  git reset 파일명       # 특정 파일만 스테이징 취소
+  git reset (커밋 해시)  # 해당 커밋 시점으로 되돌리기
+  git reset HEAD~1       # 가장 최근 커밋 1개 취소 (파일 변경사항은 유지)
+  git reset HEAD~N       # 최근 N개 커밋 취소
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--soft` | 커밋만 취소, 스테이징 + 파일 변경은 유지 |
+  | `--mixed` | (기본값) 커밋 + 스테이징 취소, 파일 변경은 유지 |
+  | `--hard` | 커밋 + 스테이징 + 파일 변경 전부 취소 (복구 불가, 주의) |
+
+  > ⚠️ `--hard` 플래그는 파일 변경사항까지 전부 날리므로 복구가 불가능하다. 신중하게 사용할 것.
 
 <h3 id="diff" class="hidden-header" style>diff/h3>
 
 - `diff` - 현재 브랜치와 다른 브랜치끼리의 차이점을 비교할 수 있다.
 
   ```bash
-  git diff (브랜치 이름)
+  git diff                        # 스테이징 전 변경사항 확인
+  git diff --staged               # 스테이징된 변경사항 확인 (add는 됐지만 커밋 전)
+  git diff (브랜치 이름)          # 현재 브랜치와 다른 브랜치 비교
+  git diff 브랜치A 브랜치B        # 두 브랜치 간 차이 비교
+  git diff 커밋해시A 커밋해시B    # 두 커밋 간 차이 비교
   ```
+
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `--staged` / `--cached` | 스테이징된 내용과 최근 커밋의 차이 |
+  | `--stat` | 변경된 파일 목록과 라인 수만 요약 출력 |
+  | `--name-only` | 변경된 파일명만 출력 |
 
 <h3 id="stash" class="hidden-header" style>stash</h3>
 
@@ -317,17 +579,25 @@ git -v
   git stash
   ```
 
-  실수로 현재 작업중인 디렉토리와 원격상의 디렉토리가 달라 커밋이 맞지 않게 되면 `stash`를 통해 임시로 현재 내용을 저장하여 원격 저장소를 `pull`한 후 임시저장 해둔 내용을 다시 `apply` 할 수 있다.
+  실수로 현재 작업중인 디렉토리와 원격상의 디렉토리가 달라 커밋이 맞지 않게 되면 `stash`를 통해 임시로 현재 내용을 저장하여 원격 저장소를 `pull`한 후 임시저장 해둔 내용을 다시 적용할 수 있다.
 
   ```bash
-  git stash apply
+  git stash pop     # 가장 최근 stash를 꺼내서 적용 + stash 목록에서 제거
+  git stash apply   # 가장 최근 stash를 적용하되 목록에 남김
+  git stash list    # stash 목록 확인
+  git stash drop    # 가장 최근 stash 삭제 (적용 없이)
+  git stash clear   # stash 목록 전부 삭제
   ```
 
-  또는, 임시저장한 내용을 삭제하고 싶다면 다음과 같이 작성한다.
+  | **플래그** | **의미** |
+  | --------- | ------- |
+  | `-m "메시지"` | stash에 이름 붙이기 (나중에 구분하기 좋음) |
+  | `-u` / `--include-untracked` | Untracked 파일(새로 생성한 파일)도 함께 stash |
+  | `stash@{N}` | N번째 stash 지정 (예: `git stash pop stash@{2}`) |
 
-  ```bash
-  git stash pop
-  ```
+  > ✅ `pop`과 `apply`의 차이: `pop`은 적용 후 목록에서 제거, `apply`는 적용해도 목록에 남음. 재사용할 필요 없으면 `pop` 사용 권장.
+
+  > ✅ 브랜치를 잘못 골랐는데 이미 작업을 해버렸을 때: `git stash` → `git switch 올바른브랜치` → `git stash pop`
 
 ### ⚠️ 깃 폴더 지정 취소
 
