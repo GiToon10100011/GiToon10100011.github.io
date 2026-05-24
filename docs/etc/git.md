@@ -533,7 +533,7 @@ git -v
 
   > ⚠️ `--force-with-lease`는 원격에 내가 모르는 커밋이 없을 때만 강제 push. 팀 공유 브랜치에는 절대 사용 금지.
 
-<h3 id="reset" class="hidden-header" style>reset</h3>
+<h3 id="reset" class="hidden-header">reset</h3>
 
 - `reset` - 커밋 히스토리를 초기화하는 작업이다.
 
@@ -553,7 +553,7 @@ git -v
 
   > ⚠️ `--hard` 플래그는 파일 변경사항까지 전부 날리므로 복구가 불가능하다. 신중하게 사용할 것.
 
-<h3 id="diff" class="hidden-header" style>diff/h3>
+<h3 id="diff" class="hidden-header">diff</h3>
 
 - `diff` - 현재 브랜치와 다른 브랜치끼리의 차이점을 비교할 수 있다.
 
@@ -571,7 +571,7 @@ git -v
   | `--stat` | 변경된 파일 목록과 라인 수만 요약 출력 |
   | `--name-only` | 변경된 파일명만 출력 |
 
-<h3 id="stash" class="hidden-header" style>stash</h3>
+<h3 id="stash" class="hidden-header">stash</h3>
 
 - `stash` - 작업 중인 내용을 임시로 저장하는 작업이다.
 
