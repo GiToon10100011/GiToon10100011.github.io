@@ -760,3 +760,389 @@ function getLength(str: string | null) {
   return str!.length; // str이 null이 아님을 단언
 }
 ```
+
+---
+
+## 제네릭 (Generics) 🧬
+
+> 제네릭은 타입을 "매개변수처럼" 받는 기능이다. 함수가 값을 매개변수로 받는 것처럼, 제네릭은 **타입 자체를 매개변수로 받아** 재사용성을 높인다.
+
+<mark style="background: #BBFABBA6;">특정 타입을 재사용하고 싶거나, 어떤 자료형의 데이터가 올지 모를 때 사용한다.</mark>
+
+### 기본 사용법 📌
+
+```ts
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+const a = identity<string>("hello"); // T = string
+const b = identity<number>(42); // T = number
+const c = identity(true); // T = boolean (타입 추론)
+```
+
+`<T>`는 **타입 매개변수(Type Parameter)**다. 호출 시점에 실제 타입이 결정되며, 보통 컴파일러가 추론하므로 명시적으로 적지 않아도 된다.
+
+### 제네릭 인터페이스 / 타입 별칭 📦
+
+API 응답처럼 **구조는 같고 내부 데이터만 다른 패턴**에 자주 쓰인다.
+
+```ts
+// 공통 응답 형태 — data만 타입이 달라진다
+interface IUserResponse<T = undefined> {
+  result: "success" | "fail";
+  message?: string;
+  data?: T; // 성공 시에만 존재
+}
+
+// 회원가입 성공 시 payload
+interface CreateUserData {
+  insertId: number;
+}
+
+type CreateUserResponse = IUserResponse<CreateUserData>;
+// → { result, message?, data?: { insertId: number } }
+```
+
+<mark style="background: #D2B3FFA6;">`T = undefined`처럼 제네릭에 기본값</mark>을 줄 수도 있다. 응답 본문이 없는 경우(예: 로그아웃) 별도 타입 지정 없이 그대로 사용 가능.
+
+### 함수 호출 유틸리티 ⚙️
+
+API 호출을 감싸는 유틸 함수에 제네릭을 쓰면 **반환 타입이 그대로 보존**된다.
+
+```ts
+// fn이 무엇을 반환하든 그 타입이 그대로 흘러간다
+export const apiWrapper = async <T>(
+  fn: () => Promise<T>,
+  context: string
+): Promise<T | null> => {
+  try {
+    return await fn();
+  } catch (err) {
+    handleError(err, context);
+    return null;
+  }
+};
+```
+
+### 제약 조건 (extends) 🔒
+
+제네릭이 너무 자유로우면 위험하므로, `extends`로 **타입의 모양을 강제**할 수 있다.
+
+```ts
+// length 속성을 가진 것만 허용
+function logLength<T extends { length: number }>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+
+logLength("hello"); // OK (string은 length 있음)
+logLength([1, 2, 3]); // OK (array도 length 있음)
+logLength(42); // ❌ number에는 length가 없음
+```
+
+> 💡 제네릭은 "함수형 프로그래밍의 고차 함수"와 비슷한 직관으로 보면 된다. 값 대신 **타입을 다루는 추상화 도구**다.
+
+---
+
+## 유틸리티 타입 (Utility Types) 🧰
+
+> TypeScript가 기본 제공하는 **타입 변환 도우미**. 기존 타입을 재가공해 새 타입을 만든다.
+
+기본 인터페이스를 가지고 변형해 보자:
+
+```ts
+interface User {
+  name: string;
+  age: number;
+  email: string;
+  address: string;
+}
+```
+
+### 주요 유틸리티 타입 한눈에 보기 📊
+
+| **유틸리티**       | **하는 일**                          | **사용 예시**                  |
+| ---------------- | ---------------------------------- | -------------------------- |
+| **Partial\<T\>**     | 모든 프로퍼티를 `optional`로 변환      | 일부 필드만 업데이트할 때            |
+| **Required\<T\>**    | 모든 프로퍼티를 `required`로 변환      | optional 필드를 강제 채워야 할 때    |
+| **Pick\<T, K\>**     | 특정 키만 선택해서 새 타입 생성           | 응답에서 일부 필드만 노출            |
+| **Omit\<T, K\>**     | 특정 키를 제외하고 새 타입 생성            | 기본 속성에서 충돌나는 키만 빼고 확장     |
+| **Readonly\<T\>**    | 모든 프로퍼티를 `readonly`로 변환       | 외부에 넘기는 불변 객체              |
+| **Record\<K, V\>**   | 키-값 형태의 매핑 타입 생성                | enum/리터럴 키 기반 룩업 테이블       |
+
+### Partial — 부분 업데이트 🩹
+
+```ts
+type PartialUser = Partial<User>;
+// {
+//   name?: string;
+//   age?: number;
+//   email?: string;
+//   address?: string;
+// }
+
+// 사용자 정보 업데이트 시 (일부 필드만 필요)
+function updateUserInfo(userInfo: PartialUser) {
+  // name, age, email, address 중 일부만 전달 가능
+}
+```
+
+<mark style="background: #BBFABBA6;">`Partial`은 PATCH 요청, 폼 초안 저장처럼 "일부만 채워서 보내는" 상황에서 진짜 유용하다.</mark>
+
+### Pick / Omit — 잘라내기와 빼내기 ✂️
+
+```ts
+// Pick: 원하는 키만 선택
+type UserBasicInfo = Pick<User, "name" | "email">;
+// { name: string; email: string; }
+
+function sendWelcomeEmail(user: UserBasicInfo) {
+  // name과 email만 사용 가능
+}
+
+// Omit: 특정 키만 제외
+type UserWithoutAddress = Omit<User, "address">;
+// { name, age, email }
+
+function processUserData(user: UserWithoutAddress) {
+  // address를 제외한 모든 필드 사용 가능
+}
+```
+
+### Required / Readonly 🔐
+
+```ts
+type RequiredUser = Required<PartialUser>;
+// 모든 ? 가 강제로 required로 바뀜
+
+type ReadonlyUser = Readonly<User>;
+// {
+//   readonly name: string;
+//   readonly age: number;
+//   ...
+// }
+
+function displayUserInfo(user: ReadonlyUser) {
+  // 모든 필드를 수정할 수 없음
+  user.name = "..."; // ❌ Error
+}
+```
+
+### Record — 키-값 매핑 🗂️
+
+```ts
+type UserRole = "ADMIN" | "EDITOR" | "VIEWER";
+
+const rolePermissions: Record<UserRole, string[]> = {
+  ADMIN: ["read", "write", "delete"],
+  EDITOR: ["read", "write"],
+  VIEWER: ["read"],
+};
+// ✅ UserRole의 모든 키가 반드시 존재해야 한다 (누락 시 컴파일 에러)
+```
+
+### interface로도 유틸리티 활용 가능 ⭐️
+
+`type`만 유틸리티를 쓸 수 있다고 오해하기 쉬운데, **interface에서도 `extends`로 동일하게 활용** 가능하다.
+
+```ts
+interface PartialUser extends Partial<User> {}
+interface UserBasicInfo extends Pick<User, "name" | "email"> {}
+interface UserWithoutAddress extends Omit<User, "address"> {}
+interface ReadonlyUser extends Readonly<User> {}
+```
+
+### 실전 활용 — React Props에서 Omit 패턴 💡
+
+기본 HTML 속성을 확장하되, 충돌하는 속성은 `Omit`으로 제거하고 다시 정의하는 패턴이 자주 쓰인다.
+
+```ts
+export interface IInputProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "value" | "onChange" | "className"
+  > {
+  value: string; // optional → required로 재정의
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string; // 내부 스타일 시스템과 결합
+}
+```
+
+| **Omit 쓰는 이유**            | **설명**                                            |
+| -------------------------- | ------------------------------------------------- |
+| **1. 충돌 명시적 제거**         | 기본 optional이던 속성을 required로 바꿀 때 의도가 명확해짐 |
+| **2. 에디터 자동완성 혼란 방지**  | `value?: string`과 `value: string`이 둘 다 노출되는 것 방지 |
+| **3. 협업 시 의도 표현**         | "이 속성들은 우리가 새로 정의했다"는 신호                  |
+| **4. strict 모드 타입 충돌 방지** | 다른 제네릭 조합에서 발생할 수 있는 충돌 사전 차단         |
+
+> ⚠️ 사실 간단한 경우엔 그냥 `extends`만으로도 충분히 작동한다. 복잡해질 때 `Omit`이 명확성·안전성·협업 면에서 더 유리하다.
+
+---
+
+## as const와 타입 추론 ⚡
+
+> `as const`는 값들을 **리터럴로 고정**해서 정확한 유니온 타입 추론을 가능하게 하는 키워드다.
+
+### 왜 필요한가? 🤔
+
+TypeScript는 기본적으로 값을 **최대한 일반적으로 추론**한다.
+
+```ts
+const a = "hello"; // 타입: string (❌ "hello"가 아님)
+const b = "hello" as const; // 타입: "hello" (리터럴 ✅)
+```
+
+이 차이가 배열·객체에서 큰 문제를 만든다:
+
+```ts
+const theme = ["light", "dark"];
+// 타입: string[] 😬 (각 요소가 그냥 string)
+
+type Theme = (typeof theme)[number];
+// Theme = string 😬 (원한 건 "light" | "dark"였는데...)
+```
+
+### as const 적용 시 🎯
+
+```ts
+const countries = {
+  Korea: "Seoul",
+  Japan: "Tokyo",
+} as const;
+
+// 내부적으로는?
+// const countries: {
+//   readonly Korea: "Seoul";
+//   readonly Japan: "Tokyo";
+// }
+```
+
+- 각 속성값이 그냥 `string`이 아니라 **리터럴 타입**
+- 각 키도 `"Korea" | "Japan"`처럼 **정확한 유니온 타입으로 추론**
+- 객체 전체가 `readonly`가 됨
+
+### 활용 패턴 1 — 키에서 유니온 자동 추출 🔑
+
+```ts
+const countries = {
+  Korea: "Seoul",
+  Japan: "Tokyo",
+  USA: "Washington",
+} as const;
+
+type Country = keyof typeof countries;
+// "Korea" | "Japan" | "USA" ✅
+```
+
+> 👉 `keyof typeof`는 `as const`와 함께 자주 쓰이는 공식 조합이다.
+
+### 활용 패턴 2 — 배열에서 값 유니온 추출 📌
+
+select box, 사이즈 옵션, 라우팅 경로처럼 **목록과 타입을 한 곳에서 관리**할 때 강력하다.
+
+```ts
+const sizes = ["small", "medium", "large"] as const;
+
+type Size = (typeof sizes)[number];
+// "small" | "medium" | "large" ✅
+// → sizes[number]는 "배열 요소를 인덱스 접근으로 유니온 추출"하는 공식 문법
+```
+
+```ts
+// as const를 안 쓴다면?
+const sizes = ["small", "medium", "large"];
+// 타입: string[]
+
+type Size = (typeof sizes)[number];
+// string ❌ (정확한 값 유니온 아님)
+```
+
+### 비교표 📊
+
+| **구분**            | **as const 없이** | **as const 사용 시**            |
+| ----------------- | --------------- | --------------------------- |
+| 문자열 리터럴            | `string`        | `"hello"`                   |
+| 배열 타입              | `string[]`      | `readonly ["a", "b", "c"]`  |
+| 객체 값               | `string`        | 리터럴 `"Seoul"`               |
+| 키 추출 (keyof)       | 일반 객체 키         | 유니온 타입 생성 가능                |
+| 값 수정 가능성           | 변경 가능           | `readonly` (수정 불가)         |
+
+> ⭐️ **중복 선언 없이 한 곳에서 정의 → 타입 자동 추출**이 핵심 가치다. UI 옵션 목록, 버튼 variants, 라우팅 path 같은 곳에 적극 활용하자.
+
+---
+
+## 타입 가드 (Type Guards) 🛡️
+
+> 런타임에 값의 타입을 좁혀(narrowing) 컴파일러가 더 정확하게 추론하도록 돕는 기법.
+
+### 기본 타입 가드 🔍
+
+| **연산자**         | **확인 대상**          | **예시**                            |
+| --------------- | ------------------ | --------------------------------- |
+| `typeof`        | 원시 타입              | `typeof x === "string"`           |
+| `instanceof`    | 클래스 인스턴스           | `err instanceof Error`            |
+| `in`            | 객체에 특정 속성 존재 여부    | `"name" in obj`                   |
+| `Array.isArray` | 배열 여부              | `Array.isArray(x)`                |
+
+```ts
+function handleError(error: unknown) {
+  // instanceof는 특정 클래스/생성자 함수로 생긴 인스턴스인지 검사
+  // Error는 JS 내장 클래스
+  if (error instanceof Error) {
+    console.error(error.message); // ✅ Error로 좁혀짐
+  } else {
+    console.error(String(error));
+  }
+}
+```
+
+### unknown은 반드시 타입 가드 필요 ⚠️
+
+```ts
+function log(error: unknown) {
+  console.log(error.toUpperCase()); // ❌ 에러! unknown은 바로 못 씀
+}
+```
+
+<mark style="background: #FF5582A6;">`catch (err: Error)`로 타입을 박아두는 건 위험하다.</mark>
+
+```ts
+try {
+  throw "string error";
+} catch (err: Error) {
+  // ❌ 위험: 실제로는 string이 들어왔는데 Error라고 거짓말한 셈
+}
+```
+
+> 👉 try/catch의 err는 **항상 `unknown`으로 받고, `instanceof Error`로 좁히는 게 안전 패턴**이다.
+
+### 사용자 정의 타입 가드 (is) ✨
+
+> `매개변수 is 타입` 형태로 함수의 반환 시그니처를 작성하면, TS는 그 함수가 `true`를 반환할 때 인자를 해당 타입으로 좁혀준다.
+
+배열 `filter`는 기본적으로 결과 배열 타입을 좁혀주지 못한다. 이때 **사용자 정의 타입 가드**가 빛난다.
+
+```ts
+type IconName = "home" | "search" | "settings";
+const categoryIcons: IconName[] = ["home", "search"];
+
+const tags = ["home", "unknown-tag", "search"];
+
+const tagIcons = tags.filter((tag): tag is IconName =>
+  categoryIcons.includes(tag as IconName)
+);
+// tagIcons의 타입: IconName[] ✅
+// (이게 없으면 string[]로 추론됨)
+```
+
+`(tag): tag is IconName => ...` 부분이 핵심으로, **"이 함수가 true를 반환하면 tag는 IconName 타입이다"** 라고 TS에 알려주는 것이다.
+
+### any vs unknown 정리 📋
+
+| **종류**    | **의미**                                              |
+| --------- | --------------------------------------------------- |
+| `any`     | 타입 체크 안 함. 그냥 JS처럼 아무거나 다 허용 (안전성 ❌) |
+| `unknown` | 타입 체크 안 함 + **사용 전에 안전성 검사 필요** (안전성 ✅) |
+
+> ⭐️ 외부에서 들어오는 데이터(API 응답, JSON.parse, catch error)는 거의 무조건 `unknown`으로 받고 타입 가드로 좁히자. `any`는 정말 마지막 수단이다.
